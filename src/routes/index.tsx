@@ -1,14 +1,26 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { BedDouble, MapPin, Wifi, Shield, Utensils, Calendar } from "lucide-react";
+import { useMemo, useState } from "react";
+import { Mail, Phone, MapPin, ArrowUpRight } from "lucide-react";
 import heroImage from "../assets/hero-accommodation.jpg";
+import seaviewImage from "../assets/room-seaview.jpg";
+import cityImage from "../assets/room-city.jpg";
+import villaImage from "../assets/room-villa.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Africa Tech Festival Accommodation | Cape Town Stays" },
-      { name: "description", content: "Comfortable, well-located accommodation for Africa Tech Festival delegates in Cape Town. Not affiliated with Africa Tech Festival. Everything you need and more." },
-      { property: "og:title", content: "Africa Tech Festival Accommodation | Cape Town Stays" },
-      { property: "og:description", content: "Comfortable, well-located accommodation for Africa Tech Festival delegates in Cape Town." },
+      { title: "Cape Town Stays for Africa Tech Festival Delegates" },
+      {
+        name: "description",
+        content:
+          "Sea-view rooms, city apartments and private villas in Cape Town for Africa Tech Festival delegates. Independent — not affiliated with Africa Tech Festival.",
+      },
+      { property: "og:title", content: "Cape Town Stays for Africa Tech Festival Delegates" },
+      {
+        property: "og:description",
+        content:
+          "Sea-view rooms, city apartments and private villas in Cape Town for Africa Tech Festival delegates.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -16,179 +28,391 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const benefits = [
+type StayType = "sea-view" | "city-apartment" | "villa" | "private-room";
+
+const stays: { id: StayType; name: string; blurb: string; image: string }[] = [
   {
-    icon: MapPin,
-    title: "Close to the venue",
-    description: "Hand-picked apartments and rooms near the Africa Tech Festival event locations.",
+    id: "sea-view",
+    name: "Sea-view room",
+    blurb: "Wake up to the Atlantic. Balconies, linen, quiet mornings.",
+    image: seaviewImage,
   },
   {
-    icon: Wifi,
-    title: "Work-ready spaces",
-    description: "Fast Wi-Fi, desks, and quiet environments so you can stay productive.",
+    id: "city-apartment",
+    name: "City apartment",
+    blurb: "Walk to the CTICC. Table Mountain from your window.",
+    image: cityImage,
   },
   {
-    icon: Shield,
-    title: "Safe & secure",
-    description: "Secure buildings in trusted neighbourhoods with 24/7 support during your stay.",
+    id: "villa",
+    name: "Private villa",
+    blurb: "For teams. Pool, kitchen, space to host and unwind.",
+    image: villaImage,
   },
   {
-    icon: Utensils,
-    title: "Fully equipped",
-    description: "Kitchens, laundry, linen, and all the essentials you need for a comfortable visit.",
-  },
-  {
-    icon: Calendar,
-    title: "Flexible booking",
-    description: "Stay for the full festival or just a few nights — we adapt to your schedule.",
-  },
-  {
-    icon: BedDouble,
-    title: "Solo or group stays",
-    description: "Private rooms, shared apartments, or entire units for teams of any size.",
+    id: "private-room",
+    name: "Private room",
+    blurb: "Simple, safe, well-located. Solo delegate friendly.",
+    image: seaviewImage,
   },
 ];
 
 function Index() {
+  const [selected, setSelected] = useState<StayType[]>([]);
+  const [checkIn, setCheckIn] = useState("");
+  const [checkOut, setCheckOut] = useState("");
+  const [guests, setGuests] = useState(1);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [notes, setNotes] = useState("");
+
+  const toggle = (id: StayType) =>
+    setSelected((s) => (s.includes(id) ? s.filter((x) => x !== id) : [...s, id]));
+
+  const mailto = useMemo(() => {
+    const picks = selected.length
+      ? selected.map((id) => stays.find((s) => s.id === id)?.name).join(", ")
+      : "Not specified";
+    const body = [
+      `Name: ${name || "—"}`,
+      `Email: ${email || "—"}`,
+      `Phone: ${phone || "—"}`,
+      "",
+      `Accommodation preference: ${picks}`,
+      `Check-in: ${checkIn || "—"}`,
+      `Check-out: ${checkOut || "—"}`,
+      `Guests: ${guests}`,
+      "",
+      `Notes: ${notes || "—"}`,
+    ].join("\n");
+    return `mailto:ongezile.mqokeli@gmail.com?subject=${encodeURIComponent(
+      "Africa Tech Festival stay enquiry",
+    )}&body=${encodeURIComponent(body)}`;
+  }, [selected, name, email, phone, checkIn, checkOut, guests, notes]);
+
   return (
-    <div className="min-h-screen bg-background">
-      {/* Navigation */}
-      <header className="border-b border-border bg-card">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-          <span className="font-display text-xl tracking-tight text-foreground">
-            Cape Town Delegate Stays
-          </span>
+    <div className="min-h-screen bg-background text-foreground">
+      {/* Nav */}
+      <header className="border-b border-border/60">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
+          <a href="#top" className="flex items-baseline gap-2">
+            <span className="font-display text-2xl italic tracking-tight">Kaap</span>
+            <span className="text-xs uppercase tracking-[0.25em] text-muted-foreground">
+              delegate stays
+            </span>
+          </a>
           <a
             href="#enquire"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
+            className="group inline-flex items-center gap-2 text-sm font-medium"
           >
-            Enquire now
+            Enquire
+            <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
           </a>
         </div>
       </header>
 
-      {/* Hero — split-screen */}
-      <section className="mx-auto grid max-w-7xl items-center gap-8 px-6 py-16 lg:grid-cols-2 lg:py-24">
-        <div className="order-2 flex flex-col items-start gap-6 lg:order-1">
-          <p className="text-sm font-semibold uppercase tracking-widest text-accent">
-            Cape Town · Africa Tech Festival 2026
-          </p>
-          <h1 className="font-display text-4xl leading-tight text-foreground md:text-5xl lg:text-6xl">
-            Your perfect stay during the Africa Tech Festival
-          </h1>
-          <p className="max-w-lg text-lg text-muted-foreground">
-            Comfortable accommodation designed for delegates. Great locations, work-ready amenities, and everything you need — plus a little more.
-          </p>
-          <div className="flex flex-col gap-3 sm:flex-row">
-            <a
-              href="#enquire"
-              className="inline-flex items-center justify-center rounded-md bg-primary px-6 py-3 text-base font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
-            >
-              Check availability
-            </a>
-            <a
-              href="#benefits"
-              className="inline-flex items-center justify-center rounded-md border border-input bg-background px-6 py-3 text-base font-semibold text-foreground transition-colors hover:bg-muted"
-            >
-              What we offer
-            </a>
+      {/* Hero */}
+      <section id="top" className="mx-auto max-w-6xl px-6 pt-12 pb-16 md:pt-20 md:pb-24">
+        <div className="grid gap-10 md:grid-cols-12 md:items-end">
+          <div className="md:col-span-7">
+            <p className="mb-5 text-xs uppercase tracking-[0.3em] text-muted-foreground">
+              Cape Town · 16–20 November 2026
+            </p>
+            <h1 className="font-display text-5xl leading-[1.02] tracking-tight md:text-7xl">
+              A quiet place to land
+              <span className="italic text-accent"> between sessions.</span>
+            </h1>
+            <p className="mt-6 max-w-md text-base leading-relaxed text-muted-foreground md:text-lg">
+              Hand-picked homes across Cape Town for delegates of the Africa Tech Festival.
+              Sea-view rooms, city apartments, or a whole villa for the team.
+            </p>
           </div>
-          <p className="text-xs text-muted-foreground">
-            Independent accommodation provider. Not affiliated with Africa Tech Festival.
-          </p>
+          <div className="md:col-span-5">
+            <div className="grid grid-cols-3 gap-3 text-sm md:text-right">
+              <div className="col-span-3 border-l border-border pl-4 md:border-l-0 md:border-r md:pl-0 md:pr-4">
+                <div className="font-display text-3xl">4</div>
+                <div className="text-xs uppercase tracking-widest text-muted-foreground">
+                  Stay types
+                </div>
+              </div>
+              <div className="col-span-3 border-l border-border pl-4 md:border-l-0 md:border-r md:pl-0 md:pr-4">
+                <div className="font-display text-3xl">10 min</div>
+                <div className="text-xs uppercase tracking-widest text-muted-foreground">
+                  To the CTICC
+                </div>
+              </div>
+              <div className="col-span-3 border-l border-border pl-4 md:border-l-0 md:border-r md:pl-0 md:pr-4">
+                <div className="font-display text-3xl">24/7</div>
+                <div className="text-xs uppercase tracking-widest text-muted-foreground">
+                  Local support
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="order-1 lg:order-2">
-          <div className="overflow-hidden rounded-2xl shadow-lg">
-            <img
-              src={heroImage}
-              alt="Modern Cape Town apartment with Table Mountain in the background"
-              width={1024}
-              height={1024}
-              className="h-full w-full object-cover"
-              loading="eager"
-            />
-          </div>
+
+        <div className="mt-12 overflow-hidden rounded-sm">
+          <img
+            src={heroImage}
+            alt="Cape Town balcony at golden hour with Table Mountain and ocean"
+            width={1600}
+            height={1200}
+            loading="eager"
+            className="h-[52vh] w-full object-cover md:h-[70vh]"
+          />
         </div>
       </section>
 
-      {/* Benefits */}
-      <section id="benefits" className="border-y border-border bg-card py-16 lg:py-24">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 className="font-display text-3xl text-foreground md:text-4xl">
-              Everything you need, and more
+      {/* Stay options — asymmetric editorial grid */}
+      <section id="stays" className="border-t border-border/60 bg-secondary/40">
+        <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
+          <div className="mb-14 grid gap-6 md:grid-cols-12 md:items-end">
+            <h2 className="col-span-7 font-display text-4xl leading-tight md:text-5xl">
+              Pick a home that fits the week
             </h2>
-            <p className="mt-4 text-lg text-muted-foreground">
-              We take care of the details so you can focus on the festival.
+            <p className="col-span-5 text-muted-foreground md:text-right">
+              Every option is quiet, safe and close to the festival. Choose one — or a couple —
+              and we'll match availability.
             </p>
           </div>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {benefits.map((benefit) => (
-              <div
-                key={benefit.title}
-                className="rounded-xl border border-border bg-background p-6 transition-shadow hover:shadow-md"
+
+          <div className="grid gap-8 md:grid-cols-12">
+            {stays.map((s, i) => (
+              <article
+                key={s.id}
+                className={
+                  "group " +
+                  (i % 4 === 0
+                    ? "md:col-span-7"
+                    : i % 4 === 1
+                      ? "md:col-span-5"
+                      : i % 4 === 2
+                        ? "md:col-span-5"
+                        : "md:col-span-7")
+                }
               >
-                <div className="flex h-10 w-10 items-center justify-center rounded-md bg-secondary text-accent">
-                  <benefit.icon className="h-5 w-5" />
+                <div className="overflow-hidden rounded-sm">
+                  <img
+                    src={s.image}
+                    alt={s.name}
+                    width={1024}
+                    height={1280}
+                    loading="lazy"
+                    className="aspect-[4/5] w-full object-cover transition-transform duration-700 group-hover:scale-[1.02] md:aspect-[3/2]"
+                  />
                 </div>
-                <h3 className="mt-4 font-display text-xl text-foreground">{benefit.title}</h3>
-                <p className="mt-2 text-muted-foreground">{benefit.description}</p>
-              </div>
+                <div className="mt-5 flex items-start justify-between gap-4">
+                  <div>
+                    <h3 className="font-display text-2xl">{s.name}</h3>
+                    <p className="mt-1 max-w-md text-sm text-muted-foreground">{s.blurb}</p>
+                  </div>
+                  <span className="mt-1 shrink-0 text-xs uppercase tracking-widest text-muted-foreground">
+                    0{i + 1}
+                  </span>
+                </div>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section id="enquire" className="bg-primary py-16 lg:py-24">
-        <div className="mx-auto max-w-3xl px-6 text-center">
-          <h2 className="font-display text-3xl text-primary-foreground md:text-4xl">
-            Ready to book your stay?
-          </h2>
-          <p className="mt-4 text-lg text-primary-foreground/80">
-            Send us your dates and group size. We’ll match you with the best option near the festival.
-          </p>
-          <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <a
-              href="mailto:hello@capetowndelegatestays.co.za"
-              className="inline-flex items-center justify-center rounded-md bg-background px-6 py-3 text-base font-semibold text-foreground transition-colors hover:bg-background/90"
-            >
-              Email us
-            </a>
-            <span className="text-primary-foreground/70">or</span>
-            <a
-              href="tel:+27215551234"
-              className="inline-flex items-center justify-center rounded-md border border-primary-foreground/30 bg-transparent px-6 py-3 text-base font-semibold text-primary-foreground transition-colors hover:bg-primary-foreground/10"
-            >
-              Call +27 21 555 1234
-            </a>
+      {/* Enquiry form */}
+      <section id="enquire" className="border-t border-border/60">
+        <div className="mx-auto grid max-w-6xl gap-12 px-6 py-20 md:grid-cols-12 md:py-28">
+          <div className="md:col-span-5">
+            <p className="mb-4 text-xs uppercase tracking-[0.3em] text-muted-foreground">
+              Enquire
+            </p>
+            <h2 className="font-display text-4xl leading-tight md:text-5xl">
+              Tell us your dates. We'll do the rest.
+            </h2>
+            <p className="mt-6 text-muted-foreground">
+              Send this form and it'll open your email app addressed to Ongezile. He'll come
+              back with options that match your preferences.
+            </p>
+            <div className="mt-10 space-y-3 text-sm">
+              <a
+                href="mailto:ongezile.mqokeli@gmail.com"
+                className="flex items-center gap-3 hover:text-accent"
+              >
+                <Mail className="h-4 w-4" /> ongezile.mqokeli@gmail.com
+              </a>
+              <a href="tel:+27680187300" className="flex items-center gap-3 hover:text-accent">
+                <Phone className="h-4 w-4" /> 068 018 7300
+              </a>
+              <div className="flex items-center gap-3 text-muted-foreground">
+                <MapPin className="h-4 w-4" /> Cape Town, South Africa
+              </div>
+            </div>
           </div>
-          <p className="mt-6 text-sm text-primary-foreground/60">
-            Independent accommodation provider. Not affiliated with Africa Tech Festival.
-          </p>
+
+          <form
+            action="mailto:ongezile.mqokeli@gmail.com"
+            method="post"
+            encType="text/plain"
+            onSubmit={(e) => {
+              e.preventDefault();
+              window.location.href = mailto;
+            }}
+            className="space-y-8 md:col-span-7"
+          >
+            <div>
+              <label className="mb-3 block text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                What kind of stay?
+              </label>
+              <div className="grid gap-2 sm:grid-cols-2">
+                {stays.map((s) => {
+                  const active = selected.includes(s.id);
+                  return (
+                    <button
+                      type="button"
+                      key={s.id}
+                      onClick={() => toggle(s.id)}
+                      className={
+                        "flex items-center justify-between rounded-sm border px-4 py-3 text-left text-sm transition-colors " +
+                        (active
+                          ? "border-accent bg-accent text-accent-foreground"
+                          : "border-border bg-card hover:border-accent/60")
+                      }
+                    >
+                      <span>{s.name}</span>
+                      <span
+                        className={
+                          "flex h-4 w-4 items-center justify-center rounded-full border " +
+                          (active ? "border-accent-foreground" : "border-muted-foreground/40")
+                        }
+                      >
+                        {active && <span className="h-2 w-2 rounded-full bg-current" />}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-3">
+              <Field label="Check-in">
+                <input
+                  type="date"
+                  required
+                  value={checkIn}
+                  onChange={(e) => setCheckIn(e.target.value)}
+                  className="input"
+                />
+              </Field>
+              <Field label="Check-out">
+                <input
+                  type="date"
+                  required
+                  value={checkOut}
+                  onChange={(e) => setCheckOut(e.target.value)}
+                  className="input"
+                />
+              </Field>
+              <Field label="Guests">
+                <input
+                  type="number"
+                  min={1}
+                  max={20}
+                  value={guests}
+                  onChange={(e) => setGuests(Number(e.target.value))}
+                  className="input"
+                />
+              </Field>
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-2">
+              <Field label="Your name">
+                <input
+                  required
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  maxLength={80}
+                  className="input"
+                />
+              </Field>
+              <Field label="Email">
+                <input
+                  type="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  maxLength={120}
+                  className="input"
+                />
+              </Field>
+              <Field label="Phone (optional)">
+                <input
+                  type="tel"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  maxLength={30}
+                  className="input"
+                />
+              </Field>
+              <Field label="Anything else?">
+                <input
+                  value={notes}
+                  onChange={(e) => setNotes(e.target.value)}
+                  maxLength={300}
+                  placeholder="Accessibility, arrival time, team size…"
+                  className="input"
+                />
+              </Field>
+            </div>
+
+            <div className="flex flex-col-reverse items-start justify-between gap-4 pt-2 sm:flex-row sm:items-center">
+              <p className="text-xs text-muted-foreground">
+                Independent provider. Not affiliated with Africa Tech Festival.
+              </p>
+              <button
+                type="submit"
+                className="group inline-flex items-center gap-2 rounded-sm bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-accent"
+              >
+                Send enquiry
+                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              </button>
+            </div>
+          </form>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-border bg-background py-10">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="flex flex-col items-start justify-between gap-6 md:flex-row">
-            <div>
-              <span className="font-display text-lg text-foreground">Cape Town Delegate Stays</span>
-              <p className="mt-2 max-w-md text-sm text-muted-foreground">
-                Providing comfortable accommodation for Africa Tech Festival visitors in Cape Town.
-              </p>
-            </div>
-            <div className="text-sm text-muted-foreground">
-              <p>Email: hello@capetowndelegatestays.co.za</p>
-              <p>Phone: +27 21 555 1234</p>
-            </div>
+      <footer className="border-t border-border/60">
+        <div className="mx-auto flex max-w-6xl flex-col gap-6 px-6 py-10 text-sm text-muted-foreground md:flex-row md:items-center md:justify-between">
+          <div className="flex items-baseline gap-2">
+            <span className="font-display text-xl italic text-foreground">Kaap</span>
+            <span className="text-xs uppercase tracking-[0.25em]">delegate stays</span>
           </div>
-          <div className="mt-8 border-t border-border pt-6 text-xs text-muted-foreground">
-            © {new Date().getFullYear()} Cape Town Delegate Stays. Independent provider. Not affiliated with, endorsed by, or sponsored by Africa Tech Festival.
-          </div>
+          <div>© {new Date().getFullYear()} — Cape Town. Independent, not affiliated with Africa Tech Festival.</div>
         </div>
       </footer>
+
+      <style>{`
+        .input {
+          width: 100%;
+          background: var(--card);
+          border: 1px solid var(--border);
+          border-radius: 2px;
+          padding: 0.7rem 0.85rem;
+          font-size: 0.95rem;
+          color: var(--foreground);
+          transition: border-color 150ms;
+        }
+        .input:focus { outline: none; border-color: var(--accent); }
+      `}</style>
     </div>
+  );
+}
+
+function Field({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <label className="block">
+      <span className="mb-2 block text-xs uppercase tracking-[0.2em] text-muted-foreground">
+        {label}
+      </span>
+      {children}
+    </label>
   );
 }
