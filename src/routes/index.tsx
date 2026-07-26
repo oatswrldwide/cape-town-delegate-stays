@@ -9,17 +9,17 @@ import villaImage from "../assets/room-villa.jpg";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Cape Town Stays for Africa Tech Festival Delegates" },
+      { title: "Cape Town Stays for Festival Delegates" },
       {
         name: "description",
         content:
           "Sea-view rooms, city apartments and private villas in Cape Town for Africa Tech Festival delegates. Independent — not affiliated with Africa Tech Festival.",
       },
-      { property: "og:title", content: "Cape Town Stays for Africa Tech Festival Delegates" },
+      { property: "og:title", content: "Cape Town Stays for Festival Delegates" },
       {
         property: "og:description",
         content:
-          "Sea-view rooms, city apartments and private villas in Cape Town for Africa Tech Festival delegates.",
+          "Sea-view rooms, city apartments and private villas in Cape Town for Africa Tech Festival delegates. Independent — not affiliated with Africa Tech Festival.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
