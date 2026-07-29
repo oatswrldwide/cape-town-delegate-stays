@@ -94,8 +94,9 @@ function Index() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Nav */}
-      <header className="border-b border-border/60">
+      <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
+
           <a href="#top" className="flex items-baseline gap-2">
             <span className="font-display text-2xl italic tracking-tight">Kaap</span>
             <span className="text-xs uppercase tracking-[0.25em] text-muted-foreground">
@@ -417,14 +418,26 @@ function Index() {
           width: 100%;
           background: var(--card);
           border: 1px solid var(--border);
-          border-radius: 2px;
-          padding: 0.7rem 0.85rem;
+          border-radius: 3px;
+          padding: 0.75rem 0.9rem;
           font-size: 0.95rem;
           color: var(--foreground);
-          transition: border-color 150ms;
+          transition: border-color 150ms ease, box-shadow 150ms ease, background 150ms ease;
         }
-        .input:focus { outline: none; border-color: var(--accent); }
+        .input:hover { border-color: color-mix(in oklab, var(--accent) 45%, var(--border)); }
+        .input:focus {
+          outline: none;
+          border-color: var(--accent);
+          box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent) 18%, transparent);
+        }
+        .input::placeholder { color: color-mix(in oklab, var(--muted-foreground) 80%, transparent); }
+        .input:-webkit-autofill,
+        .input:-webkit-autofill:focus {
+          -webkit-text-fill-color: var(--foreground);
+          box-shadow: 0 0 0 1000px var(--card) inset, 0 0 0 3px color-mix(in oklab, var(--accent) 14%, transparent);
+        }
       `}</style>
+
     </div>
   );
 }
