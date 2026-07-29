@@ -94,8 +94,9 @@ function Index() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Nav */}
-      <header className="border-b border-border/60">
+      <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
+
           <a href="#top" className="flex items-baseline gap-2">
             <span className="font-display text-2xl italic tracking-tight">Kaap</span>
             <span className="text-xs uppercase tracking-[0.25em] text-muted-foreground">
@@ -255,7 +256,8 @@ function Index() {
               e.preventDefault();
               window.location.href = mailto;
             }}
-            className="space-y-8 md:col-span-7"
+            autoComplete="on"
+            className="space-y-8 rounded-sm border border-border/70 bg-card/60 p-6 shadow-[0_1px_0_var(--border),0_18px_40px_-32px_rgba(0,0,0,0.45)] md:col-span-7 md:p-8"
           >
             <div>
               <label className="mb-3 block text-xs uppercase tracking-[0.2em] text-muted-foreground">
@@ -296,6 +298,9 @@ function Index() {
                 <input
                   type="date"
                   required
+                  id="check-in"
+                  name="check-in"
+                  autoComplete="on"
                   value={checkIn}
                   onChange={(e) => setCheckIn(e.target.value)}
                   className="input"
@@ -305,6 +310,9 @@ function Index() {
                 <input
                   type="date"
                   required
+                  id="check-out"
+                  name="check-out"
+                  autoComplete="on"
                   value={checkOut}
                   onChange={(e) => setCheckOut(e.target.value)}
                   className="input"
@@ -315,6 +323,8 @@ function Index() {
                   type="number"
                   min={1}
                   max={20}
+                  id="guests"
+                  name="guests"
                   value={guests}
                   onChange={(e) => setGuests(Number(e.target.value))}
                   className="input"
@@ -326,6 +336,9 @@ function Index() {
               <Field label="Your name">
                 <input
                   required
+                  id="name"
+                  name="name"
+                  autoComplete="name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   maxLength={80}
@@ -336,6 +349,10 @@ function Index() {
                 <input
                   type="email"
                   required
+                  id="email"
+                  name="email"
+                  autoComplete="email"
+                  inputMode="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   maxLength={120}
@@ -345,6 +362,10 @@ function Index() {
               <Field label="Phone (optional)">
                 <input
                   type="tel"
+                  id="phone"
+                  name="tel"
+                  autoComplete="tel"
+                  inputMode="tel"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   maxLength={30}
@@ -353,6 +374,9 @@ function Index() {
               </Field>
               <Field label="Anything else?">
                 <input
+                  id="notes"
+                  name="notes"
+                  autoComplete="on"
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
                   maxLength={300}
@@ -394,14 +418,26 @@ function Index() {
           width: 100%;
           background: var(--card);
           border: 1px solid var(--border);
-          border-radius: 2px;
-          padding: 0.7rem 0.85rem;
+          border-radius: 3px;
+          padding: 0.75rem 0.9rem;
           font-size: 0.95rem;
           color: var(--foreground);
-          transition: border-color 150ms;
+          transition: border-color 150ms ease, box-shadow 150ms ease, background 150ms ease;
         }
-        .input:focus { outline: none; border-color: var(--accent); }
+        .input:hover { border-color: color-mix(in oklab, var(--accent) 45%, var(--border)); }
+        .input:focus {
+          outline: none;
+          border-color: var(--accent);
+          box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent) 18%, transparent);
+        }
+        .input::placeholder { color: color-mix(in oklab, var(--muted-foreground) 80%, transparent); }
+        .input:-webkit-autofill,
+        .input:-webkit-autofill:focus {
+          -webkit-text-fill-color: var(--foreground);
+          box-shadow: 0 0 0 1000px var(--card) inset, 0 0 0 3px color-mix(in oklab, var(--accent) 14%, transparent);
+        }
       `}</style>
+
     </div>
   );
 }
