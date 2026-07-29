@@ -255,7 +255,8 @@ function Index() {
               e.preventDefault();
               window.location.href = mailto;
             }}
-            className="space-y-8 md:col-span-7"
+            autoComplete="on"
+            className="space-y-8 rounded-sm border border-border/70 bg-card/60 p-6 shadow-[0_1px_0_var(--border),0_18px_40px_-32px_rgba(0,0,0,0.45)] md:col-span-7 md:p-8"
           >
             <div>
               <label className="mb-3 block text-xs uppercase tracking-[0.2em] text-muted-foreground">
@@ -296,6 +297,9 @@ function Index() {
                 <input
                   type="date"
                   required
+                  id="check-in"
+                  name="check-in"
+                  autoComplete="on"
                   value={checkIn}
                   onChange={(e) => setCheckIn(e.target.value)}
                   className="input"
@@ -305,6 +309,9 @@ function Index() {
                 <input
                   type="date"
                   required
+                  id="check-out"
+                  name="check-out"
+                  autoComplete="on"
                   value={checkOut}
                   onChange={(e) => setCheckOut(e.target.value)}
                   className="input"
@@ -315,6 +322,8 @@ function Index() {
                   type="number"
                   min={1}
                   max={20}
+                  id="guests"
+                  name="guests"
                   value={guests}
                   onChange={(e) => setGuests(Number(e.target.value))}
                   className="input"
@@ -326,6 +335,9 @@ function Index() {
               <Field label="Your name">
                 <input
                   required
+                  id="name"
+                  name="name"
+                  autoComplete="name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   maxLength={80}
@@ -336,6 +348,10 @@ function Index() {
                 <input
                   type="email"
                   required
+                  id="email"
+                  name="email"
+                  autoComplete="email"
+                  inputMode="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   maxLength={120}
@@ -345,6 +361,10 @@ function Index() {
               <Field label="Phone (optional)">
                 <input
                   type="tel"
+                  id="phone"
+                  name="tel"
+                  autoComplete="tel"
+                  inputMode="tel"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   maxLength={30}
@@ -353,6 +373,9 @@ function Index() {
               </Field>
               <Field label="Anything else?">
                 <input
+                  id="notes"
+                  name="notes"
+                  autoComplete="on"
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
                   maxLength={300}
