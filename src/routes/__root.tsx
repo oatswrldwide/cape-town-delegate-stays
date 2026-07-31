@@ -11,6 +11,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { SITE_URL } from "../lib/site";
 
 function NotFoundComponent() {
   return (
@@ -80,11 +81,33 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "Cape Town Stays for Festival Delegates" },
       { property: "og:title", content: "Cape Town Stays for Festival Delegates" },
       { name: "twitter:title", content: "Cape Town Stays for Festival Delegates" },
-      { name: "description", content: "Sea-view rooms, city apartments and private villas in Cape Town for Africa Tech Festival delegates. Independent — not affiliated with Africa Tech Festival." },
-      { property: "og:description", content: "Sea-view rooms, city apartments and private villas in Cape Town for Africa Tech Festival delegates. Independent — not affiliated with Africa Tech Festival." },
-      { name: "twitter:description", content: "Sea-view rooms, city apartments and private villas in Cape Town for Africa Tech Festival delegates. Independent — not affiliated with Africa Tech Festival." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/06b9a183-4de8-40b7-ba67-d8ea1b4517e2/id-preview-24c43d74--7df78e59-e194-463b-8f90-1546f1374111.lovable.app-1785067016610.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/06b9a183-4de8-40b7-ba67-d8ea1b4517e2/id-preview-24c43d74--7df78e59-e194-463b-8f90-1546f1374111.lovable.app-1785067016610.png" },
+      {
+        name: "description",
+        content:
+          "Sea-view rooms, city apartments and private villas in Cape Town for Africa Tech Festival delegates. Independent — not affiliated with Africa Tech Festival.",
+      },
+      {
+        property: "og:description",
+        content:
+          "Sea-view rooms, city apartments and private villas in Cape Town for Africa Tech Festival delegates. Independent — not affiliated with Africa Tech Festival.",
+      },
+      {
+        name: "twitter:description",
+        content:
+          "Sea-view rooms, city apartments and private villas in Cape Town for Africa Tech Festival delegates. Independent — not affiliated with Africa Tech Festival.",
+      },
+      { property: "og:url", content: SITE_URL },
+      { name: "twitter:url", content: SITE_URL },
+      {
+        property: "og:image",
+        content:
+          "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/06b9a183-4de8-40b7-ba67-d8ea1b4517e2/id-preview-24c43d74--7df78e59-e194-463b-8f90-1546f1374111.lovable.app-1785067016610.png",
+      },
+      {
+        name: "twitter:image",
+        content:
+          "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/06b9a183-4de8-40b7-ba67-d8ea1b4517e2/id-preview-24c43d74--7df78e59-e194-463b-8f90-1546f1374111.lovable.app-1785067016610.png",
+      },
       { name: "twitter:card", content: "summary_large_image" },
       { property: "og:type", content: "website" },
     ],
@@ -99,6 +122,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Inter:wght@300;400;500;600;700&display=swap",
       },
+      { rel: "canonical", href: SITE_URL },
 
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
     ],

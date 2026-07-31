@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://id-preview--7df78e59-e194-463b-8f90-1546f1374111.lovable.app/sitemap.xml
+Sitemap: https://kaapstays.co.za/sitemap.xml

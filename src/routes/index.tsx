@@ -25,7 +25,7 @@ export const Route = createFileRoute("/")({
       { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
-  component: Index,
+  component: LandingPage,
 });
 
 type StayType = "sea-view" | "city-apartment" | "villa" | "private-room";
@@ -57,7 +57,7 @@ const stays: { id: StayType; name: string; blurb: string; image: string }[] = [
   },
 ];
 
-function Index() {
+export function LandingPage() {
   const [selected, setSelected] = useState<StayType[]>([]);
   const [checkIn, setCheckIn] = useState("");
   const [checkOut, setCheckOut] = useState("");
@@ -96,17 +96,13 @@ function Index() {
       {/* Nav */}
       <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
-
           <a href="#top" className="flex items-baseline gap-2">
             <span className="font-display text-2xl italic tracking-tight">Kaap</span>
             <span className="text-xs uppercase tracking-[0.25em] text-muted-foreground">
               delegate stays
             </span>
           </a>
-          <a
-            href="#enquire"
-            className="group inline-flex items-center gap-2 text-sm font-medium"
-          >
+          <a href="#enquire" className="group inline-flex items-center gap-2 text-sm font-medium">
             Enquire
             <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
           </a>
@@ -125,8 +121,8 @@ function Index() {
               <span className="italic text-accent"> between sessions.</span>
             </h1>
             <p className="mt-6 max-w-md text-base leading-relaxed text-muted-foreground md:text-lg">
-              Hand-picked homes across Cape Town for delegates of the Africa Tech Festival.
-              Sea-view rooms, city apartments, or a whole villa for the team.
+              Hand-picked homes across Cape Town for delegates of the Africa Tech Festival. Sea-view
+              rooms, city apartments, or a whole villa for the team.
             </p>
           </div>
           <div className="md:col-span-5">
@@ -173,8 +169,8 @@ function Index() {
               Pick a home that fits the week
             </h2>
             <p className="col-span-5 text-muted-foreground md:text-right">
-              Every option is quiet, safe and close to the festival. Choose one — or a couple —
-              and we'll match availability.
+              Every option is quiet, safe and close to the festival. Choose one — or a couple — and
+              we'll match availability.
             </p>
           </div>
 
@@ -222,15 +218,13 @@ function Index() {
       <section id="enquire" className="border-t border-border/60">
         <div className="mx-auto grid max-w-6xl gap-12 px-6 py-20 md:grid-cols-12 md:py-28">
           <div className="md:col-span-5">
-            <p className="mb-4 text-xs uppercase tracking-[0.3em] text-muted-foreground">
-              Enquire
-            </p>
+            <p className="mb-4 text-xs uppercase tracking-[0.3em] text-muted-foreground">Enquire</p>
             <h2 className="font-display text-4xl leading-tight md:text-5xl">
               Tell us your dates. We'll do the rest.
             </h2>
             <p className="mt-6 text-muted-foreground">
-              Send this form and it'll open your email app addressed to Ongezile. He'll come
-              back with options that match your preferences.
+              Send this form and it'll open your email app addressed to Ongezile. He'll come back
+              with options that match your preferences.
             </p>
             <div className="mt-10 space-y-3 text-sm">
               <a
@@ -409,7 +403,10 @@ function Index() {
             <span className="font-display text-xl italic text-foreground">Kaap</span>
             <span className="text-xs uppercase tracking-[0.25em]">delegate stays</span>
           </div>
-          <div>© {new Date().getFullYear()} — Cape Town. Independent, not affiliated with Africa Tech Festival.</div>
+          <div>
+            © {new Date().getFullYear()} — Cape Town. Independent, not affiliated with Africa Tech
+            Festival.
+          </div>
         </div>
       </footer>
 
@@ -437,7 +434,6 @@ function Index() {
           box-shadow: 0 0 0 1000px var(--card) inset, 0 0 0 3px color-mix(in oklab, var(--accent) 14%, transparent);
         }
       `}</style>
-
     </div>
   );
 }
