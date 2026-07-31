@@ -86,7 +86,7 @@ function Index() {
       "",
       `Notes: ${notes || "—"}`,
     ].join("\n");
-    return `mailto:ongezile.mqokeli@gmail.com?subject=${encodeURIComponent(
+    return `mailto:ongezile@kaapstays.co.za?subject=${encodeURIComponent(
       "Africa Tech Festival stay enquiry",
     )}&body=${encodeURIComponent(body)}`;
   }, [selected, name, email, phone, checkIn, checkOut, guests, notes]);
@@ -234,10 +234,10 @@ function Index() {
             </p>
             <div className="mt-10 space-y-3 text-sm">
               <a
-                href="mailto:ongezile.mqokeli@gmail.com"
+                href="mailto:ongezile@kaapstays.co.za"
                 className="flex items-center gap-3 hover:text-accent"
               >
-                <Mail className="h-4 w-4" /> ongezile.mqokeli@gmail.com
+                <Mail className="h-4 w-4" /> ongezile@kaapstays.co.za
               </a>
               <a href="tel:+27680187300" className="flex items-center gap-3 hover:text-accent">
                 <Phone className="h-4 w-4" /> 068 018 7300
@@ -249,7 +249,7 @@ function Index() {
           </div>
 
           <form
-            action="mailto:ongezile.mqokeli@gmail.com"
+            action="mailto:ongezile@kaapstays.co.za"
             method="post"
             encType="text/plain"
             onSubmit={(e) => {
