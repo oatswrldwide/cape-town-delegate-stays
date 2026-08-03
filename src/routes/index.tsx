@@ -10,9 +10,9 @@ import { buildSeoHead } from "../lib/seo";
 export const Route = createFileRoute("/")({
   head: () =>
     buildSeoHead({
-      title: "Corporate & Conference Accommodation Cape Town | Kaap Delegate Stays",
+      title: "Cape Town Accommodation for Business & Events | Kaapstays",
       description:
-        "Corporate and conference accommodation in Cape Town: sea-view rooms, city apartments and private villas for Africa Tech Festival delegates and business travelers.",
+        "Hand-picked homes, apartments and villas in Cape Town for conference delegates and business travellers. Quiet, safe, close to the CTICC. Enquire now.",
       path: "/",
       keywords: [
         "business travel accommodation cape town",
@@ -113,13 +113,20 @@ export function LandingPage() {
               Cape Town · 16–20 November 2026
             </p>
             <h1 className="font-display text-5xl leading-[1.02] tracking-tight md:text-7xl">
-              Cape Town conference stays
-              <span className="italic text-accent"> between sessions.</span>
+              Cape Town stays for business travellers
+              <span className="italic text-accent"> & festival delegates.</span>
             </h1>
             <p className="mt-6 max-w-md text-base leading-relaxed text-muted-foreground md:text-lg">
-              Hand-picked accommodation for business travel in Cape Town — ideal for Africa Tech
-              Festival delegates, corporate teams and short-term conference stays.
+              Kaapstays is a curated accommodation service for professionals visiting Cape Town.
+              Whether you're attending Africa Tech Festival, leading a team off-site, or in town for
+              a conference, we match you with quiet, safe homes — not anonymous hotel blocks.
             </p>
+            <ul className="mt-6 list-disc space-y-2 pl-5 text-sm text-muted-foreground md:text-base">
+              <li>Reliable Wi-Fi and workspace setup</li>
+              <li>Safe, walkable neighbourhoods</li>
+              <li>Quick access to the CTICC and Cape Town CBD</li>
+              <li>24/7 local support from our Cape Town team</li>
+            </ul>
           </div>
           <div className="md:col-span-5">
             <div className="grid grid-cols-3 gap-3 text-sm md:text-right">
@@ -159,11 +166,14 @@ export function LandingPage() {
         <div className="mt-10 grid gap-4 md:grid-cols-3">
           {[
             {
+              href: "/kaapstays-keyword-research.csv",
+              title: "Download: Kaapstays Keyword Research",
+            },
+            {
               href: "/africa-tech-festival-2026",
               title: "Africa Tech Festival 2026 accommodation",
             },
-            { href: "/stays/city-apartments", title: "Cape Town CBD apartments" },
-            { href: "/stays/private-villas", title: "Private villas for teams" },
+            { href: "/neighborhood-guides/sea-point", title: "Sea Point neighborhood guide" },
           ].map((item) => (
             <a
               key={item.href}
@@ -182,7 +192,7 @@ export function LandingPage() {
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
           <div className="mb-14 grid gap-6 md:grid-cols-12 md:items-end">
             <h2 className="col-span-7 font-display text-4xl leading-tight md:text-5xl">
-              Pick a home that fits the week
+              Pick a home that fits the trip
             </h2>
             <p className="col-span-5 text-muted-foreground md:text-right">
               Every option is quiet, safe and close to the festival. Choose one — or a couple — and
@@ -227,6 +237,46 @@ export function LandingPage() {
               </article>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="border-t border-border/60">
+        <div className="mx-auto max-w-6xl px-6 py-16 md:py-20">
+          <h2 className="text-3xl md:text-4xl">Built for the Africa Tech Festival 2026</h2>
+          <p className="mt-4 max-w-3xl text-muted-foreground">
+            November 16–20, 2026. We reserve our best properties for festival delegates — early
+            booking is essential.
+          </p>
+          <a
+            href="/africa-tech-festival-2026"
+            className="mt-6 inline-flex rounded-sm bg-primary px-4 py-2 text-sm text-primary-foreground"
+          >
+            See festival accommodation
+          </a>
+        </div>
+      </section>
+
+      <section className="border-t border-border/60 bg-secondary/40">
+        <div className="mx-auto max-w-6xl px-6 py-16 md:py-20">
+          <h2 className="text-3xl md:text-4xl">Why delegates choose Kaapstays over hotels</h2>
+          <ul className="mt-6 list-disc space-y-3 pl-6 text-muted-foreground">
+            <li>
+              <strong className="text-foreground">Space to work:</strong> Dining tables become war
+              rooms. Living rooms become breakout spaces.
+            </li>
+            <li>
+              <strong className="text-foreground">Team cohesion:</strong> One villa beats five hotel
+              rooms when you're building something together.
+            </li>
+            <li>
+              <strong className="text-foreground">Local support:</strong> Ongezile and the team are
+              on call for check-in, transport questions, and last-minute changes.
+            </li>
+            <li>
+              <strong className="text-foreground">Predictable pricing:</strong> No surprise resort
+              fees or minibar charges.
+            </li>
+          </ul>
         </div>
       </section>
 
