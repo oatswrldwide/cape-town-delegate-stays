@@ -9,7 +9,11 @@ export const Route = createFileRoute("/stays/private-villas")({
       description:
         "Browse private villa rentals in Cape Town for teams, executives and extended business groups attending conferences and events.",
       path: "/stays/private-villas",
-      keywords: ["private villa cape town", "villa rental cape town", "team accommodation cape town"],
+      keywords: [
+        "private villa cape town",
+        "villa rental cape town",
+        "team accommodation cape town",
+      ],
     }),
   component: PrivateVillasPage,
 });

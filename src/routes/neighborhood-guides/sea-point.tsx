@@ -9,7 +9,11 @@ export const Route = createFileRoute("/neighborhood-guides/sea-point")({
       description:
         "Sea Point accommodation guide for Cape Town delegates, including commute tips from Sea Point to CTICC and practical local travel advice.",
       path: "/neighborhood-guides/sea-point",
-      keywords: ["sea point cape town guide", "cticc to sea point transport", "sea point accommodation"],
+      keywords: [
+        "sea point cape town guide",
+        "cticc to sea point transport",
+        "sea point accommodation",
+      ],
     }),
   component: SeaPointGuidePage,
 });

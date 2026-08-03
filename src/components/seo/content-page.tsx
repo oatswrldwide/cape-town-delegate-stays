@@ -25,7 +25,14 @@ export interface SeoContentPageProps {
   faqs?: ContentFaq[];
 }
 
-export function SeoContentPage({ eyebrow, title, intro, sections, links, faqs }: SeoContentPageProps) {
+export function SeoContentPage({
+  eyebrow,
+  title,
+  intro,
+  sections,
+  links,
+  faqs,
+}: SeoContentPageProps) {
   return (
     <main className="min-h-screen bg-background text-foreground">
       <section className="border-b border-border/70">
@@ -84,8 +91,8 @@ export function SeoContentPage({ eyebrow, title, intro, sections, links, faqs }:
         <div className="mx-auto max-w-5xl px-6 py-14 md:py-16">
           <h2 className="text-2xl md:text-3xl">Plan your Cape Town stay</h2>
           <p className="mt-4 max-w-3xl text-muted-foreground">
-            Tell us your dates, group size and location preferences, and we will share curated options
-            for conference accommodation in Cape Town.
+            Tell us your dates, group size and location preferences, and we will share curated
+            options for conference accommodation in Cape Town.
           </p>
           <div className="mt-8 flex flex-wrap gap-3 text-sm">
             <a
@@ -100,7 +107,11 @@ export function SeoContentPage({ eyebrow, title, intro, sections, links, faqs }:
           </div>
           <RelatedLinks>
             {links.map((link) => (
-              <a key={link.href} href={link.href} className="text-sm underline-offset-4 hover:underline">
+              <a
+                key={link.href}
+                href={link.href}
+                className="text-sm underline-offset-4 hover:underline"
+              >
                 {link.label}
               </a>
             ))}
