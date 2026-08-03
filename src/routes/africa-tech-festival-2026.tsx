@@ -85,7 +85,9 @@ function AfricaTechFestivalPage() {
         </article>
 
         <article>
-          <h2 className="text-2xl md:text-3xl">Why Book Accommodation Early for Africa Tech Festival?</h2>
+          <h2 className="text-2xl md:text-3xl">
+            Why Book Accommodation Early for Africa Tech Festival?
+          </h2>
           <p className="mt-4 text-muted-foreground">
             Cape Town in mid-November is peak season. Hotels near the CTICC sell out 3–4 months in
             advance. Our homes are held specifically for festival delegates, but availability
@@ -141,8 +143,8 @@ function AfricaTechFestivalPage() {
             <article>
               <h3 className="text-xl text-foreground">What's included in the rate?</h3>
               <p className="mt-2">
-                Wi-Fi, linen, cleaning before arrival, and 24/7 phone support. Airport transfers
-                and mid-week cleans can be added.
+                Wi-Fi, linen, cleaning before arrival, and 24/7 phone support. Airport transfers and
+                mid-week cleans can be added.
               </p>
             </article>
             <article>
@@ -170,7 +172,10 @@ function AfricaTechFestivalPage() {
             >
               Enquire now
             </a>
-            <a href="/neighborhood-guides/sea-point" className="rounded-sm border border-border px-4 py-2">
+            <a
+              href="/neighborhood-guides/sea-point"
+              className="rounded-sm border border-border px-4 py-2"
+            >
               See Sea Point guide
             </a>
           </div>

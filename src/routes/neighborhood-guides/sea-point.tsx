@@ -22,7 +22,9 @@ function SeaPointGuidePage() {
     <main className="min-h-screen bg-background text-foreground">
       <section className="border-b border-border/70">
         <div className="mx-auto max-w-5xl px-6 py-16 md:py-20">
-          <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">Neighborhood guide</p>
+          <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">
+            Neighborhood guide
+          </p>
           <h1 className="mt-4 text-4xl leading-tight md:text-5xl">
             Sea Point: The Atlantic Side of Your Business Trip
           </h1>
@@ -43,8 +45,8 @@ function SeaPointGuidePage() {
           <h2 className="text-2xl md:text-3xl">Why Delegates Stay in Sea Point</h2>
           <ul className="mt-4 space-y-3 text-muted-foreground">
             <li>
-              <strong className="text-foreground">The promenade</strong> — A 5km waterfront
-              walkway. Run it before your 9am keynote.
+              <strong className="text-foreground">The promenade</strong> — A 5km waterfront walkway.
+              Run it before your 9am keynote.
             </li>
             <li>
               <strong className="text-foreground">The restaurants</strong> — From client-dinner
@@ -56,9 +58,8 @@ function SeaPointGuidePage() {
               with security.
             </li>
             <li>
-              <strong className="text-foreground">The views</strong> — Every Kaapstays sea-view
-              room looks out over the Atlantic. That's your decompression view after a day of
-              panels.
+              <strong className="text-foreground">The views</strong> — Every Kaapstays sea-view room
+              looks out over the Atlantic. That's your decompression view after a day of panels.
             </li>
           </ul>
         </article>
@@ -137,8 +138,8 @@ function SeaPointGuidePage() {
         <article>
           <h2 className="text-2xl md:text-3xl">Our Sea Point Properties</h2>
           <p className="mt-4 text-muted-foreground">
-            We list sea-view rooms and full apartments in Sea Point and neighbouring Bantry Bay.
-            All include:
+            We list sea-view rooms and full apartments in Sea Point and neighbouring Bantry Bay. All
+            include:
           </p>
           <ul className="mt-4 list-disc space-y-2 pl-6 text-muted-foreground">
             <li>Atlantic Ocean views</li>
@@ -147,7 +148,10 @@ function SeaPointGuidePage() {
             <li>24/7 support contact</li>
           </ul>
           <div className="mt-8 flex flex-wrap gap-3 text-sm">
-            <a href="/stays/sea-view-rooms" className="rounded-sm bg-primary px-4 py-2 text-primary-foreground">
+            <a
+              href="/stays/sea-view-rooms"
+              className="rounded-sm bg-primary px-4 py-2 text-primary-foreground"
+            >
               View Sea Point stays
             </a>
           </div>
@@ -162,13 +166,22 @@ function SeaPointGuidePage() {
             (luxury villas).
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
-            <a href="/neighborhood-guides/city-bowl" className="text-sm underline-offset-4 hover:underline">
+            <a
+              href="/neighborhood-guides/city-bowl"
+              className="text-sm underline-offset-4 hover:underline"
+            >
               City Bowl guide
             </a>
-            <a href="/neighborhood-guides/camps-bay" className="text-sm underline-offset-4 hover:underline">
+            <a
+              href="/neighborhood-guides/camps-bay"
+              className="text-sm underline-offset-4 hover:underline"
+            >
               Camps Bay guide
             </a>
-            <a href="/africa-tech-festival-2026" className="text-sm underline-offset-4 hover:underline">
+            <a
+              href="/africa-tech-festival-2026"
+              className="text-sm underline-offset-4 hover:underline"
+            >
               Africa Tech Festival accommodation
             </a>
           </div>

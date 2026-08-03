@@ -118,8 +118,8 @@ export function LandingPage() {
             </h1>
             <p className="mt-6 max-w-md text-base leading-relaxed text-muted-foreground md:text-lg">
               Kaapstays is a curated accommodation service for professionals visiting Cape Town.
-              Whether you're attending Africa Tech Festival, leading a team off-site, or in town
-              for a conference, we match you with quiet, safe homes — not anonymous hotel blocks.
+              Whether you're attending Africa Tech Festival, leading a team off-site, or in town for
+              a conference, we match you with quiet, safe homes — not anonymous hotel blocks.
             </p>
             <ul className="mt-6 list-disc space-y-2 pl-5 text-sm text-muted-foreground md:text-base">
               <li>Reliable Wi-Fi and workspace setup</li>
@@ -265,8 +265,8 @@ export function LandingPage() {
               rooms. Living rooms become breakout spaces.
             </li>
             <li>
-              <strong className="text-foreground">Team cohesion:</strong> One villa beats five
-              hotel rooms when you're building something together.
+              <strong className="text-foreground">Team cohesion:</strong> One villa beats five hotel
+              rooms when you're building something together.
             </li>
             <li>
               <strong className="text-foreground">Local support:</strong> Ongezile and the team are
