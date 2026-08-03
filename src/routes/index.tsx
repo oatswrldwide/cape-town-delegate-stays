@@ -5,26 +5,22 @@ import heroImage from "../assets/hero-accommodation.jpg";
 import seaviewImage from "../assets/room-seaview.jpg";
 import cityImage from "../assets/room-city.jpg";
 import villaImage from "../assets/room-villa.jpg";
+import { buildSeoHead } from "../lib/seo";
 
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Cape Town Stays for Festival Delegates" },
-      {
-        name: "description",
-        content:
-          "Sea-view rooms, city apartments and private villas in Cape Town for Africa Tech Festival delegates. Independent — not affiliated with Africa Tech Festival.",
-      },
-      { property: "og:title", content: "Cape Town Stays for Festival Delegates" },
-      {
-        property: "og:description",
-        content:
-          "Sea-view rooms, city apartments and private villas in Cape Town for Africa Tech Festival delegates. Independent — not affiliated with Africa Tech Festival.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
+  head: () =>
+    buildSeoHead({
+      title: "Corporate & Conference Accommodation Cape Town | Kaap Delegate Stays",
+      description:
+        "Corporate and conference accommodation in Cape Town: sea-view rooms, city apartments and private villas for Africa Tech Festival delegates and business travelers.",
+      path: "/",
+      keywords: [
+        "business travel accommodation cape town",
+        "corporate accommodation cape town",
+        "conference accommodation cape town",
+        "short term rental cape town business",
+      ],
+    }),
   component: LandingPage,
 });
 
@@ -117,12 +113,12 @@ export function LandingPage() {
               Cape Town · 16–20 November 2026
             </p>
             <h1 className="font-display text-5xl leading-[1.02] tracking-tight md:text-7xl">
-              A quiet place to land
+              Cape Town conference stays
               <span className="italic text-accent"> between sessions.</span>
             </h1>
             <p className="mt-6 max-w-md text-base leading-relaxed text-muted-foreground md:text-lg">
-              Hand-picked homes across Cape Town for delegates of the Africa Tech Festival. Sea-view
-              rooms, city apartments, or a whole villa for the team.
+              Hand-picked accommodation for business travel in Cape Town — ideal for Africa Tech
+              Festival delegates, corporate teams and short-term conference stays.
             </p>
           </div>
           <div className="md:col-span-5">
@@ -158,6 +154,26 @@ export function LandingPage() {
             loading="eager"
             className="h-[52vh] w-full object-cover md:h-[70vh]"
           />
+        </div>
+
+        <div className="mt-10 grid gap-4 md:grid-cols-3">
+          {[
+            {
+              href: "/africa-tech-festival-2026",
+              title: "Africa Tech Festival 2026 accommodation",
+            },
+            { href: "/stays/city-apartments", title: "Cape Town CBD apartments" },
+            { href: "/stays/private-villas", title: "Private villas for teams" },
+          ].map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              className="rounded-sm border border-border/70 bg-card/70 p-4 text-sm transition-colors hover:border-accent"
+            >
+              <span className="block font-medium">{item.title}</span>
+              <span className="mt-1 block text-muted-foreground">View page</span>
+            </a>
+          ))}
         </div>
       </section>
 
@@ -393,6 +409,30 @@ export function LandingPage() {
               </button>
             </div>
           </form>
+        </div>
+      </section>
+
+      <section className="border-t border-border/60 bg-secondary/40">
+        <div className="mx-auto max-w-6xl px-6 py-14">
+          <h2 className="text-3xl md:text-4xl">Explore more Cape Town stay guides</h2>
+          <div className="mt-8 grid gap-3 sm:grid-cols-2 md:grid-cols-3">
+            {[
+              "/stays/sea-view-rooms",
+              "/stays/private-rooms",
+              "/neighborhood-guides/sea-point",
+              "/neighborhood-guides/city-bowl",
+              "/neighborhood-guides/v-a-waterfront",
+              "/blog/best-areas-business-travel",
+            ].map((href) => (
+              <a
+                key={href}
+                href={href}
+                className="rounded-sm border border-border bg-card px-4 py-3 text-sm hover:border-accent"
+              >
+                {href}
+              </a>
+            ))}
+          </div>
         </div>
       </section>
 
