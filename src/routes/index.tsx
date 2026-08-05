@@ -106,191 +106,102 @@ export function LandingPage() {
       </header>
 
       {/* Hero */}
-      <section id="top" className="mx-auto max-w-6xl px-6 pt-12 pb-16 md:pt-20 md:pb-24">
-        <div className="grid gap-10 md:grid-cols-12 md:items-end">
-          <div className="md:col-span-7">
+      <section id="top" className="mx-auto max-w-6xl px-6 pt-12 pb-10 md:pt-20 md:pb-16">
+        <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
+          <div>
             <p className="mb-5 text-xs uppercase tracking-[0.3em] text-muted-foreground">
-              Cape Town · 16–20 November 2026
+              Cape Town · Africa Tech Festival delegates
             </p>
-            <h1 className="font-display text-5xl leading-[1.02] tracking-tight md:text-7xl">
-              Cape Town stays for business travellers
-              <span className="italic text-accent"> & festival delegates.</span>
+            <h1 className="font-display text-5xl leading-[1.02] tracking-tight md:text-6xl lg:text-7xl">
+              A simple place to stay
+              <span className="italic text-accent"> near the festival.</span>
             </h1>
-            <p className="mt-6 max-w-md text-base leading-relaxed text-muted-foreground md:text-lg">
-              Kaapstays is a curated accommodation service for professionals visiting Cape Town.
-              Whether you're attending Africa Tech Festival, leading a team off-site, or in town for
-              a conference, we match you with quiet, safe homes — not anonymous hotel blocks.
+            <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
+              Share your dates and preferred setup. We’ll narrow it down to the best fit for your
+              stay in Cape Town.
             </p>
-            <ul className="mt-6 list-disc space-y-2 pl-5 text-sm text-muted-foreground md:text-base">
-              <li>Reliable Wi-Fi and workspace setup</li>
-              <li>Safe, walkable neighbourhoods</li>
-              <li>Quick access to the CTICC and Cape Town CBD</li>
-              <li>24/7 local support from our Cape Town team</li>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <a
+                href="#enquire"
+                className="inline-flex items-center gap-2 rounded-sm bg-primary px-5 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-accent"
+              >
+                Start your enquiry
+                <ArrowUpRight className="h-4 w-4" />
+              </a>
+              <a
+                href="#options"
+                className="inline-flex items-center rounded-sm border border-border px-5 py-3 text-sm font-medium transition-colors hover:border-accent hover:text-accent"
+              >
+                View stay types
+              </a>
+            </div>
+            <ul className="mt-8 space-y-3 text-sm text-muted-foreground">
+              <li>• Quiet, well-located homes for short festival stays</li>
+              <li>• Flexible options from single rooms to private villas</li>
+              <li>• Fast response with options that match your dates</li>
             </ul>
           </div>
-          <div className="md:col-span-5">
-            <div className="grid grid-cols-3 gap-3 text-sm md:text-right">
-              <div className="col-span-3 border-l border-border pl-4 md:border-l-0 md:border-r md:pl-0 md:pr-4">
-                <div className="font-display text-3xl">4</div>
-                <div className="text-xs uppercase tracking-widest text-muted-foreground">
-                  Stay types
-                </div>
+
+          <div className="rounded-sm border border-border/70 bg-card/70 p-6 shadow-[0_1px_0_var(--border),0_18px_40px_-32px_rgba(0,0,0,0.45)]">
+            <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">What to expect</p>
+            <div className="mt-6 space-y-4 text-sm text-muted-foreground">
+              <div className="border-b border-border/70 pb-4">
+                <div className="font-medium text-foreground">Stay types</div>
+                <div className="mt-1">Sea-view rooms, city apartments, villas and private rooms.</div>
               </div>
-              <div className="col-span-3 border-l border-border pl-4 md:border-l-0 md:border-r md:pl-0 md:pr-4">
-                <div className="font-display text-3xl">10 min</div>
-                <div className="text-xs uppercase tracking-widest text-muted-foreground">
-                  To the CTICC
-                </div>
+              <div className="border-b border-border/70 pb-4">
+                <div className="font-medium text-foreground">Best for</div>
+                <div className="mt-1">Solo delegates, couples and teams arriving for the festival.</div>
               </div>
-              <div className="col-span-3 border-l border-border pl-4 md:border-l-0 md:border-r md:pl-0 md:pr-4">
-                <div className="font-display text-3xl">24/7</div>
-                <div className="text-xs uppercase tracking-widest text-muted-foreground">
-                  Local support
-                </div>
+              <div>
+                <div className="font-medium text-foreground">Response time</div>
+                <div className="mt-1">A quick reply with options tailored to your dates.</div>
               </div>
             </div>
+            <img
+              src={heroImage}
+              alt="Cape Town balcony at golden hour with Table Mountain and ocean"
+              width={1200}
+              height={900}
+              loading="eager"
+              className="mt-6 h-48 w-full rounded-sm object-cover"
+            />
           </div>
-        </div>
-
-        <div className="mt-12 overflow-hidden rounded-sm">
-          <img
-            src={heroImage}
-            alt="Cape Town balcony at golden hour with Table Mountain and ocean"
-            width={1600}
-            height={1200}
-            loading="eager"
-            className="h-[52vh] w-full object-cover md:h-[70vh]"
-          />
-        </div>
-
-        <div className="mt-10 grid gap-4 md:grid-cols-3">
-          {[
-            {
-              href: "/kaapstays-keyword-research.csv",
-              title: "Download: Kaapstays Keyword Research",
-            },
-            {
-              href: "/africa-tech-festival-2026",
-              title: "Africa Tech Festival 2026 accommodation",
-            },
-            { href: "/neighborhood-guides/sea-point", title: "Sea Point neighborhood guide" },
-          ].map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="rounded-sm border border-border/70 bg-card/70 p-4 text-sm transition-colors hover:border-accent"
-            >
-              <span className="block font-medium">{item.title}</span>
-              <span className="mt-1 block text-muted-foreground">View page</span>
-            </a>
-          ))}
         </div>
       </section>
 
-      {/* Stay options — asymmetric editorial grid */}
-      <section id="stays" className="border-t border-border/60 bg-secondary/40">
-        <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
-          <div className="mb-14 grid gap-6 md:grid-cols-12 md:items-end">
-            <h2 className="col-span-7 font-display text-4xl leading-tight md:text-5xl">
-              Pick a home that fits the trip
+      {/* Stay types */}
+      <section id="options" className="border-t border-border/60 bg-secondary/40">
+        <div className="mx-auto max-w-6xl px-6 py-16 md:py-20">
+          <div className="mb-8 max-w-2xl">
+            <p className="mb-3 text-xs uppercase tracking-[0.3em] text-muted-foreground">Stay types</p>
+            <h2 className="font-display text-3xl leading-tight md:text-4xl">
+              Pick the setup that fits your trip
             </h2>
-            <p className="col-span-5 text-muted-foreground md:text-right">
-              Every option is quiet, safe and close to the festival. Choose one — or a couple — and
-              we'll match availability.
-            </p>
           </div>
 
-          <div className="grid gap-8 md:grid-cols-12">
-            {stays.map((s, i) => (
-              <article
-                key={s.id}
-                className={
-                  "group " +
-                  (i % 4 === 0
-                    ? "md:col-span-7"
-                    : i % 4 === 1
-                      ? "md:col-span-5"
-                      : i % 4 === 2
-                        ? "md:col-span-5"
-                        : "md:col-span-7")
-                }
-              >
-                <div className="overflow-hidden rounded-sm">
-                  <img
-                    src={s.image}
-                    alt={s.name}
-                    width={1024}
-                    height={1280}
-                    loading="lazy"
-                    className="aspect-[4/5] w-full object-cover transition-transform duration-700 group-hover:scale-[1.02] md:aspect-[3/2]"
-                  />
-                </div>
-                <div className="mt-5 flex items-start justify-between gap-4">
-                  <div>
-                    <h3 className="font-display text-2xl">{s.name}</h3>
-                    <p className="mt-1 max-w-md text-sm text-muted-foreground">{s.blurb}</p>
-                  </div>
-                  <span className="mt-1 shrink-0 text-xs uppercase tracking-widest text-muted-foreground">
-                    0{i + 1}
-                  </span>
-                </div>
+          <div className="grid gap-4 md:grid-cols-4">
+            {stays.map((s) => (
+              <article key={s.id} className="rounded-sm border border-border/70 bg-background/70 p-5">
+                <h3 className="font-display text-xl">{s.name}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.blurb}</p>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="border-t border-border/60">
-        <div className="mx-auto max-w-6xl px-6 py-16 md:py-20">
-          <h2 className="text-3xl md:text-4xl">Built for the Africa Tech Festival 2026</h2>
-          <p className="mt-4 max-w-3xl text-muted-foreground">
-            November 16–20, 2026. We reserve our best properties for festival delegates — early
-            booking is essential.
-          </p>
-          <a
-            href="/africa-tech-festival-2026"
-            className="mt-6 inline-flex rounded-sm bg-primary px-4 py-2 text-sm text-primary-foreground"
-          >
-            See festival accommodation
-          </a>
-        </div>
-      </section>
-
-      <section className="border-t border-border/60 bg-secondary/40">
-        <div className="mx-auto max-w-6xl px-6 py-16 md:py-20">
-          <h2 className="text-3xl md:text-4xl">Why delegates choose Kaapstays over hotels</h2>
-          <ul className="mt-6 list-disc space-y-3 pl-6 text-muted-foreground">
-            <li>
-              <strong className="text-foreground">Space to work:</strong> Dining tables become war
-              rooms. Living rooms become breakout spaces.
-            </li>
-            <li>
-              <strong className="text-foreground">Team cohesion:</strong> One villa beats five hotel
-              rooms when you're building something together.
-            </li>
-            <li>
-              <strong className="text-foreground">Local support:</strong> Ongezile and the team are
-              on call for check-in, transport questions, and last-minute changes.
-            </li>
-            <li>
-              <strong className="text-foreground">Predictable pricing:</strong> No surprise resort
-              fees or minibar charges.
-            </li>
-          </ul>
-        </div>
-      </section>
-
       {/* Enquiry form */}
       <section id="enquire" className="border-t border-border/60">
-        <div className="mx-auto grid max-w-6xl gap-12 px-6 py-20 md:grid-cols-12 md:py-28">
-          <div className="md:col-span-5">
+        <div className="mx-auto grid max-w-6xl gap-10 px-6 py-16 md:grid-cols-[0.9fr_1.1fr] md:py-20">
+          <div>
             <p className="mb-4 text-xs uppercase tracking-[0.3em] text-muted-foreground">Enquire</p>
             <h2 className="font-display text-4xl leading-tight md:text-5xl">
-              Tell us your dates. We'll do the rest.
+              Fill in the form and we’ll shortlist the right stay.
             </h2>
             <p className="mt-6 text-muted-foreground">
-              Send this form and it'll open your email app addressed to Ongezile. He'll come back
-              with options that match your preferences.
+              A few details are enough to get started. We’ll use your dates and preferences to send
+              the best options.
             </p>
             <div className="mt-10 space-y-3 text-sm">
               <a
@@ -317,7 +228,7 @@ export function LandingPage() {
               window.location.href = mailto;
             }}
             autoComplete="on"
-            className="space-y-8 rounded-sm border border-border/70 bg-card/60 p-6 shadow-[0_1px_0_var(--border),0_18px_40px_-32px_rgba(0,0,0,0.45)] md:col-span-7 md:p-8"
+            className="space-y-8 rounded-sm border border-border/70 bg-card/60 p-6 shadow-[0_1px_0_var(--border),0_18px_40px_-32px_rgba(0,0,0,0.45)] md:p-8"
           >
             <div>
               <label className="mb-3 block text-xs uppercase tracking-[0.2em] text-muted-foreground">
@@ -459,30 +370,6 @@ export function LandingPage() {
               </button>
             </div>
           </form>
-        </div>
-      </section>
-
-      <section className="border-t border-border/60 bg-secondary/40">
-        <div className="mx-auto max-w-6xl px-6 py-14">
-          <h2 className="text-3xl md:text-4xl">Explore more Cape Town stay guides</h2>
-          <div className="mt-8 grid gap-3 sm:grid-cols-2 md:grid-cols-3">
-            {[
-              "/stays/sea-view-rooms",
-              "/stays/private-rooms",
-              "/neighborhood-guides/sea-point",
-              "/neighborhood-guides/city-bowl",
-              "/neighborhood-guides/v-a-waterfront",
-              "/blog/best-areas-business-travel",
-            ].map((href) => (
-              <a
-                key={href}
-                href={href}
-                className="rounded-sm border border-border bg-card px-4 py-3 text-sm hover:border-accent"
-              >
-                {href}
-              </a>
-            ))}
-          </div>
         </div>
       </section>
 
