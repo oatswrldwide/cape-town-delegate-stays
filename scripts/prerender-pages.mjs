@@ -29,6 +29,9 @@ for (const routePath of pagePaths) {
   const targetDir = path.join(distDir, normalizedPath);
   await mkdir(targetDir, { recursive: true });
   await writeFile(path.join(targetDir, "index.html"), indexHtml);
+
+  const flatHtmlPath = path.join(distDir, `${normalizedPath}.html`);
+  await writeFile(flatHtmlPath, indexHtml);
 }
 
 console.log(`Prerendered ${pagePaths.length} static route pages.`);
