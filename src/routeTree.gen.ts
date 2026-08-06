@@ -12,11 +12,13 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AfricaTechFestival2026RouteImport } from './routes/africa-tech-festival-2026'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as BlogIndexRouteImport } from './routes/blog/index'
 import { Route as BlogApartmentsVsHotelsRouteImport } from './routes/blog/apartments-vs-hotels'
 import { Route as BlogBestAreasBusinessTravelRouteImport } from './routes/blog/best-areas-business-travel'
 import { Route as BlogCapeTownNovemberEventsRouteImport } from './routes/blog/cape-town-november-events'
 import { Route as BlogCapeTownSafetyGuideRouteImport } from './routes/blog/cape-town-safety-guide'
 import { Route as BlogCoworkingNearCticcRouteImport } from './routes/blog/coworking-near-cticc'
+import { Route as BlogCticcCapeTownBusinessTravelRouteImport } from './routes/blog/cticc-cape-town-business-travel'
 import { Route as NeighborhoodGuidesCampsBayRouteImport } from './routes/neighborhood-guides/camps-bay'
 import { Route as NeighborhoodGuidesCityBowlRouteImport } from './routes/neighborhood-guides/city-bowl'
 import { Route as NeighborhoodGuidesSeaPointRouteImport } from './routes/neighborhood-guides/sea-point'
@@ -39,6 +41,11 @@ const AfricaTechFestival2026Route = AfricaTechFestival2026RouteImport.update({
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/blog/',
+  path: '/blog/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BlogApartmentsVsHotelsRoute = BlogApartmentsVsHotelsRouteImport.update({
@@ -68,6 +75,12 @@ const BlogCoworkingNearCticcRoute = BlogCoworkingNearCticcRouteImport.update({
   path: '/blog/coworking-near-cticc',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogCticcCapeTownBusinessTravelRoute =
+  BlogCticcCapeTownBusinessTravelRouteImport.update({
+    id: '/blog/cticc-cape-town-business-travel',
+    path: '/blog/cticc-cape-town-business-travel',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const NeighborhoodGuidesCampsBayRoute =
   NeighborhoodGuidesCampsBayRouteImport.update({
     id: '/neighborhood-guides/camps-bay',
@@ -122,6 +135,7 @@ export interface FileRoutesByFullPath {
   '/blog/cape-town-november-events': typeof BlogCapeTownNovemberEventsRoute
   '/blog/cape-town-safety-guide': typeof BlogCapeTownSafetyGuideRoute
   '/blog/coworking-near-cticc': typeof BlogCoworkingNearCticcRoute
+  '/blog/cticc-cape-town-business-travel': typeof BlogCticcCapeTownBusinessTravelRoute
   '/neighborhood-guides/camps-bay': typeof NeighborhoodGuidesCampsBayRoute
   '/neighborhood-guides/city-bowl': typeof NeighborhoodGuidesCityBowlRoute
   '/neighborhood-guides/sea-point': typeof NeighborhoodGuidesSeaPointRoute
@@ -130,6 +144,7 @@ export interface FileRoutesByFullPath {
   '/stays/private-rooms': typeof StaysPrivateRoomsRoute
   '/stays/private-villas': typeof StaysPrivateVillasRoute
   '/stays/sea-view-rooms': typeof StaysSeaViewRoomsRoute
+  '/blog/': typeof BlogIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -140,6 +155,7 @@ export interface FileRoutesByTo {
   '/blog/cape-town-november-events': typeof BlogCapeTownNovemberEventsRoute
   '/blog/cape-town-safety-guide': typeof BlogCapeTownSafetyGuideRoute
   '/blog/coworking-near-cticc': typeof BlogCoworkingNearCticcRoute
+  '/blog/cticc-cape-town-business-travel': typeof BlogCticcCapeTownBusinessTravelRoute
   '/neighborhood-guides/camps-bay': typeof NeighborhoodGuidesCampsBayRoute
   '/neighborhood-guides/city-bowl': typeof NeighborhoodGuidesCityBowlRoute
   '/neighborhood-guides/sea-point': typeof NeighborhoodGuidesSeaPointRoute
@@ -148,6 +164,7 @@ export interface FileRoutesByTo {
   '/stays/private-rooms': typeof StaysPrivateRoomsRoute
   '/stays/private-villas': typeof StaysPrivateVillasRoute
   '/stays/sea-view-rooms': typeof StaysSeaViewRoomsRoute
+  '/blog': typeof BlogIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -159,6 +176,7 @@ export interface FileRoutesById {
   '/blog/cape-town-november-events': typeof BlogCapeTownNovemberEventsRoute
   '/blog/cape-town-safety-guide': typeof BlogCapeTownSafetyGuideRoute
   '/blog/coworking-near-cticc': typeof BlogCoworkingNearCticcRoute
+  '/blog/cticc-cape-town-business-travel': typeof BlogCticcCapeTownBusinessTravelRoute
   '/neighborhood-guides/camps-bay': typeof NeighborhoodGuidesCampsBayRoute
   '/neighborhood-guides/city-bowl': typeof NeighborhoodGuidesCityBowlRoute
   '/neighborhood-guides/sea-point': typeof NeighborhoodGuidesSeaPointRoute
@@ -167,6 +185,7 @@ export interface FileRoutesById {
   '/stays/private-rooms': typeof StaysPrivateRoomsRoute
   '/stays/private-villas': typeof StaysPrivateVillasRoute
   '/stays/sea-view-rooms': typeof StaysSeaViewRoomsRoute
+  '/blog/': typeof BlogIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -179,6 +198,7 @@ export interface FileRouteTypes {
     | '/blog/cape-town-november-events'
     | '/blog/cape-town-safety-guide'
     | '/blog/coworking-near-cticc'
+    | '/blog/cticc-cape-town-business-travel'
     | '/neighborhood-guides/camps-bay'
     | '/neighborhood-guides/city-bowl'
     | '/neighborhood-guides/sea-point'
@@ -187,6 +207,7 @@ export interface FileRouteTypes {
     | '/stays/private-rooms'
     | '/stays/private-villas'
     | '/stays/sea-view-rooms'
+    | '/blog/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -197,6 +218,7 @@ export interface FileRouteTypes {
     | '/blog/cape-town-november-events'
     | '/blog/cape-town-safety-guide'
     | '/blog/coworking-near-cticc'
+    | '/blog/cticc-cape-town-business-travel'
     | '/neighborhood-guides/camps-bay'
     | '/neighborhood-guides/city-bowl'
     | '/neighborhood-guides/sea-point'
@@ -205,6 +227,7 @@ export interface FileRouteTypes {
     | '/stays/private-rooms'
     | '/stays/private-villas'
     | '/stays/sea-view-rooms'
+    | '/blog'
   id:
     | '__root__'
     | '/'
@@ -215,6 +238,7 @@ export interface FileRouteTypes {
     | '/blog/cape-town-november-events'
     | '/blog/cape-town-safety-guide'
     | '/blog/coworking-near-cticc'
+    | '/blog/cticc-cape-town-business-travel'
     | '/neighborhood-guides/camps-bay'
     | '/neighborhood-guides/city-bowl'
     | '/neighborhood-guides/sea-point'
@@ -223,6 +247,7 @@ export interface FileRouteTypes {
     | '/stays/private-rooms'
     | '/stays/private-villas'
     | '/stays/sea-view-rooms'
+    | '/blog/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -234,6 +259,7 @@ export interface RootRouteChildren {
   BlogCapeTownNovemberEventsRoute: typeof BlogCapeTownNovemberEventsRoute
   BlogCapeTownSafetyGuideRoute: typeof BlogCapeTownSafetyGuideRoute
   BlogCoworkingNearCticcRoute: typeof BlogCoworkingNearCticcRoute
+  BlogCticcCapeTownBusinessTravelRoute: typeof BlogCticcCapeTownBusinessTravelRoute
   NeighborhoodGuidesCampsBayRoute: typeof NeighborhoodGuidesCampsBayRoute
   NeighborhoodGuidesCityBowlRoute: typeof NeighborhoodGuidesCityBowlRoute
   NeighborhoodGuidesSeaPointRoute: typeof NeighborhoodGuidesSeaPointRoute
@@ -242,6 +268,7 @@ export interface RootRouteChildren {
   StaysPrivateRoomsRoute: typeof StaysPrivateRoomsRoute
   StaysPrivateVillasRoute: typeof StaysPrivateVillasRoute
   StaysSeaViewRoomsRoute: typeof StaysSeaViewRoomsRoute
+  BlogIndexRoute: typeof BlogIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -265,6 +292,13 @@ declare module '@tanstack/react-router' {
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/': {
+      id: '/blog/'
+      path: '/blog'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/blog/apartments-vs-hotels': {
@@ -300,6 +334,13 @@ declare module '@tanstack/react-router' {
       path: '/blog/coworking-near-cticc'
       fullPath: '/blog/coworking-near-cticc'
       preLoaderRoute: typeof BlogCoworkingNearCticcRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/cticc-cape-town-business-travel': {
+      id: '/blog/cticc-cape-town-business-travel'
+      path: '/blog/cticc-cape-town-business-travel'
+      fullPath: '/blog/cticc-cape-town-business-travel'
+      preLoaderRoute: typeof BlogCticcCapeTownBusinessTravelRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/neighborhood-guides/camps-bay': {
@@ -370,6 +411,7 @@ const rootRouteChildren: RootRouteChildren = {
   BlogCapeTownNovemberEventsRoute: BlogCapeTownNovemberEventsRoute,
   BlogCapeTownSafetyGuideRoute: BlogCapeTownSafetyGuideRoute,
   BlogCoworkingNearCticcRoute: BlogCoworkingNearCticcRoute,
+  BlogCticcCapeTownBusinessTravelRoute: BlogCticcCapeTownBusinessTravelRoute,
   NeighborhoodGuidesCampsBayRoute: NeighborhoodGuidesCampsBayRoute,
   NeighborhoodGuidesCityBowlRoute: NeighborhoodGuidesCityBowlRoute,
   NeighborhoodGuidesSeaPointRoute: NeighborhoodGuidesSeaPointRoute,
@@ -378,17 +420,8 @@ const rootRouteChildren: RootRouteChildren = {
   StaysPrivateRoomsRoute: StaysPrivateRoomsRoute,
   StaysPrivateVillasRoute: StaysPrivateVillasRoute,
   StaysSeaViewRoomsRoute: StaysSeaViewRoomsRoute,
+  BlogIndexRoute: BlogIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
