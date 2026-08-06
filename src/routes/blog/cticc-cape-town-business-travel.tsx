@@ -53,6 +53,15 @@ function CticcCapeTownBusinessTravelPage() {
             "Use neighborhood guides to compare the feel of each area, not just the map distance",
           ],
         },
+        {
+          heading: "Why this guide is worth using",
+          body: "This article is written for real delegate trip planning, not generic tourism browsing. It focuses on the decisions that matter most around CTICC: commute time, neighborhood fit, group setup and booking timing.",
+          bullets: [
+            "Places CTICC in its actual Foreshore context, between the CBD and Waterfront",
+            "Balances solo delegate, team and executive stay needs",
+            "Links to neighborhood and stay pages so you can compare options before you enquire",
+          ],
+        },
       ]}
       faqs={[
         {
