@@ -143,11 +143,15 @@ export function LandingPage() {
           </div>
 
           <div className="rounded-sm border border-border/70 bg-card/70 p-6 shadow-[0_1px_0_var(--border),0_18px_40px_-32px_rgba(0,0,0,0.45)]">
-            <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">What to expect</p>
+            <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">
+              What to expect
+            </p>
             <div className="mt-6 space-y-4 text-sm text-muted-foreground">
               <div className="border-b border-border/70 pb-4">
                 <div className="font-medium text-foreground">Stay types</div>
-                <div className="mt-1">Sea-view rooms, city apartments, villas and private rooms.</div>
+                <div className="mt-1">
+                  Sea-view rooms, city apartments, villas and private rooms.
+                </div>
               </div>
               <div className="border-b border-border/70 pb-4">
                 <div className="font-medium text-foreground">Best for</div>
@@ -174,7 +178,9 @@ export function LandingPage() {
       <section id="options" className="border-t border-border/60 bg-secondary/40">
         <div className="mx-auto max-w-6xl px-6 py-16 md:py-20">
           <div className="mb-8 max-w-2xl">
-            <p className="mb-3 text-xs uppercase tracking-[0.3em] text-muted-foreground">Stay types</p>
+            <p className="mb-3 text-xs uppercase tracking-[0.3em] text-muted-foreground">
+              Stay types
+            </p>
             <h2 className="font-display text-3xl leading-tight md:text-4xl">
               Pick the setup that fits your trip
             </h2>
@@ -182,7 +188,10 @@ export function LandingPage() {
 
           <div className="grid gap-4 md:grid-cols-4">
             {stays.map((s) => (
-              <article key={s.id} className="rounded-sm border border-border/70 bg-background/70 p-5">
+              <article
+                key={s.id}
+                className="rounded-sm border border-border/70 bg-background/70 p-5"
+              >
                 <h3 className="font-display text-xl">{s.name}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.blurb}</p>
               </article>
@@ -380,9 +389,7 @@ export function LandingPage() {
             <span className="font-display text-xl italic text-foreground">Kaap</span>
             <span className="text-xs uppercase tracking-[0.25em]">delegate stays</span>
           </div>
-          <div>
-            © {new Date().getFullYear()} — Cape Town. Independent accommodation provider.
-          </div>
+          <div>© {new Date().getFullYear()} — Cape Town. Independent accommodation provider.</div>
         </div>
       </footer>
 
