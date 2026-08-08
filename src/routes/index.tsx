@@ -83,7 +83,7 @@ export function LandingPage() {
       `Notes: ${notes || "—"}`,
     ].join("\n");
     return `mailto:ongezile@kaapstays.co.za?subject=${encodeURIComponent(
-      "Africa Tech Festival stay enquiry",
+      "Cape Town accommodation enquiry",
     )}&body=${encodeURIComponent(body)}`;
   }, [selected, name, email, phone, checkIn, checkOut, guests, notes]);
 
@@ -110,11 +110,11 @@ export function LandingPage() {
         <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
           <div>
             <p className="mb-5 text-xs uppercase tracking-[0.3em] text-muted-foreground">
-              Cape Town · Africa Tech Festival delegates
+              Cape Town · Delegate and business stays
             </p>
             <h1 className="font-display text-5xl leading-[1.02] tracking-tight md:text-6xl lg:text-7xl">
               A simple place to stay
-              <span className="italic text-accent"> near the festival.</span>
+              <span className="italic text-accent"> in Cape Town.</span>
             </h1>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
               Share your dates and preferred setup. We’ll narrow it down to the best fit for your
@@ -136,22 +136,26 @@ export function LandingPage() {
               </a>
             </div>
             <ul className="mt-8 space-y-3 text-sm text-muted-foreground">
-              <li>• Quiet, well-located homes for short festival stays</li>
+              <li>• Quiet, well-located homes for short city stays</li>
               <li>• Flexible options from single rooms to private villas</li>
               <li>• Fast response with options that match your dates</li>
             </ul>
           </div>
 
           <div className="rounded-sm border border-border/70 bg-card/70 p-6 shadow-[0_1px_0_var(--border),0_18px_40px_-32px_rgba(0,0,0,0.45)]">
-            <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">What to expect</p>
+            <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">
+              What to expect
+            </p>
             <div className="mt-6 space-y-4 text-sm text-muted-foreground">
               <div className="border-b border-border/70 pb-4">
                 <div className="font-medium text-foreground">Stay types</div>
-                <div className="mt-1">Sea-view rooms, city apartments, villas and private rooms.</div>
+                <div className="mt-1">
+                  Sea-view rooms, city apartments, villas and private rooms.
+                </div>
               </div>
               <div className="border-b border-border/70 pb-4">
                 <div className="font-medium text-foreground">Best for</div>
-                <div className="mt-1">Solo delegates, couples and teams arriving for the festival.</div>
+                <div className="mt-1">Solo travellers, couples and teams visiting Cape Town.</div>
               </div>
               <div>
                 <div className="font-medium text-foreground">Response time</div>
@@ -174,7 +178,9 @@ export function LandingPage() {
       <section id="options" className="border-t border-border/60 bg-secondary/40">
         <div className="mx-auto max-w-6xl px-6 py-16 md:py-20">
           <div className="mb-8 max-w-2xl">
-            <p className="mb-3 text-xs uppercase tracking-[0.3em] text-muted-foreground">Stay types</p>
+            <p className="mb-3 text-xs uppercase tracking-[0.3em] text-muted-foreground">
+              Stay types
+            </p>
             <h2 className="font-display text-3xl leading-tight md:text-4xl">
               Pick the setup that fits your trip
             </h2>
@@ -182,7 +188,10 @@ export function LandingPage() {
 
           <div className="grid gap-4 md:grid-cols-4">
             {stays.map((s) => (
-              <article key={s.id} className="rounded-sm border border-border/70 bg-background/70 p-5">
+              <article
+                key={s.id}
+                className="rounded-sm border border-border/70 bg-background/70 p-5"
+              >
                 <h3 className="font-display text-xl">{s.name}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.blurb}</p>
               </article>
@@ -359,7 +368,7 @@ export function LandingPage() {
 
             <div className="flex flex-col-reverse items-start justify-between gap-4 pt-2 sm:flex-row sm:items-center">
               <p className="text-xs text-muted-foreground">
-                Independent provider. Not affiliated with Africa Tech Festival.
+                Independent local provider based in Cape Town.
               </p>
               <button
                 type="submit"
@@ -380,10 +389,7 @@ export function LandingPage() {
             <span className="font-display text-xl italic text-foreground">Kaap</span>
             <span className="text-xs uppercase tracking-[0.25em]">delegate stays</span>
           </div>
-          <div>
-            © {new Date().getFullYear()} — Cape Town. Independent, not affiliated with Africa Tech
-            Festival.
-          </div>
+          <div>© {new Date().getFullYear()} — Cape Town. Independent accommodation provider.</div>
         </div>
       </footer>
 
