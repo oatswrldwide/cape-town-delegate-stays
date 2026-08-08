@@ -83,7 +83,7 @@ export function LandingPage() {
       `Notes: ${notes || "—"}`,
     ].join("\n");
     return `mailto:ongezile@kaapstays.co.za?subject=${encodeURIComponent(
-      "Africa Tech Festival stay enquiry",
+      "Cape Town accommodation enquiry",
     )}&body=${encodeURIComponent(body)}`;
   }, [selected, name, email, phone, checkIn, checkOut, guests, notes]);
 
@@ -110,11 +110,11 @@ export function LandingPage() {
         <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
           <div>
             <p className="mb-5 text-xs uppercase tracking-[0.3em] text-muted-foreground">
-              Cape Town · Africa Tech Festival delegates
+              Cape Town · Delegate and business stays
             </p>
             <h1 className="font-display text-5xl leading-[1.02] tracking-tight md:text-6xl lg:text-7xl">
               A simple place to stay
-              <span className="italic text-accent"> near the festival.</span>
+              <span className="italic text-accent"> in Cape Town.</span>
             </h1>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
               Share your dates and preferred setup. We’ll narrow it down to the best fit for your
@@ -136,7 +136,7 @@ export function LandingPage() {
               </a>
             </div>
             <ul className="mt-8 space-y-3 text-sm text-muted-foreground">
-              <li>• Quiet, well-located homes for short festival stays</li>
+              <li>• Quiet, well-located homes for short city stays</li>
               <li>• Flexible options from single rooms to private villas</li>
               <li>• Fast response with options that match your dates</li>
             </ul>
@@ -151,7 +151,7 @@ export function LandingPage() {
               </div>
               <div className="border-b border-border/70 pb-4">
                 <div className="font-medium text-foreground">Best for</div>
-                <div className="mt-1">Solo delegates, couples and teams arriving for the festival.</div>
+                <div className="mt-1">Solo travellers, couples and teams visiting Cape Town.</div>
               </div>
               <div>
                 <div className="font-medium text-foreground">Response time</div>
@@ -359,7 +359,7 @@ export function LandingPage() {
 
             <div className="flex flex-col-reverse items-start justify-between gap-4 pt-2 sm:flex-row sm:items-center">
               <p className="text-xs text-muted-foreground">
-                Independent provider. Not affiliated with Africa Tech Festival.
+                Independent local provider based in Cape Town.
               </p>
               <button
                 type="submit"
@@ -381,8 +381,7 @@ export function LandingPage() {
             <span className="text-xs uppercase tracking-[0.25em]">delegate stays</span>
           </div>
           <div>
-            © {new Date().getFullYear()} — Cape Town. Independent, not affiliated with Africa Tech
-            Festival.
+            © {new Date().getFullYear()} — Cape Town. Independent accommodation provider.
           </div>
         </div>
       </footer>

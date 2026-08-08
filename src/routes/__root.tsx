@@ -78,23 +78,23 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Cape Town Stays for Festival Delegates" },
-      { property: "og:title", content: "Cape Town Stays for Festival Delegates" },
-      { name: "twitter:title", content: "Cape Town Stays for Festival Delegates" },
+      { title: "Cape Town Accommodation for Delegates & Business Travel" },
+      { property: "og:title", content: "Cape Town Accommodation for Delegates & Business Travel" },
+      { name: "twitter:title", content: "Cape Town Accommodation for Delegates & Business Travel" },
       {
         name: "description",
         content:
-          "Sea-view rooms, city apartments and private villas in Cape Town for Africa Tech Festival delegates. Independent — not affiliated with Africa Tech Festival.",
+          "Sea-view rooms, city apartments and private villas in Cape Town for delegates, teams and business travellers. Tell us your preferred stay and we’ll match you.",
       },
       {
         property: "og:description",
         content:
-          "Sea-view rooms, city apartments and private villas in Cape Town for Africa Tech Festival delegates. Independent — not affiliated with Africa Tech Festival.",
+          "Sea-view rooms, city apartments and private villas in Cape Town for delegates, teams and business travellers. Tell us your preferred stay and we’ll match you.",
       },
       {
         name: "twitter:description",
         content:
-          "Sea-view rooms, city apartments and private villas in Cape Town for Africa Tech Festival delegates. Independent — not affiliated with Africa Tech Festival.",
+          "Sea-view rooms, city apartments and private villas in Cape Town for delegates, teams and business travellers. Tell us your preferred stay and we’ll match you.",
       },
       { property: "og:url", content: SITE_URL },
       { name: "twitter:url", content: SITE_URL },
