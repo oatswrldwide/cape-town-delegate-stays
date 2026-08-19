@@ -18,6 +18,26 @@ import { Route as ProductsNutsRouteImport } from './routes/products/nuts'
 import { Route as ProductsRooibosAndTeaRouteImport } from './routes/products/rooibos-and-tea'
 import { Route as ServicesExportCoordinationRouteImport } from './routes/services/export-coordination'
 import { Route as ServicesSupplierSourcingRouteImport } from './routes/services/supplier-sourcing'
+import { Route as SourcingDriedFruitAsiaRouteImport } from './routes/sourcing/dried-fruit/asia'
+import { Route as SourcingDriedFruitGermanyRouteImport } from './routes/sourcing/dried-fruit/germany'
+import { Route as SourcingDriedFruitUaeRouteImport } from './routes/sourcing/dried-fruit/uae'
+import { Route as SourcingDriedFruitUnitedStatesRouteImport } from './routes/sourcing/dried-fruit/united-states'
+import { Route as SourcingFreshApplesAsiaRouteImport } from './routes/sourcing/fresh-apples/asia'
+import { Route as SourcingFreshApplesGermanyRouteImport } from './routes/sourcing/fresh-apples/germany'
+import { Route as SourcingFreshApplesUaeRouteImport } from './routes/sourcing/fresh-apples/uae'
+import { Route as SourcingFreshApplesUnitedStatesRouteImport } from './routes/sourcing/fresh-apples/united-states'
+import { Route as SourcingMacadamiaNutsAsiaRouteImport } from './routes/sourcing/macadamia-nuts/asia'
+import { Route as SourcingMacadamiaNutsGermanyRouteImport } from './routes/sourcing/macadamia-nuts/germany'
+import { Route as SourcingMacadamiaNutsUaeRouteImport } from './routes/sourcing/macadamia-nuts/uae'
+import { Route as SourcingMacadamiaNutsUnitedStatesRouteImport } from './routes/sourcing/macadamia-nuts/united-states'
+import { Route as SourcingRooibosTeaAsiaRouteImport } from './routes/sourcing/rooibos-tea/asia'
+import { Route as SourcingRooibosTeaGermanyRouteImport } from './routes/sourcing/rooibos-tea/germany'
+import { Route as SourcingRooibosTeaUaeRouteImport } from './routes/sourcing/rooibos-tea/uae'
+import { Route as SourcingRooibosTeaUnitedStatesRouteImport } from './routes/sourcing/rooibos-tea/united-states'
+import { Route as SourcingWineAsiaRouteImport } from './routes/sourcing/wine/asia'
+import { Route as SourcingWineGermanyRouteImport } from './routes/sourcing/wine/germany'
+import { Route as SourcingWineUaeRouteImport } from './routes/sourcing/wine/uae'
+import { Route as SourcingWineUnitedStatesRouteImport } from './routes/sourcing/wine/united-states'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -66,6 +86,117 @@ const ServicesSupplierSourcingRoute =
     path: '/services/supplier-sourcing',
     getParentRoute: () => rootRouteImport,
   } as any)
+const SourcingDriedFruitAsiaRoute = SourcingDriedFruitAsiaRouteImport.update({
+  id: '/sourcing/dried-fruit/asia',
+  path: '/sourcing/dried-fruit/asia',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SourcingDriedFruitGermanyRoute =
+  SourcingDriedFruitGermanyRouteImport.update({
+    id: '/sourcing/dried-fruit/germany',
+    path: '/sourcing/dried-fruit/germany',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const SourcingDriedFruitUaeRoute = SourcingDriedFruitUaeRouteImport.update({
+  id: '/sourcing/dried-fruit/uae',
+  path: '/sourcing/dried-fruit/uae',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SourcingDriedFruitUnitedStatesRoute =
+  SourcingDriedFruitUnitedStatesRouteImport.update({
+    id: '/sourcing/dried-fruit/united-states',
+    path: '/sourcing/dried-fruit/united-states',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const SourcingFreshApplesAsiaRoute = SourcingFreshApplesAsiaRouteImport.update({
+  id: '/sourcing/fresh-apples/asia',
+  path: '/sourcing/fresh-apples/asia',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SourcingFreshApplesGermanyRoute =
+  SourcingFreshApplesGermanyRouteImport.update({
+    id: '/sourcing/fresh-apples/germany',
+    path: '/sourcing/fresh-apples/germany',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const SourcingFreshApplesUaeRoute = SourcingFreshApplesUaeRouteImport.update({
+  id: '/sourcing/fresh-apples/uae',
+  path: '/sourcing/fresh-apples/uae',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SourcingFreshApplesUnitedStatesRoute =
+  SourcingFreshApplesUnitedStatesRouteImport.update({
+    id: '/sourcing/fresh-apples/united-states',
+    path: '/sourcing/fresh-apples/united-states',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const SourcingMacadamiaNutsAsiaRoute =
+  SourcingMacadamiaNutsAsiaRouteImport.update({
+    id: '/sourcing/macadamia-nuts/asia',
+    path: '/sourcing/macadamia-nuts/asia',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const SourcingMacadamiaNutsGermanyRoute =
+  SourcingMacadamiaNutsGermanyRouteImport.update({
+    id: '/sourcing/macadamia-nuts/germany',
+    path: '/sourcing/macadamia-nuts/germany',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const SourcingMacadamiaNutsUaeRoute =
+  SourcingMacadamiaNutsUaeRouteImport.update({
+    id: '/sourcing/macadamia-nuts/uae',
+    path: '/sourcing/macadamia-nuts/uae',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const SourcingMacadamiaNutsUnitedStatesRoute =
+  SourcingMacadamiaNutsUnitedStatesRouteImport.update({
+    id: '/sourcing/macadamia-nuts/united-states',
+    path: '/sourcing/macadamia-nuts/united-states',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const SourcingRooibosTeaAsiaRoute = SourcingRooibosTeaAsiaRouteImport.update({
+  id: '/sourcing/rooibos-tea/asia',
+  path: '/sourcing/rooibos-tea/asia',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SourcingRooibosTeaGermanyRoute =
+  SourcingRooibosTeaGermanyRouteImport.update({
+    id: '/sourcing/rooibos-tea/germany',
+    path: '/sourcing/rooibos-tea/germany',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const SourcingRooibosTeaUaeRoute = SourcingRooibosTeaUaeRouteImport.update({
+  id: '/sourcing/rooibos-tea/uae',
+  path: '/sourcing/rooibos-tea/uae',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SourcingRooibosTeaUnitedStatesRoute =
+  SourcingRooibosTeaUnitedStatesRouteImport.update({
+    id: '/sourcing/rooibos-tea/united-states',
+    path: '/sourcing/rooibos-tea/united-states',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const SourcingWineAsiaRoute = SourcingWineAsiaRouteImport.update({
+  id: '/sourcing/wine/asia',
+  path: '/sourcing/wine/asia',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SourcingWineGermanyRoute = SourcingWineGermanyRouteImport.update({
+  id: '/sourcing/wine/germany',
+  path: '/sourcing/wine/germany',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SourcingWineUaeRoute = SourcingWineUaeRouteImport.update({
+  id: '/sourcing/wine/uae',
+  path: '/sourcing/wine/uae',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SourcingWineUnitedStatesRoute =
+  SourcingWineUnitedStatesRouteImport.update({
+    id: '/sourcing/wine/united-states',
+    path: '/sourcing/wine/united-states',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -77,6 +208,26 @@ export interface FileRoutesByFullPath {
   '/products/rooibos-and-tea': typeof ProductsRooibosAndTeaRoute
   '/services/export-coordination': typeof ServicesExportCoordinationRoute
   '/services/supplier-sourcing': typeof ServicesSupplierSourcingRoute
+  '/sourcing/dried-fruit/asia': typeof SourcingDriedFruitAsiaRoute
+  '/sourcing/dried-fruit/germany': typeof SourcingDriedFruitGermanyRoute
+  '/sourcing/dried-fruit/uae': typeof SourcingDriedFruitUaeRoute
+  '/sourcing/dried-fruit/united-states': typeof SourcingDriedFruitUnitedStatesRoute
+  '/sourcing/fresh-apples/asia': typeof SourcingFreshApplesAsiaRoute
+  '/sourcing/fresh-apples/germany': typeof SourcingFreshApplesGermanyRoute
+  '/sourcing/fresh-apples/uae': typeof SourcingFreshApplesUaeRoute
+  '/sourcing/fresh-apples/united-states': typeof SourcingFreshApplesUnitedStatesRoute
+  '/sourcing/macadamia-nuts/asia': typeof SourcingMacadamiaNutsAsiaRoute
+  '/sourcing/macadamia-nuts/germany': typeof SourcingMacadamiaNutsGermanyRoute
+  '/sourcing/macadamia-nuts/uae': typeof SourcingMacadamiaNutsUaeRoute
+  '/sourcing/macadamia-nuts/united-states': typeof SourcingMacadamiaNutsUnitedStatesRoute
+  '/sourcing/rooibos-tea/asia': typeof SourcingRooibosTeaAsiaRoute
+  '/sourcing/rooibos-tea/germany': typeof SourcingRooibosTeaGermanyRoute
+  '/sourcing/rooibos-tea/uae': typeof SourcingRooibosTeaUaeRoute
+  '/sourcing/rooibos-tea/united-states': typeof SourcingRooibosTeaUnitedStatesRoute
+  '/sourcing/wine/asia': typeof SourcingWineAsiaRoute
+  '/sourcing/wine/germany': typeof SourcingWineGermanyRoute
+  '/sourcing/wine/uae': typeof SourcingWineUaeRoute
+  '/sourcing/wine/united-states': typeof SourcingWineUnitedStatesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -88,6 +239,26 @@ export interface FileRoutesByTo {
   '/products/rooibos-and-tea': typeof ProductsRooibosAndTeaRoute
   '/services/export-coordination': typeof ServicesExportCoordinationRoute
   '/services/supplier-sourcing': typeof ServicesSupplierSourcingRoute
+  '/sourcing/dried-fruit/asia': typeof SourcingDriedFruitAsiaRoute
+  '/sourcing/dried-fruit/germany': typeof SourcingDriedFruitGermanyRoute
+  '/sourcing/dried-fruit/uae': typeof SourcingDriedFruitUaeRoute
+  '/sourcing/dried-fruit/united-states': typeof SourcingDriedFruitUnitedStatesRoute
+  '/sourcing/fresh-apples/asia': typeof SourcingFreshApplesAsiaRoute
+  '/sourcing/fresh-apples/germany': typeof SourcingFreshApplesGermanyRoute
+  '/sourcing/fresh-apples/uae': typeof SourcingFreshApplesUaeRoute
+  '/sourcing/fresh-apples/united-states': typeof SourcingFreshApplesUnitedStatesRoute
+  '/sourcing/macadamia-nuts/asia': typeof SourcingMacadamiaNutsAsiaRoute
+  '/sourcing/macadamia-nuts/germany': typeof SourcingMacadamiaNutsGermanyRoute
+  '/sourcing/macadamia-nuts/uae': typeof SourcingMacadamiaNutsUaeRoute
+  '/sourcing/macadamia-nuts/united-states': typeof SourcingMacadamiaNutsUnitedStatesRoute
+  '/sourcing/rooibos-tea/asia': typeof SourcingRooibosTeaAsiaRoute
+  '/sourcing/rooibos-tea/germany': typeof SourcingRooibosTeaGermanyRoute
+  '/sourcing/rooibos-tea/uae': typeof SourcingRooibosTeaUaeRoute
+  '/sourcing/rooibos-tea/united-states': typeof SourcingRooibosTeaUnitedStatesRoute
+  '/sourcing/wine/asia': typeof SourcingWineAsiaRoute
+  '/sourcing/wine/germany': typeof SourcingWineGermanyRoute
+  '/sourcing/wine/uae': typeof SourcingWineUaeRoute
+  '/sourcing/wine/united-states': typeof SourcingWineUnitedStatesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -100,6 +271,26 @@ export interface FileRoutesById {
   '/products/rooibos-and-tea': typeof ProductsRooibosAndTeaRoute
   '/services/export-coordination': typeof ServicesExportCoordinationRoute
   '/services/supplier-sourcing': typeof ServicesSupplierSourcingRoute
+  '/sourcing/dried-fruit/asia': typeof SourcingDriedFruitAsiaRoute
+  '/sourcing/dried-fruit/germany': typeof SourcingDriedFruitGermanyRoute
+  '/sourcing/dried-fruit/uae': typeof SourcingDriedFruitUaeRoute
+  '/sourcing/dried-fruit/united-states': typeof SourcingDriedFruitUnitedStatesRoute
+  '/sourcing/fresh-apples/asia': typeof SourcingFreshApplesAsiaRoute
+  '/sourcing/fresh-apples/germany': typeof SourcingFreshApplesGermanyRoute
+  '/sourcing/fresh-apples/uae': typeof SourcingFreshApplesUaeRoute
+  '/sourcing/fresh-apples/united-states': typeof SourcingFreshApplesUnitedStatesRoute
+  '/sourcing/macadamia-nuts/asia': typeof SourcingMacadamiaNutsAsiaRoute
+  '/sourcing/macadamia-nuts/germany': typeof SourcingMacadamiaNutsGermanyRoute
+  '/sourcing/macadamia-nuts/uae': typeof SourcingMacadamiaNutsUaeRoute
+  '/sourcing/macadamia-nuts/united-states': typeof SourcingMacadamiaNutsUnitedStatesRoute
+  '/sourcing/rooibos-tea/asia': typeof SourcingRooibosTeaAsiaRoute
+  '/sourcing/rooibos-tea/germany': typeof SourcingRooibosTeaGermanyRoute
+  '/sourcing/rooibos-tea/uae': typeof SourcingRooibosTeaUaeRoute
+  '/sourcing/rooibos-tea/united-states': typeof SourcingRooibosTeaUnitedStatesRoute
+  '/sourcing/wine/asia': typeof SourcingWineAsiaRoute
+  '/sourcing/wine/germany': typeof SourcingWineGermanyRoute
+  '/sourcing/wine/uae': typeof SourcingWineUaeRoute
+  '/sourcing/wine/united-states': typeof SourcingWineUnitedStatesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -113,6 +304,26 @@ export interface FileRouteTypes {
     | '/products/rooibos-and-tea'
     | '/services/export-coordination'
     | '/services/supplier-sourcing'
+    | '/sourcing/dried-fruit/asia'
+    | '/sourcing/dried-fruit/germany'
+    | '/sourcing/dried-fruit/uae'
+    | '/sourcing/dried-fruit/united-states'
+    | '/sourcing/fresh-apples/asia'
+    | '/sourcing/fresh-apples/germany'
+    | '/sourcing/fresh-apples/uae'
+    | '/sourcing/fresh-apples/united-states'
+    | '/sourcing/macadamia-nuts/asia'
+    | '/sourcing/macadamia-nuts/germany'
+    | '/sourcing/macadamia-nuts/uae'
+    | '/sourcing/macadamia-nuts/united-states'
+    | '/sourcing/rooibos-tea/asia'
+    | '/sourcing/rooibos-tea/germany'
+    | '/sourcing/rooibos-tea/uae'
+    | '/sourcing/rooibos-tea/united-states'
+    | '/sourcing/wine/asia'
+    | '/sourcing/wine/germany'
+    | '/sourcing/wine/uae'
+    | '/sourcing/wine/united-states'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -124,6 +335,26 @@ export interface FileRouteTypes {
     | '/products/rooibos-and-tea'
     | '/services/export-coordination'
     | '/services/supplier-sourcing'
+    | '/sourcing/dried-fruit/asia'
+    | '/sourcing/dried-fruit/germany'
+    | '/sourcing/dried-fruit/uae'
+    | '/sourcing/dried-fruit/united-states'
+    | '/sourcing/fresh-apples/asia'
+    | '/sourcing/fresh-apples/germany'
+    | '/sourcing/fresh-apples/uae'
+    | '/sourcing/fresh-apples/united-states'
+    | '/sourcing/macadamia-nuts/asia'
+    | '/sourcing/macadamia-nuts/germany'
+    | '/sourcing/macadamia-nuts/uae'
+    | '/sourcing/macadamia-nuts/united-states'
+    | '/sourcing/rooibos-tea/asia'
+    | '/sourcing/rooibos-tea/germany'
+    | '/sourcing/rooibos-tea/uae'
+    | '/sourcing/rooibos-tea/united-states'
+    | '/sourcing/wine/asia'
+    | '/sourcing/wine/germany'
+    | '/sourcing/wine/uae'
+    | '/sourcing/wine/united-states'
   id:
     | '__root__'
     | '/'
@@ -135,6 +366,26 @@ export interface FileRouteTypes {
     | '/products/rooibos-and-tea'
     | '/services/export-coordination'
     | '/services/supplier-sourcing'
+    | '/sourcing/dried-fruit/asia'
+    | '/sourcing/dried-fruit/germany'
+    | '/sourcing/dried-fruit/uae'
+    | '/sourcing/dried-fruit/united-states'
+    | '/sourcing/fresh-apples/asia'
+    | '/sourcing/fresh-apples/germany'
+    | '/sourcing/fresh-apples/uae'
+    | '/sourcing/fresh-apples/united-states'
+    | '/sourcing/macadamia-nuts/asia'
+    | '/sourcing/macadamia-nuts/germany'
+    | '/sourcing/macadamia-nuts/uae'
+    | '/sourcing/macadamia-nuts/united-states'
+    | '/sourcing/rooibos-tea/asia'
+    | '/sourcing/rooibos-tea/germany'
+    | '/sourcing/rooibos-tea/uae'
+    | '/sourcing/rooibos-tea/united-states'
+    | '/sourcing/wine/asia'
+    | '/sourcing/wine/germany'
+    | '/sourcing/wine/uae'
+    | '/sourcing/wine/united-states'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -147,6 +398,26 @@ export interface RootRouteChildren {
   ProductsRooibosAndTeaRoute: typeof ProductsRooibosAndTeaRoute
   ServicesExportCoordinationRoute: typeof ServicesExportCoordinationRoute
   ServicesSupplierSourcingRoute: typeof ServicesSupplierSourcingRoute
+  SourcingDriedFruitAsiaRoute: typeof SourcingDriedFruitAsiaRoute
+  SourcingDriedFruitGermanyRoute: typeof SourcingDriedFruitGermanyRoute
+  SourcingDriedFruitUaeRoute: typeof SourcingDriedFruitUaeRoute
+  SourcingDriedFruitUnitedStatesRoute: typeof SourcingDriedFruitUnitedStatesRoute
+  SourcingFreshApplesAsiaRoute: typeof SourcingFreshApplesAsiaRoute
+  SourcingFreshApplesGermanyRoute: typeof SourcingFreshApplesGermanyRoute
+  SourcingFreshApplesUaeRoute: typeof SourcingFreshApplesUaeRoute
+  SourcingFreshApplesUnitedStatesRoute: typeof SourcingFreshApplesUnitedStatesRoute
+  SourcingMacadamiaNutsAsiaRoute: typeof SourcingMacadamiaNutsAsiaRoute
+  SourcingMacadamiaNutsGermanyRoute: typeof SourcingMacadamiaNutsGermanyRoute
+  SourcingMacadamiaNutsUaeRoute: typeof SourcingMacadamiaNutsUaeRoute
+  SourcingMacadamiaNutsUnitedStatesRoute: typeof SourcingMacadamiaNutsUnitedStatesRoute
+  SourcingRooibosTeaAsiaRoute: typeof SourcingRooibosTeaAsiaRoute
+  SourcingRooibosTeaGermanyRoute: typeof SourcingRooibosTeaGermanyRoute
+  SourcingRooibosTeaUaeRoute: typeof SourcingRooibosTeaUaeRoute
+  SourcingRooibosTeaUnitedStatesRoute: typeof SourcingRooibosTeaUnitedStatesRoute
+  SourcingWineAsiaRoute: typeof SourcingWineAsiaRoute
+  SourcingWineGermanyRoute: typeof SourcingWineGermanyRoute
+  SourcingWineUaeRoute: typeof SourcingWineUaeRoute
+  SourcingWineUnitedStatesRoute: typeof SourcingWineUnitedStatesRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -214,6 +485,146 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesSupplierSourcingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sourcing/dried-fruit/asia': {
+      id: '/sourcing/dried-fruit/asia'
+      path: '/sourcing/dried-fruit/asia'
+      fullPath: '/sourcing/dried-fruit/asia'
+      preLoaderRoute: typeof SourcingDriedFruitAsiaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sourcing/dried-fruit/germany': {
+      id: '/sourcing/dried-fruit/germany'
+      path: '/sourcing/dried-fruit/germany'
+      fullPath: '/sourcing/dried-fruit/germany'
+      preLoaderRoute: typeof SourcingDriedFruitGermanyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sourcing/dried-fruit/uae': {
+      id: '/sourcing/dried-fruit/uae'
+      path: '/sourcing/dried-fruit/uae'
+      fullPath: '/sourcing/dried-fruit/uae'
+      preLoaderRoute: typeof SourcingDriedFruitUaeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sourcing/dried-fruit/united-states': {
+      id: '/sourcing/dried-fruit/united-states'
+      path: '/sourcing/dried-fruit/united-states'
+      fullPath: '/sourcing/dried-fruit/united-states'
+      preLoaderRoute: typeof SourcingDriedFruitUnitedStatesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sourcing/fresh-apples/asia': {
+      id: '/sourcing/fresh-apples/asia'
+      path: '/sourcing/fresh-apples/asia'
+      fullPath: '/sourcing/fresh-apples/asia'
+      preLoaderRoute: typeof SourcingFreshApplesAsiaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sourcing/fresh-apples/germany': {
+      id: '/sourcing/fresh-apples/germany'
+      path: '/sourcing/fresh-apples/germany'
+      fullPath: '/sourcing/fresh-apples/germany'
+      preLoaderRoute: typeof SourcingFreshApplesGermanyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sourcing/fresh-apples/uae': {
+      id: '/sourcing/fresh-apples/uae'
+      path: '/sourcing/fresh-apples/uae'
+      fullPath: '/sourcing/fresh-apples/uae'
+      preLoaderRoute: typeof SourcingFreshApplesUaeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sourcing/fresh-apples/united-states': {
+      id: '/sourcing/fresh-apples/united-states'
+      path: '/sourcing/fresh-apples/united-states'
+      fullPath: '/sourcing/fresh-apples/united-states'
+      preLoaderRoute: typeof SourcingFreshApplesUnitedStatesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sourcing/macadamia-nuts/asia': {
+      id: '/sourcing/macadamia-nuts/asia'
+      path: '/sourcing/macadamia-nuts/asia'
+      fullPath: '/sourcing/macadamia-nuts/asia'
+      preLoaderRoute: typeof SourcingMacadamiaNutsAsiaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sourcing/macadamia-nuts/germany': {
+      id: '/sourcing/macadamia-nuts/germany'
+      path: '/sourcing/macadamia-nuts/germany'
+      fullPath: '/sourcing/macadamia-nuts/germany'
+      preLoaderRoute: typeof SourcingMacadamiaNutsGermanyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sourcing/macadamia-nuts/uae': {
+      id: '/sourcing/macadamia-nuts/uae'
+      path: '/sourcing/macadamia-nuts/uae'
+      fullPath: '/sourcing/macadamia-nuts/uae'
+      preLoaderRoute: typeof SourcingMacadamiaNutsUaeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sourcing/macadamia-nuts/united-states': {
+      id: '/sourcing/macadamia-nuts/united-states'
+      path: '/sourcing/macadamia-nuts/united-states'
+      fullPath: '/sourcing/macadamia-nuts/united-states'
+      preLoaderRoute: typeof SourcingMacadamiaNutsUnitedStatesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sourcing/rooibos-tea/asia': {
+      id: '/sourcing/rooibos-tea/asia'
+      path: '/sourcing/rooibos-tea/asia'
+      fullPath: '/sourcing/rooibos-tea/asia'
+      preLoaderRoute: typeof SourcingRooibosTeaAsiaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sourcing/rooibos-tea/germany': {
+      id: '/sourcing/rooibos-tea/germany'
+      path: '/sourcing/rooibos-tea/germany'
+      fullPath: '/sourcing/rooibos-tea/germany'
+      preLoaderRoute: typeof SourcingRooibosTeaGermanyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sourcing/rooibos-tea/uae': {
+      id: '/sourcing/rooibos-tea/uae'
+      path: '/sourcing/rooibos-tea/uae'
+      fullPath: '/sourcing/rooibos-tea/uae'
+      preLoaderRoute: typeof SourcingRooibosTeaUaeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sourcing/rooibos-tea/united-states': {
+      id: '/sourcing/rooibos-tea/united-states'
+      path: '/sourcing/rooibos-tea/united-states'
+      fullPath: '/sourcing/rooibos-tea/united-states'
+      preLoaderRoute: typeof SourcingRooibosTeaUnitedStatesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sourcing/wine/asia': {
+      id: '/sourcing/wine/asia'
+      path: '/sourcing/wine/asia'
+      fullPath: '/sourcing/wine/asia'
+      preLoaderRoute: typeof SourcingWineAsiaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sourcing/wine/germany': {
+      id: '/sourcing/wine/germany'
+      path: '/sourcing/wine/germany'
+      fullPath: '/sourcing/wine/germany'
+      preLoaderRoute: typeof SourcingWineGermanyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sourcing/wine/uae': {
+      id: '/sourcing/wine/uae'
+      path: '/sourcing/wine/uae'
+      fullPath: '/sourcing/wine/uae'
+      preLoaderRoute: typeof SourcingWineUaeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sourcing/wine/united-states': {
+      id: '/sourcing/wine/united-states'
+      path: '/sourcing/wine/united-states'
+      fullPath: '/sourcing/wine/united-states'
+      preLoaderRoute: typeof SourcingWineUnitedStatesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -227,6 +638,27 @@ const rootRouteChildren: RootRouteChildren = {
   ProductsRooibosAndTeaRoute: ProductsRooibosAndTeaRoute,
   ServicesExportCoordinationRoute: ServicesExportCoordinationRoute,
   ServicesSupplierSourcingRoute: ServicesSupplierSourcingRoute,
+  SourcingDriedFruitAsiaRoute: SourcingDriedFruitAsiaRoute,
+  SourcingDriedFruitGermanyRoute: SourcingDriedFruitGermanyRoute,
+  SourcingDriedFruitUaeRoute: SourcingDriedFruitUaeRoute,
+  SourcingDriedFruitUnitedStatesRoute: SourcingDriedFruitUnitedStatesRoute,
+  SourcingFreshApplesAsiaRoute: SourcingFreshApplesAsiaRoute,
+  SourcingFreshApplesGermanyRoute: SourcingFreshApplesGermanyRoute,
+  SourcingFreshApplesUaeRoute: SourcingFreshApplesUaeRoute,
+  SourcingFreshApplesUnitedStatesRoute: SourcingFreshApplesUnitedStatesRoute,
+  SourcingMacadamiaNutsAsiaRoute: SourcingMacadamiaNutsAsiaRoute,
+  SourcingMacadamiaNutsGermanyRoute: SourcingMacadamiaNutsGermanyRoute,
+  SourcingMacadamiaNutsUaeRoute: SourcingMacadamiaNutsUaeRoute,
+  SourcingMacadamiaNutsUnitedStatesRoute:
+    SourcingMacadamiaNutsUnitedStatesRoute,
+  SourcingRooibosTeaAsiaRoute: SourcingRooibosTeaAsiaRoute,
+  SourcingRooibosTeaGermanyRoute: SourcingRooibosTeaGermanyRoute,
+  SourcingRooibosTeaUaeRoute: SourcingRooibosTeaUaeRoute,
+  SourcingRooibosTeaUnitedStatesRoute: SourcingRooibosTeaUnitedStatesRoute,
+  SourcingWineAsiaRoute: SourcingWineAsiaRoute,
+  SourcingWineGermanyRoute: SourcingWineGermanyRoute,
+  SourcingWineUaeRoute: SourcingWineUaeRoute,
+  SourcingWineUnitedStatesRoute: SourcingWineUnitedStatesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
