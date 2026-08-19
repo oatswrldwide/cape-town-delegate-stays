@@ -10,32 +10,23 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as AfricaTechFestival2026RouteImport } from './routes/africa-tech-festival-2026'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as BlogIndexRouteImport } from './routes/blog/index'
-import { Route as BlogApartmentsVsHotelsRouteImport } from './routes/blog/apartments-vs-hotels'
-import { Route as BlogBestAreasBusinessTravelRouteImport } from './routes/blog/best-areas-business-travel'
-import { Route as BlogCapeTownNovemberEventsRouteImport } from './routes/blog/cape-town-november-events'
-import { Route as BlogCapeTownSafetyGuideRouteImport } from './routes/blog/cape-town-safety-guide'
-import { Route as BlogCoworkingNearCticcRouteImport } from './routes/blog/coworking-near-cticc'
-import { Route as BlogCticcCapeTownBusinessTravelRouteImport } from './routes/blog/cticc-cape-town-business-travel'
-import { Route as NeighborhoodGuidesCampsBayRouteImport } from './routes/neighborhood-guides/camps-bay'
-import { Route as NeighborhoodGuidesCityBowlRouteImport } from './routes/neighborhood-guides/city-bowl'
-import { Route as NeighborhoodGuidesSeaPointRouteImport } from './routes/neighborhood-guides/sea-point'
-import { Route as NeighborhoodGuidesVAWaterfrontRouteImport } from './routes/neighborhood-guides/v-a-waterfront'
-import { Route as StaysCityApartmentsRouteImport } from './routes/stays/city-apartments'
-import { Route as StaysPrivateRoomsRouteImport } from './routes/stays/private-rooms'
-import { Route as StaysPrivateVillasRouteImport } from './routes/stays/private-villas'
-import { Route as StaysSeaViewRoomsRouteImport } from './routes/stays/sea-view-rooms'
+import { Route as ProductsDriedFruitRouteImport } from './routes/products/dried-fruit'
+import { Route as ProductsFreshApplesRouteImport } from './routes/products/fresh-apples'
+import { Route as ProductsNutsRouteImport } from './routes/products/nuts'
+import { Route as ProductsRooibosAndTeaRouteImport } from './routes/products/rooibos-and-tea'
+import { Route as ServicesExportCoordinationRouteImport } from './routes/services/export-coordination'
+import { Route as ServicesSupplierSourcingRouteImport } from './routes/services/supplier-sourcing'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AfricaTechFestival2026Route = AfricaTechFestival2026RouteImport.update({
-  id: '/africa-tech-festival-2026',
-  path: '/africa-tech-festival-2026',
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -43,232 +34,119 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
-const BlogIndexRoute = BlogIndexRouteImport.update({
-  id: '/blog/',
-  path: '/blog/',
+const ProductsDriedFruitRoute = ProductsDriedFruitRouteImport.update({
+  id: '/products/dried-fruit',
+  path: '/products/dried-fruit',
   getParentRoute: () => rootRouteImport,
 } as any)
-const BlogApartmentsVsHotelsRoute = BlogApartmentsVsHotelsRouteImport.update({
-  id: '/blog/apartments-vs-hotels',
-  path: '/blog/apartments-vs-hotels',
+const ProductsFreshApplesRoute = ProductsFreshApplesRouteImport.update({
+  id: '/products/fresh-apples',
+  path: '/products/fresh-apples',
   getParentRoute: () => rootRouteImport,
 } as any)
-const BlogBestAreasBusinessTravelRoute =
-  BlogBestAreasBusinessTravelRouteImport.update({
-    id: '/blog/best-areas-business-travel',
-    path: '/blog/best-areas-business-travel',
+const ProductsNutsRoute = ProductsNutsRouteImport.update({
+  id: '/products/nuts',
+  path: '/products/nuts',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductsRooibosAndTeaRoute = ProductsRooibosAndTeaRouteImport.update({
+  id: '/products/rooibos-and-tea',
+  path: '/products/rooibos-and-tea',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesExportCoordinationRoute =
+  ServicesExportCoordinationRouteImport.update({
+    id: '/services/export-coordination',
+    path: '/services/export-coordination',
     getParentRoute: () => rootRouteImport,
   } as any)
-const BlogCapeTownNovemberEventsRoute =
-  BlogCapeTownNovemberEventsRouteImport.update({
-    id: '/blog/cape-town-november-events',
-    path: '/blog/cape-town-november-events',
+const ServicesSupplierSourcingRoute =
+  ServicesSupplierSourcingRouteImport.update({
+    id: '/services/supplier-sourcing',
+    path: '/services/supplier-sourcing',
     getParentRoute: () => rootRouteImport,
   } as any)
-const BlogCapeTownSafetyGuideRoute = BlogCapeTownSafetyGuideRouteImport.update({
-  id: '/blog/cape-town-safety-guide',
-  path: '/blog/cape-town-safety-guide',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const BlogCoworkingNearCticcRoute = BlogCoworkingNearCticcRouteImport.update({
-  id: '/blog/coworking-near-cticc',
-  path: '/blog/coworking-near-cticc',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const BlogCticcCapeTownBusinessTravelRoute =
-  BlogCticcCapeTownBusinessTravelRouteImport.update({
-    id: '/blog/cticc-cape-town-business-travel',
-    path: '/blog/cticc-cape-town-business-travel',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const NeighborhoodGuidesCampsBayRoute =
-  NeighborhoodGuidesCampsBayRouteImport.update({
-    id: '/neighborhood-guides/camps-bay',
-    path: '/neighborhood-guides/camps-bay',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const NeighborhoodGuidesCityBowlRoute =
-  NeighborhoodGuidesCityBowlRouteImport.update({
-    id: '/neighborhood-guides/city-bowl',
-    path: '/neighborhood-guides/city-bowl',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const NeighborhoodGuidesSeaPointRoute =
-  NeighborhoodGuidesSeaPointRouteImport.update({
-    id: '/neighborhood-guides/sea-point',
-    path: '/neighborhood-guides/sea-point',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const NeighborhoodGuidesVAWaterfrontRoute =
-  NeighborhoodGuidesVAWaterfrontRouteImport.update({
-    id: '/neighborhood-guides/v-a-waterfront',
-    path: '/neighborhood-guides/v-a-waterfront',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const StaysCityApartmentsRoute = StaysCityApartmentsRouteImport.update({
-  id: '/stays/city-apartments',
-  path: '/stays/city-apartments',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const StaysPrivateRoomsRoute = StaysPrivateRoomsRouteImport.update({
-  id: '/stays/private-rooms',
-  path: '/stays/private-rooms',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const StaysPrivateVillasRoute = StaysPrivateVillasRouteImport.update({
-  id: '/stays/private-villas',
-  path: '/stays/private-villas',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const StaysSeaViewRoomsRoute = StaysSeaViewRoomsRouteImport.update({
-  id: '/stays/sea-view-rooms',
-  path: '/stays/sea-view-rooms',
-  getParentRoute: () => rootRouteImport,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/africa-tech-festival-2026': typeof AfricaTechFestival2026Route
+  '/about': typeof AboutRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/blog/apartments-vs-hotels': typeof BlogApartmentsVsHotelsRoute
-  '/blog/best-areas-business-travel': typeof BlogBestAreasBusinessTravelRoute
-  '/blog/cape-town-november-events': typeof BlogCapeTownNovemberEventsRoute
-  '/blog/cape-town-safety-guide': typeof BlogCapeTownSafetyGuideRoute
-  '/blog/coworking-near-cticc': typeof BlogCoworkingNearCticcRoute
-  '/blog/cticc-cape-town-business-travel': typeof BlogCticcCapeTownBusinessTravelRoute
-  '/neighborhood-guides/camps-bay': typeof NeighborhoodGuidesCampsBayRoute
-  '/neighborhood-guides/city-bowl': typeof NeighborhoodGuidesCityBowlRoute
-  '/neighborhood-guides/sea-point': typeof NeighborhoodGuidesSeaPointRoute
-  '/neighborhood-guides/v-a-waterfront': typeof NeighborhoodGuidesVAWaterfrontRoute
-  '/stays/city-apartments': typeof StaysCityApartmentsRoute
-  '/stays/private-rooms': typeof StaysPrivateRoomsRoute
-  '/stays/private-villas': typeof StaysPrivateVillasRoute
-  '/stays/sea-view-rooms': typeof StaysSeaViewRoomsRoute
-  '/blog/': typeof BlogIndexRoute
+  '/products/dried-fruit': typeof ProductsDriedFruitRoute
+  '/products/fresh-apples': typeof ProductsFreshApplesRoute
+  '/products/nuts': typeof ProductsNutsRoute
+  '/products/rooibos-and-tea': typeof ProductsRooibosAndTeaRoute
+  '/services/export-coordination': typeof ServicesExportCoordinationRoute
+  '/services/supplier-sourcing': typeof ServicesSupplierSourcingRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/africa-tech-festival-2026': typeof AfricaTechFestival2026Route
+  '/about': typeof AboutRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/blog/apartments-vs-hotels': typeof BlogApartmentsVsHotelsRoute
-  '/blog/best-areas-business-travel': typeof BlogBestAreasBusinessTravelRoute
-  '/blog/cape-town-november-events': typeof BlogCapeTownNovemberEventsRoute
-  '/blog/cape-town-safety-guide': typeof BlogCapeTownSafetyGuideRoute
-  '/blog/coworking-near-cticc': typeof BlogCoworkingNearCticcRoute
-  '/blog/cticc-cape-town-business-travel': typeof BlogCticcCapeTownBusinessTravelRoute
-  '/neighborhood-guides/camps-bay': typeof NeighborhoodGuidesCampsBayRoute
-  '/neighborhood-guides/city-bowl': typeof NeighborhoodGuidesCityBowlRoute
-  '/neighborhood-guides/sea-point': typeof NeighborhoodGuidesSeaPointRoute
-  '/neighborhood-guides/v-a-waterfront': typeof NeighborhoodGuidesVAWaterfrontRoute
-  '/stays/city-apartments': typeof StaysCityApartmentsRoute
-  '/stays/private-rooms': typeof StaysPrivateRoomsRoute
-  '/stays/private-villas': typeof StaysPrivateVillasRoute
-  '/stays/sea-view-rooms': typeof StaysSeaViewRoomsRoute
-  '/blog': typeof BlogIndexRoute
+  '/products/dried-fruit': typeof ProductsDriedFruitRoute
+  '/products/fresh-apples': typeof ProductsFreshApplesRoute
+  '/products/nuts': typeof ProductsNutsRoute
+  '/products/rooibos-and-tea': typeof ProductsRooibosAndTeaRoute
+  '/services/export-coordination': typeof ServicesExportCoordinationRoute
+  '/services/supplier-sourcing': typeof ServicesSupplierSourcingRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/africa-tech-festival-2026': typeof AfricaTechFestival2026Route
+  '/about': typeof AboutRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/blog/apartments-vs-hotels': typeof BlogApartmentsVsHotelsRoute
-  '/blog/best-areas-business-travel': typeof BlogBestAreasBusinessTravelRoute
-  '/blog/cape-town-november-events': typeof BlogCapeTownNovemberEventsRoute
-  '/blog/cape-town-safety-guide': typeof BlogCapeTownSafetyGuideRoute
-  '/blog/coworking-near-cticc': typeof BlogCoworkingNearCticcRoute
-  '/blog/cticc-cape-town-business-travel': typeof BlogCticcCapeTownBusinessTravelRoute
-  '/neighborhood-guides/camps-bay': typeof NeighborhoodGuidesCampsBayRoute
-  '/neighborhood-guides/city-bowl': typeof NeighborhoodGuidesCityBowlRoute
-  '/neighborhood-guides/sea-point': typeof NeighborhoodGuidesSeaPointRoute
-  '/neighborhood-guides/v-a-waterfront': typeof NeighborhoodGuidesVAWaterfrontRoute
-  '/stays/city-apartments': typeof StaysCityApartmentsRoute
-  '/stays/private-rooms': typeof StaysPrivateRoomsRoute
-  '/stays/private-villas': typeof StaysPrivateVillasRoute
-  '/stays/sea-view-rooms': typeof StaysSeaViewRoomsRoute
-  '/blog/': typeof BlogIndexRoute
+  '/products/dried-fruit': typeof ProductsDriedFruitRoute
+  '/products/fresh-apples': typeof ProductsFreshApplesRoute
+  '/products/nuts': typeof ProductsNutsRoute
+  '/products/rooibos-and-tea': typeof ProductsRooibosAndTeaRoute
+  '/services/export-coordination': typeof ServicesExportCoordinationRoute
+  '/services/supplier-sourcing': typeof ServicesSupplierSourcingRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/africa-tech-festival-2026'
+    | '/about'
     | '/sitemap.xml'
-    | '/blog/apartments-vs-hotels'
-    | '/blog/best-areas-business-travel'
-    | '/blog/cape-town-november-events'
-    | '/blog/cape-town-safety-guide'
-    | '/blog/coworking-near-cticc'
-    | '/blog/cticc-cape-town-business-travel'
-    | '/neighborhood-guides/camps-bay'
-    | '/neighborhood-guides/city-bowl'
-    | '/neighborhood-guides/sea-point'
-    | '/neighborhood-guides/v-a-waterfront'
-    | '/stays/city-apartments'
-    | '/stays/private-rooms'
-    | '/stays/private-villas'
-    | '/stays/sea-view-rooms'
-    | '/blog/'
+    | '/products/dried-fruit'
+    | '/products/fresh-apples'
+    | '/products/nuts'
+    | '/products/rooibos-and-tea'
+    | '/services/export-coordination'
+    | '/services/supplier-sourcing'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/africa-tech-festival-2026'
+    | '/about'
     | '/sitemap.xml'
-    | '/blog/apartments-vs-hotels'
-    | '/blog/best-areas-business-travel'
-    | '/blog/cape-town-november-events'
-    | '/blog/cape-town-safety-guide'
-    | '/blog/coworking-near-cticc'
-    | '/blog/cticc-cape-town-business-travel'
-    | '/neighborhood-guides/camps-bay'
-    | '/neighborhood-guides/city-bowl'
-    | '/neighborhood-guides/sea-point'
-    | '/neighborhood-guides/v-a-waterfront'
-    | '/stays/city-apartments'
-    | '/stays/private-rooms'
-    | '/stays/private-villas'
-    | '/stays/sea-view-rooms'
-    | '/blog'
+    | '/products/dried-fruit'
+    | '/products/fresh-apples'
+    | '/products/nuts'
+    | '/products/rooibos-and-tea'
+    | '/services/export-coordination'
+    | '/services/supplier-sourcing'
   id:
     | '__root__'
     | '/'
-    | '/africa-tech-festival-2026'
+    | '/about'
     | '/sitemap.xml'
-    | '/blog/apartments-vs-hotels'
-    | '/blog/best-areas-business-travel'
-    | '/blog/cape-town-november-events'
-    | '/blog/cape-town-safety-guide'
-    | '/blog/coworking-near-cticc'
-    | '/blog/cticc-cape-town-business-travel'
-    | '/neighborhood-guides/camps-bay'
-    | '/neighborhood-guides/city-bowl'
-    | '/neighborhood-guides/sea-point'
-    | '/neighborhood-guides/v-a-waterfront'
-    | '/stays/city-apartments'
-    | '/stays/private-rooms'
-    | '/stays/private-villas'
-    | '/stays/sea-view-rooms'
-    | '/blog/'
+    | '/products/dried-fruit'
+    | '/products/fresh-apples'
+    | '/products/nuts'
+    | '/products/rooibos-and-tea'
+    | '/services/export-coordination'
+    | '/services/supplier-sourcing'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AfricaTechFestival2026Route: typeof AfricaTechFestival2026Route
+  AboutRoute: typeof AboutRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
-  BlogApartmentsVsHotelsRoute: typeof BlogApartmentsVsHotelsRoute
-  BlogBestAreasBusinessTravelRoute: typeof BlogBestAreasBusinessTravelRoute
-  BlogCapeTownNovemberEventsRoute: typeof BlogCapeTownNovemberEventsRoute
-  BlogCapeTownSafetyGuideRoute: typeof BlogCapeTownSafetyGuideRoute
-  BlogCoworkingNearCticcRoute: typeof BlogCoworkingNearCticcRoute
-  BlogCticcCapeTownBusinessTravelRoute: typeof BlogCticcCapeTownBusinessTravelRoute
-  NeighborhoodGuidesCampsBayRoute: typeof NeighborhoodGuidesCampsBayRoute
-  NeighborhoodGuidesCityBowlRoute: typeof NeighborhoodGuidesCityBowlRoute
-  NeighborhoodGuidesSeaPointRoute: typeof NeighborhoodGuidesSeaPointRoute
-  NeighborhoodGuidesVAWaterfrontRoute: typeof NeighborhoodGuidesVAWaterfrontRoute
-  StaysCityApartmentsRoute: typeof StaysCityApartmentsRoute
-  StaysPrivateRoomsRoute: typeof StaysPrivateRoomsRoute
-  StaysPrivateVillasRoute: typeof StaysPrivateVillasRoute
-  StaysSeaViewRoomsRoute: typeof StaysSeaViewRoomsRoute
-  BlogIndexRoute: typeof BlogIndexRoute
+  ProductsDriedFruitRoute: typeof ProductsDriedFruitRoute
+  ProductsFreshApplesRoute: typeof ProductsFreshApplesRoute
+  ProductsNutsRoute: typeof ProductsNutsRoute
+  ProductsRooibosAndTeaRoute: typeof ProductsRooibosAndTeaRoute
+  ServicesExportCoordinationRoute: typeof ServicesExportCoordinationRoute
+  ServicesSupplierSourcingRoute: typeof ServicesSupplierSourcingRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -280,11 +158,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/africa-tech-festival-2026': {
-      id: '/africa-tech-festival-2026'
-      path: '/africa-tech-festival-2026'
-      fullPath: '/africa-tech-festival-2026'
-      preLoaderRoute: typeof AfricaTechFestival2026RouteImport
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sitemap.xml': {
@@ -294,109 +172,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/blog/': {
-      id: '/blog/'
-      path: '/blog'
-      fullPath: '/blog/'
-      preLoaderRoute: typeof BlogIndexRouteImport
+    '/products/dried-fruit': {
+      id: '/products/dried-fruit'
+      path: '/products/dried-fruit'
+      fullPath: '/products/dried-fruit'
+      preLoaderRoute: typeof ProductsDriedFruitRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/blog/apartments-vs-hotels': {
-      id: '/blog/apartments-vs-hotels'
-      path: '/blog/apartments-vs-hotels'
-      fullPath: '/blog/apartments-vs-hotels'
-      preLoaderRoute: typeof BlogApartmentsVsHotelsRouteImport
+    '/products/fresh-apples': {
+      id: '/products/fresh-apples'
+      path: '/products/fresh-apples'
+      fullPath: '/products/fresh-apples'
+      preLoaderRoute: typeof ProductsFreshApplesRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/blog/best-areas-business-travel': {
-      id: '/blog/best-areas-business-travel'
-      path: '/blog/best-areas-business-travel'
-      fullPath: '/blog/best-areas-business-travel'
-      preLoaderRoute: typeof BlogBestAreasBusinessTravelRouteImport
+    '/products/nuts': {
+      id: '/products/nuts'
+      path: '/products/nuts'
+      fullPath: '/products/nuts'
+      preLoaderRoute: typeof ProductsNutsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/blog/cape-town-november-events': {
-      id: '/blog/cape-town-november-events'
-      path: '/blog/cape-town-november-events'
-      fullPath: '/blog/cape-town-november-events'
-      preLoaderRoute: typeof BlogCapeTownNovemberEventsRouteImport
+    '/products/rooibos-and-tea': {
+      id: '/products/rooibos-and-tea'
+      path: '/products/rooibos-and-tea'
+      fullPath: '/products/rooibos-and-tea'
+      preLoaderRoute: typeof ProductsRooibosAndTeaRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/blog/cape-town-safety-guide': {
-      id: '/blog/cape-town-safety-guide'
-      path: '/blog/cape-town-safety-guide'
-      fullPath: '/blog/cape-town-safety-guide'
-      preLoaderRoute: typeof BlogCapeTownSafetyGuideRouteImport
+    '/services/export-coordination': {
+      id: '/services/export-coordination'
+      path: '/services/export-coordination'
+      fullPath: '/services/export-coordination'
+      preLoaderRoute: typeof ServicesExportCoordinationRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/blog/coworking-near-cticc': {
-      id: '/blog/coworking-near-cticc'
-      path: '/blog/coworking-near-cticc'
-      fullPath: '/blog/coworking-near-cticc'
-      preLoaderRoute: typeof BlogCoworkingNearCticcRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/blog/cticc-cape-town-business-travel': {
-      id: '/blog/cticc-cape-town-business-travel'
-      path: '/blog/cticc-cape-town-business-travel'
-      fullPath: '/blog/cticc-cape-town-business-travel'
-      preLoaderRoute: typeof BlogCticcCapeTownBusinessTravelRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/neighborhood-guides/camps-bay': {
-      id: '/neighborhood-guides/camps-bay'
-      path: '/neighborhood-guides/camps-bay'
-      fullPath: '/neighborhood-guides/camps-bay'
-      preLoaderRoute: typeof NeighborhoodGuidesCampsBayRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/neighborhood-guides/city-bowl': {
-      id: '/neighborhood-guides/city-bowl'
-      path: '/neighborhood-guides/city-bowl'
-      fullPath: '/neighborhood-guides/city-bowl'
-      preLoaderRoute: typeof NeighborhoodGuidesCityBowlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/neighborhood-guides/sea-point': {
-      id: '/neighborhood-guides/sea-point'
-      path: '/neighborhood-guides/sea-point'
-      fullPath: '/neighborhood-guides/sea-point'
-      preLoaderRoute: typeof NeighborhoodGuidesSeaPointRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/neighborhood-guides/v-a-waterfront': {
-      id: '/neighborhood-guides/v-a-waterfront'
-      path: '/neighborhood-guides/v-a-waterfront'
-      fullPath: '/neighborhood-guides/v-a-waterfront'
-      preLoaderRoute: typeof NeighborhoodGuidesVAWaterfrontRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/stays/city-apartments': {
-      id: '/stays/city-apartments'
-      path: '/stays/city-apartments'
-      fullPath: '/stays/city-apartments'
-      preLoaderRoute: typeof StaysCityApartmentsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/stays/private-rooms': {
-      id: '/stays/private-rooms'
-      path: '/stays/private-rooms'
-      fullPath: '/stays/private-rooms'
-      preLoaderRoute: typeof StaysPrivateRoomsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/stays/private-villas': {
-      id: '/stays/private-villas'
-      path: '/stays/private-villas'
-      fullPath: '/stays/private-villas'
-      preLoaderRoute: typeof StaysPrivateVillasRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/stays/sea-view-rooms': {
-      id: '/stays/sea-view-rooms'
-      path: '/stays/sea-view-rooms'
-      fullPath: '/stays/sea-view-rooms'
-      preLoaderRoute: typeof StaysSeaViewRoomsRouteImport
+    '/services/supplier-sourcing': {
+      id: '/services/supplier-sourcing'
+      path: '/services/supplier-sourcing'
+      fullPath: '/services/supplier-sourcing'
+      preLoaderRoute: typeof ServicesSupplierSourcingRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -404,24 +219,25 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AfricaTechFestival2026Route: AfricaTechFestival2026Route,
+  AboutRoute: AboutRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
-  BlogApartmentsVsHotelsRoute: BlogApartmentsVsHotelsRoute,
-  BlogBestAreasBusinessTravelRoute: BlogBestAreasBusinessTravelRoute,
-  BlogCapeTownNovemberEventsRoute: BlogCapeTownNovemberEventsRoute,
-  BlogCapeTownSafetyGuideRoute: BlogCapeTownSafetyGuideRoute,
-  BlogCoworkingNearCticcRoute: BlogCoworkingNearCticcRoute,
-  BlogCticcCapeTownBusinessTravelRoute: BlogCticcCapeTownBusinessTravelRoute,
-  NeighborhoodGuidesCampsBayRoute: NeighborhoodGuidesCampsBayRoute,
-  NeighborhoodGuidesCityBowlRoute: NeighborhoodGuidesCityBowlRoute,
-  NeighborhoodGuidesSeaPointRoute: NeighborhoodGuidesSeaPointRoute,
-  NeighborhoodGuidesVAWaterfrontRoute: NeighborhoodGuidesVAWaterfrontRoute,
-  StaysCityApartmentsRoute: StaysCityApartmentsRoute,
-  StaysPrivateRoomsRoute: StaysPrivateRoomsRoute,
-  StaysPrivateVillasRoute: StaysPrivateVillasRoute,
-  StaysSeaViewRoomsRoute: StaysSeaViewRoomsRoute,
-  BlogIndexRoute: BlogIndexRoute,
+  ProductsDriedFruitRoute: ProductsDriedFruitRoute,
+  ProductsFreshApplesRoute: ProductsFreshApplesRoute,
+  ProductsNutsRoute: ProductsNutsRoute,
+  ProductsRooibosAndTeaRoute: ProductsRooibosAndTeaRoute,
+  ServicesExportCoordinationRoute: ServicesExportCoordinationRoute,
+  ServicesSupplierSourcingRoute: ServicesSupplierSourcingRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

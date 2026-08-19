@@ -43,11 +43,11 @@ export function SeoContentPage({
             {intro}
           </p>
           <div className="mt-8 flex flex-wrap gap-3 text-sm">
-            <a href="#enquire" className="rounded-sm bg-primary px-4 py-2 text-primary-foreground">
-              Enquire now
+            <a href="#brief" className="rounded-sm bg-primary px-4 py-2 text-primary-foreground">
+              Request a sourcing brief
             </a>
             <a href="/" className="rounded-sm border border-border px-4 py-2 hover:border-accent">
-              Back to landing page
+              Back to Kaapstays
             </a>
           </div>
         </div>
@@ -87,19 +87,19 @@ export function SeoContentPage({
         </section>
       ) : null}
 
-      <section id="enquire" className="border-t border-border/70">
+      <section id="brief" className="border-t border-border/70">
         <div className="mx-auto max-w-5xl px-6 py-14 md:py-16">
-          <h2 className="text-2xl md:text-3xl">Plan your Cape Town stay</h2>
+          <h2 className="text-2xl md:text-3xl">Shape a sourcing brief</h2>
           <p className="mt-4 max-w-3xl text-muted-foreground">
-            Tell us your dates, group size and location preferences, and we will share curated
-            options for conference accommodation in Cape Town.
+            Tell us the product, destination, volume and timing you have in mind. We will come back
+            with practical questions and possible supply paths.
           </p>
           <div className="mt-8 flex flex-wrap gap-3 text-sm">
             <a
-              href="mailto:ongezile@kaapstays.co.za?subject=Cape%20Town%20accommodation%20enquiry"
+              href="mailto:ongezile@kaapstays.co.za?subject=South%20African%20sourcing%20brief"
               className="rounded-sm bg-primary px-4 py-2 text-primary-foreground"
             >
-              Email Ongezile
+              Email your brief
             </a>
             <a href="tel:+27680187300" className="rounded-sm border border-border px-4 py-2">
               Call 068 018 7300

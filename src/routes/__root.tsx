@@ -78,23 +78,29 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Cape Town Stays for Festival Delegates" },
-      { property: "og:title", content: "Cape Town Stays for Festival Delegates" },
-      { name: "twitter:title", content: "Cape Town Stays for Festival Delegates" },
+      { title: "Kaapstays | South African Products, Sourced for the World" },
+      {
+        property: "og:title",
+        content: "Kaapstays | South African Products, Sourced for the World",
+      },
+      {
+        name: "twitter:title",
+        content: "Kaapstays | South African Products, Sourced for the World",
+      },
       {
         name: "description",
         content:
-          "Sea-view rooms, city apartments and private villas in Cape Town for Africa Tech Festival delegates. Independent — not affiliated with Africa Tech Festival.",
+          "Kaapstays connects global buyers with South African suppliers of rooibos, tea, apples, dried fruit and nuts, with sourcing and export coordination from origin.",
       },
       {
         property: "og:description",
         content:
-          "Sea-view rooms, city apartments and private villas in Cape Town for Africa Tech Festival delegates. Independent — not affiliated with Africa Tech Festival.",
+          "Kaapstays connects global buyers with South African suppliers of rooibos, tea, apples, dried fruit and nuts, with sourcing and export coordination from origin.",
       },
       {
         name: "twitter:description",
         content:
-          "Sea-view rooms, city apartments and private villas in Cape Town for Africa Tech Festival delegates. Independent — not affiliated with Africa Tech Festival.",
+          "Kaapstays connects global buyers with South African suppliers of rooibos, tea, apples, dried fruit and nuts, with sourcing and export coordination from origin.",
       },
       { property: "og:url", content: SITE_URL },
       { name: "twitter:url", content: SITE_URL },

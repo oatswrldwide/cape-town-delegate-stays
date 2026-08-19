@@ -1,417 +1,393 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import { Mail, Phone, MapPin, ArrowUpRight } from "lucide-react";
-import heroImage from "../assets/hero-accommodation.jpg";
-import seaviewImage from "../assets/room-seaview.jpg";
-import cityImage from "../assets/room-city.jpg";
-import villaImage from "../assets/room-villa.jpg";
+import { ArrowUpRight, Check, Mail, MapPin, Phone } from "lucide-react";
 import { buildSeoHead } from "../lib/seo";
 
 export const Route = createFileRoute("/")({
   head: () =>
     buildSeoHead({
-      title: "Cape Town Accommodation for Business & Events | Kaapstays",
+      title: "South African Products, Sourced for the World | Kaapstays",
       description:
-        "Hand-picked homes, apartments and villas in Cape Town for conference delegates and business travellers. Quiet, safe, close to the CTICC. Enquire now.",
+        "Kaapstays connects international buyers with South African suppliers of rooibos, tea, apples, dried fruit and nuts, with sourcing and export coordination from origin.",
       path: "/",
       keywords: [
-        "business travel accommodation cape town",
-        "corporate accommodation cape town",
-        "conference accommodation cape town",
-        "short term rental cape town business",
+        "south african product sourcing",
+        "south african food exporters",
+        "rooibos wholesale supplier",
+        "south african apples export",
+        "dried fruit sourcing south africa",
       ],
     }),
-  component: LandingPage,
+  component: GatewayPage,
 });
 
-type StayType = "sea-view" | "city-apartment" | "villa" | "private-room";
-
-const stays: { id: StayType; name: string; blurb: string; image: string }[] = [
+const products = [
   {
-    id: "sea-view",
-    name: "Sea-view room",
-    blurb: "Wake up to the Atlantic. Balconies, linen, quiet mornings.",
-    image: seaviewImage,
+    name: "Rooibos & tea",
+    detail: "Distinctive teas from South Africa's growing regions.",
+    code: "01",
   },
   {
-    id: "city-apartment",
-    name: "City apartment",
-    blurb: "Walk to the CTICC. Table Mountain from your window.",
-    image: cityImage,
+    name: "Fresh apples",
+    detail: "Export-ready apples selected around season, grade and destination.",
+    code: "02",
   },
   {
-    id: "villa",
-    name: "Private villa",
-    blurb: "For teams. Pool, kitchen, space to host and unwind.",
-    image: villaImage,
+    name: "Dried fruit",
+    detail: "Dried pineapple and fruit formats for retail, foodservice and ingredients.",
+    code: "03",
   },
   {
-    id: "private-room",
-    name: "Private room",
-    blurb: "Simple, safe, well-located. Solo delegate friendly.",
-    image: seaviewImage,
+    name: "Nuts",
+    detail: "Reliable nut supply for wholesale, manufacturing and private-label programmes.",
+    code: "04",
   },
 ];
 
-export function LandingPage() {
-  const [selected, setSelected] = useState<StayType[]>([]);
-  const [checkIn, setCheckIn] = useState("");
-  const [checkOut, setCheckOut] = useState("");
-  const [guests, setGuests] = useState(1);
+const services = [
+  ["Source", "We identify and compare capable South African producers around your brief."],
+  ["Coordinate", "We help move a viable order from supplier conversations to export planning."],
+  ["Build", "We support recurring wholesale and private-label supply relationships."],
+];
+
+export function GatewayPage() {
+  const [productsSelected, setProductsSelected] = useState<string[]>([]);
   const [name, setName] = useState("");
+  const [company, setCompany] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [country, setCountry] = useState("");
+  const [volume, setVolume] = useState("");
+  const [timing, setTiming] = useState("");
   const [notes, setNotes] = useState("");
 
-  const toggle = (id: StayType) =>
-    setSelected((s) => (s.includes(id) ? s.filter((x) => x !== id) : [...s, id]));
+  const toggleProduct = (product: string) =>
+    setProductsSelected((current) =>
+      current.includes(product)
+        ? current.filter((item) => item !== product)
+        : [...current, product],
+    );
 
   const mailto = useMemo(() => {
-    const picks = selected.length
-      ? selected.map((id) => stays.find((s) => s.id === id)?.name).join(", ")
-      : "Not specified";
     const body = [
-      `Name: ${name || "—"}`,
-      `Email: ${email || "—"}`,
-      `Phone: ${phone || "—"}`,
+      `Name: ${name || "Not provided"}`,
+      `Company: ${company || "Not provided"}`,
+      `Email: ${email || "Not provided"}`,
+      `Phone / WhatsApp: ${phone || "Not provided"}`,
+      `Destination country: ${country || "Not provided"}`,
+      `Products: ${productsSelected.join(", ") || "Not specified"}`,
+      `Estimated volume: ${volume || "Not provided"}`,
+      `Target timing: ${timing || "Not provided"}`,
       "",
-      `Accommodation preference: ${picks}`,
-      `Check-in: ${checkIn || "—"}`,
-      `Check-out: ${checkOut || "—"}`,
-      `Guests: ${guests}`,
-      "",
-      `Notes: ${notes || "—"}`,
+      `Brief: ${notes || "Not provided"}`,
     ].join("\n");
+
     return `mailto:ongezile@kaapstays.co.za?subject=${encodeURIComponent(
-      "Africa Tech Festival stay enquiry",
+      "New South African sourcing brief",
     )}&body=${encodeURIComponent(body)}`;
-  }, [selected, name, email, phone, checkIn, checkOut, guests, notes]);
+  }, [name, company, email, phone, country, productsSelected, volume, timing, notes]);
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      {/* Nav */}
-      <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <main className="min-h-screen overflow-hidden bg-background text-foreground">
+      <header className="border-b border-border/70 bg-background/90">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
-          <a href="#top" className="flex items-baseline gap-2">
+          <a href="#top" className="flex items-baseline gap-3">
             <span className="font-display text-2xl italic tracking-tight">Kaap</span>
-            <span className="text-xs uppercase tracking-[0.25em] text-muted-foreground">
-              delegate stays
-            </span>
+            <span className="text-xs uppercase tracking-[0.24em] text-muted-foreground">stays</span>
           </a>
-          <a href="#enquire" className="group inline-flex items-center gap-2 text-sm font-medium">
-            Enquire
-            <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+          <nav className="hidden items-center gap-7 text-sm md:flex">
+            <a href="#products" className="hover:text-accent">
+              Products
+            </a>
+            <a href="#approach" className="hover:text-accent">
+              How we work
+            </a>
+            <a
+              href="#brief"
+              className="inline-flex items-center gap-2 font-medium hover:text-accent"
+            >
+              Start a brief <ArrowUpRight className="h-4 w-4" />
+            </a>
+          </nav>
+          <a href="#brief" className="text-sm font-medium md:hidden">
+            Brief <ArrowUpRight className="ml-1 inline h-4 w-4" />
           </a>
         </div>
       </header>
 
-      {/* Hero */}
-      <section id="top" className="mx-auto max-w-6xl px-6 pt-12 pb-10 md:pt-20 md:pb-16">
-        <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
+      <section
+        id="top"
+        className="border-b border-border/70 bg-[radial-gradient(circle_at_80%_20%,color-mix(in_oklab,var(--accent)_20%,transparent),transparent_34%),linear-gradient(135deg,var(--background),color-mix(in_oklab,var(--secondary)_65%,var(--background)))]"
+      >
+        <div className="mx-auto grid max-w-6xl gap-12 px-6 py-20 md:py-28 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
           <div>
-            <p className="mb-5 text-xs uppercase tracking-[0.3em] text-muted-foreground">
-              Cape Town · Africa Tech Festival delegates
+            <p className="mb-6 text-xs uppercase tracking-[0.3em] text-accent">
+              A gateway to South Africa
             </p>
-            <h1 className="font-display text-5xl leading-[1.02] tracking-tight md:text-6xl lg:text-7xl">
-              A simple place to stay
-              <span className="italic text-accent"> near the festival.</span>
+            <h1 className="max-w-4xl font-display text-5xl leading-[0.98] tracking-tight md:text-7xl">
+              Good products.
+              <br />
+              <span className="italic text-accent">Right at the source.</span>
             </h1>
-            <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
-              Share your dates and preferred setup. We’ll narrow it down to the best fit for your
-              stay in Cape Town.
+            <p className="mt-7 max-w-xl text-lg leading-relaxed text-muted-foreground">
+              We help buyers around the world source distinctive South African goods through capable
+              suppliers, clear communication and practical export coordination.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="mt-9 flex flex-wrap gap-3">
               <a
-                href="#enquire"
-                className="inline-flex items-center gap-2 rounded-sm bg-primary px-5 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-accent"
+                href="#brief"
+                className="inline-flex items-center gap-2 rounded-sm bg-primary px-5 py-3 text-sm font-medium text-primary-foreground hover:bg-accent"
               >
-                Start your enquiry
-                <ArrowUpRight className="h-4 w-4" />
+                Request a sourcing brief <ArrowUpRight className="h-4 w-4" />
               </a>
               <a
-                href="#options"
-                className="inline-flex items-center rounded-sm border border-border px-5 py-3 text-sm font-medium transition-colors hover:border-accent hover:text-accent"
+                href="#products"
+                className="inline-flex items-center rounded-sm border border-border px-5 py-3 text-sm font-medium hover:border-accent hover:text-accent"
               >
-                View stay types
+                Explore products
               </a>
             </div>
-            <ul className="mt-8 space-y-3 text-sm text-muted-foreground">
-              <li>• Quiet, well-located homes for short festival stays</li>
-              <li>• Flexible options from single rooms to private villas</li>
-              <li>• Fast response with options that match your dates</li>
-            </ul>
           </div>
-
-          <div className="rounded-sm border border-border/70 bg-card/70 p-6 shadow-[0_1px_0_var(--border),0_18px_40px_-32px_rgba(0,0,0,0.45)]">
-            <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">What to expect</p>
-            <div className="mt-6 space-y-4 text-sm text-muted-foreground">
-              <div className="border-b border-border/70 pb-4">
-                <div className="font-medium text-foreground">Stay types</div>
-                <div className="mt-1">Sea-view rooms, city apartments, villas and private rooms.</div>
-              </div>
-              <div className="border-b border-border/70 pb-4">
-                <div className="font-medium text-foreground">Best for</div>
-                <div className="mt-1">Solo delegates, couples and teams arriving for the festival.</div>
-              </div>
-              <div>
-                <div className="font-medium text-foreground">Response time</div>
-                <div className="mt-1">A quick reply with options tailored to your dates.</div>
-              </div>
-            </div>
-            <img
-              src={heroImage}
-              alt="Cape Town balcony at golden hour with Table Mountain and ocean"
-              width={1200}
-              height={900}
-              loading="eager"
-              className="mt-6 h-48 w-full rounded-sm object-cover"
-            />
+          <div className="border-l-2 border-accent pl-6 md:pl-8">
+            <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground">
+              From origin to opportunity
+            </p>
+            <p className="mt-5 font-display text-3xl leading-tight md:text-4xl">
+              One considered connection can open an entire supply line.
+            </p>
+            <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
+              For importers, distributors, retailers and makers looking for a dependable South
+              African starting point.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* Stay types */}
-      <section id="options" className="border-t border-border/60 bg-secondary/40">
-        <div className="mx-auto max-w-6xl px-6 py-16 md:py-20">
-          <div className="mb-8 max-w-2xl">
-            <p className="mb-3 text-xs uppercase tracking-[0.3em] text-muted-foreground">Stay types</p>
-            <h2 className="font-display text-3xl leading-tight md:text-4xl">
-              Pick the setup that fits your trip
+      <section id="products" className="mx-auto max-w-6xl px-6 py-20 md:py-24">
+        <div className="grid gap-10 md:grid-cols-[0.75fr_1.25fr]">
+          <div>
+            <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">
+              What we source
+            </p>
+            <h2 className="mt-4 font-display text-4xl leading-tight md:text-5xl">
+              A focused basket, built for serious buyers.
             </h2>
           </div>
-
-          <div className="grid gap-4 md:grid-cols-4">
-            {stays.map((s) => (
-              <article key={s.id} className="rounded-sm border border-border/70 bg-background/70 p-5">
-                <h3 className="font-display text-xl">{s.name}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.blurb}</p>
+          <div className="grid gap-px border border-border bg-border sm:grid-cols-2">
+            {products.map((product) => (
+              <article
+                key={product.name}
+                className="bg-background p-6 transition-colors hover:bg-secondary/50"
+              >
+                <span className="text-xs text-accent">{product.code}</span>
+                <h3 className="mt-10 font-display text-2xl">{product.name}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  {product.detail}
+                </p>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Enquiry form */}
-      <section id="enquire" className="border-t border-border/60">
-        <div className="mx-auto grid max-w-6xl gap-10 px-6 py-16 md:grid-cols-[0.9fr_1.1fr] md:py-20">
-          <div>
-            <p className="mb-4 text-xs uppercase tracking-[0.3em] text-muted-foreground">Enquire</p>
-            <h2 className="font-display text-4xl leading-tight md:text-5xl">
-              Fill in the form and we’ll shortlist the right stay.
-            </h2>
-            <p className="mt-6 text-muted-foreground">
-              A few details are enough to get started. We’ll use your dates and preferences to send
-              the best options.
+      <section
+        id="approach"
+        className="border-y border-border/70 bg-primary text-primary-foreground"
+      >
+        <div className="mx-auto max-w-6xl px-6 py-20 md:py-24">
+          <div className="max-w-2xl">
+            <p className="text-xs uppercase tracking-[0.3em] text-primary-foreground/65">
+              How we work
             </p>
-            <div className="mt-10 space-y-3 text-sm">
-              <a
-                href="mailto:ongezile@kaapstays.co.za"
-                className="flex items-center gap-3 hover:text-accent"
-              >
-                <Mail className="h-4 w-4" /> ongezile@kaapstays.co.za
-              </a>
-              <a href="tel:+27680187300" className="flex items-center gap-3 hover:text-accent">
-                <Phone className="h-4 w-4" /> 068 018 7300
-              </a>
-              <div className="flex items-center gap-3 text-muted-foreground">
-                <MapPin className="h-4 w-4" /> Cape Town, South Africa
-              </div>
-            </div>
+            <h2 className="mt-4 font-display text-4xl leading-tight md:text-5xl">
+              A thoughtful route from request to relationship.
+            </h2>
           </div>
-
-          <form
-            action="mailto:ongezile@kaapstays.co.za"
-            method="post"
-            encType="text/plain"
-            onSubmit={(e) => {
-              e.preventDefault();
-              window.location.href = mailto;
-            }}
-            autoComplete="on"
-            className="space-y-8 rounded-sm border border-border/70 bg-card/60 p-6 shadow-[0_1px_0_var(--border),0_18px_40px_-32px_rgba(0,0,0,0.45)] md:p-8"
-          >
-            <div>
-              <label className="mb-3 block text-xs uppercase tracking-[0.2em] text-muted-foreground">
-                What kind of stay?
-              </label>
-              <div className="grid gap-2 sm:grid-cols-2">
-                {stays.map((s) => {
-                  const active = selected.includes(s.id);
-                  return (
-                    <button
-                      type="button"
-                      key={s.id}
-                      onClick={() => toggle(s.id)}
-                      className={
-                        "flex items-center justify-between rounded-sm border px-4 py-3 text-left text-sm transition-colors " +
-                        (active
-                          ? "border-accent bg-accent text-accent-foreground"
-                          : "border-border bg-card hover:border-accent/60")
-                      }
-                    >
-                      <span>{s.name}</span>
-                      <span
-                        className={
-                          "flex h-4 w-4 items-center justify-center rounded-full border " +
-                          (active ? "border-accent-foreground" : "border-muted-foreground/40")
-                        }
-                      >
-                        {active && <span className="h-2 w-2 rounded-full bg-current" />}
-                      </span>
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-
-            <div className="grid gap-4 sm:grid-cols-3">
-              <Field label="Check-in">
-                <input
-                  type="date"
-                  required
-                  id="check-in"
-                  name="check-in"
-                  autoComplete="on"
-                  value={checkIn}
-                  onChange={(e) => setCheckIn(e.target.value)}
-                  className="input"
-                />
-              </Field>
-              <Field label="Check-out">
-                <input
-                  type="date"
-                  required
-                  id="check-out"
-                  name="check-out"
-                  autoComplete="on"
-                  value={checkOut}
-                  onChange={(e) => setCheckOut(e.target.value)}
-                  className="input"
-                />
-              </Field>
-              <Field label="Guests">
-                <input
-                  type="number"
-                  min={1}
-                  max={20}
-                  id="guests"
-                  name="guests"
-                  value={guests}
-                  onChange={(e) => setGuests(Number(e.target.value))}
-                  className="input"
-                />
-              </Field>
-            </div>
-
-            <div className="grid gap-4 sm:grid-cols-2">
-              <Field label="Your name">
-                <input
-                  required
-                  id="name"
-                  name="name"
-                  autoComplete="name"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  maxLength={80}
-                  className="input"
-                />
-              </Field>
-              <Field label="Email">
-                <input
-                  type="email"
-                  required
-                  id="email"
-                  name="email"
-                  autoComplete="email"
-                  inputMode="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  maxLength={120}
-                  className="input"
-                />
-              </Field>
-              <Field label="Phone (optional)">
-                <input
-                  type="tel"
-                  id="phone"
-                  name="tel"
-                  autoComplete="tel"
-                  inputMode="tel"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  maxLength={30}
-                  className="input"
-                />
-              </Field>
-              <Field label="Anything else?">
-                <input
-                  id="notes"
-                  name="notes"
-                  autoComplete="on"
-                  value={notes}
-                  onChange={(e) => setNotes(e.target.value)}
-                  maxLength={300}
-                  placeholder="Accessibility, arrival time, team size…"
-                  className="input"
-                />
-              </Field>
-            </div>
-
-            <div className="flex flex-col-reverse items-start justify-between gap-4 pt-2 sm:flex-row sm:items-center">
-              <p className="text-xs text-muted-foreground">
-                Independent provider. Not affiliated with Africa Tech Festival.
-              </p>
-              <button
-                type="submit"
-                className="group inline-flex items-center gap-2 rounded-sm bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-accent"
-              >
-                Send enquiry
-                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-              </button>
-            </div>
-          </form>
+          <div className="mt-14 grid gap-10 md:grid-cols-3">
+            {services.map(([title, detail], index) => (
+              <article key={title} className="border-t border-primary-foreground/30 pt-5">
+                <span className="text-sm text-primary-foreground/60">0{index + 1}</span>
+                <h3 className="mt-8 font-display text-3xl">{title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-primary-foreground/70">{detail}</p>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t border-border/60">
-        <div className="mx-auto flex max-w-6xl flex-col gap-6 px-6 py-10 text-sm text-muted-foreground md:flex-row md:items-center md:justify-between">
-          <div className="flex items-baseline gap-2">
-            <span className="font-display text-xl italic text-foreground">Kaap</span>
-            <span className="text-xs uppercase tracking-[0.25em]">delegate stays</span>
-          </div>
-          <div>
-            © {new Date().getFullYear()} — Cape Town. Independent, not affiliated with Africa Tech
-            Festival.
+      <section
+        id="brief"
+        className="mx-auto grid max-w-6xl gap-12 px-6 py-20 md:py-24 lg:grid-cols-[0.8fr_1.2fr]"
+      >
+        <div>
+          <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">
+            Start a conversation
+          </p>
+          <h2 className="mt-4 font-display text-4xl leading-tight md:text-5xl">
+            Tell us what you need to bring to market.
+          </h2>
+          <p className="mt-6 leading-relaxed text-muted-foreground">
+            Share the shape of your requirement. We will come back with the right questions,
+            possible supply paths and a clear next step.
+          </p>
+          <div className="mt-10 space-y-3 text-sm">
+            <a
+              href="mailto:ongezile@kaapstays.co.za"
+              className="flex items-center gap-3 hover:text-accent"
+            >
+              <Mail className="h-4 w-4" /> ongezile@kaapstays.co.za
+            </a>
+            <a href="tel:+27680187300" className="flex items-center gap-3 hover:text-accent">
+              <Phone className="h-4 w-4" /> 068 018 7300
+            </a>
+            <div className="flex items-center gap-3 text-muted-foreground">
+              <MapPin className="h-4 w-4" /> South Africa
+            </div>
           </div>
         </div>
-      </footer>
+        <form
+          action={mailto}
+          method="post"
+          onSubmit={(event) => {
+            event.preventDefault();
+            window.location.href = mailto;
+          }}
+          className="space-y-7 border border-border bg-card/60 p-6 md:p-8"
+        >
+          <div>
+            <label className="mb-3 block text-xs uppercase tracking-[0.2em] text-muted-foreground">
+              Products of interest
+            </label>
+            <div className="grid gap-2 sm:grid-cols-2">
+              {products.map((product) => {
+                const active = productsSelected.includes(product.name);
+                return (
+                  <button
+                    type="button"
+                    key={product.name}
+                    onClick={() => toggleProduct(product.name)}
+                    className={`flex items-center justify-between border px-4 py-3 text-left text-sm transition-colors ${active ? "border-accent bg-accent text-accent-foreground" : "border-border hover:border-accent/60"}`}
+                  >
+                    <span>{product.name}</span>
+                    {active && <Check className="h-4 w-4" />}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2">
+            <Field label="Your name">
+              <input
+                required
+                id="name"
+                name="name"
+                autoComplete="name"
+                value={name}
+                onChange={(event) => setName(event.target.value)}
+                className="input"
+              />
+            </Field>
+            <Field label="Company">
+              <input
+                required
+                id="company"
+                name="company"
+                autoComplete="organization"
+                value={company}
+                onChange={(event) => setCompany(event.target.value)}
+                className="input"
+              />
+            </Field>
+            <Field label="Email">
+              <input
+                required
+                type="email"
+                id="email"
+                name="email"
+                autoComplete="email"
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+                className="input"
+              />
+            </Field>
+            <Field label="Phone / WhatsApp">
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                autoComplete="tel"
+                value={phone}
+                onChange={(event) => setPhone(event.target.value)}
+                className="input"
+              />
+            </Field>
+            <Field label="Destination country">
+              <input
+                required
+                id="country"
+                name="country"
+                value={country}
+                onChange={(event) => setCountry(event.target.value)}
+                className="input"
+              />
+            </Field>
+            <Field label="Estimated volume">
+              <input
+                id="volume"
+                name="volume"
+                placeholder="e.g. 1 container / month"
+                value={volume}
+                onChange={(event) => setVolume(event.target.value)}
+                className="input"
+              />
+            </Field>
+            <Field label="Target timing">
+              <input
+                id="timing"
+                name="timing"
+                placeholder="e.g. Q1 2027"
+                value={timing}
+                onChange={(event) => setTiming(event.target.value)}
+                className="input"
+              />
+            </Field>
+          </div>
+          <Field label="Tell us about your brief">
+            <textarea
+              id="notes"
+              name="notes"
+              rows={4}
+              placeholder="Packaging, grade, certification, private label or other requirements"
+              value={notes}
+              onChange={(event) => setNotes(event.target.value)}
+              className="input resize-y"
+            />
+          </Field>
+          <div className="flex flex-col gap-4 border-t border-border pt-6 sm:flex-row sm:items-center sm:justify-between">
+            <p className="text-xs text-muted-foreground">
+              We review each brief personally and respond with practical next steps.
+            </p>
+            <button
+              type="submit"
+              className="inline-flex items-center justify-center gap-2 rounded-sm bg-primary px-6 py-3 text-sm font-medium text-primary-foreground hover:bg-accent"
+            >
+              Send sourcing brief <ArrowUpRight className="h-4 w-4" />
+            </button>
+          </div>
+        </form>
+      </section>
 
-      <style>{`
-        .input {
-          width: 100%;
-          background: var(--card);
-          border: 1px solid var(--border);
-          border-radius: 3px;
-          padding: 0.75rem 0.9rem;
-          font-size: 0.95rem;
-          color: var(--foreground);
-          transition: border-color 150ms ease, box-shadow 150ms ease, background 150ms ease;
-        }
-        .input:hover { border-color: color-mix(in oklab, var(--accent) 45%, var(--border)); }
-        .input:focus {
-          outline: none;
-          border-color: var(--accent);
-          box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent) 18%, transparent);
-        }
-        .input::placeholder { color: color-mix(in oklab, var(--muted-foreground) 80%, transparent); }
-        .input:-webkit-autofill,
-        .input:-webkit-autofill:focus {
-          -webkit-text-fill-color: var(--foreground);
-          box-shadow: 0 0 0 1000px var(--card) inset, 0 0 0 3px color-mix(in oklab, var(--accent) 14%, transparent);
-        }
-      `}</style>
-    </div>
+      <footer className="border-t border-border/70">
+        <div className="mx-auto flex max-w-6xl flex-col gap-4 px-6 py-10 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex items-baseline gap-3">
+            <span className="font-display text-xl italic text-foreground">Kaap</span>
+            <span className="text-xs uppercase tracking-[0.24em]">stays</span>
+          </div>
+          <span>South African goods, connected globally. © {new Date().getFullYear()}</span>
+        </div>
+      </footer>
+      <style>{`.input { width: 100%; background: var(--card); border: 1px solid var(--border); border-radius: 3px; padding: 0.75rem 0.9rem; font-size: 0.95rem; color: var(--foreground); } .input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent) 18%, transparent); } .input::placeholder { color: color-mix(in oklab, var(--muted-foreground) 80%, transparent); }`}</style>
+    </main>
   );
 }
 
