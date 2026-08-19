@@ -5,9 +5,9 @@ import { buildSeoHead } from "../../lib/seo";
 export const Route = createFileRoute("/services/export-coordination")({
   head: () =>
     buildSeoHead({
-      title: "Export Coordination from South Africa | Kaapstays",
+      title: "South Africa Export Coordination | Kaapstays",
       description:
-        "Kaapstays helps buyers and suppliers keep export conversations, requirements and next steps aligned.",
+        "South African sourcing with global reach, helping buyers and suppliers align product, export requirements, timing and next steps.",
       path: "/services/export-coordination",
       keywords: ["south africa export coordination", "south african export agent"],
     }),

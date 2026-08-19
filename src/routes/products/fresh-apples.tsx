@@ -5,9 +5,9 @@ import { buildSeoHead } from "../../lib/seo";
 export const Route = createFileRoute("/products/fresh-apples")({
   head: () =>
     buildSeoHead({
-      title: "Fresh Apple Sourcing from South Africa | Kaapstays",
+      title: "Fresh Apple Export Sourcing South Africa | Kaapstays",
       description:
-        "Explore South African fresh apple sourcing for importers, distributors and retailers with Kaapstays.",
+        "South African sourcing for global importers seeking fresh apples matched to destination, season, grade and volume.",
       path: "/products/fresh-apples",
       keywords: ["south african apple export", "fresh apple supplier south africa"],
     }),

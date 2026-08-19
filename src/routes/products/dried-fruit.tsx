@@ -5,9 +5,9 @@ import { buildSeoHead } from "../../lib/seo";
 export const Route = createFileRoute("/products/dried-fruit")({
   head: () =>
     buildSeoHead({
-      title: "Dried Fruit Sourcing from South Africa | Kaapstays",
+      title: "Dried Fruit Sourcing South Africa | Kaapstays",
       description:
-        "Source dried pineapple and other South African dried fruit formats for retail, foodservice and ingredients.",
+        "South African sourcing for global buyers of dried pineapple and fruit formats for retail, foodservice and ingredients.",
       path: "/products/dried-fruit",
       keywords: ["dried pineapple supplier", "south african dried fruit wholesale"],
     }),

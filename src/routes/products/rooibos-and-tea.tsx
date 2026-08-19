@@ -5,9 +5,9 @@ import { buildSeoHead } from "../../lib/seo";
 export const Route = createFileRoute("/products/rooibos-and-tea")({
   head: () =>
     buildSeoHead({
-      title: "Rooibos and Tea Sourcing from South Africa | Kaapstays",
+      title: "Rooibos & Tea Sourcing South Africa | Kaapstays",
       description:
-        "Source rooibos and South African teas for wholesale, retail, foodservice and private label through Kaapstays.",
+        "South African sourcing for global buyers of rooibos and tea, from bulk ingredients to retail and private-label supply.",
       path: "/products/rooibos-and-tea",
       keywords: ["rooibos wholesale", "south african tea supplier"],
     }),

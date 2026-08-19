@@ -7,7 +7,7 @@ export const Route = createFileRoute("/services/supplier-sourcing")({
     buildSeoHead({
       title: "South African Supplier Sourcing | Kaapstays",
       description:
-        "Kaapstays helps global buyers identify and compare South African suppliers around a clear commercial brief.",
+        "South African sourcing for global buyers: we turn product, volume and destination needs into focused supplier conversations.",
       path: "/services/supplier-sourcing",
       keywords: ["south african supplier sourcing", "source products from south africa"],
     }),

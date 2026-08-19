@@ -5,9 +5,9 @@ import { buildSeoHead } from "../lib/seo";
 export const Route = createFileRoute("/about")({
   head: () =>
     buildSeoHead({
-      title: "About Kaapstays | A Gateway to South Africa",
+      title: "About Kaapstays | South African Sourcing Gateway",
       description:
-        "Kaapstays is a South African sourcing gateway for international buyers looking for products, suppliers and practical export coordination.",
+        "South African sourcing with global reach. Kaapstays connects international buyers with products, suppliers and practical export support.",
       path: "/about",
       keywords: ["south africa sourcing agent", "gateway to south africa"],
     }),

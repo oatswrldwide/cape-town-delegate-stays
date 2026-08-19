@@ -5,9 +5,9 @@ import { buildSeoHead } from "../../lib/seo";
 export const Route = createFileRoute("/products/nuts")({
   head: () =>
     buildSeoHead({
-      title: "Nut Sourcing from South Africa | Kaapstays",
+      title: "Nut Export Sourcing South Africa | Kaapstays",
       description:
-        "Connect with South African nut supply for wholesale, manufacturing and private-label programmes.",
+        "South African sourcing for global buyers seeking nut supply for wholesale, manufacturing and private-label programmes.",
       path: "/products/nuts",
       keywords: ["south african nuts supplier", "nuts wholesale export south africa"],
     }),
