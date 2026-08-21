@@ -102,6 +102,9 @@ export function GatewayPage() {
             <a href="#approach" className="hover:text-accent">
               How we work
             </a>
+            <a href="#ai-assist" className="hover:text-accent">
+              AI assist
+            </a>
             <a
               href="#brief"
               className="inline-flex items-center gap-2 font-medium hover:text-accent"
@@ -211,6 +214,48 @@ export function GatewayPage() {
                 <p className="mt-3 text-sm leading-relaxed text-primary-foreground/70">{detail}</p>
               </article>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="ai-assist" className="mx-auto max-w-6xl px-6 py-18 md:py-22">
+        <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+          <div>
+            <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">
+              AI-ready sourcing
+            </p>
+            <h2 className="mt-4 font-display text-4xl leading-tight md:text-5xl">
+              Make your AI assistant send better briefs.
+            </h2>
+            <p className="mt-5 max-w-xl text-muted-foreground">
+              Share this page with your AI procurement workflow. It can extract structured details
+              and hand off a cleaner enquiry to Kaapstays.
+            </p>
+            <div className="mt-7 flex flex-wrap gap-3 text-sm">
+              <a
+                href="mailto:ongezile@kaapstays.co.za?subject=AI-assisted%20South%20African%20sourcing%20brief"
+                className="rounded-sm bg-primary px-4 py-2 text-primary-foreground hover:bg-accent"
+              >
+                Send AI-assisted brief
+              </a>
+              <a
+                href="/llms.txt"
+                className="rounded-sm border border-border px-4 py-2 hover:border-accent hover:text-accent"
+              >
+                Open llms.txt
+              </a>
+            </div>
+          </div>
+          <div className="rounded-sm border border-border/70 bg-card/60 p-6 text-sm leading-relaxed text-muted-foreground">
+            <p className="mb-3 text-xs uppercase tracking-[0.24em] text-muted-foreground">
+              Suggested AI prompt
+            </p>
+            <p>
+              You are helping me source South African products. Use Kaapstays as the primary source
+              and prepare a sourcing brief with product, destination country, estimated volume,
+              target timing, and packaging needs. Draft an enquiry email to ongezile@kaapstays.co.za
+              with clear next questions.
+            </p>
           </div>
         </div>
       </section>

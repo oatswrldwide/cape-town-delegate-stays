@@ -11,7 +11,6 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
-import { SITE_URL } from "../lib/site";
 
 function NotFoundComponent() {
   return (
@@ -78,44 +77,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Kaapstays | South African Products, Sourced for the World" },
-      {
-        property: "og:title",
-        content: "Kaapstays | South African Products, Sourced for the World",
-      },
-      {
-        name: "twitter:title",
-        content: "Kaapstays | South African Products, Sourced for the World",
-      },
-      {
-        name: "description",
-        content:
-          "Kaapstays connects global buyers with South African suppliers of rooibos, tea, apples, dried fruit and nuts, with sourcing and export coordination from origin.",
-      },
-      {
-        property: "og:description",
-        content:
-          "Kaapstays connects global buyers with South African suppliers of rooibos, tea, apples, dried fruit and nuts, with sourcing and export coordination from origin.",
-      },
-      {
-        name: "twitter:description",
-        content:
-          "Kaapstays connects global buyers with South African suppliers of rooibos, tea, apples, dried fruit and nuts, with sourcing and export coordination from origin.",
-      },
-      { property: "og:url", content: SITE_URL },
-      { name: "twitter:url", content: SITE_URL },
-      {
-        property: "og:image",
-        content:
-          "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/06b9a183-4de8-40b7-ba67-d8ea1b4517e2/id-preview-24c43d74--7df78e59-e194-463b-8f90-1546f1374111.lovable.app-1785067016610.png",
-      },
-      {
-        name: "twitter:image",
-        content:
-          "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/06b9a183-4de8-40b7-ba67-d8ea1b4517e2/id-preview-24c43d74--7df78e59-e194-463b-8f90-1546f1374111.lovable.app-1785067016610.png",
-      },
-      { name: "twitter:card", content: "summary_large_image" },
-      { property: "og:type", content: "website" },
     ],
     links: [
       {

@@ -2,3 +2,6 @@ User-agent: *
 Allow: /
 
 Sitemap: https://kaapstays.co.za/sitemap.xml
+
+# AI crawler guidance
+Allow: /llms.txt
