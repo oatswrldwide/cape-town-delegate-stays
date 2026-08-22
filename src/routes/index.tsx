@@ -483,7 +483,9 @@ export function GatewayPage() {
 
       <section className="border-t border-border/70 bg-card/30">
         <div className="mx-auto max-w-6xl px-6 py-16">
-          <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">Explore all pages</p>
+          <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">
+            Explore all pages
+          </p>
           <h2 className="mt-4 font-display text-3xl leading-tight md:text-4xl">
             Sourcing and service pages by category.
           </h2>
@@ -496,7 +498,10 @@ export function GatewayPage() {
                 <ul className="mt-4 space-y-2 text-sm">
                   {group.links.map((link) => (
                     <li key={link.href}>
-                      <a href={link.href} className="underline-offset-4 hover:text-accent hover:underline">
+                      <a
+                        href={link.href}
+                        className="underline-offset-4 hover:text-accent hover:underline"
+                      >
                         {link.label}
                       </a>
                     </li>
