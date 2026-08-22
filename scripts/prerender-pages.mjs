@@ -15,6 +15,8 @@ const productNames = {
   "dried-fruit": "Dried fruit",
   "fresh-apples": "Fresh apples",
   "macadamia-nuts": "Macadamia nuts",
+  nuts: "Nuts",
+  "rooibos-and-tea": "Rooibos and tea",
   "rooibos-tea": "Rooibos tea",
   wine: "South African wine",
 };
