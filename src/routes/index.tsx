@@ -50,6 +50,65 @@ const services = [
   ["Build", "We support recurring wholesale and private-label supply relationships."],
 ];
 
+const internalLinkGroups = [
+  {
+    heading: "Core pages",
+    links: [
+      { href: "/about", label: "About Kaapstays" },
+      { href: "/services/supplier-sourcing", label: "South African supplier sourcing" },
+      { href: "/services/export-coordination", label: "South Africa export coordination" },
+      { href: "/products/rooibos-and-tea", label: "Rooibos & tea sourcing" },
+      { href: "/products/fresh-apples", label: "Fresh apple export sourcing" },
+      { href: "/products/dried-fruit", label: "Dried fruit sourcing" },
+    ],
+  },
+  {
+    heading: "Rooibos tea by market",
+    links: [
+      { href: "/sourcing/rooibos-tea/germany", label: "Rooibos tea for Germany" },
+      { href: "/sourcing/rooibos-tea/united-states", label: "Rooibos tea for US buyers" },
+      { href: "/sourcing/rooibos-tea/asia", label: "Rooibos tea for Asia" },
+      { href: "/sourcing/rooibos-tea/uae", label: "Rooibos tea for UAE buyers" },
+    ],
+  },
+  {
+    heading: "Fresh apples by market",
+    links: [
+      { href: "/sourcing/fresh-apples/germany", label: "Fresh apples for Germany" },
+      { href: "/sourcing/fresh-apples/united-states", label: "Fresh apples for US buyers" },
+      { href: "/sourcing/fresh-apples/asia", label: "Fresh apples for Asia" },
+      { href: "/sourcing/fresh-apples/uae", label: "Fresh apples for UAE buyers" },
+    ],
+  },
+  {
+    heading: "Dried fruit by market",
+    links: [
+      { href: "/sourcing/dried-fruit/germany", label: "Dried fruit for Germany" },
+      { href: "/sourcing/dried-fruit/united-states", label: "Dried fruit for US buyers" },
+      { href: "/sourcing/dried-fruit/asia", label: "Dried fruit for Asia" },
+      { href: "/sourcing/dried-fruit/uae", label: "Dried fruit for UAE buyers" },
+    ],
+  },
+  {
+    heading: "Macadamia nuts by market",
+    links: [
+      { href: "/sourcing/macadamia-nuts/germany", label: "Macadamia nuts for Germany" },
+      { href: "/sourcing/macadamia-nuts/united-states", label: "Macadamia nuts for US buyers" },
+      { href: "/sourcing/macadamia-nuts/asia", label: "Macadamia nuts for Asia" },
+      { href: "/sourcing/macadamia-nuts/uae", label: "Macadamia nuts for UAE buyers" },
+    ],
+  },
+  {
+    heading: "South African wine by market",
+    links: [
+      { href: "/sourcing/wine/germany", label: "South African wine for Germany" },
+      { href: "/sourcing/wine/united-states", label: "South African wine for US buyers" },
+      { href: "/sourcing/wine/asia", label: "South African wine for Asia" },
+      { href: "/sourcing/wine/uae", label: "South African wine for UAE buyers" },
+    ],
+  },
+];
+
 export function GatewayPage() {
   const [productsSelected, setProductsSelected] = useState<string[]>([]);
   const [name, setName] = useState("");
@@ -420,6 +479,38 @@ export function GatewayPage() {
             </button>
           </div>
         </form>
+      </section>
+
+      <section className="border-t border-border/70 bg-card/30">
+        <div className="mx-auto max-w-6xl px-6 py-16">
+          <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">
+            Explore all pages
+          </p>
+          <h2 className="mt-4 font-display text-3xl leading-tight md:text-4xl">
+            Sourcing and service pages by category.
+          </h2>
+          <div className="mt-10 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {internalLinkGroups.map((group) => (
+              <section key={group.heading}>
+                <h3 className="text-sm uppercase tracking-[0.2em] text-muted-foreground">
+                  {group.heading}
+                </h3>
+                <ul className="mt-4 space-y-2 text-sm">
+                  {group.links.map((link) => (
+                    <li key={link.href}>
+                      <a
+                        href={link.href}
+                        className="underline-offset-4 hover:text-accent hover:underline"
+                      >
+                        {link.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            ))}
+          </div>
+        </div>
       </section>
 
       <footer className="border-t border-border/70">
