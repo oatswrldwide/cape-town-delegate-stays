@@ -187,7 +187,8 @@ function getRouteProfile(routePath) {
 
   const regionOperationalFocus = {
     asia: "channel mix, launch cadence, and distributor handover readiness across multiple destination patterns",
-    germany: "retail precision, documentation discipline, and repeatability expectations in structured buying programs",
+    germany:
+      "retail precision, documentation discipline, and repeatability expectations in structured buying programs",
     uae: "rapid procurement cycles, hospitality-driven demand shifts, and importer timeline sensitivity",
     "united-states":
       "multi-state distribution complexity, timing discipline, and high visibility around consistency and compliance",
@@ -209,8 +210,7 @@ function getRouteProfile(routePath) {
       product: "South African product categories",
       demandSignal:
         "multi-category sourcing programs seeking stronger comparability and faster path-to-decision",
-      planningRisk:
-        "fragmented buyer data creates avoidable cost pressure and delayed commitments",
+      planningRisk: "fragmented buyer data creates avoidable cost pressure and delayed commitments",
       operatingFocus: "clear brief design, route evaluation, and execution handover discipline",
       buyingStyle: "teams building resilient sourcing capability across categories and regions",
     };
@@ -226,7 +226,8 @@ function getRouteProfile(routePath) {
         "buyers requiring a reliable bridge between commercial intent and executable sourcing conversations",
       planningRisk:
         "misaligned assumptions between buying teams and supply routes can erode confidence",
-      operatingFocus: "practical buyer guidance, structured supplier engagement, and route transparency",
+      operatingFocus:
+        "practical buyer guidance, structured supplier engagement, and route transparency",
       buyingStyle: "teams seeking repeatable procurement processes instead of one-off transactions",
     };
   }
@@ -236,7 +237,10 @@ function getRouteProfile(routePath) {
       pageType: "service",
       audience: "buyers shaping sourcing strategy and delivery readiness",
       market: "origin-to-destination sourcing and export lanes",
-      product: parts[1] === "supplier-sourcing" ? "supplier discovery pathways" : "export coordination pathways",
+      product:
+        parts[1] === "supplier-sourcing"
+          ? "supplier discovery pathways"
+          : "export coordination pathways",
       demandSignal:
         parts[1] === "supplier-sourcing"
           ? "clearer supplier comparability before commercial commitments"
@@ -268,8 +272,10 @@ function getRouteProfile(routePath) {
       planningRisk:
         productPlanningRisks[productKey] ??
         "late clarification around quality, format, and timing assumptions can create avoidable risk",
-      operatingFocus: "product brief precision, comparability discipline, and route feasibility checks",
-      buyingStyle: "teams converting product interest into commercially defensible sourcing decisions",
+      operatingFocus:
+        "product brief precision, comparability discipline, and route feasibility checks",
+      buyingStyle:
+        "teams converting product interest into commercially defensible sourcing decisions",
     };
   }
 
@@ -289,8 +295,7 @@ function getRouteProfile(routePath) {
         regionOperationalFocus[regionKey] ??
         "market-fit, timing discipline, and route execution clarity",
       buyingStyle:
-        regionBuyingStyle[regionKey] ??
-        "buyers balancing speed with reliable sourcing structure",
+        regionBuyingStyle[regionKey] ?? "buyers balancing speed with reliable sourcing structure",
     };
   }
 
@@ -311,7 +316,12 @@ function getContextualRelatedPaths(routePath) {
   const parts = routePath.split("/").filter(Boolean);
 
   if (routePath === "/") {
-    return ["/about", "/services/supplier-sourcing", "/services/export-coordination", "/products/rooibos-and-tea"];
+    return [
+      "/about",
+      "/services/supplier-sourcing",
+      "/services/export-coordination",
+      "/products/rooibos-and-tea",
+    ];
   }
 
   if (routePath === "/about") {
@@ -320,7 +330,11 @@ function getContextualRelatedPaths(routePath) {
 
   if (parts[0] === "services") {
     related.push("/");
-    related.push(parts[1] === "supplier-sourcing" ? "/services/export-coordination" : "/services/supplier-sourcing");
+    related.push(
+      parts[1] === "supplier-sourcing"
+        ? "/services/export-coordination"
+        : "/services/supplier-sourcing",
+    );
     related.push("/products/rooibos-and-tea");
     related.push("/about");
     return related;
