@@ -82,6 +82,15 @@ function buildBuyerResearchSections(contextLabel: string): ContentSection[] {
         "Better early-stage clarity creates more resilient long-term buyer-supplier relationships.",
       ],
     },
+    {
+      heading: "Research-backed implementation checklist for procurement teams",
+      body: "A practical way to apply this guidance is to run sourcing in structured phases and define evidence required at each gate. Phase one is scoping: document category objective, market destination, required product outcomes, and constraints that cannot be compromised. Phase two is comparability setup: issue a standardized brief, request responses in the same structure, and flag assumptions that require proof before shortlist decisions. Phase three is validation: pressure-test lead times, packaging readiness, compliance artifacts, and escalation pathways for disruptions. Phase four is execution readiness: align commercial terms with the operational sequence so procurement, quality, logistics, and finance teams can hand over without data loss. Phase five is performance learning: after each shipment or major milestone, capture deviations between plan and reality, then update future briefing templates. This cycle reflects widely used sourcing excellence practices because it reduces dependence on individual heroics and builds an institutional method. For teams working across multiple categories, this checklist becomes a durable advantage: onboarding is faster, risk signals are easier to detect, and decision quality remains consistent even when personnel or market conditions change. When buyers use this disciplined model alongside Kaapstays' structured support, they transform one-off transactions into scalable sourcing capability.",
+      bullets: [
+        "Define non-negotiable requirements before supplier outreach to prevent false-positive opportunities.",
+        "Use standardized response formats so commercial and operational comparisons stay objective.",
+        "Run post-shipment learning loops to continuously improve future sourcing briefs and decisions.",
+      ],
+    },
   ];
 }
 
