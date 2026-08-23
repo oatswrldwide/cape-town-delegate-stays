@@ -91,6 +91,107 @@ function getPageLabel(routePath) {
   return titleCaseSegment(parts[parts.length - 1]);
 }
 
+function getRouteContext(routePath) {
+  if (routePath === "/") {
+    return {
+      market: "global destination markets",
+      product: "South African products",
+      buyer: "importers, distributors, retailers and manufacturers",
+      route: "multi-category sourcing decisions",
+    };
+  }
+
+  if (routePath === "/about") {
+    return {
+      market: "international buyer programs",
+      product: "South African product categories",
+      buyer: "procurement leaders and sourcing teams",
+      route: "cross-border sourcing partnerships",
+    };
+  }
+
+  const parts = routePath.split("/").filter(Boolean);
+  if (parts[0] === "products") {
+    return {
+      market: "destination-specific import channels",
+      product: productNames[parts[1]] ?? "South African products",
+      buyer: "buyers building volume programs",
+      route: "product-specific sourcing evaluation",
+    };
+  }
+
+  if (parts[0] === "services") {
+    return {
+      market: "origin-to-destination export routes",
+      product: "buyer briefs and supplier pathways",
+      buyer: "teams aligning procurement with operations",
+      route: "service-led sourcing execution",
+    };
+  }
+
+  if (parts[0] === "sourcing") {
+    const product = productNames[parts[1]] ?? "South African products";
+    const market = regionNames[parts[2]] ?? "international markets";
+    return {
+      market,
+      product,
+      buyer: `buyers planning ${product.toLowerCase()} procurement`,
+      route: "regional sourcing feasibility decisions",
+    };
+  }
+
+  return {
+    market: "international sourcing markets",
+    product: "South African products",
+    buyer: "global procurement teams",
+    route: "cross-border sourcing execution",
+  };
+}
+
+function buildLongFormResearchHtml(routePath) {
+  const { market, product, buyer, route } = getRouteContext(routePath);
+  const sections = [
+    {
+      heading: "The painful buyer problem: decisions made with fragmented sourcing data",
+      body: `The most painful issue for ${buyer} is not a lack of options, but a lack of comparable decision inputs. Teams evaluating ${product.toLowerCase()} in ${market.toLowerCase()} often receive scattered information from multiple parties: a pricing sheet from one contact, packaging details from another, broad quality claims from a third, and delivery assumptions that are still unverified. In that environment, buyers are pushed to decide under pressure while key variables remain unclear. This pain becomes expensive when internal teams make commitments based on partial information and then discover that specification, timing, or route assumptions were misaligned. The impact is immediate: revised quotations, delayed approvals, launch uncertainty, and margin pressure from emergency adjustments. A buyer might appear to have many supplier conversations running, yet still lack enough evidence to confidently choose the right path. This is exactly where structured sourcing discipline creates value. Instead of chasing more conversations, teams need better comparability, earlier assumption testing, and clearer commercial framing before they commit capital, timelines, and reputation to a supply decision.`,
+    },
+    {
+      heading: "What well-researched procurement methods prioritize first",
+      body: `Research-backed procurement playbooks consistently prioritize validation order over outreach volume. The first step is defining non-negotiables: destination requirements, product boundaries, packaging outcomes, timeline expectations, and operational constraints. The second step is requiring standardized responses so every option can be compared on a like-for-like basis. The third step is identifying assumptions that could alter cost, quality, or service reliability and forcing those assumptions to be clarified early. This sequence is particularly important in ${route}, where buyers can lose weeks on promising conversations that later fail operational fit. A quote that looks attractive can still be unsuitable if lead-time logic is weak, packaging transitions are unresolved, or quality controls are not aligned with destination expectations. Strong teams therefore treat early clarification as a strategic control, not administrative overhead. They ask fewer but better questions, build a defensible shortlist faster, and reduce downstream disruption. For organizations sourcing ${product.toLowerCase()}, this method supports both immediate decision quality and long-term process maturity across categories, markets, and internal stakeholder groups.`,
+    },
+    {
+      heading: "Root causes behind avoidable sourcing failures",
+      body: `Avoidable sourcing failures usually come from small unresolved assumptions that compound over time rather than one obvious error. Buyers may assume a format is standard when it is actually destination-specific. Suppliers may assume demand is stable when buyer forecasts are still provisional. Logistics plans may assume flexibility while customer delivery windows are fixed. Each assumption can seem manageable at first, yet together they create volatility that appears late, when corrective action is most expensive. In cross-border sourcing, these root causes intensify because teams must coordinate commercial, quality, documentation, and timing requirements across multiple organizations. If ownership is fragmented, no one sees the full risk profile until execution pressure is already high. Pain emerges as rework, delayed launch schedules, and internal friction between procurement, operations, and finance teams. The practical response is to transform assumptions into explicit checkpoints early in the decision cycle. Buyers who document these checkpoints can filter out weak options sooner, preserve negotiation leverage, and protect service reliability. The goal is not to eliminate all uncertainty, but to control uncertainty before it controls outcomes.`,
+    },
+    {
+      heading: "Solution: use a structured sourcing brief as a control system",
+      body: `The most effective solution is to treat the sourcing brief as a control system rather than a simple enquiry message. A high-value brief captures the intended use case, destination market, volume profile, acceptable product range, packaging direction, timing milestones, and known compliance constraints. It also defines what evidence is needed before moving from exploration to commitment. This structure changes the quality of supplier conversations immediately. Suppliers can respond to clear decision criteria instead of broad requests, and buyers can compare responses against business outcomes instead of isolated claims. In ${market.toLowerCase()}, where buyers often evaluate options quickly, this approach reduces false positives by revealing non-fit conditions earlier. It also improves governance because internal stakeholders can see why a recommendation was made and what risks were validated. Over time, teams that run structured briefs gain a repeatable sourcing capability: each new lane starts from a proven decision architecture rather than ad-hoc communication. That capability protects margin, reduces avoidable delays, and supports better long-term supplier performance.`,
+    },
+    {
+      heading: "How Kaapstays addresses the buyer pain point",
+      body: `Kaapstays applies this solution by helping buyers turn early product interest into practical sourcing intelligence connected to South African origin pathways. The focus is not on generating supplier noise; it is on increasing the clarity and comparability of the first meaningful decisions. Buyers provide core requirement details, and the process emphasizes realistic evaluation of fit across product expectations, commercial assumptions, and route feasibility. This directly addresses the pain of repetitive clarification cycles where buyers keep restating requirements yet still receive misaligned responses. With clearer framing, buyers can move faster from broad exploration to actionable shortlist decisions. For ${buyer}, this means stronger control over decision timing and fewer late-stage surprises that consume leadership attention. For operations teams, it improves handovers by preserving context between commercial intent and execution planning. For finance stakeholders, it supports defensible decision rationale tied to risk and performance assumptions. The practical outcome is better decision confidence without pretending markets are static. Buyers still navigate variability, but they do so with structured intelligence and clearer escalation paths.`,
+    },
+    {
+      heading: "Execution checklist buyers can apply immediately",
+      body: `To operationalize this approach, buyers can implement a five-stage checklist. Stage one: define the business case and non-negotiables before outreach. Stage two: issue a standardized brief so every response can be compared directly. Stage three: run assumption tests focused on variables that can change cost, quality, timing, or compliance outcomes. Stage four: validate operational handover readiness across procurement, quality, logistics, and finance functions. Stage five: document post-shipment learning and update the next briefing cycle. This checklist is practical because it fits both single-category and multi-category sourcing programs. It also supports AI-assisted workflows by giving automation tools a clear data structure for drafting comparisons and identifying missing details. For teams managing ${product.toLowerCase()} opportunities, this method prevents speed from becoming fragility. Decisions can still move quickly, but they move through explicit gates with visible evidence standards. The result is a more resilient sourcing model that scales better across products, regions, and changing market conditions.`,
+    },
+    {
+      heading: "Why this approach improves long-term supply resilience",
+      body: `Resilient supply is built before the first order is placed. When buyers clarify requirements early, compare options objectively, and validate assumptions in sequence, they reduce the probability of disruptions that undermine service reliability later. This is especially valuable in ${route}, where demand changes, seasonal effects, and cross-border dependencies can stress weak processes. Structured decision-making does more than prevent errors; it creates strategic optionality. Buyers can stage volumes, pace commitments, and negotiate from evidence rather than urgency. Internal teams align faster because they work from a shared understanding of confirmed facts and open risks. Suppliers also perform better in this model because expectations are explicit and feedback loops are clearer. Over multiple cycles, the organization develops procurement muscle: better forecasting conversations, cleaner execution transitions, and stronger performance governance. That is the core solution to the recurring buyer pain point. Well-researched structure converts fragmented sourcing activity into a controlled commercial capability that protects margin, supports growth, and improves confidence for every stakeholder involved in bringing product to market.`,
+    },
+  ];
+
+  return sections
+    .map(
+      (section) => `
+         <article>
+           <h2>${escapeHtml(section.heading)}</h2>
+           <p>${escapeHtml(section.body)}</p>
+         </article>`,
+    )
+    .join("");
+}
+
 async function renderPageHtml(routePath) {
   const routeFilePath =
     routePath === "/"
@@ -114,6 +215,7 @@ async function renderPageHtml(routePath) {
       return `<li><a href="${href}">${escapeHtml(getPageLabel(pagePath))}</a></li>`;
     })
     .join("");
+  const researchContent = buildLongFormResearchHtml(routePath);
   const staticContent = `
       <main>
         <header>
@@ -134,6 +236,10 @@ async function renderPageHtml(routePath) {
             For direct support, email <a href="mailto:${contactEmail}">${contactEmail}</a>.
           </p>
         </article>
+        <section>
+          <h2>Buyer research, painful problem analysis, and practical solution</h2>
+          ${researchContent}
+        </section>
         <section>
           <h2>Related Kaapstays pages</h2>
           <ul>
