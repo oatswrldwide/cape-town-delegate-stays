@@ -11,6 +11,8 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as AfricaTechFestivalAccommodationRouteImport } from './routes/africa-tech-festival-accommodation'
+import { Route as CapeTownDelegateStaysRouteImport } from './routes/cape-town-delegate-stays'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ProductsDriedFruitRouteImport } from './routes/products/dried-fruit'
 import { Route as ProductsFreshApplesRouteImport } from './routes/products/fresh-apples'
@@ -47,6 +49,17 @@ const IndexRoute = IndexRouteImport.update({
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AfricaTechFestivalAccommodationRoute =
+  AfricaTechFestivalAccommodationRouteImport.update({
+    id: '/africa-tech-festival-accommodation',
+    path: '/africa-tech-festival-accommodation',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const CapeTownDelegateStaysRoute = CapeTownDelegateStaysRouteImport.update({
+  id: '/cape-town-delegate-stays',
+  path: '/cape-town-delegate-stays',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -201,6 +214,8 @@ const SourcingWineUnitedStatesRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/africa-tech-festival-accommodation': typeof AfricaTechFestivalAccommodationRoute
+  '/cape-town-delegate-stays': typeof CapeTownDelegateStaysRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/products/dried-fruit': typeof ProductsDriedFruitRoute
   '/products/fresh-apples': typeof ProductsFreshApplesRoute
@@ -232,6 +247,8 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/africa-tech-festival-accommodation': typeof AfricaTechFestivalAccommodationRoute
+  '/cape-town-delegate-stays': typeof CapeTownDelegateStaysRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/products/dried-fruit': typeof ProductsDriedFruitRoute
   '/products/fresh-apples': typeof ProductsFreshApplesRoute
@@ -264,6 +281,8 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/africa-tech-festival-accommodation': typeof AfricaTechFestivalAccommodationRoute
+  '/cape-town-delegate-stays': typeof CapeTownDelegateStaysRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/products/dried-fruit': typeof ProductsDriedFruitRoute
   '/products/fresh-apples': typeof ProductsFreshApplesRoute
@@ -297,6 +316,8 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/africa-tech-festival-accommodation'
+    | '/cape-town-delegate-stays'
     | '/sitemap.xml'
     | '/products/dried-fruit'
     | '/products/fresh-apples'
@@ -328,6 +349,8 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/africa-tech-festival-accommodation'
+    | '/cape-town-delegate-stays'
     | '/sitemap.xml'
     | '/products/dried-fruit'
     | '/products/fresh-apples'
@@ -359,6 +382,8 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/africa-tech-festival-accommodation'
+    | '/cape-town-delegate-stays'
     | '/sitemap.xml'
     | '/products/dried-fruit'
     | '/products/fresh-apples'
@@ -391,6 +416,8 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  AfricaTechFestivalAccommodationRoute: typeof AfricaTechFestivalAccommodationRoute
+  CapeTownDelegateStaysRoute: typeof CapeTownDelegateStaysRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   ProductsDriedFruitRoute: typeof ProductsDriedFruitRoute
   ProductsFreshApplesRoute: typeof ProductsFreshApplesRoute
@@ -434,6 +461,20 @@ declare module '@tanstack/react-router' {
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/africa-tech-festival-accommodation': {
+      id: '/africa-tech-festival-accommodation'
+      path: '/africa-tech-festival-accommodation'
+      fullPath: '/africa-tech-festival-accommodation'
+      preLoaderRoute: typeof AfricaTechFestivalAccommodationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cape-town-delegate-stays': {
+      id: '/cape-town-delegate-stays'
+      path: '/cape-town-delegate-stays'
+      fullPath: '/cape-town-delegate-stays'
+      preLoaderRoute: typeof CapeTownDelegateStaysRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sitemap.xml': {
@@ -631,6 +672,8 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AfricaTechFestivalAccommodationRoute: AfricaTechFestivalAccommodationRoute,
+  CapeTownDelegateStaysRoute: CapeTownDelegateStaysRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   ProductsDriedFruitRoute: ProductsDriedFruitRoute,
   ProductsFreshApplesRoute: ProductsFreshApplesRoute,

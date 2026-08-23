@@ -29,11 +29,15 @@ function LegacyCapeTownDelegateStaysPage() {
     <main className="mx-auto max-w-3xl px-6 py-16">
       <h1 className="text-2xl font-semibold">This legacy page has moved</h1>
       <p className="mt-4 text-base leading-relaxed text-foreground/80">
-        Cape Town Delegate Stays content is no longer maintained on this URL.
-        Kaapstays now operates this domain as a South African sourcing gateway.
+        Cape Town Delegate Stays content is no longer maintained on this URL. Kaapstays now operates
+        this domain as a South African sourcing gateway.
       </p>
       <p className="mt-4">
-        Continue to <a className="underline" href="/about">About Kaapstays</a>.
+        Continue to{" "}
+        <a className="underline" href="/about">
+          About Kaapstays
+        </a>
+        .
       </p>
     </main>
   );

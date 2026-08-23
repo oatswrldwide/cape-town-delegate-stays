@@ -29,11 +29,15 @@ function LegacyAccommodationPage() {
     <main className="mx-auto max-w-3xl px-6 py-16">
       <h1 className="text-2xl font-semibold">This accommodation page has moved</h1>
       <p className="mt-4 text-base leading-relaxed text-foreground/80">
-        Africa Tech Festival accommodation content is no longer maintained here.
-        This domain now focuses on Kaapstays sourcing services.
+        Africa Tech Festival accommodation content is no longer maintained here. This domain now
+        focuses on Kaapstays sourcing services.
       </p>
       <p className="mt-4">
-        Continue to <a className="underline" href="/about">About Kaapstays</a>.
+        Continue to{" "}
+        <a className="underline" href="/about">
+          About Kaapstays
+        </a>
+        .
       </p>
     </main>
   );
