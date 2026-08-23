@@ -4,14 +4,16 @@ export function buildSeoHead({
   title,
   description,
   path,
+  canonicalPath,
   keywords,
 }: {
   title: string;
   description: string;
   path: string;
+  canonicalPath?: string;
   keywords?: string[];
 }) {
-  const canonicalUrl = `${SITE_URL}${path}`;
+  const canonicalUrl = `${SITE_URL}${canonicalPath ?? path}`;
 
   return {
     meta: [

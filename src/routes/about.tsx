@@ -25,6 +25,10 @@ export const Route = createFileRoute("/about")({
           heading: "Commercially curious",
           body: "We ask the questions that matter to product, destination, volume, timing and the shape of a relationship beyond a first order.",
         },
+        {
+          heading: "Brand architecture and legacy accommodation pages",
+          body: "Kaapstays is the active sourcing brand on this domain. Legacy Africa Tech Festival accommodation URLs are retained only to guide visitors and search engines toward current Kaapstays pages, while accommodation-specific event logistics are treated as a separate service stream.",
+        },
       ]}
       links={[
         { href: "/products/rooibos-and-tea", label: "Explore products" },
