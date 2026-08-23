@@ -148,44 +148,242 @@ function getRouteContext(routePath) {
   };
 }
 
+function getRouteProfile(routePath) {
+  const parts = routePath.split("/").filter(Boolean);
+  const productKey = parts[1];
+  const regionKey = parts[2];
+  const product = productNames[productKey] ?? "South African products";
+  const region = regionNames[regionKey] ?? "international markets";
+
+  const productDemandSignals = {
+    "dried-fruit":
+      "stable snack demand, ingredient reformulation programs, and private-label expansion schedules",
+    "fresh-apples":
+      "seasonal retail refresh cycles, wholesale consistency requirements, and shelf-life-sensitive planning",
+    "macadamia-nuts":
+      "premium snacking growth, bakery and confectionery usage, and branded gifting programs",
+    nuts: "portfolio expansion into snack and ingredient lines with consistent quality expectations",
+    "rooibos-and-tea":
+      "wellness-positioned beverage demand, private-label tea launches, and clean-label ingredient programs",
+    "rooibos-tea":
+      "herbal tea portfolio growth, wellness-led buyer demand, and multi-channel beverage programs",
+    wine: "on-trade and retail assortment planning, portfolio differentiation, and route-to-market calendar management",
+  };
+
+  const productPlanningRisks = {
+    "dried-fruit":
+      "format assumptions, moisture expectations, and packaging transitions can create late-stage rework",
+    "fresh-apples":
+      "pack profile mismatches, timing assumptions, and shelf-life handling decisions can reduce service reliability",
+    "macadamia-nuts":
+      "grade interpretation, roasting expectations, and lot consistency assumptions can alter commercial outcomes",
+    nuts: "specification clarity, volume ramp assumptions, and quality tolerance alignment can shift landed economics",
+    "rooibos-and-tea":
+      "blend expectations, pack format choices, and compliance assumptions can delay launch readiness",
+    "rooibos-tea":
+      "taste profile assumptions, blending boundaries, and destination packaging preferences can impact route fit",
+    wine: "portfolio mix assumptions, labeling requirements, and shipment cadence choices can change margin outcomes",
+  };
+
+  const regionOperationalFocus = {
+    asia: "channel mix, launch cadence, and distributor handover readiness across multiple destination patterns",
+    germany: "retail precision, documentation discipline, and repeatability expectations in structured buying programs",
+    uae: "rapid procurement cycles, hospitality-driven demand shifts, and importer timeline sensitivity",
+    "united-states":
+      "multi-state distribution complexity, timing discipline, and high visibility around consistency and compliance",
+  };
+
+  const regionBuyingStyle = {
+    asia: "buyers balancing speed with comparability across diverse market pathways",
+    germany: "buyers prioritizing documentation quality and operational precision",
+    uae: "buyers moving quickly while expecting clear commercial and logistics framing",
+    "united-states":
+      "buyers evaluating scale potential while requiring disciplined execution detail",
+  };
+
+  if (routePath === "/") {
+    return {
+      pageType: "home",
+      audience: "international importers and procurement teams",
+      market: "cross-border destination markets",
+      product: "South African product categories",
+      demandSignal:
+        "multi-category sourcing programs seeking stronger comparability and faster path-to-decision",
+      planningRisk:
+        "fragmented buyer data creates avoidable cost pressure and delayed commitments",
+      operatingFocus: "clear brief design, route evaluation, and execution handover discipline",
+      buyingStyle: "teams building resilient sourcing capability across categories and regions",
+    };
+  }
+
+  if (routePath === "/about") {
+    return {
+      pageType: "about",
+      audience: "procurement leaders exploring origin partnerships",
+      market: "global buyer programs connected to South African origin",
+      product: "product and service pathways",
+      demandSignal:
+        "buyers requiring a reliable bridge between commercial intent and executable sourcing conversations",
+      planningRisk:
+        "misaligned assumptions between buying teams and supply routes can erode confidence",
+      operatingFocus: "practical buyer guidance, structured supplier engagement, and route transparency",
+      buyingStyle: "teams seeking repeatable procurement processes instead of one-off transactions",
+    };
+  }
+
+  if (parts[0] === "services") {
+    return {
+      pageType: "service",
+      audience: "buyers shaping sourcing strategy and delivery readiness",
+      market: "origin-to-destination sourcing and export lanes",
+      product: parts[1] === "supplier-sourcing" ? "supplier discovery pathways" : "export coordination pathways",
+      demandSignal:
+        parts[1] === "supplier-sourcing"
+          ? "clearer supplier comparability before commercial commitments"
+          : "stronger handover from commercial intent to export execution",
+      planningRisk:
+        parts[1] === "supplier-sourcing"
+          ? "unstructured outreach that creates noise without improving decision confidence"
+          : "late-stage coordination gaps that disrupt timing, documentation, and service reliability",
+      operatingFocus:
+        parts[1] === "supplier-sourcing"
+          ? "brief quality, shortlist discipline, and assumption validation"
+          : "shipment readiness, stakeholder alignment, and predictable destination delivery",
+      buyingStyle:
+        parts[1] === "supplier-sourcing"
+          ? "teams seeking better first conversations with capable producers"
+          : "teams converting sourcing decisions into repeatable export performance",
+    };
+  }
+
+  if (parts[0] === "products") {
+    return {
+      pageType: "product",
+      audience: "category managers and import teams",
+      market: "destination-specific buying channels",
+      product,
+      demandSignal:
+        productDemandSignals[productKey] ??
+        "buyer demand for dependable product formats and practical supply pathways",
+      planningRisk:
+        productPlanningRisks[productKey] ??
+        "late clarification around quality, format, and timing assumptions can create avoidable risk",
+      operatingFocus: "product brief precision, comparability discipline, and route feasibility checks",
+      buyingStyle: "teams converting product interest into commercially defensible sourcing decisions",
+    };
+  }
+
+  if (parts[0] === "sourcing") {
+    return {
+      pageType: "regional-product",
+      audience: `import and procurement teams in ${region}`,
+      market: region,
+      product,
+      demandSignal:
+        productDemandSignals[productKey] ??
+        "regional buyers requiring clearer product-fit and route-fit visibility",
+      planningRisk:
+        productPlanningRisks[productKey] ??
+        "route assumptions can undermine otherwise attractive supply options",
+      operatingFocus:
+        regionOperationalFocus[regionKey] ??
+        "market-fit, timing discipline, and route execution clarity",
+      buyingStyle:
+        regionBuyingStyle[regionKey] ??
+        "buyers balancing speed with reliable sourcing structure",
+    };
+  }
+
+  return {
+    pageType: "general",
+    audience: "global procurement teams",
+    market: "international sourcing environments",
+    product: "South African products",
+    demandSignal: "buyers looking for practical sourcing clarity",
+    planningRisk: "unvalidated assumptions can compound into avoidable cost and delay",
+    operatingFocus: "structured buyer briefs and execution discipline",
+    buyingStyle: "teams seeking predictable sourcing outcomes",
+  };
+}
+
+function getContextualRelatedPaths(routePath) {
+  const related = [];
+  const parts = routePath.split("/").filter(Boolean);
+
+  if (routePath === "/") {
+    return ["/about", "/services/supplier-sourcing", "/services/export-coordination", "/products/rooibos-and-tea"];
+  }
+
+  if (routePath === "/about") {
+    return ["/", "/services/supplier-sourcing", "/services/export-coordination", "/products/nuts"];
+  }
+
+  if (parts[0] === "services") {
+    related.push("/");
+    related.push(parts[1] === "supplier-sourcing" ? "/services/export-coordination" : "/services/supplier-sourcing");
+    related.push("/products/rooibos-and-tea");
+    related.push("/about");
+    return related;
+  }
+
+  if (parts[0] === "products") {
+    related.push("/");
+    related.push("/services/supplier-sourcing");
+    related.push(`/sourcing/${parts[1]}/germany`);
+    related.push("/about");
+    return related;
+  }
+
+  if (parts[0] === "sourcing") {
+    related.push("/");
+    related.push(`/products/${parts[1]}`);
+    related.push("/services/export-coordination");
+    related.push("/about");
+    return related;
+  }
+
+  return ["/", "/about", "/services/supplier-sourcing", "/services/export-coordination"];
+}
+
 function buildLongFormResearchHtml(routePath) {
+  const profile = getRouteProfile(routePath);
   const { market, product, buyer, route } = getRouteContext(routePath);
   const sections = [
     {
-      heading: "The painful buyer problem: decisions made with fragmented sourcing data",
-      body: `The most painful issue for ${buyer} is not a lack of options, but a lack of comparable decision inputs. Teams evaluating ${product.toLowerCase()} in ${market.toLowerCase()} often receive scattered information from multiple parties: a pricing sheet from one contact, packaging details from another, broad quality claims from a third, and delivery assumptions that are still unverified. In that environment, buyers are pushed to decide under pressure while key variables remain unclear. This pain becomes expensive when internal teams make commitments based on partial information and then discover that specification, timing, or route assumptions were misaligned. The impact is immediate: revised quotations, delayed approvals, launch uncertainty, and margin pressure from emergency adjustments. A buyer might appear to have many supplier conversations running, yet still lack enough evidence to confidently choose the right path. This is exactly where structured sourcing discipline creates value. Instead of chasing more conversations, teams need better comparability, earlier assumption testing, and clearer commercial framing before they commit capital, timelines, and reputation to a supply decision.`,
+      heading: `Market brief for ${profile.product} in ${profile.market}`,
+      body: `This page focuses on ${profile.audience} navigating ${profile.market.toLowerCase()} with a sourcing requirement linked to ${profile.product.toLowerCase()}. The demand signal currently centers on ${profile.demandSignal}. Instead of treating this as generic market noise, the useful move is to translate demand into a structured brief that can be compared across suppliers and service routes. Buyers who document scope, timing, packaging direction, and acceptable quality boundaries early tend to reduce late-stage rework and protect commercial optionality. For teams evaluating ${product.toLowerCase()} in ${market.toLowerCase()}, the first gain is clearer evidence for selection decisions, not simply a larger stack of supplier messages.`,
     },
     {
-      heading: "What well-researched procurement methods prioritize first",
-      body: `Research-backed procurement playbooks consistently prioritize validation order over outreach volume. The first step is defining non-negotiables: destination requirements, product boundaries, packaging outcomes, timeline expectations, and operational constraints. The second step is requiring standardized responses so every option can be compared on a like-for-like basis. The third step is identifying assumptions that could alter cost, quality, or service reliability and forcing those assumptions to be clarified early. This sequence is particularly important in ${route}, where buyers can lose weeks on promising conversations that later fail operational fit. A quote that looks attractive can still be unsuitable if lead-time logic is weak, packaging transitions are unresolved, or quality controls are not aligned with destination expectations. Strong teams therefore treat early clarification as a strategic control, not administrative overhead. They ask fewer but better questions, build a defensible shortlist faster, and reduce downstream disruption. For organizations sourcing ${product.toLowerCase()}, this method supports both immediate decision quality and long-term process maturity across categories, markets, and internal stakeholder groups.`,
+      heading: `Primary execution risk on ${routePath}`,
+      body: `The most material planning risk for this specific route is that ${profile.planningRisk}. This risk usually appears after early momentum has already built, which is why teams experience avoidable friction between procurement, operations, and finance. A stronger sequence starts with clear non-negotiables, then forces comparability through standardized responses, then pressure-tests assumptions before commitment. In ${route}, this validation order keeps attractive-but-fragile options from reaching late-stage dependency. For ${buyer}, disciplined assumption testing is less about slowing decisions and more about preserving margin, timeline control, and confidence while options are still flexible.`,
     },
     {
-      heading: "Root causes behind avoidable sourcing failures",
-      body: `Avoidable sourcing failures usually come from small unresolved assumptions that compound over time rather than one obvious error. Buyers may assume a format is standard when it is actually destination-specific. Suppliers may assume demand is stable when buyer forecasts are still provisional. Logistics plans may assume flexibility while customer delivery windows are fixed. Each assumption can seem manageable at first, yet together they create volatility that appears late, when corrective action is most expensive. In cross-border sourcing, these root causes intensify because teams must coordinate commercial, quality, documentation, and timing requirements across multiple organizations. If ownership is fragmented, no one sees the full risk profile until execution pressure is already high. Pain emerges as rework, delayed launch schedules, and internal friction between procurement, operations, and finance teams. The practical response is to transform assumptions into explicit checkpoints early in the decision cycle. Buyers who document these checkpoints can filter out weak options sooner, preserve negotiation leverage, and protect service reliability. The goal is not to eliminate all uncertainty, but to control uncertainty before it controls outcomes.`,
+      heading: "What teams should validate first for this URL",
+      body: `A route-specific validation stack for this page should emphasize ${profile.operatingFocus}. Practical validation begins with product and market-fit boundaries, then maps those boundaries to realistic route assumptions before pricing decisions are locked. Teams that skip this sequence often revisit earlier choices under time pressure when a hidden assumption fails. The stronger method is to convert every high-impact unknown into a visible checkpoint with ownership and evidence requirements. In practice, this gives buying teams a defensible shortlist faster and creates cleaner handovers from commercial intent to execution planning.`,
     },
     {
-      heading: "Solution: use a structured sourcing brief as a control system",
-      body: `The most effective solution is to treat the sourcing brief as a control system rather than a simple enquiry message. A high-value brief captures the intended use case, destination market, volume profile, acceptable product range, packaging direction, timing milestones, and known compliance constraints. It also defines what evidence is needed before moving from exploration to commitment. This structure changes the quality of supplier conversations immediately. Suppliers can respond to clear decision criteria instead of broad requests, and buyers can compare responses against business outcomes instead of isolated claims. In ${market.toLowerCase()}, where buyers often evaluate options quickly, this approach reduces false positives by revealing non-fit conditions earlier. It also improves governance because internal stakeholders can see why a recommendation was made and what risks were validated. Over time, teams that run structured briefs gain a repeatable sourcing capability: each new lane starts from a proven decision architecture rather than ad-hoc communication. That capability protects margin, reduces avoidable delays, and supports better long-term supplier performance.`,
+      heading: `Buyer behavior pattern in ${profile.market}`,
+      body: `The common buyer behavior on this route is ${profile.buyingStyle}. That pattern creates speed advantages only when briefing quality and response structure are handled early. When teams move quickly without explicit checkpoint design, unresolved assumptions tend to surface in packaging, timeline, quality interpretation, or documentation readiness. A well-scoped brief acts as a control system by requiring comparable data inputs before choices are escalated internally. This helps commercial, logistics, and quality stakeholders align on the same evidence base while still preserving decision speed.`,
     },
     {
-      heading: "How Kaapstays addresses the buyer pain point",
-      body: `Kaapstays applies this solution by helping buyers turn early product interest into practical sourcing intelligence connected to South African origin pathways. The focus is not on generating supplier noise; it is on increasing the clarity and comparability of the first meaningful decisions. Buyers provide core requirement details, and the process emphasizes realistic evaluation of fit across product expectations, commercial assumptions, and route feasibility. This directly addresses the pain of repetitive clarification cycles where buyers keep restating requirements yet still receive misaligned responses. With clearer framing, buyers can move faster from broad exploration to actionable shortlist decisions. For ${buyer}, this means stronger control over decision timing and fewer late-stage surprises that consume leadership attention. For operations teams, it improves handovers by preserving context between commercial intent and execution planning. For finance stakeholders, it supports defensible decision rationale tied to risk and performance assumptions. The practical outcome is better decision confidence without pretending markets are static. Buyers still navigate variability, but they do so with structured intelligence and clearer escalation paths.`,
+      heading: "Kaapstays fit for this route",
+      body: `Kaapstays supports this page's route by framing early buyer interest into a practical sourcing sequence tied to South African origin options. The emphasis is on quality of comparison, not volume of supplier noise. For ${profile.audience}, this means each step can be reviewed against route feasibility, execution readiness, and commercial impact before commitment. The outcome is a decision path that stays usable even when market variables shift, because assumptions are documented, ownership is clearer, and escalation points are defined before pressure peaks.`,
     },
     {
-      heading: "Execution checklist buyers can apply immediately",
-      body: `To operationalize this approach, buyers can implement a five-stage checklist. Stage one: define the business case and non-negotiables before outreach. Stage two: issue a standardized brief so every response can be compared directly. Stage three: run assumption tests focused on variables that can change cost, quality, timing, or compliance outcomes. Stage four: validate operational handover readiness across procurement, quality, logistics, and finance functions. Stage five: document post-shipment learning and update the next briefing cycle. This checklist is practical because it fits both single-category and multi-category sourcing programs. It also supports AI-assisted workflows by giving automation tools a clear data structure for drafting comparisons and identifying missing details. For teams managing ${product.toLowerCase()} opportunities, this method prevents speed from becoming fragility. Decisions can still move quickly, but they move through explicit gates with visible evidence standards. The result is a more resilient sourcing model that scales better across products, regions, and changing market conditions.`,
+      heading: "Route-specific implementation checklist",
+      body: `For this page, the most useful implementation flow is: define route non-negotiables, issue a comparable brief, validate high-impact assumptions, align execution handover criteria, and capture post-cycle learning. The route can then be repeated with stronger baseline clarity. This is especially relevant for teams sourcing ${product.toLowerCase()} because decision quality depends on synchronized assumptions across product requirements, destination expectations, and operational constraints. Consistent checklist discipline helps teams avoid urgent firefighting and maintain leverage in negotiation and planning.`,
     },
     {
-      heading: "Commercial protection: safeguard margin before contract stage",
-      body: `Margin protection in sourcing depends on discipline before contract signing, not after issues appear. Buyers should validate total landed economics using realistic execution assumptions rather than best-case scenarios. That means testing how packaging choices influence freight efficiency, how timeline shifts affect inventory carrying costs, and how quality tolerance decisions can change claim exposure downstream. In ${market.toLowerCase()}, this commercial discipline is especially important because cross-border variables can amplify small planning errors into measurable financial loss. Teams that document these assumptions early usually avoid the false economy of low headline pricing paired with weak operational fit. They can negotiate more intelligently because they understand where flexibility exists and where risk transfer would be unacceptable. This approach also improves internal confidence: finance and procurement teams can align on a transparent model of expected value and downside exposure before commitments are made. By translating technical and logistical uncertainty into commercial visibility, buyers reduce surprise costs and maintain stronger control over profitability across first orders and repeat programs.`,
+      heading: "Commercial protection priorities",
+      body: `Commercial protection on ${routePath} should focus on assumption visibility before contract stage. Teams should test whether pricing logic still holds when realistic timing, packaging, quality, and coordination conditions are applied. In ${market.toLowerCase()}, minor planning misses can compound into measurable margin pressure once execution begins. Buyers that document assumption sensitivity early generally avoid false savings and negotiate with stronger clarity around risk ownership. This creates a stronger link between sourcing intent and financial performance for both first orders and repeat cycles.`,
     },
     {
-      heading: "Continuous improvement loop for future sourcing cycles",
-      body: `The best sourcing teams treat every completed cycle as a learning input for the next one. After each major milestone, they compare plan versus reality across service levels, quality outcomes, timeline adherence, and communication performance. Any deviation is traced back to a specific assumption in the original brief or evaluation process. This feedback loop creates compounding value: briefing templates become sharper, supplier qualification questions become more predictive, and escalation protocols become faster to activate when market conditions change. For organizations pursuing ${product.toLowerCase()} opportunities, this learning system transforms sourcing from episodic project work into an evolving capability. New team members onboard faster because decision logic is documented. Leadership gains better visibility because performance trends can be measured over time rather than discussed anecdotally. Supplier relationships also benefit because expectations are clearer and improvement conversations are evidence-based. In practical terms, continuous improvement is the final step that closes the painful gap between one successful transaction and a resilient long-term supply strategy.`,
+      heading: "Continuous improvement loop for this market route",
+      body: `After each sourcing cycle linked to this URL, teams should compare expected outcomes against actual delivery, quality, timing, and communication performance. Deviations should be mapped directly to original assumptions so briefing templates and supplier qualification criteria can be improved before the next cycle starts. Over multiple cycles, this turns one-off activity into a repeatable capability with better onboarding, cleaner governance, and stronger supplier conversations. For organizations active in ${market.toLowerCase()}, the compounding value comes from preserving what worked and correcting what failed while evidence is still fresh.`,
     },
     {
-      heading: "Why this approach improves long-term supply resilience",
-      body: `Resilient supply is built before the first order is placed. When buyers clarify requirements early, compare options objectively, and validate assumptions in sequence, they reduce the probability of disruptions that undermine service reliability later. This is especially valuable in ${route}, where demand changes, seasonal effects, and cross-border dependencies can stress weak processes. Structured decision-making does more than prevent errors; it creates strategic optionality. Buyers can stage volumes, pace commitments, and negotiate from evidence rather than urgency. Internal teams align faster because they work from a shared understanding of confirmed facts and open risks. Suppliers also perform better in this model because expectations are explicit and feedback loops are clearer. Over multiple cycles, the organization develops procurement muscle: better forecasting conversations, cleaner execution transitions, and stronger performance governance. That is the core solution to the recurring buyer pain point. Well-researched structure converts fragmented sourcing activity into a controlled commercial capability that protects margin, supports growth, and improves confidence for every stakeholder involved in bringing product to market.`,
+      heading: "Why this page's approach strengthens resilience",
+      body: `The resilience gain from this route is not tied to optimism; it comes from disciplined structure. When teams translate buyer intent into explicit checkpoints, compare options on shared criteria, and validate operational assumptions early, they retain control under pressure. In ${route}, that discipline supports stronger service reliability, cleaner internal alignment, and better commercial consistency across repeat programs. The practical outcome is a sourcing model that scales with fewer avoidable surprises and more confidence at each decision gate.`,
     },
   ];
 
@@ -217,7 +415,7 @@ async function renderPageHtml(routePath) {
   const escapedTitle = escapeHtml(title);
   const escapedDescription = escapeHtml(description);
   const heading = escapeHtml(getPageH1(routePath));
-  const relatedLinks = pagePaths
+  const relatedLinks = getContextualRelatedPaths(routePath)
     .map((pagePath) => {
       const href = pagePath === "/" ? "/" : `${pagePath}/`;
       return `<li><a href="${href}">${escapeHtml(getPageLabel(pagePath))}</a></li>`;
@@ -245,16 +443,16 @@ async function renderPageHtml(routePath) {
           </p>
         </article>
         <section>
-          <h2>Buyer research, painful problem analysis, and practical solution</h2>
+          <h2>Route-specific buyer research and practical sourcing model</h2>
           <p>
-            This long-form page is intentionally written for procurement teams that need deeper decision support before engaging suppliers.
-            It combines buyer pain-point research, root-cause analysis, and an execution-focused solution model so each sourcing discussion
-            starts with clearer assumptions, better comparability, and stronger commercial control from first enquiry through repeat supply.
+            This URL contains route-specific guidance for procurement teams that need deeper decision support before supplier engagement.
+            The analysis below focuses on this page's market and product context so buyers can move from broad interest to clearer assumptions,
+            stronger comparability, and better execution control from first enquiry through repeat supply.
           </p>
           ${researchContent}
         </section>
         <section>
-          <h2>Related Kaapstays pages</h2>
+          <h2>Related pages for this route</h2>
           <ul>
             ${relatedLinks}
           </ul>
