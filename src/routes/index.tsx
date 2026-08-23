@@ -109,6 +109,41 @@ const internalLinkGroups = [
   },
 ];
 
+const buyerResearchSections = [
+  {
+    heading: "Why international buyers struggle with supplier selection",
+    body: "One of the most expensive sourcing mistakes is believing that a list of suppliers is the same as a reliable buying strategy. In practice, global buyers often receive many introductions but too little decision-grade detail to choose with confidence. A brochure can describe quality, but it does not confirm whether quality remains consistent at the pack format, shipment frequency and timeline your market requires. A quotation can look competitive, but it does not show whether its assumptions match your procurement calendar, retailer expectations or manufacturing continuity targets. This gap between marketing claims and operational evidence creates avoidable pain: teams spend weeks in conversations that cannot advance, commercial deadlines compress, and internal confidence declines because stakeholders are evaluating incomplete information. Buyers operating across multiple categories feel this pain even more strongly because every unclear sourcing path consumes time that should be invested in pricing strategy, assortment planning and contingency readiness. The core issue is not effort. Most procurement teams work hard. The issue is information structure. Without a disciplined brief and a consistent comparison framework, buyers are forced to make high-impact decisions using fragmented inputs. That is where risk begins.",
+  },
+  {
+    heading: "The hidden cost of unclear briefs in cross-border trade",
+    body: "When a sourcing brief is vague, the resulting cost is usually hidden until late in the process. A buyer may ask for product availability but omit a critical packaging requirement. The supplier may respond quickly and appear suitable, yet later clarify that packaging conversions require additional lead time and cost. A buyer may request a target volume without clarifying phased demand, causing the supplier to quote for an unrealistic production rhythm. These misalignments can be corrected, but each correction adds friction: revised quotations, delayed approvals, internal rework and uncertainty around launch commitments. In categories tied to seasonal windows or retail resets, small delays can become large commercial losses. The same applies to ingredient supply for manufacturing, where continuity disruptions can affect production plans and customer service levels. Research-informed sourcing methods consistently show that early brief precision reduces downstream negotiation churn and improves delivery reliability. Clear briefs also reduce relationship strain. Suppliers can answer more accurately, and buyers can evaluate more fairly. Instead of repeated back-and-forth on basic facts, both sides spend time on commercially meaningful decisions such as quality tolerances, risk-sharing logic and growth potential. In short, clarity at the start is not an administrative preference; it is a financial control.",
+  },
+  {
+    heading: "A practical framework for better sourcing decisions",
+    body: "A practical sourcing framework should be simple enough for teams to execute repeatedly, yet detailed enough to surface execution risk before commitment. The first step is defining non-negotiables: destination market, specification boundaries, timing expectations, compliance constraints and acceptable packaging outcomes. The second step is issuing a structured request so every potential supply path is evaluated against the same baseline. The third step is assumption testing: identify where each response relies on uncertain inputs and request validation early. The fourth step is operational fit review: verify that the commercial proposal can move through quality checks, logistics coordination and internal approval gates without hidden blockers. The fifth step is decision logging: capture why one option is preferred and what conditions must remain true for successful execution. Teams that follow this structure usually make faster decisions with less rework because ambiguity is handled in sequence rather than discovered all at once. The framework also improves executive visibility. Leaders can review decision logic, not just final pricing, and determine whether risk exposure is acceptable. Over time, this repeatable method becomes a strategic asset that supports scaling into new products and markets without resetting process quality for each new opportunity.",
+  },
+  {
+    heading: "Where Kaapstays fits into the buyer workflow",
+    body: "Kaapstays is designed to support this structured procurement approach by helping buyers transform early product interest into actionable sourcing intelligence linked to South African origin opportunities. The objective is not to overwhelm teams with generic market noise, but to improve the quality of first-stage decisions. Buyers share their intended market, product direction, volume expectations, timing and practical constraints. That information is then translated into a clearer sourcing conversation so supplier responses are easier to compare on meaningful criteria. This matters because many failed sourcing projects are not failures of product potential; they are failures of alignment between what buyers need and what suppliers understood. Kaapstays helps close that alignment gap early, before teams commit resources to operationally weak options. For procurement teams, this means fewer false starts and stronger confidence in shortlist decisions. For commercial leaders, it means better control over timeline and risk assumptions as opportunities move from exploration toward execution. For operations teams, it means handovers with clearer context and fewer surprises. In short, the role is to support disciplined buyer decision-making from the first enquiry to the point where supplier engagement can progress with realistic expectations and practical next steps.",
+  },
+  {
+    heading: "Evidence buyers should request before moving forward",
+    body: "Strong sourcing decisions rely on evidence, not optimism. Before advancing a supplier conversation, buyers should request proof aligned to the specific risk profile of the opportunity. This can include specification confirmation, pack-format readiness, documented lead-time logic, and clarity on how changes will be handled if market conditions shift. Buyers should also test response quality: does the supplier answer the exact brief, or default to generic claims? Do commercial terms reflect operational reality, or depend on assumptions that were never discussed? Is there a credible route from first order to repeat supply under predictable service levels? These questions are especially important in cross-border sourcing because every unresolved assumption can expand once logistics and compliance variables are introduced. A lower initial price can lose value quickly if delivery uncertainty increases or quality variation drives claims and returns. Research-oriented procurement teams therefore treat evidence gathering as a core purchasing discipline, not a delay. Evidence reduces emotional decision pressure and protects internal alignment because stakeholders can see what is confirmed versus what remains uncertain. Better evidence also strengthens negotiation quality. Buyers who understand operational constraints can negotiate terms that are both competitive and executable, improving long-term supplier performance.",
+  },
+  {
+    heading: "Common failure patterns and how to prevent them",
+    body: "Across sourcing projects, several failure patterns appear repeatedly. The first is speed without structure: teams accelerate outreach but postpone requirement clarity, creating confusion later. The second is price-led filtering without fit validation: low quotes are prioritized before confirming whether product and service assumptions are compatible with destination needs. The third is fragmented ownership: procurement, quality and logistics work in parallel but without a shared decision framework, causing handover friction. The fourth is weak contingency planning: teams progress with a preferred option but do not define fallback paths if assumptions fail. Prevention does not require complexity; it requires discipline. Start with a standardized brief. Define decision criteria before outreach. Require like-for-like response formatting. Escalate unresolved assumptions early. Run cross-functional reviews before commercial commitment. Document fallback triggers. These steps reduce avoidable volatility and improve execution resilience. They also create a more professional supplier engagement environment, where expectations are clear and performance can be measured fairly. Buyers who implement these controls generally experience fewer emergency corrections and stronger timeline reliability, even when market conditions are volatile. The central lesson is straightforward: process quality in early-stage sourcing determines commercial stability later.",
+  },
+  {
+    heading: "How AI can improve sourcing outcomes when guided properly",
+    body: "AI tools can help procurement teams move faster, but only when prompts and source material are structured around real buying decisions. If teams ask AI for broad supplier ideas, output quality may be generic and difficult to operationalize. If teams instead provide a clear brief with destination, volume, timing, packaging and use-case details, AI can produce higher-value outputs such as structured comparison templates, assumption-check lists and clearer draft enquiries. This is why Kaapstays includes AI-ready guidance: the goal is to reduce noise and improve the quality of information entering supplier conversations. AI should not replace buyer judgment, category experience or cross-functional validation. It should support them by accelerating synthesis and surfacing missing questions early. Procurement teams get the best results when they treat AI as a preparation and quality-control assistant rather than a final decision engine. That approach preserves accountability while increasing speed. It also helps standardize sourcing workflows across teams by embedding consistent question sets and documentation logic. In competitive markets, this combination of disciplined human judgment and structured AI assistance can materially improve decision cycle time, reduce rework and strengthen confidence before commitments are made.",
+  },
+  {
+    heading: "From first brief to long-term supply resilience",
+    body: "The ultimate objective in sourcing is not a single successful order; it is a resilient supply relationship that can adapt without repeated disruption. Resilience starts with the first brief. When buyers define requirements clearly, validate assumptions early and select partners based on proven fit, they build a stronger base for repeat performance. As orders scale, the same discipline supports better forecasting conversations, smoother issue resolution and more transparent performance management. Teams can evolve terms, packaging strategies and shipment rhythms from a foundation of shared evidence rather than reactive corrections. For organizations sourcing South African products for diverse markets, this matters because demand profiles, regulatory contexts and route constraints can vary significantly across regions. A resilient process lets teams adjust intelligently without losing control. Kaapstays supports this outcome by helping buyers apply structure at the moments where uncertainty usually creates costly errors. The benefit is cumulative: fewer late surprises, clearer internal coordination, stronger supplier dialogue and better strategic optionality when market conditions shift. Buyers who build this capability do more than complete transactions. They create a sourcing system that protects margin, supports growth and improves confidence across every stakeholder involved in delivering product to market.",
+  },
+];
+
 export function GatewayPage() {
   const [productsSelected, setProductsSelected] = useState<string[]>([]);
   const [name, setName] = useState("");
@@ -479,6 +514,25 @@ export function GatewayPage() {
             </button>
           </div>
         </form>
+      </section>
+
+      <section className="border-t border-border/70">
+        <div className="mx-auto max-w-6xl px-6 py-20 md:py-24">
+          <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">
+            Buyer research and decision guidance
+          </p>
+          <h2 className="mt-4 font-display text-4xl leading-tight md:text-5xl">
+            A research-informed approach to sourcing from South Africa.
+          </h2>
+          <div className="mt-10 space-y-10">
+            {buyerResearchSections.map((section) => (
+              <article key={section.heading}>
+                <h3 className="text-2xl md:text-3xl">{section.heading}</h3>
+                <p className="mt-4 leading-relaxed text-muted-foreground">{section.body}</p>
+              </article>
+            ))}
+          </div>
+        </div>
       </section>
 
       <section className="border-t border-border/70 bg-card/30">
