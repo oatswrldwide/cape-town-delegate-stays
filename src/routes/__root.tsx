@@ -11,6 +11,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { buildOrganizationSchema } from "../lib/structured-data";
 
 function NotFoundComponent() {
   return (
@@ -99,10 +100,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 });
 
 function RootShell({ children }: { children: ReactNode }) {
+  const organizationSchema = buildOrganizationSchema();
+
   return (
     <html lang="en">
       <head>
         <HeadContent />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-79J7QQ68KS" />
         <script
           dangerouslySetInnerHTML={{
