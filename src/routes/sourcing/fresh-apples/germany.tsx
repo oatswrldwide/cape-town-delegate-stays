@@ -1,15 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { RegionalProductPage } from "../../../components/seo/regional-product-page";
+import { RegionalProductPage, getRegionalPageMeta } from "../../../components/seo/regional-product-page";
 import { buildSeoHead } from "../../../lib/seo";
+
+const seo = getRegionalPageMeta("fresh-apples", "germany");
 
 export const Route = createFileRoute("/sourcing/fresh-apples/germany")({
   head: () =>
     buildSeoHead({
-      title: "Fresh Apples for Germany | Kaapstays",
-      description:
-        "South African sourcing with global reach for German importers seeking fresh apples matched to grade, season and volume.",
+      title: seo.title,
+      description: seo.description,
       path: "/sourcing/fresh-apples/germany",
-      keywords: ["south african apples Germany", "fresh apple exporter Germany"],
+      keywords: seo.keywords,
     }),
   component: () => <RegionalProductPage productKey="fresh-apples" regionKey="germany" />,
 });

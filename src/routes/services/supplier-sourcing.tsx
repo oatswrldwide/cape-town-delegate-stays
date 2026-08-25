@@ -7,28 +7,34 @@ export const Route = createFileRoute("/services/supplier-sourcing")({
     buildSeoHead({
       title: "South African Supplier Sourcing | Kaapstays",
       description:
-        "South African sourcing for global buyers: we turn product, volume and destination needs into focused supplier conversations.",
+        "Kaapstays turns your buyer brief into a focused search for capable South African producers. Structured comparisons, verified capability, practical introductions.",
       path: "/services/supplier-sourcing",
-      keywords: ["south african supplier sourcing", "source products from south africa"],
+      keywords: ["supplier sourcing south africa", "buyer brief supplier shortlist"],
     }),
   component: () => (
     <SeoContentPage
-      eyebrow="Our services"
+      eyebrow="Service"
       title="A clearer starting point for South African supply."
-      intro="We turn a buyer's requirement into a focused search for capable producers and useful commercial conversations."
+      intro="Most sourcing projects fail through misalignment, not product quality. We turn your requirement into a shortlist of producers who can meet your specification, with a clear comparison framework for decision-making."
       sections={[
         {
-          heading: "Your brief comes first",
-          body: "We look at product, volume, destination, timing, packaging and intended use before exploring possible supply paths.",
+          heading: "What the service includes",
+          body: "We structure sourcing in four practical stages.",
+          bullets: [
+            "Requirement clarification: spec, destination, volume, timing, packaging and certifications",
+            "Market search and verification: capacity, audit status, export history, MOQ and lead time",
+            "Structured comparison: commercial and technical view by your criteria",
+            "Introductions and next steps: support into sampling and negotiation",
+          ],
         },
         {
-          heading: "Useful introductions",
-          body: "Our role is to help buyers move from a broad idea to the next informed conversation with a relevant producer.",
+          heading: "Commercial model",
+          body: "Projects are typically split between an initial brief-and-search fee and a success fee on confirmed order, with retainer options for recurring programmes.",
         },
       ]}
       links={[
-        { href: "/services/export-coordination", label: "See export coordination" },
-        { href: "/products/rooibos-and-tea", label: "Explore products" },
+        { href: "/services/export-coordination", label: "View export coordination" },
+        { href: "/about", label: "About Kaapstays" },
       ]}
     />
   ),

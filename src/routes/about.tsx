@@ -7,28 +7,47 @@ export const Route = createFileRoute("/about")({
     buildSeoHead({
       title: "About Kaapstays | South African Sourcing Gateway",
       description:
-        "South African sourcing with global reach. Kaapstays connects international buyers with products, suppliers and practical export support.",
+        "Learn how Kaapstays connects international buyers with South African producers through structured sourcing and practical export coordination.",
       path: "/about",
-      keywords: ["south africa sourcing agent", "gateway to south africa"],
+      keywords: [
+        "about kaapstays",
+        "south african sourcing gateway",
+        "south african supplier network",
+      ],
     }),
   component: () => (
     <SeoContentPage
       eyebrow="About Kaapstays"
-      title="A gateway to South Africa, built around good connections."
-      intro="Kaapstays helps global buyers find a thoughtful starting point for South African goods and supply relationships."
+      title="A gateway built around good connections."
+      intro="Kaapstays was founded on a simple observation: international buyers interested in South African products often lose weeks on introductions that lead nowhere. The issue is not a shortage of suppliers, but a shortage of decision-ready information when it matters most."
       sections={[
         {
-          heading: "Focused, not scattered",
-          body: "We begin with a focused set of product categories and a clear buyer brief, so conversations can be useful from the start.",
+          heading: "What we believe",
+          body: "Focused categories create better outcomes. We work deeply in rooibos, apples, dried fruit, nuts and wine because these are categories where South Africa has real export strength.",
+          bullets: [
+            "Focused, not scattered: we source selected categories with regional and seasonal understanding.",
+            "Briefs before introductions: product, destination, volume, timing and packaging come first.",
+            "Commercially curious: we design for repeat business, not one-off transactions.",
+          ],
         },
         {
-          heading: "Commercially curious",
-          body: "We ask the questions that matter to product, destination, volume, timing and the shape of a relationship beyond a first order.",
+          heading: "Where we work",
+          body: "Our supplier network is rooted in key South African agricultural regions and aligned to export channels.",
+          bullets: [
+            "Western Cape: apples, wine, rooibos and dried fruit",
+            "Mpumalanga and Limpopo: macadamia nuts and pecans",
+            "Cederberg: rooibos and indigenous teas",
+            "Export coordination through Cape Town and Durban, with air freight where shelf life requires it",
+          ],
+        },
+        {
+          heading: "Who we work with",
+          body: "Our buyers include importers and distributors, private-label retail teams, food manufacturers and hospitality groups building South African ranges.",
         },
       ]}
       links={[
-        { href: "/products/rooibos-and-tea", label: "Explore products" },
-        { href: "/services/supplier-sourcing", label: "See our services" },
+        { href: "/products/rooibos-and-tea", label: "Explore rooibos and tea sourcing" },
+        { href: "/services/supplier-sourcing", label: "View supplier sourcing service" },
       ]}
     />
   ),

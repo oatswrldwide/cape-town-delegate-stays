@@ -7,28 +7,40 @@ export const Route = createFileRoute("/products/rooibos-and-tea")({
     buildSeoHead({
       title: "Rooibos & Tea Sourcing South Africa | Kaapstays",
       description:
-        "South African sourcing for global buyers of rooibos and tea, from bulk ingredients to retail and private-label supply.",
+        "Source rooibos and South African teas for bulk, retail, foodservice and private label. Cederberg origin, organic options, export-ready formats.",
       path: "/products/rooibos-and-tea",
-      keywords: ["rooibos wholesale", "south african tea supplier"],
+      keywords: ["rooibos sourcing", "cederberg tea suppliers", "south african tea export"],
     }),
   component: () => (
     <SeoContentPage
       eyebrow="Product sourcing"
       title="Rooibos and tea, from South African origin."
-      intro="We help buyers explore rooibos and tea supply across formats, volumes and intended markets."
+      intro="Rooibos grows exclusively in South Africa's Cederberg region. For buyers, that means true origin distinction with strong relevance in wellness, specialty and premium tea programmes."
       sections={[
         {
-          heading: "Built around your market",
-          body: "Tell us whether you need bulk ingredients, packaged retail product, foodservice formats or a private-label direction, and we will shape the right supplier conversation.",
+          heading: "What we can source",
+          body: "We support bulk and value-added tea sourcing across retail and manufacturing use cases.",
+          bullets: [
+            "Traditional fermented rooibos and green rooibos",
+            "Organic options aligned to EU, USDA and other market standards",
+            "Bulk loose leaf, tea bags, foodservice formats and private-label packaging",
+            "Honeybush, buchu and indigenous blends where required",
+          ],
         },
         {
-          heading: "A practical first step",
-          body: "Your brief helps us understand destination, volume, packaging, timing and quality requirements before we introduce possible supply paths.",
+          heading: "Sourcing considerations",
+          body: "Quality, timing and documentation need to match your destination market and product format.",
+          bullets: [
+            "Seasonality planning for summer harvest windows",
+            "Grade alignment based on cut, colour and dust levels",
+            "Current certification verification before supplier introductions",
+            "Documentation support for origin claims and market compliance",
+          ],
         },
       ]}
       links={[
-        { href: "/products/fresh-apples", label: "Explore fresh apples" },
-        { href: "/services/supplier-sourcing", label: "See supplier sourcing" },
+        { href: "/sourcing/rooibos-tea/germany", label: "Rooibos for Germany" },
+        { href: "/sourcing/rooibos-tea/united-states", label: "Rooibos for the United States" },
       ]}
     />
   ),

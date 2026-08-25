@@ -1,15 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { RegionalProductPage } from "../../../components/seo/regional-product-page";
+import { RegionalProductPage, getRegionalPageMeta } from "../../../components/seo/regional-product-page";
 import { buildSeoHead } from "../../../lib/seo";
+
+const seo = getRegionalPageMeta("rooibos-tea", "asia");
 
 export const Route = createFileRoute("/sourcing/rooibos-tea/asia")({
   head: () =>
     buildSeoHead({
-      title: "Rooibos Tea for Asia | Kaapstays",
-      description:
-        "South African sourcing with global reach for Asian buyers seeking rooibos tea for wholesale, retail and foodservice.",
+      title: seo.title,
+      description: seo.description,
       path: "/sourcing/rooibos-tea/asia",
-      keywords: ["south african rooibos Asia", "rooibos tea wholesale Asia"],
+      keywords: seo.keywords,
     }),
   component: () => <RegionalProductPage productKey="rooibos-tea" regionKey="asia" />,
 });

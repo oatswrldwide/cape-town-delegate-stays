@@ -7,28 +7,38 @@ export const Route = createFileRoute("/products/dried-fruit")({
     buildSeoHead({
       title: "Dried Fruit Sourcing South Africa | Kaapstays",
       description:
-        "South African sourcing for global buyers of dried pineapple and fruit formats for retail, foodservice and ingredients.",
+        "Dried pineapple, peaches, pears and mixed fruit from South Africa. Retail, foodservice and ingredient formats. Private-label and bulk options.",
       path: "/products/dried-fruit",
-      keywords: ["dried pineapple supplier", "south african dried fruit wholesale"],
+      keywords: ["dried fruit sourcing south africa", "dried pineapple export", "bulk dried fruit"],
     }),
   component: () => (
     <SeoContentPage
       eyebrow="Product sourcing"
       title="Dried fruit with room to build."
-      intro="Dried pineapple and other fruit formats can travel well across retail, foodservice and ingredient applications."
+      intro="South Africa's dried fruit sector supplies stable, export-ready formats for snack retail, foodservice and ingredient manufacturing."
       sections={[
         {
-          heading: "Formats that fit",
-          body: "Tell us about pack size, processing expectations, destination and end use so we can focus the search around a commercially useful format.",
+          heading: "Product range and specification",
+          body: "We source dried pineapple, peaches, pears, apple formats and custom blends tailored to your end use.",
+          bullets: [
+            "Rings, slices, diced cuts, flakes and blend formats",
+            "Sulphured and natural options depending on shelf-life and colour requirements",
+            "Moisture and grade targets matched to retail or manufacturing applications",
+          ],
         },
         {
-          heading: "From sample to supply",
-          body: "We help turn a clear product brief into an informed supplier conversation and a path toward repeat orders.",
+          heading: "Packaging and quality systems",
+          body: "Pack format, certification and consistency are set upfront to avoid downstream friction.",
+          bullets: [
+            "Bulk, retail and industrial pack options",
+            "HACCP, BRC and ISO-aligned processor options",
+            "Organic volumes available in selected programmes",
+          ],
         },
       ]}
       links={[
-        { href: "/products/nuts", label: "Explore nuts" },
-        { href: "/services/supplier-sourcing", label: "See supplier sourcing" },
+        { href: "/sourcing/dried-fruit/germany", label: "Dried fruit for Germany" },
+        { href: "/sourcing/dried-fruit/united-states", label: "Dried fruit for the United States" },
       ]}
     />
   ),

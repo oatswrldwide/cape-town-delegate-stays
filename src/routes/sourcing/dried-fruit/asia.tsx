@@ -1,15 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { RegionalProductPage } from "../../../components/seo/regional-product-page";
+import { RegionalProductPage, getRegionalPageMeta } from "../../../components/seo/regional-product-page";
 import { buildSeoHead } from "../../../lib/seo";
+
+const seo = getRegionalPageMeta("dried-fruit", "asia");
 
 export const Route = createFileRoute("/sourcing/dried-fruit/asia")({
   head: () =>
     buildSeoHead({
-      title: "Dried Fruit for Asia | Kaapstays",
-      description:
-        "South African sourcing with global reach for Asian buyers seeking dried pineapple and fruit formats for retail and ingredients.",
+      title: seo.title,
+      description: seo.description,
       path: "/sourcing/dried-fruit/asia",
-      keywords: ["south african dried fruit Asia", "dried pineapple supplier Asia"],
+      keywords: seo.keywords,
     }),
   component: () => <RegionalProductPage productKey="dried-fruit" regionKey="asia" />,
 });

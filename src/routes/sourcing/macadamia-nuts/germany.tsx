@@ -1,15 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { RegionalProductPage } from "../../../components/seo/regional-product-page";
+import { RegionalProductPage, getRegionalPageMeta } from "../../../components/seo/regional-product-page";
 import { buildSeoHead } from "../../../lib/seo";
+
+const seo = getRegionalPageMeta("macadamia-nuts", "germany");
 
 export const Route = createFileRoute("/sourcing/macadamia-nuts/germany")({
   head: () =>
     buildSeoHead({
-      title: "Macadamia Nuts for Germany | Kaapstays",
-      description:
-        "South African sourcing with global reach for German buyers seeking macadamia nuts for wholesale, ingredients and private label.",
+      title: seo.title,
+      description: seo.description,
       path: "/sourcing/macadamia-nuts/germany",
-      keywords: ["south african macadamia nuts Germany", "macadamia nuts wholesale Germany"],
+      keywords: seo.keywords,
     }),
   component: () => <RegionalProductPage productKey="macadamia-nuts" regionKey="germany" />,
 });

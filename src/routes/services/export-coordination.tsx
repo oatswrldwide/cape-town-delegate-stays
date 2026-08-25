@@ -7,28 +7,38 @@ export const Route = createFileRoute("/services/export-coordination")({
     buildSeoHead({
       title: "South Africa Export Coordination | Kaapstays",
       description:
-        "South African sourcing with global reach, helping buyers and suppliers align product, export requirements, timing and next steps.",
+        "Practical export coordination from South Africa to your destination. Documentation, logistics, timing and compliance kept clear from origin to arrival.",
       path: "/services/export-coordination",
-      keywords: ["south africa export coordination", "south african export agent"],
+      keywords: ["south africa export coordination", "shipment documentation support"],
     }),
   component: () => (
     <SeoContentPage
-      eyebrow="Our services"
+      eyebrow="Service"
       title="Keep the route from origin to destination clear."
-      intro="Once a product and supplier look promising, we help keep the practical export conversation moving."
+      intro="Once product and supplier are selected, execution quality determines commercial success. We coordinate documentation, logistics, compliance and communication so shipments move without avoidable disruption."
       sections={[
         {
-          heading: "Align the details",
-          body: "We help clarify commercial requirements, timing, packaging and the information needed for the next stage of an order.",
+          heading: "What we coordinate",
+          body: "Our support covers the practical execution points that most often create delays or cost overruns.",
+          bullets: [
+            "Documentation: permits, certificates, invoices, packing lists and shipping paperwork",
+            "Logistics: reefer planning, cold chain oversight, consolidation and insurance handover",
+            "Compliance and timing: inspections, labelling checks, customs coordination and schedule alignment",
+            "Communication: status updates and escalation when conditions change",
+          ],
         },
         {
-          heading: "Plan the next move",
-          body: "Export coordination is grounded in the specific product, supplier and destination. We keep the process clear without pretending every shipment follows the same path.",
+          heading: "When this service adds most value",
+          body: "It is particularly useful for first-time imports from South Africa, private-label launches, fresh produce cold-chain shipments, and multi-supplier consolidations.",
+        },
+        {
+          heading: "How we charge",
+          body: "Fees are typically per shipment or on monthly retainer for recurring programmes, depending on destination, product complexity and shipment frequency.",
         },
       ]}
       links={[
-        { href: "/services/supplier-sourcing", label: "See supplier sourcing" },
-        { href: "/about", label: "About Kaapstays" },
+        { href: "/services/supplier-sourcing", label: "View supplier sourcing" },
+        { href: "/products/fresh-apples", label: "See fresh apple sourcing" },
       ]}
     />
   ),

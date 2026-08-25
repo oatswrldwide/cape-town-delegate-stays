@@ -7,28 +7,38 @@ export const Route = createFileRoute("/products/fresh-apples")({
     buildSeoHead({
       title: "Fresh Apple Export Sourcing South Africa | Kaapstays",
       description:
-        "South African sourcing for global importers seeking fresh apples matched to destination, season, grade and volume.",
+        "Export-ready South African apples from the Western Cape. Variety-specific sourcing for retail, wholesale and foodservice. Seasonal planning, cold chain coordination.",
       path: "/products/fresh-apples",
-      keywords: ["south african apple export", "fresh apple supplier south africa"],
+      keywords: ["fresh apple export south africa", "western cape apples", "apple cold chain"],
     }),
   component: () => (
     <SeoContentPage
       eyebrow="Product sourcing"
       title="Fresh apples for international markets."
-      intro="We connect buyers with South African apple supply suited to destination, season, grade and commercial requirements."
+      intro="South Africa's leading apple regions in the Western Cape supply export programmes with strong colour, firmness and post-harvest handling. Counter-seasonal timing supports Northern Hemisphere continuity."
       sections={[
         {
-          heading: "Start with the specification",
-          body: "Share your preferred varieties, pack format, destination, forecast volume and timing so the sourcing conversation starts with useful detail.",
+          heading: "Variety and pack planning",
+          body: "Programme performance depends on the right variety mix, pack format and delivery window for your channel.",
+          bullets: [
+            "Core export varieties include Granny Smith, Royal Gala, Pink Lady, Golden Delicious and Fuji",
+            "Formats include 10kg, 12.5kg and 18kg cartons, bins and retail-ready packs",
+            "Sizing and grade are aligned to market preferences and use case",
+          ],
         },
         {
-          heading: "Coordinate with clarity",
-          body: "We help keep buyer and supplier conversations aligned as you assess availability, commercial fit and next steps.",
+          heading: "Logistics and compliance",
+          body: "Cold chain and documentation discipline are central to successful apple programmes.",
+          bullets: [
+            "Controlled-atmosphere storage extends commercial availability",
+            "Reefer planning supports route-specific transit windows",
+            "Phytosanitary and destination protocols are confirmed pre-shipment",
+          ],
         },
       ]}
       links={[
-        { href: "/products/dried-fruit", label: "Explore dried fruit" },
-        { href: "/services/export-coordination", label: "See export coordination" },
+        { href: "/sourcing/fresh-apples/germany", label: "Fresh apples for Germany" },
+        { href: "/sourcing/fresh-apples/uae", label: "Fresh apples for UAE" },
       ]}
     />
   ),

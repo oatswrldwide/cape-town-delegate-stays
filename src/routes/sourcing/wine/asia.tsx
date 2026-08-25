@@ -1,15 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { RegionalProductPage } from "../../../components/seo/regional-product-page";
+import { RegionalProductPage, getRegionalPageMeta } from "../../../components/seo/regional-product-page";
 import { buildSeoHead } from "../../../lib/seo";
+
+const seo = getRegionalPageMeta("wine", "asia");
 
 export const Route = createFileRoute("/sourcing/wine/asia")({
   head: () =>
     buildSeoHead({
-      title: "South African Wine for Asia | Kaapstays",
-      description:
-        "South African sourcing with global reach for Asian buyers seeking wine producers for import, distribution and hospitality.",
+      title: seo.title,
+      description: seo.description,
       path: "/sourcing/wine/asia",
-      keywords: ["south african wine Asia", "South African wine importer Asia"],
+      keywords: seo.keywords,
     }),
   component: () => <RegionalProductPage productKey="wine" regionKey="asia" />,
 });
