@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - main
+      # The connected Lovable workspace publishes changes from this branch.
+      # Deploy it as well so the Pages site does not remain on an older,
+      # potentially blank artifact while a pull request is awaiting merge.
+      - work
   workflow_dispatch:
 
 permissions:
