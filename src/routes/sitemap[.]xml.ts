@@ -23,6 +23,15 @@ export const Route = createFileRoute("/sitemap.xml")({
           { path: "/services/supplier-sourcing", changefreq: "monthly", priority: "0.8" },
           { path: "/services/export-coordination", changefreq: "monthly", priority: "0.8" },
           { path: "/about", changefreq: "monthly", priority: "0.7" },
+          { path: "/guides/rooibos-tea-guide", changefreq: "monthly", priority: "0.8" },
+          { path: "/guides/south-african-apple-season", changefreq: "monthly", priority: "0.8" },
+          { path: "/guides/dried-fruit-buyers-guide", changefreq: "monthly", priority: "0.8" },
+          { path: "/guides/macadamia-grades-guide", changefreq: "monthly", priority: "0.8" },
+          {
+            path: "/guides/south-african-wine-buyers-guide",
+            changefreq: "monthly",
+            priority: "0.8",
+          },
           { path: "/sourcing/macadamia-nuts/germany", changefreq: "monthly", priority: "0.8" },
           {
             path: "/sourcing/macadamia-nuts/united-states",
