@@ -68,6 +68,15 @@ function getRegionalMetaDescription(productKey, regionKey) {
   return regionalContentSource.match(pattern)?.[1];
 }
 
+function getRegionalMetaTitle(productKey, regionKey) {
+  const productToken = productKey.includes("-") ? `"${productKey}"` : productKey;
+  const regionToken = regionKey.includes("-") ? `"${regionKey}"` : regionKey;
+  const pattern = new RegExp(
+    `${escapeRegex(productToken)}\\s*:\\s*\\{[\\s\\S]*?${escapeRegex(regionToken)}\\s*:\\s*\\{[\\s\\S]*?metaTitle:\\s*"([^"]+)"`,
+  );
+  return regionalContentSource.match(pattern)?.[1];
+}
+
 function resolveMetaDescription(routeSource) {
   const inlineDescription = routeSource.match(/description:\s*"([^"]+)"/)?.[1];
   if (inlineDescription) return inlineDescription;
@@ -81,9 +90,56 @@ function resolveMetaDescription(routeSource) {
   return getRegionalMetaDescription(productKey, regionKey) ?? null;
 }
 
+function resolveMetaTitle(routeSource) {
+  const inlineTitle = routeSource.match(/title:\s*"([^"]+)"/)?.[1];
+  if (inlineTitle) return inlineTitle;
+
+  const regionalMatch = routeSource.match(
+    /const\s+seo\s*=\s*getRegionalPageMeta\("([^"]+)",\s*"([^"]+)"\);/,
+  );
+  if (!regionalMatch) return null;
+
+  const [, productKey, regionKey] = regionalMatch;
+  return getRegionalMetaTitle(productKey, regionKey) ?? null;
+}
+
+function getStaticBody(routePath, heading, description, routeSource) {
+  const sourceCopy = [...routeSource.matchAll(/(?:intro|body)=?\s*[":]([\s\S]*?)(?<!\\)"/g)]
+    .map((match) => match[1].replaceAll("\\n", " ").trim())
+    .filter((copy) => copy.length > 80)
+    .slice(0, 3);
+
+  const context = routePath.split("/").filter(Boolean).join(" ").replaceAll("-", " ");
+  const supportingCopy = [
+    `${heading} is part of Kaapstays' practical South African sourcing library for international buyers. This overview is designed to help importers, distributors, retailers and food manufacturers turn an initial requirement into a clear brief for capable suppliers.`,
+    `For ${context || "South African product sourcing"}, useful planning starts with the destination, intended product format, target volume, timing and commercial requirements. Confirm current availability, specifications, certifications, packaging and market-entry documentation directly with the appointed supplier and relevant destination-market advisers before placing an order.`,
+    `Use this page as a starting point, then compare documented supplier capabilities, approved samples, delivery terms and logistics responsibilities. A written specification and a clear approval process help all parties align the product at origin with the product required on arrival.`,
+  ];
+
+  return [...sourceCopy, description, ...supportingCopy]
+    .filter(Boolean)
+    .map((copy) => `<p>${escapeHtml(copy)}</p>`)
+    .join("\n");
+}
+
 function getPageH1(routePath) {
   if (routePath === "/") return "Good products. Right at the source.";
   if (routePath === "/about") return "A gateway to South Africa, built around good connections.";
+  if (routePath === "/guides/rooibos-tea-guide") {
+    return "Rooibos tea sourcing: a buyer's practical guide";
+  }
+  if (routePath === "/guides/south-african-apple-season") {
+    return "South African apple season: how buyers plan supply";
+  }
+  if (routePath === "/guides/dried-fruit-buyers-guide") {
+    return "Dried fruit sourcing: specifications before sampling";
+  }
+  if (routePath === "/guides/macadamia-grades-guide") {
+    return "Macadamia grades and formats: a wholesale buyer guide";
+  }
+  if (routePath === "/guides/south-african-wine-buyers-guide") {
+    return "South African wine sourcing: from brief to shipment";
+  }
   if (routePath === "/services/supplier-sourcing") {
     return "A clearer starting point for South African supply.";
   }
@@ -109,19 +165,38 @@ async function renderPageHtml(routePath) {
       : path.join(rootDir, "src", "routes", `${routePath.slice(1)}.tsx`);
   const routeSource = await readFile(routeFilePath, "utf8");
   const description = resolveMetaDescription(routeSource);
+  const title = resolveMetaTitle(routeSource);
 
-  if (!description) {
-    throw new Error(`Could not find a meta description for ${routePath}`);
+  if (!description || !title) {
+    throw new Error(`Could not find metadata for ${routePath}`);
   }
 
-  const metaDescription = `<meta name="description" content="${escapeHtml(description)}" />`;
+  const canonicalUrl = `https://kaapstays.co.za${routePath}`;
+  const headMetadata = [
+    `<title>${escapeHtml(title)}</title>`,
+    `<meta name="description" content="${escapeHtml(description)}" />`,
+    `<link rel="canonical" href="${escapeHtml(canonicalUrl)}" />`,
+    `<meta property="og:title" content="${escapeHtml(title)}" />`,
+    `<meta property="og:description" content="${escapeHtml(description)}" />`,
+    `<meta property="og:type" content="website" />`,
+    `<meta property="og:url" content="${escapeHtml(canonicalUrl)}" />`,
+    `<meta name="twitter:card" content="summary_large_image" />`,
+    `<meta name="twitter:title" content="${escapeHtml(title)}" />`,
+    `<meta name="twitter:description" content="${escapeHtml(description)}" />`,
+  ].join("\n    ");
   const heading = `<h1>${escapeHtml(getPageH1(routePath))}</h1>`;
+  const body = getStaticBody(routePath, getPageH1(routePath), description, routeSource);
+  const links = pagePaths
+    .filter((path) => path !== routePath)
+    .map((path) => `<a href="${path}">${escapeHtml(getPageH1(path))}</a>`)
+    .join("\n");
+  const staticContent = `<article class="static-page-content">${heading}\n${body}</article><nav aria-label="Explore Kaapstays">${links}</nav>`;
   return indexHtml
     .replace(
       '    <meta name="viewport" content="width=device-width, initial-scale=1.0" />',
-      (match) => `${match}\n    ${metaDescription}`,
+      (match) => `${match}\n    ${headMetadata}`,
     )
-    .replace('<div id="root"></div>', `<div id="root">${heading}</div>`);
+    .replace('<div id="root"></div>', `<div id="root">${staticContent}</div>`);
 }
 
 for (const routePath of pagePaths) {
