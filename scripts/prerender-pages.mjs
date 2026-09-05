@@ -84,6 +84,21 @@ function resolveMetaDescription(routeSource) {
 function getPageH1(routePath) {
   if (routePath === "/") return "Good products. Right at the source.";
   if (routePath === "/about") return "A gateway to South Africa, built around good connections.";
+  if (routePath === "/guides/rooibos-tea-guide") {
+    return "Rooibos tea sourcing: a buyer's practical guide";
+  }
+  if (routePath === "/guides/south-african-apple-season") {
+    return "South African apple season: how buyers plan supply";
+  }
+  if (routePath === "/guides/dried-fruit-buyers-guide") {
+    return "Dried fruit sourcing: specifications before sampling";
+  }
+  if (routePath === "/guides/macadamia-grades-guide") {
+    return "Macadamia grades and formats: a wholesale buyer guide";
+  }
+  if (routePath === "/guides/south-african-wine-buyers-guide") {
+    return "South African wine sourcing: from brief to shipment";
+  }
   if (routePath === "/services/supplier-sourcing") {
     return "A clearer starting point for South African supply.";
   }
