@@ -1,6 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import { ArrowUpRight, Check, Mail, MapPin, Phone } from "lucide-react";
+import {
+  ArrowRight,
+  ArrowUpRight,
+  Check,
+  FileCheck2,
+  Globe2,
+  Mail,
+  MapPin,
+  PackageCheck,
+  Phone,
+} from "lucide-react";
 import { buildSeoHead } from "../lib/seo";
 
 export const Route = createFileRoute("/")({
@@ -119,85 +129,154 @@ export function GatewayPage() {
 
   return (
     <main className="min-h-screen overflow-hidden bg-background text-foreground">
-      <header className="border-b border-border/70 bg-background/90">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
-          <a href="#top" className="flex items-baseline gap-3">
-            <span className="font-display text-2xl italic tracking-tight">Kaap</span>
-            <span className="text-xs uppercase tracking-[0.24em] text-muted-foreground">stays</span>
+      <div className="border-b border-border bg-primary py-2 text-primary-foreground">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-5 text-[11px] tracking-wide sm:px-8">
+          <span className="font-medium uppercase tracking-[0.14em]">Cape Town · South Africa</span>
+          <span className="hidden text-primary-foreground/75 sm:block">
+            Supplier sourcing &amp; export coordination
+          </span>
+          <a href="mailto:ongezile@kaapstays.co.za" className="hover:text-accent">
+            ongezile@kaapstays.co.za
           </a>
-          <nav className="hidden items-center gap-7 text-sm md:flex">
-            <a href="#products" className="hover:text-accent">
+        </div>
+      </div>
+      <header className="border-b border-border bg-background">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-5 sm:px-8">
+          <a href="#top" className="flex items-center gap-3" aria-label="Kaapstays home">
+            <span className="grid h-9 w-9 place-items-center border border-primary font-display text-xl font-semibold">
+              K
+            </span>
+            <span>
+              <span className="block font-display text-xl font-semibold leading-none tracking-tight">
+                Kaapstays
+              </span>
+              <span className="mt-1 block text-[9px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
+                Trading &amp; Sourcing
+              </span>
+            </span>
+          </a>
+          <nav className="hidden items-center gap-8 text-[13px] font-medium lg:flex">
+            <a href="#products" className="hover:text-accent transition-colors">
               Products
             </a>
-            <a href="#approach" className="hover:text-accent">
-              How we work
+            <a href="#approach" className="hover:text-accent transition-colors">
+              Services
+            </a>
+            <a href="/about" className="hover:text-accent transition-colors">
+              About us
             </a>
             <a
               href="#brief"
-              className="inline-flex items-center gap-2 font-medium hover:text-accent"
+              className="inline-flex items-center gap-2 border border-primary px-4 py-2.5 text-xs font-semibold uppercase tracking-[0.08em] transition-colors hover:bg-primary hover:text-primary-foreground"
             >
-              Start a brief <ArrowUpRight className="h-4 w-4" />
+              Make an enquiry <ArrowRight className="h-3.5 w-3.5" />
             </a>
           </nav>
-          <a href="#brief" className="text-sm font-medium md:hidden">
-            Brief <ArrowUpRight className="ml-1 inline h-4 w-4" />
+          <a
+            href="#brief"
+            className="border border-primary px-3 py-2 text-[11px] font-semibold uppercase tracking-wide lg:hidden"
+          >
+            Enquire
           </a>
         </div>
       </header>
 
-      <section
-        id="top"
-        className="border-b border-border/70 bg-[radial-gradient(circle_at_80%_20%,color-mix(in_oklab,var(--accent)_20%,transparent),transparent_34%),linear-gradient(135deg,var(--background),color-mix(in_oklab,var(--secondary)_65%,var(--background)))]"
-      >
-        <div className="mx-auto grid max-w-6xl gap-12 px-6 py-20 md:py-28 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
-          <div>
-            <p className="mb-6 text-xs uppercase tracking-[0.3em] text-accent">A Gateway to South Africa</p>
-            <h1 className="max-w-4xl font-display text-5xl leading-[0.98] tracking-tight md:text-7xl">
-              Good products.
-              <br />
-              <span className="italic text-accent">Right at the source.</span>
-            </h1>
-            <p className="mt-7 max-w-xl text-lg leading-relaxed text-muted-foreground">
-              Kaapstays helps buyers around the world source distinctive South African goods through capable suppliers, clear communication and practical export coordination.
+      <section id="top" className="border-b border-border bg-secondary/30">
+        <div className="mx-auto grid max-w-7xl lg:grid-cols-[1.15fr_0.85fr]">
+          <div className="px-5 py-16 sm:px-8 md:py-24 lg:py-28">
+            <p className="mb-7 flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-accent">
+              <span className="h-px w-8 bg-accent" /> South African sourcing desk
             </p>
-            <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground">
-              We work with importers, distributors, retailers and food manufacturers who need a dependable South African starting point from first brief to first shipment.
+            <h1 className="max-w-3xl font-display text-5xl font-medium leading-[1.02] tracking-tight md:text-6xl">
+              Sourcing South African goods, <span className="italic">without the guesswork.</span>
+            </h1>
+            <p className="mt-7 max-w-2xl text-base leading-7 text-muted-foreground md:text-lg">
+              A focused sourcing partner for importers, retailers and food businesses looking for
+              capable producers, clear commercial information and an orderly path to export.
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
               <a
                 href="#brief"
-                className="inline-flex items-center gap-2 rounded-sm bg-primary px-5 py-3 text-sm font-medium text-primary-foreground hover:bg-accent"
+                className="inline-flex items-center gap-2 bg-primary px-5 py-3.5 text-xs font-semibold uppercase tracking-[0.08em] text-primary-foreground hover:bg-accent"
               >
-                Request a sourcing brief <ArrowUpRight className="h-4 w-4" />
+                Send a sourcing brief <ArrowRight className="h-4 w-4" />
               </a>
               <a
                 href="#products"
-                className="inline-flex items-center rounded-sm border border-border px-5 py-3 text-sm font-medium hover:border-accent hover:text-accent"
+                className="inline-flex items-center border border-primary px-5 py-3.5 text-xs font-semibold uppercase tracking-[0.08em] hover:border-accent hover:text-accent"
               >
-                Explore products
+                View product categories
               </a>
             </div>
           </div>
-          <div className="border-l-2 border-accent pl-6 md:pl-8">
-            <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground">
-              Structured sourcing
+          <aside className="border-t border-border bg-primary px-5 py-12 text-primary-foreground sm:px-8 lg:border-l lg:border-t-0 lg:py-28">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-primary-foreground/60">
+              What a brief gives you
             </p>
-            <p className="mt-5 font-display text-3xl leading-tight md:text-4xl">
-              A practical route from supplier search to export-ready order.
-            </p>
-            <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
-              Built for international buyers who need clear communication, dependable introductions and commercially useful next steps.
-            </p>
-          </div>
+            <div className="mt-9 space-y-7">
+              {[
+                [
+                  PackageCheck,
+                  "Relevant supplier options",
+                  "Matched to product, format and likely order profile.",
+                ],
+                [
+                  FileCheck2,
+                  "Export-ready context",
+                  "Practical questions on grades, packaging and documentation.",
+                ],
+                [
+                  Globe2,
+                  "A clear next step",
+                  "A concise route forward for your destination market.",
+                ],
+              ].map(([Icon, title, detail]) => {
+                const ItemIcon = Icon as typeof PackageCheck;
+                return (
+                  <div
+                    key={title as string}
+                    className="flex gap-4 border-b border-primary-foreground/20 pb-6 last:border-0"
+                  >
+                    <ItemIcon className="mt-0.5 h-5 w-5 shrink-0 text-accent" />
+                    <div>
+                      <h2 className="text-sm font-semibold">{title as string}</h2>
+                      <p className="mt-1 text-sm leading-6 text-primary-foreground/70">
+                        {detail as string}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </aside>
         </div>
       </section>
 
-      <section id="products" className="mx-auto max-w-6xl px-6 py-20 md:py-24">
+      <section className="border-b border-border bg-background">
+        <div className="mx-auto grid max-w-7xl divide-y divide-border px-5 sm:px-8 md:grid-cols-3 md:divide-x md:divide-y-0">
+          {[
+            "Rooibos, fresh fruit, dried fruit, nuts & wine",
+            "Built for wholesale, retail & private label",
+            "Based in Cape Town, working across South Africa",
+          ].map((item, index) => (
+            <p
+              key={item}
+              className="py-5 text-center text-[11px] font-medium uppercase tracking-[0.1em] text-muted-foreground md:px-6"
+            >
+              0{index + 1} <span className="ml-2 text-foreground">{item}</span>
+            </p>
+          ))}
+        </div>
+      </section>
+
+      <section id="products" className="mx-auto max-w-7xl px-5 py-20 sm:px-8 md:py-24">
         <div className="grid gap-10 md:grid-cols-[0.75fr_1.25fr]">
           <div>
-            <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">What We Source</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">
+              Product categories
+            </p>
             <h2 className="mt-4 font-display text-4xl leading-tight md:text-5xl">
-              Focused categories with export depth.
+              Categories we know from source to shipment.
             </h2>
           </div>
           <div className="grid gap-px border border-border bg-border sm:grid-cols-2">
@@ -208,8 +287,13 @@ export function GatewayPage() {
               >
                 <span className="text-xs text-accent">{product.code}</span>
                 <h3 className="mt-6 font-display text-2xl">{product.name}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{product.detail}</p>
-                <a href={product.href} className="mt-5 inline-flex items-center gap-2 text-sm font-medium hover:text-accent">
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  {product.detail}
+                </p>
+                <a
+                  href={product.href}
+                  className="mt-5 inline-flex items-center gap-2 text-sm font-medium hover:text-accent"
+                >
                   {product.cta} <ArrowUpRight className="h-4 w-4" />
                 </a>
               </article>
@@ -218,10 +302,15 @@ export function GatewayPage() {
         </div>
       </section>
 
-      <section id="approach" className="border-y border-border/70 bg-primary text-primary-foreground">
+      <section
+        id="approach"
+        className="border-y border-border/70 bg-primary text-primary-foreground"
+      >
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-24">
           <div className="max-w-2xl">
-            <p className="text-xs uppercase tracking-[0.3em] text-primary-foreground/65">How We Work</p>
+            <p className="text-xs uppercase tracking-[0.3em] text-primary-foreground/65">
+              How We Work
+            </p>
             <h2 className="mt-4 font-display text-4xl leading-tight md:text-5xl">
               Source. Coordinate. Build.
             </h2>
@@ -243,12 +332,15 @@ export function GatewayPage() {
         className="mx-auto grid max-w-6xl gap-12 px-6 py-20 md:py-24 lg:grid-cols-[0.8fr_1.2fr]"
       >
         <div>
-          <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">Start a Conversation</p>
+          <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">
+            Start a Conversation
+          </p>
           <h2 className="mt-4 font-display text-4xl leading-tight md:text-5xl">
             Tell us what you need to bring to market.
           </h2>
           <p className="mt-6 leading-relaxed text-muted-foreground">
-            Share your product, destination, volume, timing and packaging requirements. We will come back with the right questions, possible supply paths and a clear next step.
+            Share your product, destination, volume, timing and packaging requirements. We will come
+            back with the right questions, possible supply paths and a clear next step.
           </p>
           <div className="mt-10 space-y-3 text-sm">
             <a
