@@ -28,6 +28,11 @@ export const Route = createFileRoute("/sitemap.xml")({
           { path: "/guides/dried-fruit-buyers-guide", changefreq: "monthly", priority: "0.8" },
           { path: "/guides/macadamia-grades-guide", changefreq: "monthly", priority: "0.8" },
           {
+            path: "/guides/south-africa-macadamia-export-map",
+            changefreq: "monthly",
+            priority: "0.8",
+          },
+          {
             path: "/guides/south-african-wine-buyers-guide",
             changefreq: "monthly",
             priority: "0.8",
