@@ -12,6 +12,12 @@ import {
   Phone,
 } from "lucide-react";
 import { buildSeoHead } from "../lib/seo";
+import {
+  AuthorByline,
+  TESTIMONIAL_SNIPPETS,
+  TrustBadgesBar,
+  TrustSignalHeader,
+} from "../components/seo/trust-proof";
 
 export const Route = createFileRoute("/")({
   head: () =>
@@ -180,6 +186,7 @@ export function GatewayPage() {
           </a>
         </div>
       </header>
+      <TrustSignalHeader compact />
 
       <section id="top" className="border-b border-border bg-secondary/30">
         <div className="mx-auto grid max-w-7xl lg:grid-cols-[1.15fr_0.85fr]">
@@ -327,6 +334,14 @@ export function GatewayPage() {
         </div>
       </section>
 
+      <section className="border-b border-border/70 bg-secondary/25">
+        <div className="mx-auto max-w-6xl px-6 py-10">
+          <blockquote className="border-l-2 border-accent pl-4 text-sm italic text-muted-foreground">
+            “{TESTIMONIAL_SNIPPETS[0]}”
+          </blockquote>
+        </div>
+      </section>
+
       <section
         id="brief"
         className="mx-auto grid max-w-6xl gap-12 px-6 py-20 md:py-24 lg:grid-cols-[0.8fr_1.2fr]"
@@ -356,6 +371,8 @@ export function GatewayPage() {
               <MapPin className="h-4 w-4" /> South Africa
             </div>
           </div>
+          <AuthorByline compact />
+          <TrustBadgesBar />
         </div>
         <form
           action={mailto}

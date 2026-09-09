@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SeoContentPage } from "../../components/seo/content-page";
+import { CASE_STUDIES, TESTIMONIAL_SNIPPETS } from "../../components/seo/trust-proof";
 import { buildSeoHead } from "../../lib/seo";
 
 export const Route = createFileRoute("/services/export-coordination")({
@@ -36,6 +37,8 @@ export const Route = createFileRoute("/services/export-coordination")({
           body: "Fees are typically per shipment or on monthly retainer for recurring programmes, depending on destination, product complexity and shipment frequency.",
         },
       ]}
+      caseStudies={[CASE_STUDIES.uaeHalalMacadamia, CASE_STUDIES.japanJasRooibos]}
+      testimonials={[TESTIMONIAL_SNIPPETS[2]]}
       links={[
         { href: "/services/supplier-sourcing", label: "View supplier sourcing" },
         { href: "/products/fresh-apples", label: "See fresh apple sourcing" },
