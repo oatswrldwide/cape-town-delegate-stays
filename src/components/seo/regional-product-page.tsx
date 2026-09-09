@@ -2,11 +2,7 @@ import { SeoContentPage, type SeoContentPageProps } from "./content-page";
 import { CASE_STUDIES, TESTIMONIAL_SNIPPETS } from "./trust-proof";
 
 export type RegionalProductKey =
-  | "macadamia-nuts"
-  | "rooibos-tea"
-  | "wine"
-  | "fresh-apples"
-  | "dried-fruit";
+  "macadamia-nuts" | "rooibos-tea" | "wine" | "fresh-apples" | "dried-fruit";
 
 export type BuyerRegionKey = "germany" | "united-states" | "asia" | "uae";
 

@@ -124,7 +124,10 @@ export function SeoContentPage({
             >
               Email your brief
             </a>
-            <a href={`tel:${CONTACT_PHONE.replace(/\s+/g, "")}`} className="rounded-sm border border-border px-4 py-2">
+            <a
+              href={`tel:${CONTACT_PHONE.replace(/\s+/g, "")}`}
+              className="rounded-sm border border-border px-4 py-2"
+            >
               Call {CONTACT_PHONE}
             </a>
           </div>

@@ -227,9 +227,7 @@ export function SourcesBlock({ sources }: SourcesBlockProps) {
 export function TrustBadgesBar() {
   return (
     <div className="mt-8 border border-border/80 bg-secondary/20 p-4">
-      <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
-        Trust badges
-      </p>
+      <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Trust badges</p>
       <div className="mt-3 flex flex-wrap gap-2">
         {TRUST_BADGES.map((badge) => (
           <span key={badge} className="rounded-sm border border-border px-3 py-1 text-xs">
