@@ -1,6 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { CONTACT_EMAIL } from "../../lib/site";
 import { buildSeoHead } from "../../lib/seo";
+import {
+  AuthorByline,
+  SourcesBlock,
+  TESTIMONIAL_SNIPPETS,
+  TrustBadgesBar,
+  TrustSignalHeader,
+} from "../../components/seo/trust-proof";
 
 const destinations = [
   ["1", "China", "$79.7M", "24,733 tons", "80.2%", "$3,224"],
@@ -42,8 +49,15 @@ export const Route = createFileRoute("/guides/south-africa-macadamia-export-map"
 });
 
 function MacadamiaExportMap() {
+  const sources = [
+    "ITC Trade Map, South Africa exports HS 080261 (fresh or dried macadamia nuts, in shell), 2025.",
+    "ITC Export Potential Map, Macadamia nuts — South Africa, 2025.",
+    "Data analysis and buyer programme context by Kaapstays sourcing desk.",
+  ];
+
   return (
     <main className="min-h-screen bg-background text-foreground">
+      <TrustSignalHeader />
       <header className="border-b border-border/70 bg-secondary/25">
         <div className="mx-auto max-w-6xl px-6 py-16 md:py-24">
           <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">
@@ -259,22 +273,24 @@ function MacadamiaExportMap() {
             processors. We structure the brief, verify the supplier and coordinate the export—so you
             can access premium kernel at the source, not commodity in-shell through a middleman.
           </p>
+          <AuthorByline compact />
           <a
             href={`mailto:${CONTACT_EMAIL}?subject=Macadamia%20sourcing%20brief`}
             className="mt-8 inline-block rounded-sm bg-primary px-5 py-3 text-sm text-primary-foreground"
           >
             Start a macadamia sourcing brief
           </a>
-          <div className="mt-12 border-t border-border pt-6 text-sm leading-relaxed text-muted-foreground">
-            <p className="font-medium text-foreground">Sources</p>
-            <p className="mt-2">
-              ITC Trade Map, South Africa exports HS 080261 (fresh or dried macadamia nuts, in
-              shell), 2025; ITC Export Potential Map, Macadamia nuts — South Africa, 2025; data
-              analysis by Kaapstays.
-            </p>
-          </div>
+          <TrustBadgesBar />
         </div>
       </section>
+      <section className="border-t border-border/70">
+        <div className="mx-auto max-w-6xl px-6 py-10">
+          <blockquote className="border-l-2 border-accent pl-4 text-sm italic text-muted-foreground">
+            “{TESTIMONIAL_SNIPPETS[2]}”
+          </blockquote>
+        </div>
+      </section>
+      <SourcesBlock sources={sources} />
     </main>
   );
 }
