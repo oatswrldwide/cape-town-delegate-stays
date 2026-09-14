@@ -115,6 +115,9 @@ function getPageH1(routePath) {
   if (routePath === "/guides/organic-rooibos-tea-sourcing") {
     return "Organic rooibos tea sourcing: certification before the label";
   }
+  if (routePath === "/guides/flavoured-rooibos-private-label") {
+    return "Flavoured rooibos tea and private label: a practical buying guide";
+  }
   if (routePath === "/guides/south-african-apple-season") {
     return "South African apple season: how buyers plan supply";
   }

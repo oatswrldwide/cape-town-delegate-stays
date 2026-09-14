@@ -99,6 +99,7 @@ export const Route = createFileRoute("/products/rooibos-and-tea")({
       links={[
         { href: "/guides/rooibos-tea-price-wholesale", label: "Rooibos tea price guide" },
         { href: "/guides/organic-rooibos-tea-sourcing", label: "Organic rooibos guide" },
+        { href: "/guides/flavoured-rooibos-private-label", label: "Flavoured rooibos guide" },
         { href: "/guides/rooibos-tea-guide", label: "Rooibos tea buyer guide" },
         { href: "/sourcing/rooibos-tea/germany", label: "Rooibos for Germany" },
         { href: "/sourcing/rooibos-tea/united-states", label: "Rooibos for the United States" },
