@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { CONTACT_EMAIL, CONTACT_PHONE } from "../../lib/site";
+import { buildFaqPageSchema } from "../../lib/structured-data";
 import {
   AuthorByline,
   CaseStudiesSection,
@@ -49,8 +50,16 @@ export function SeoContentPage({
   testimonials = [],
   sources = [],
 }: SeoContentPageProps) {
+  const faqSchema = faqs?.length ? buildFaqPageSchema(faqs) : null;
+
   return (
     <main className="min-h-screen bg-background text-foreground">
+      {faqSchema ? (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      ) : null}
       <TrustSignalHeader />
       <section className="border-b border-border/70">
         <div className="mx-auto max-w-5xl px-6 py-16 md:py-20">
