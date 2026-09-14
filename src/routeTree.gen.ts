@@ -15,6 +15,7 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as GuidesDriedFruitBuyersGuideRouteImport } from './routes/guides/dried-fruit-buyers-guide'
 import { Route as GuidesMacadamiaGradesGuideRouteImport } from './routes/guides/macadamia-grades-guide'
 import { Route as GuidesRooibosTeaGuideRouteImport } from './routes/guides/rooibos-tea-guide'
+import { Route as GuidesRooibosTeaPriceWholesaleRouteImport } from './routes/guides/rooibos-tea-price-wholesale'
 import { Route as GuidesSouthAfricaMacadamiaExportMapRouteImport } from './routes/guides/south-africa-macadamia-export-map'
 import { Route as GuidesSouthAfricanAppleSeasonRouteImport } from './routes/guides/south-african-apple-season'
 import { Route as GuidesSouthAfricanWineBuyersGuideRouteImport } from './routes/guides/south-african-wine-buyers-guide'
@@ -78,6 +79,12 @@ const GuidesRooibosTeaGuideRoute = GuidesRooibosTeaGuideRouteImport.update({
   path: '/guides/rooibos-tea-guide',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GuidesRooibosTeaPriceWholesaleRoute =
+  GuidesRooibosTeaPriceWholesaleRouteImport.update({
+    id: '/guides/rooibos-tea-price-wholesale',
+    path: '/guides/rooibos-tea-price-wholesale',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const GuidesSouthAfricaMacadamiaExportMapRoute =
   GuidesSouthAfricaMacadamiaExportMapRouteImport.update({
     id: '/guides/south-africa-macadamia-export-map',
@@ -252,6 +259,7 @@ export interface FileRoutesByFullPath {
   '/guides/dried-fruit-buyers-guide': typeof GuidesDriedFruitBuyersGuideRoute
   '/guides/macadamia-grades-guide': typeof GuidesMacadamiaGradesGuideRoute
   '/guides/rooibos-tea-guide': typeof GuidesRooibosTeaGuideRoute
+  '/guides/rooibos-tea-price-wholesale': typeof GuidesRooibosTeaPriceWholesaleRoute
   '/guides/south-africa-macadamia-export-map': typeof GuidesSouthAfricaMacadamiaExportMapRoute
   '/guides/south-african-apple-season': typeof GuidesSouthAfricanAppleSeasonRoute
   '/guides/south-african-wine-buyers-guide': typeof GuidesSouthAfricanWineBuyersGuideRoute
@@ -290,6 +298,7 @@ export interface FileRoutesByTo {
   '/guides/dried-fruit-buyers-guide': typeof GuidesDriedFruitBuyersGuideRoute
   '/guides/macadamia-grades-guide': typeof GuidesMacadamiaGradesGuideRoute
   '/guides/rooibos-tea-guide': typeof GuidesRooibosTeaGuideRoute
+  '/guides/rooibos-tea-price-wholesale': typeof GuidesRooibosTeaPriceWholesaleRoute
   '/guides/south-africa-macadamia-export-map': typeof GuidesSouthAfricaMacadamiaExportMapRoute
   '/guides/south-african-apple-season': typeof GuidesSouthAfricanAppleSeasonRoute
   '/guides/south-african-wine-buyers-guide': typeof GuidesSouthAfricanWineBuyersGuideRoute
@@ -329,6 +338,7 @@ export interface FileRoutesById {
   '/guides/dried-fruit-buyers-guide': typeof GuidesDriedFruitBuyersGuideRoute
   '/guides/macadamia-grades-guide': typeof GuidesMacadamiaGradesGuideRoute
   '/guides/rooibos-tea-guide': typeof GuidesRooibosTeaGuideRoute
+  '/guides/rooibos-tea-price-wholesale': typeof GuidesRooibosTeaPriceWholesaleRoute
   '/guides/south-africa-macadamia-export-map': typeof GuidesSouthAfricaMacadamiaExportMapRoute
   '/guides/south-african-apple-season': typeof GuidesSouthAfricanAppleSeasonRoute
   '/guides/south-african-wine-buyers-guide': typeof GuidesSouthAfricanWineBuyersGuideRoute
@@ -369,6 +379,7 @@ export interface FileRouteTypes {
     | '/guides/dried-fruit-buyers-guide'
     | '/guides/macadamia-grades-guide'
     | '/guides/rooibos-tea-guide'
+    | '/guides/rooibos-tea-price-wholesale'
     | '/guides/south-africa-macadamia-export-map'
     | '/guides/south-african-apple-season'
     | '/guides/south-african-wine-buyers-guide'
@@ -407,6 +418,7 @@ export interface FileRouteTypes {
     | '/guides/dried-fruit-buyers-guide'
     | '/guides/macadamia-grades-guide'
     | '/guides/rooibos-tea-guide'
+    | '/guides/rooibos-tea-price-wholesale'
     | '/guides/south-africa-macadamia-export-map'
     | '/guides/south-african-apple-season'
     | '/guides/south-african-wine-buyers-guide'
@@ -445,6 +457,7 @@ export interface FileRouteTypes {
     | '/guides/dried-fruit-buyers-guide'
     | '/guides/macadamia-grades-guide'
     | '/guides/rooibos-tea-guide'
+    | '/guides/rooibos-tea-price-wholesale'
     | '/guides/south-africa-macadamia-export-map'
     | '/guides/south-african-apple-season'
     | '/guides/south-african-wine-buyers-guide'
@@ -484,6 +497,7 @@ export interface RootRouteChildren {
   GuidesDriedFruitBuyersGuideRoute: typeof GuidesDriedFruitBuyersGuideRoute
   GuidesMacadamiaGradesGuideRoute: typeof GuidesMacadamiaGradesGuideRoute
   GuidesRooibosTeaGuideRoute: typeof GuidesRooibosTeaGuideRoute
+  GuidesRooibosTeaPriceWholesaleRoute: typeof GuidesRooibosTeaPriceWholesaleRoute
   GuidesSouthAfricaMacadamiaExportMapRoute: typeof GuidesSouthAfricaMacadamiaExportMapRoute
   GuidesSouthAfricanAppleSeasonRoute: typeof GuidesSouthAfricanAppleSeasonRoute
   GuidesSouthAfricanWineBuyersGuideRoute: typeof GuidesSouthAfricanWineBuyersGuideRoute
@@ -558,6 +572,13 @@ declare module '@tanstack/react-router' {
       path: '/guides/rooibos-tea-guide'
       fullPath: '/guides/rooibos-tea-guide'
       preLoaderRoute: typeof GuidesRooibosTeaGuideRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/guides/rooibos-tea-price-wholesale': {
+      id: '/guides/rooibos-tea-price-wholesale'
+      path: '/guides/rooibos-tea-price-wholesale'
+      fullPath: '/guides/rooibos-tea-price-wholesale'
+      preLoaderRoute: typeof GuidesRooibosTeaPriceWholesaleRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/guides/south-africa-macadamia-export-map': {
@@ -780,6 +801,7 @@ const rootRouteChildren: RootRouteChildren = {
   GuidesDriedFruitBuyersGuideRoute: GuidesDriedFruitBuyersGuideRoute,
   GuidesMacadamiaGradesGuideRoute: GuidesMacadamiaGradesGuideRoute,
   GuidesRooibosTeaGuideRoute: GuidesRooibosTeaGuideRoute,
+  GuidesRooibosTeaPriceWholesaleRoute: GuidesRooibosTeaPriceWholesaleRoute,
   GuidesSouthAfricaMacadamiaExportMapRoute:
     GuidesSouthAfricaMacadamiaExportMapRoute,
   GuidesSouthAfricanAppleSeasonRoute: GuidesSouthAfricanAppleSeasonRoute,

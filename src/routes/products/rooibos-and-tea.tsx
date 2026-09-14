@@ -97,6 +97,7 @@ export const Route = createFileRoute("/products/rooibos-and-tea")({
       caseStudies={[CASE_STUDIES.usRooibosLaunch]}
       testimonials={[TESTIMONIAL_SNIPPETS[1]]}
       links={[
+        { href: "/guides/rooibos-tea-price-wholesale", label: "Rooibos tea price guide" },
         { href: "/guides/rooibos-tea-guide", label: "Rooibos tea buyer guide" },
         { href: "/sourcing/rooibos-tea/germany", label: "Rooibos for Germany" },
         { href: "/sourcing/rooibos-tea/united-states", label: "Rooibos for the United States" },

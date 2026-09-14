@@ -109,6 +109,9 @@ function getPageH1(routePath) {
   if (routePath === "/guides/rooibos-tea-guide") {
     return "Rooibos tea sourcing: a buyer's practical guide";
   }
+  if (routePath === "/guides/rooibos-tea-price-wholesale") {
+    return "Rooibos tea price: what wholesale buyers need to compare";
+  }
   if (routePath === "/guides/south-african-apple-season") {
     return "South African apple season: how buyers plan supply";
   }
