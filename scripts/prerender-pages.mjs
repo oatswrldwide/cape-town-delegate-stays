@@ -68,6 +68,28 @@ function getRegionalMetaDescription(productKey, regionKey) {
   return regionalContentSource.match(pattern)?.[1];
 }
 
+function getRegionalMetaTitle(productKey, regionKey) {
+  const productToken = productKey.includes("-") ? `"${productKey}"` : productKey;
+  const regionToken = regionKey.includes("-") ? `"${regionKey}"` : regionKey;
+  const pattern = new RegExp(
+    `${escapeRegex(productToken)}\\s*:\\s*\\{[\\s\\S]*?${escapeRegex(regionToken)}\\s*:\\s*\\{[\\s\\S]*?metaTitle:\\s*"([^"]+)"`,
+  );
+  return regionalContentSource.match(pattern)?.[1];
+}
+
+function resolveMetaTitle(routeSource) {
+  const inlineTitle = routeSource.match(/title:\s*"([^"]+)"/)?.[1];
+  if (inlineTitle) return inlineTitle;
+
+  const regionalMatch = routeSource.match(
+    /const\s+seo\s*=\s*getRegionalPageMeta\("([^"]+)",\s*"([^"]+)"\);/,
+  );
+  if (!regionalMatch) return null;
+
+  const [, productKey, regionKey] = regionalMatch;
+  return getRegionalMetaTitle(productKey, regionKey) ?? null;
+}
+
 function resolveMetaDescription(routeSource) {
   const inlineDescription = routeSource.match(/description:\s*"([^"]+)"/)?.[1];
   if (inlineDescription) return inlineDescription;
@@ -108,15 +130,18 @@ async function renderPageHtml(routePath) {
       ? path.join(rootDir, "src", "routes", "index.tsx")
       : path.join(rootDir, "src", "routes", `${routePath.slice(1)}.tsx`);
   const routeSource = await readFile(routeFilePath, "utf8");
+  const title = resolveMetaTitle(routeSource);
   const description = resolveMetaDescription(routeSource);
 
-  if (!description) {
-    throw new Error(`Could not find a meta description for ${routePath}`);
+  if (!title || !description) {
+    throw new Error(`Could not find SEO metadata for ${routePath}`);
   }
 
+  const pageTitle = `<title>${escapeHtml(title)}</title>`;
   const metaDescription = `<meta name="description" content="${escapeHtml(description)}" />`;
   const heading = `<h1>${escapeHtml(getPageH1(routePath))}</h1>`;
   return indexHtml
+    .replace(/<title>[\s\S]*?<\/title>/, pageTitle)
     .replace(
       '    <meta name="viewport" content="width=device-width, initial-scale=1.0" />',
       (match) => `${match}\n    ${metaDescription}`,
