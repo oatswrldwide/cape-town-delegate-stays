@@ -14,6 +14,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as GuidesDriedFruitBuyersGuideRouteImport } from './routes/guides/dried-fruit-buyers-guide'
 import { Route as GuidesMacadamiaGradesGuideRouteImport } from './routes/guides/macadamia-grades-guide'
+import { Route as GuidesOrganicRooibosTeaSourcingRouteImport } from './routes/guides/organic-rooibos-tea-sourcing'
 import { Route as GuidesRooibosTeaGuideRouteImport } from './routes/guides/rooibos-tea-guide'
 import { Route as GuidesRooibosTeaPriceWholesaleRouteImport } from './routes/guides/rooibos-tea-price-wholesale'
 import { Route as GuidesSouthAfricaMacadamiaExportMapRouteImport } from './routes/guides/south-africa-macadamia-export-map'
@@ -72,6 +73,12 @@ const GuidesMacadamiaGradesGuideRoute =
   GuidesMacadamiaGradesGuideRouteImport.update({
     id: '/guides/macadamia-grades-guide',
     path: '/guides/macadamia-grades-guide',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const GuidesOrganicRooibosTeaSourcingRoute =
+  GuidesOrganicRooibosTeaSourcingRouteImport.update({
+    id: '/guides/organic-rooibos-tea-sourcing',
+    path: '/guides/organic-rooibos-tea-sourcing',
     getParentRoute: () => rootRouteImport,
   } as any)
 const GuidesRooibosTeaGuideRoute = GuidesRooibosTeaGuideRouteImport.update({
@@ -258,6 +265,7 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/guides/dried-fruit-buyers-guide': typeof GuidesDriedFruitBuyersGuideRoute
   '/guides/macadamia-grades-guide': typeof GuidesMacadamiaGradesGuideRoute
+  '/guides/organic-rooibos-tea-sourcing': typeof GuidesOrganicRooibosTeaSourcingRoute
   '/guides/rooibos-tea-guide': typeof GuidesRooibosTeaGuideRoute
   '/guides/rooibos-tea-price-wholesale': typeof GuidesRooibosTeaPriceWholesaleRoute
   '/guides/south-africa-macadamia-export-map': typeof GuidesSouthAfricaMacadamiaExportMapRoute
@@ -297,6 +305,7 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/guides/dried-fruit-buyers-guide': typeof GuidesDriedFruitBuyersGuideRoute
   '/guides/macadamia-grades-guide': typeof GuidesMacadamiaGradesGuideRoute
+  '/guides/organic-rooibos-tea-sourcing': typeof GuidesOrganicRooibosTeaSourcingRoute
   '/guides/rooibos-tea-guide': typeof GuidesRooibosTeaGuideRoute
   '/guides/rooibos-tea-price-wholesale': typeof GuidesRooibosTeaPriceWholesaleRoute
   '/guides/south-africa-macadamia-export-map': typeof GuidesSouthAfricaMacadamiaExportMapRoute
@@ -337,6 +346,7 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/guides/dried-fruit-buyers-guide': typeof GuidesDriedFruitBuyersGuideRoute
   '/guides/macadamia-grades-guide': typeof GuidesMacadamiaGradesGuideRoute
+  '/guides/organic-rooibos-tea-sourcing': typeof GuidesOrganicRooibosTeaSourcingRoute
   '/guides/rooibos-tea-guide': typeof GuidesRooibosTeaGuideRoute
   '/guides/rooibos-tea-price-wholesale': typeof GuidesRooibosTeaPriceWholesaleRoute
   '/guides/south-africa-macadamia-export-map': typeof GuidesSouthAfricaMacadamiaExportMapRoute
@@ -378,6 +388,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/guides/dried-fruit-buyers-guide'
     | '/guides/macadamia-grades-guide'
+    | '/guides/organic-rooibos-tea-sourcing'
     | '/guides/rooibos-tea-guide'
     | '/guides/rooibos-tea-price-wholesale'
     | '/guides/south-africa-macadamia-export-map'
@@ -417,6 +428,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/guides/dried-fruit-buyers-guide'
     | '/guides/macadamia-grades-guide'
+    | '/guides/organic-rooibos-tea-sourcing'
     | '/guides/rooibos-tea-guide'
     | '/guides/rooibos-tea-price-wholesale'
     | '/guides/south-africa-macadamia-export-map'
@@ -456,6 +468,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/guides/dried-fruit-buyers-guide'
     | '/guides/macadamia-grades-guide'
+    | '/guides/organic-rooibos-tea-sourcing'
     | '/guides/rooibos-tea-guide'
     | '/guides/rooibos-tea-price-wholesale'
     | '/guides/south-africa-macadamia-export-map'
@@ -496,6 +509,7 @@ export interface RootRouteChildren {
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   GuidesDriedFruitBuyersGuideRoute: typeof GuidesDriedFruitBuyersGuideRoute
   GuidesMacadamiaGradesGuideRoute: typeof GuidesMacadamiaGradesGuideRoute
+  GuidesOrganicRooibosTeaSourcingRoute: typeof GuidesOrganicRooibosTeaSourcingRoute
   GuidesRooibosTeaGuideRoute: typeof GuidesRooibosTeaGuideRoute
   GuidesRooibosTeaPriceWholesaleRoute: typeof GuidesRooibosTeaPriceWholesaleRoute
   GuidesSouthAfricaMacadamiaExportMapRoute: typeof GuidesSouthAfricaMacadamiaExportMapRoute
@@ -565,6 +579,13 @@ declare module '@tanstack/react-router' {
       path: '/guides/macadamia-grades-guide'
       fullPath: '/guides/macadamia-grades-guide'
       preLoaderRoute: typeof GuidesMacadamiaGradesGuideRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/guides/organic-rooibos-tea-sourcing': {
+      id: '/guides/organic-rooibos-tea-sourcing'
+      path: '/guides/organic-rooibos-tea-sourcing'
+      fullPath: '/guides/organic-rooibos-tea-sourcing'
+      preLoaderRoute: typeof GuidesOrganicRooibosTeaSourcingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/guides/rooibos-tea-guide': {
@@ -800,6 +821,7 @@ const rootRouteChildren: RootRouteChildren = {
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   GuidesDriedFruitBuyersGuideRoute: GuidesDriedFruitBuyersGuideRoute,
   GuidesMacadamiaGradesGuideRoute: GuidesMacadamiaGradesGuideRoute,
+  GuidesOrganicRooibosTeaSourcingRoute: GuidesOrganicRooibosTeaSourcingRoute,
   GuidesRooibosTeaGuideRoute: GuidesRooibosTeaGuideRoute,
   GuidesRooibosTeaPriceWholesaleRoute: GuidesRooibosTeaPriceWholesaleRoute,
   GuidesSouthAfricaMacadamiaExportMapRoute:

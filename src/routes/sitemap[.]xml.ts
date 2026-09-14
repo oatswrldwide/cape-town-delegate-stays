@@ -29,6 +29,11 @@ export const Route = createFileRoute("/sitemap.xml")({
             changefreq: "monthly",
             priority: "0.85",
           },
+          {
+            path: "/guides/organic-rooibos-tea-sourcing",
+            changefreq: "monthly",
+            priority: "0.85",
+          },
           { path: "/guides/south-african-apple-season", changefreq: "monthly", priority: "0.8" },
           { path: "/guides/dried-fruit-buyers-guide", changefreq: "monthly", priority: "0.8" },
           { path: "/guides/macadamia-grades-guide", changefreq: "monthly", priority: "0.8" },

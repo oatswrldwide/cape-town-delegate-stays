@@ -112,6 +112,9 @@ function getPageH1(routePath) {
   if (routePath === "/guides/rooibos-tea-price-wholesale") {
     return "Rooibos tea price: what wholesale buyers need to compare";
   }
+  if (routePath === "/guides/organic-rooibos-tea-sourcing") {
+    return "Organic rooibos tea sourcing: certification before the label";
+  }
   if (routePath === "/guides/south-african-apple-season") {
     return "South African apple season: how buyers plan supply";
   }
