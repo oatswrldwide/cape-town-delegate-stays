@@ -28,6 +28,7 @@ import { Route as ProductsRooibosAndTeaRouteImport } from './routes/products/roo
 import { Route as ProductsWineRouteImport } from './routes/products/wine'
 import { Route as ServicesExportCoordinationRouteImport } from './routes/services/export-coordination'
 import { Route as ServicesSupplierSourcingRouteImport } from './routes/services/supplier-sourcing'
+import { Route as SourcingProductMarketRouteImport } from './routes/sourcing/$product/$market'
 import { Route as SourcingDriedFruitAsiaRouteImport } from './routes/sourcing/dried-fruit/asia'
 import { Route as SourcingDriedFruitGermanyRouteImport } from './routes/sourcing/dried-fruit/germany'
 import { Route as SourcingDriedFruitUaeRouteImport } from './routes/sourcing/dried-fruit/uae'
@@ -154,6 +155,11 @@ const ServicesSupplierSourcingRoute =
     path: '/services/supplier-sourcing',
     getParentRoute: () => rootRouteImport,
   } as any)
+const SourcingProductMarketRoute = SourcingProductMarketRouteImport.update({
+  id: '/sourcing/$product/$market',
+  path: '/sourcing/$product/$market',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SourcingDriedFruitAsiaRoute = SourcingDriedFruitAsiaRouteImport.update({
   id: '/sourcing/dried-fruit/asia',
   path: '/sourcing/dried-fruit/asia',
@@ -286,6 +292,7 @@ export interface FileRoutesByFullPath {
   '/products/wine': typeof ProductsWineRoute
   '/services/export-coordination': typeof ServicesExportCoordinationRoute
   '/services/supplier-sourcing': typeof ServicesSupplierSourcingRoute
+  '/sourcing/$product/$market': typeof SourcingProductMarketRoute
   '/sourcing/dried-fruit/asia': typeof SourcingDriedFruitAsiaRoute
   '/sourcing/dried-fruit/germany': typeof SourcingDriedFruitGermanyRoute
   '/sourcing/dried-fruit/uae': typeof SourcingDriedFruitUaeRoute
@@ -327,6 +334,7 @@ export interface FileRoutesByTo {
   '/products/wine': typeof ProductsWineRoute
   '/services/export-coordination': typeof ServicesExportCoordinationRoute
   '/services/supplier-sourcing': typeof ServicesSupplierSourcingRoute
+  '/sourcing/$product/$market': typeof SourcingProductMarketRoute
   '/sourcing/dried-fruit/asia': typeof SourcingDriedFruitAsiaRoute
   '/sourcing/dried-fruit/germany': typeof SourcingDriedFruitGermanyRoute
   '/sourcing/dried-fruit/uae': typeof SourcingDriedFruitUaeRoute
@@ -369,6 +377,7 @@ export interface FileRoutesById {
   '/products/wine': typeof ProductsWineRoute
   '/services/export-coordination': typeof ServicesExportCoordinationRoute
   '/services/supplier-sourcing': typeof ServicesSupplierSourcingRoute
+  '/sourcing/$product/$market': typeof SourcingProductMarketRoute
   '/sourcing/dried-fruit/asia': typeof SourcingDriedFruitAsiaRoute
   '/sourcing/dried-fruit/germany': typeof SourcingDriedFruitGermanyRoute
   '/sourcing/dried-fruit/uae': typeof SourcingDriedFruitUaeRoute
@@ -412,6 +421,7 @@ export interface FileRouteTypes {
     | '/products/wine'
     | '/services/export-coordination'
     | '/services/supplier-sourcing'
+    | '/sourcing/$product/$market'
     | '/sourcing/dried-fruit/asia'
     | '/sourcing/dried-fruit/germany'
     | '/sourcing/dried-fruit/uae'
@@ -453,6 +463,7 @@ export interface FileRouteTypes {
     | '/products/wine'
     | '/services/export-coordination'
     | '/services/supplier-sourcing'
+    | '/sourcing/$product/$market'
     | '/sourcing/dried-fruit/asia'
     | '/sourcing/dried-fruit/germany'
     | '/sourcing/dried-fruit/uae'
@@ -494,6 +505,7 @@ export interface FileRouteTypes {
     | '/products/wine'
     | '/services/export-coordination'
     | '/services/supplier-sourcing'
+    | '/sourcing/$product/$market'
     | '/sourcing/dried-fruit/asia'
     | '/sourcing/dried-fruit/germany'
     | '/sourcing/dried-fruit/uae'
@@ -536,6 +548,7 @@ export interface RootRouteChildren {
   ProductsWineRoute: typeof ProductsWineRoute
   ServicesExportCoordinationRoute: typeof ServicesExportCoordinationRoute
   ServicesSupplierSourcingRoute: typeof ServicesSupplierSourcingRoute
+  SourcingProductMarketRoute: typeof SourcingProductMarketRoute
   SourcingDriedFruitAsiaRoute: typeof SourcingDriedFruitAsiaRoute
   SourcingDriedFruitGermanyRoute: typeof SourcingDriedFruitGermanyRoute
   SourcingDriedFruitUaeRoute: typeof SourcingDriedFruitUaeRoute
@@ -691,6 +704,13 @@ declare module '@tanstack/react-router' {
       path: '/services/supplier-sourcing'
       fullPath: '/services/supplier-sourcing'
       preLoaderRoute: typeof ServicesSupplierSourcingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sourcing/$product/$market': {
+      id: '/sourcing/$product/$market'
+      path: '/sourcing/$product/$market'
+      fullPath: '/sourcing/$product/$market'
+      preLoaderRoute: typeof SourcingProductMarketRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sourcing/dried-fruit/asia': {
@@ -859,6 +879,7 @@ const rootRouteChildren: RootRouteChildren = {
   ProductsWineRoute: ProductsWineRoute,
   ServicesExportCoordinationRoute: ServicesExportCoordinationRoute,
   ServicesSupplierSourcingRoute: ServicesSupplierSourcingRoute,
+  SourcingProductMarketRoute: SourcingProductMarketRoute,
   SourcingDriedFruitAsiaRoute: SourcingDriedFruitAsiaRoute,
   SourcingDriedFruitGermanyRoute: SourcingDriedFruitGermanyRoute,
   SourcingDriedFruitUaeRoute: SourcingDriedFruitUaeRoute,

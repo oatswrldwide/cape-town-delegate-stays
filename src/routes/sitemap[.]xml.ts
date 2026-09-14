@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
 import { SITE_URL } from "../lib/site";
+import { expansionPages } from "../lib/expansion-pages";
 
 interface SitemapEntry {
   path: string;
@@ -76,6 +77,11 @@ export const Route = createFileRoute("/sitemap.xml")({
           { path: "/sourcing/dried-fruit/united-states", changefreq: "monthly", priority: "0.8" },
           { path: "/sourcing/dried-fruit/asia", changefreq: "monthly", priority: "0.8" },
           { path: "/sourcing/dried-fruit/uae", changefreq: "monthly", priority: "0.8" },
+          ...expansionPages.map(({ path }) => ({
+            path,
+            changefreq: "monthly" as const,
+            priority: "0.75",
+          })),
         ];
 
         const urls = entries.map((e) =>

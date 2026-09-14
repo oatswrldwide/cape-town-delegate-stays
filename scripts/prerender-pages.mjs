@@ -1,5 +1,8 @@
 import { readFile, writeFile, mkdir } from "node:fs/promises";
 import path from "node:path";
+import { createServer } from "vite";
+import React from "react";
+import { renderToStaticMarkup } from "react-dom/server";
 
 const rootDir = process.cwd();
 const distDir = path.join(rootDir, "dist");
@@ -16,6 +19,22 @@ const regionalContentPath = path.join(
 const routeTreeSource = await readFile(routeTreePath, "utf8");
 const indexHtml = await readFile(indexHtmlPath, "utf8");
 const regionalContentSource = await readFile(regionalContentPath, "utf8");
+const expansionContentSource = await readFile(
+  path.join(rootDir, "src", "lib", "expansion-pages.ts"),
+  "utf8",
+);
+const viteServer = await createServer({
+  root: rootDir,
+  configFile: path.join(rootDir, "vite.pages.config.ts"),
+  server: { middlewareMode: true },
+  appType: "custom",
+});
+const expansionModule = await viteServer.ssrLoadModule(
+  path.join(rootDir, "src", "lib", "expansion-pages.ts"),
+);
+const contentPageModule = await viteServer.ssrLoadModule(
+  path.join(rootDir, "src", "components", "seo", "content-page.tsx"),
+);
 
 const productNames = {
   "dried-fruit": "Dried fruit",
@@ -34,6 +53,29 @@ const regionNames = {
   "united-states": "the United States",
 };
 
+const expansionMarketNames = {
+  uk: "the United Kingdom",
+  netherlands: "the Netherlands",
+  france: "France",
+  switzerland: "Switzerland",
+  canada: "Canada",
+  japan: "Japan",
+  "south-korea": "South Korea",
+  singapore: "Singapore",
+  italy: "Italy",
+  spain: "Spain",
+  australia: "Australia",
+  "new-zealand": "New Zealand",
+  "saudi-arabia": "Saudi Arabia",
+  qatar: "Qatar",
+  india: "India",
+  malaysia: "Malaysia",
+  thailand: "Thailand",
+  "hong-kong": "Hong Kong",
+  poland: "Poland",
+  sweden: "Sweden",
+};
+
 const routesBlockMatch = routeTreeSource.match(/fullPaths:\s*([\s\S]*?)\n\s*fileRoutesByTo:/);
 
 if (!routesBlockMatch) {
@@ -41,8 +83,28 @@ if (!routesBlockMatch) {
 }
 
 const routePaths = [...routesBlockMatch[1].matchAll(/'([^']+)'/g)].map((match) => match[1]);
-const pagePaths = routePaths.filter((routePath) => {
+const expansionProductsBlock = expansionContentSource.match(
+  /const products:[\s\S]*?= \{([\s\S]*?)\n\};/,
+);
+const expansionProducts = expansionProductsBlock
+  ? [...expansionProductsBlock[1].matchAll(/^  (?:"([^"]+)"|([a-z-]+)): \{/gm)].map(
+      (match) => match[1] ?? match[2],
+    )
+  : [];
+const expansionMarketsBlock = expansionContentSource.match(
+  /const markets:[\s\S]*?= \{([\s\S]*?)\n\};/,
+);
+const expansionMarkets = expansionMarketsBlock
+  ? [...expansionMarketsBlock[1].matchAll(/^  (?:"([^"]+)"|([a-z-]+)): \{/gm)].map(
+      (match) => match[1] ?? match[2],
+    )
+  : [];
+const expansionPaths = expansionProducts.flatMap((product) =>
+  expansionMarkets.map((market) => `/sourcing/${product}/${market}`),
+);
+const pagePaths = [...new Set([...routePaths, ...expansionPaths])].filter((routePath) => {
   if (routePath.includes(".")) return false;
+  if (routePath.includes("$")) return false;
   return true;
 });
 
@@ -142,6 +204,13 @@ function getPageH1(routePath) {
     return `${productNames[parts[1]]} from South African origin.`;
   }
   if (parts[0] === "sourcing") {
+    if (
+      parts.length === 3 &&
+      expansionProducts.includes(parts[1]) &&
+      expansionMarkets.includes(parts[2])
+    ) {
+      return `${productNames[parts[1]]} for buyers in ${expansionMarketNames[parts[2]]}.`;
+    }
     return `${productNames[parts[1]]} for buyers in ${regionNames[parts[2]]}.`;
   }
 
@@ -149,6 +218,27 @@ function getPageH1(routePath) {
 }
 
 async function renderPageHtml(routePath) {
+  if (expansionPaths.includes(routePath)) {
+    const [, , productKey, marketKey] = routePath.split("/");
+    const page = expansionModule.getExpansionPage(productKey, marketKey);
+    const productName = productNames[productKey];
+    const marketName = expansionMarketNames[marketKey];
+    const title = `${productName} from South Africa for ${marketName} | Kaapstays`;
+    const description = `Source ${productName.toLowerCase()} from South Africa for ${marketName}. Export-ready formats, documentation and practical buyer coordination.`;
+    const pageTitle = `<title>${escapeHtml(title)}</title>`;
+    const metaDescription = `<meta name="description" content="${escapeHtml(description)}" />`;
+    const renderedContent = renderToStaticMarkup(
+      React.createElement(contentPageModule.SeoContentPage, page),
+    );
+    return indexHtml
+      .replace(/<title>[\s\S]*?<\/title>/, pageTitle)
+      .replace(
+        '    <meta name="viewport" content="width=device-width, initial-scale=1.0" />',
+        (match) => `${match}\n    ${metaDescription}`,
+      )
+      .replace('<div id="root"></div>', `<div id="root">${renderedContent}</div>`);
+  }
+
   const routeFilePath =
     routePath === "/"
       ? path.join(rootDir, "src", "routes", "index.tsx")
@@ -191,3 +281,4 @@ for (const routePath of pagePaths) {
 }
 
 console.log(`Prerendered ${pagePaths.length} static route pages with SEO metadata.`);
+await viteServer.close();
