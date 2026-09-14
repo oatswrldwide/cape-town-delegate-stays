@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SeoContentPage } from "../components/seo/content-page";
+import { CASE_STUDIES, TESTIMONIAL_SNIPPETS } from "../components/seo/trust-proof";
 import { buildSeoHead } from "../lib/seo";
 
 export const Route = createFileRoute("/about")({
@@ -45,6 +46,13 @@ export const Route = createFileRoute("/about")({
           body: "Our buyers include importers and distributors, private-label retail teams, food manufacturers and hospitality groups building South African ranges.",
         },
       ]}
+      caseStudies={[
+        CASE_STUDIES.germanOrganicMacadamia,
+        CASE_STUDIES.usRooibosLaunch,
+        CASE_STUDIES.uaeHalalMacadamia,
+        CASE_STUDIES.japanJasRooibos,
+      ]}
+      testimonials={[TESTIMONIAL_SNIPPETS[0], TESTIMONIAL_SNIPPETS[1]]}
       links={[
         { href: "/products/rooibos-and-tea", label: "Explore rooibos and tea sourcing" },
         { href: "/services/supplier-sourcing", label: "View supplier sourcing service" },

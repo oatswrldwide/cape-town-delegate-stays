@@ -1,11 +1,8 @@
 import { SeoContentPage, type SeoContentPageProps } from "./content-page";
+import { CASE_STUDIES, TESTIMONIAL_SNIPPETS } from "./trust-proof";
 
 export type RegionalProductKey =
-  | "macadamia-nuts"
-  | "rooibos-tea"
-  | "wine"
-  | "fresh-apples"
-  | "dried-fruit";
+  "macadamia-nuts" | "rooibos-tea" | "wine" | "fresh-apples" | "dried-fruit";
 
 export type BuyerRegionKey = "germany" | "united-states" | "asia" | "uae";
 
@@ -752,5 +749,100 @@ export function RegionalProductPage({
   regionKey: BuyerRegionKey;
 }) {
   const entry = regionalContent[productKey][regionKey];
-  return <SeoContentPage {...entry.page} />;
+  const regionalChecklist = {
+    germany: [
+      "Retail-channel context can include Aldi, Lidl, dm, Rewe and Edeka buyer pathways.",
+      "Execution should include TRACES NT and EUR.1 documentation checks where applicable.",
+      "SADC-EU EPA tariff treatment should be confirmed with importer and broker teams.",
+      "Packaging terms such as Bio-Siegel and Pfandfrei can affect retail readiness.",
+    ],
+    "united-states": [
+      "Channel assumptions should separate Whole Foods, Costco, Kroger and Sprouts requirements.",
+      "Supplier checks should include FDA registration and FSVP document readiness.",
+      "California Prop 65 risk checks should be handled before production lock-in.",
+      "USDA NOP organic equivalency status should be confirmed for organic programmes.",
+    ],
+    asia: [
+      "Demand signals should be split across Japan, China, South Korea, Singapore and Malaysia.",
+      "Execution may require JAS organic records plus e-commerce format readiness for Tmall or JD.com channels.",
+      "Tariff pathways should be validated market by market, including China-facing import routes.",
+      "Halal certification should be included where Malaysia or Indonesia channels are in scope.",
+    ],
+    uae: [
+      "Route planning should account for Carrefour, Lulu, Waitrose and Spinneys channel differences.",
+      "Ramadan and Eid demand windows should be planned in advance.",
+      "JAFZA and bonded-warehouse structures can support buffer stock and GCC re-export.",
+      "Arabic-English labelling and ESMA-aligned declarations should be checked before dispatch.",
+    ],
+  } as const;
+
+  const regionalSources = {
+    germany: [
+      "EU importer compliance requirements and tariff treatment should be validated with destination advisors before purchase orders.",
+      "Organic shipments should align to live TRACES NT and certifier records at shipment time.",
+    ],
+    "united-states": [
+      "US import compliance should be confirmed against current FDA, FSVP and destination-state requirements.",
+      "Organic and labelling claims should be validated with importer compliance teams before shipment release.",
+    ],
+    asia: [
+      "Country-level compliance and labelling requirements vary across Asian destinations and should be verified per market.",
+      "Tariff and certificate pathways should be confirmed with destination customs and brokerage teams.",
+    ],
+    uae: [
+      "UAE and GCC import requirements should be confirmed with licensed importers before dispatch.",
+      "Halal and bilingual labelling records should be validated against destination channel requirements.",
+    ],
+  } as const;
+
+  const caseStudyBySegment: Record<string, keyof typeof CASE_STUDIES> = {
+    "macadamia-nuts-germany": "germanOrganicMacadamia",
+    "macadamia-nuts-united-states": "germanOrganicMacadamia",
+    "macadamia-nuts-asia": "japanJasRooibos",
+    "macadamia-nuts-uae": "uaeHalalMacadamia",
+    "rooibos-tea-germany": "germanOrganicMacadamia",
+    "rooibos-tea-united-states": "usRooibosLaunch",
+    "rooibos-tea-asia": "japanJasRooibos",
+    "rooibos-tea-uae": "uaeHalalMacadamia",
+    "wine-germany": "germanOrganicMacadamia",
+    "wine-united-states": "usRooibosLaunch",
+    "wine-asia": "japanJasRooibos",
+    "wine-uae": "uaeHalalMacadamia",
+    "fresh-apples-germany": "germanOrganicMacadamia",
+    "fresh-apples-united-states": "usRooibosLaunch",
+    "fresh-apples-asia": "japanJasRooibos",
+    "fresh-apples-uae": "uaeHalalMacadamia",
+    "dried-fruit-germany": "germanOrganicMacadamia",
+    "dried-fruit-united-states": "usRooibosLaunch",
+    "dried-fruit-asia": "japanJasRooibos",
+    "dried-fruit-uae": "uaeHalalMacadamia",
+  };
+
+  const segmentKey = `${productKey}-${regionKey}`;
+  const proofCase = CASE_STUDIES[caseStudyBySegment[segmentKey]];
+  const regionSnippets = {
+    germany: [TESTIMONIAL_SNIPPETS[0]],
+    "united-states": [TESTIMONIAL_SNIPPETS[1]],
+    asia: [TESTIMONIAL_SNIPPETS[3]],
+    uae: [TESTIMONIAL_SNIPPETS[2]],
+  } as const;
+
+  const enhancedSections = [
+    ...entry.page.sections,
+    {
+      heading: "Regional differentiation checklist",
+      body: "Use this checklist to keep market strategy specific to this destination.",
+      bullets: [...regionalChecklist[regionKey]],
+    },
+  ];
+
+  return (
+    <SeoContentPage
+      {...entry.page}
+      sections={enhancedSections}
+      caseStudies={[proofCase]}
+      testimonials={[...regionSnippets[regionKey]]}
+      sources={[...regionalSources[regionKey]]}
+    />
+  );
 }

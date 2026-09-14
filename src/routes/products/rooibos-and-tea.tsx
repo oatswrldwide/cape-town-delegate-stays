@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SeoContentPage } from "../../components/seo/content-page";
+import { CASE_STUDIES, TESTIMONIAL_SNIPPETS } from "../../components/seo/trust-proof";
 import { buildSeoHead } from "../../lib/seo";
 
 export const Route = createFileRoute("/products/rooibos-and-tea")({
@@ -38,6 +39,8 @@ export const Route = createFileRoute("/products/rooibos-and-tea")({
           ],
         },
       ]}
+      caseStudies={[CASE_STUDIES.usRooibosLaunch]}
+      testimonials={[TESTIMONIAL_SNIPPETS[1]]}
       links={[
         { href: "/sourcing/rooibos-tea/germany", label: "Rooibos for Germany" },
         { href: "/sourcing/rooibos-tea/united-states", label: "Rooibos for the United States" },

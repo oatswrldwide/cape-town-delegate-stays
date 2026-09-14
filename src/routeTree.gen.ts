@@ -12,6 +12,12 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as GuidesDriedFruitBuyersGuideRouteImport } from './routes/guides/dried-fruit-buyers-guide'
+import { Route as GuidesMacadamiaGradesGuideRouteImport } from './routes/guides/macadamia-grades-guide'
+import { Route as GuidesRooibosTeaGuideRouteImport } from './routes/guides/rooibos-tea-guide'
+import { Route as GuidesSouthAfricaMacadamiaExportMapRouteImport } from './routes/guides/south-africa-macadamia-export-map'
+import { Route as GuidesSouthAfricanAppleSeasonRouteImport } from './routes/guides/south-african-apple-season'
+import { Route as GuidesSouthAfricanWineBuyersGuideRouteImport } from './routes/guides/south-african-wine-buyers-guide'
 import { Route as ProductsDriedFruitRouteImport } from './routes/products/dried-fruit'
 import { Route as ProductsFreshApplesRouteImport } from './routes/products/fresh-apples'
 import { Route as ProductsNutsRouteImport } from './routes/products/nuts'
@@ -55,6 +61,41 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GuidesDriedFruitBuyersGuideRoute =
+  GuidesDriedFruitBuyersGuideRouteImport.update({
+    id: '/guides/dried-fruit-buyers-guide',
+    path: '/guides/dried-fruit-buyers-guide',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const GuidesMacadamiaGradesGuideRoute =
+  GuidesMacadamiaGradesGuideRouteImport.update({
+    id: '/guides/macadamia-grades-guide',
+    path: '/guides/macadamia-grades-guide',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const GuidesRooibosTeaGuideRoute = GuidesRooibosTeaGuideRouteImport.update({
+  id: '/guides/rooibos-tea-guide',
+  path: '/guides/rooibos-tea-guide',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GuidesSouthAfricaMacadamiaExportMapRoute =
+  GuidesSouthAfricaMacadamiaExportMapRouteImport.update({
+    id: '/guides/south-africa-macadamia-export-map',
+    path: '/guides/south-africa-macadamia-export-map',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const GuidesSouthAfricanAppleSeasonRoute =
+  GuidesSouthAfricanAppleSeasonRouteImport.update({
+    id: '/guides/south-african-apple-season',
+    path: '/guides/south-african-apple-season',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const GuidesSouthAfricanWineBuyersGuideRoute =
+  GuidesSouthAfricanWineBuyersGuideRouteImport.update({
+    id: '/guides/south-african-wine-buyers-guide',
+    path: '/guides/south-african-wine-buyers-guide',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ProductsDriedFruitRoute = ProductsDriedFruitRouteImport.update({
   id: '/products/dried-fruit',
   path: '/products/dried-fruit',
@@ -208,6 +249,12 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/guides/dried-fruit-buyers-guide': typeof GuidesDriedFruitBuyersGuideRoute
+  '/guides/macadamia-grades-guide': typeof GuidesMacadamiaGradesGuideRoute
+  '/guides/rooibos-tea-guide': typeof GuidesRooibosTeaGuideRoute
+  '/guides/south-africa-macadamia-export-map': typeof GuidesSouthAfricaMacadamiaExportMapRoute
+  '/guides/south-african-apple-season': typeof GuidesSouthAfricanAppleSeasonRoute
+  '/guides/south-african-wine-buyers-guide': typeof GuidesSouthAfricanWineBuyersGuideRoute
   '/products/dried-fruit': typeof ProductsDriedFruitRoute
   '/products/fresh-apples': typeof ProductsFreshApplesRoute
   '/products/nuts': typeof ProductsNutsRoute
@@ -240,6 +287,12 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/guides/dried-fruit-buyers-guide': typeof GuidesDriedFruitBuyersGuideRoute
+  '/guides/macadamia-grades-guide': typeof GuidesMacadamiaGradesGuideRoute
+  '/guides/rooibos-tea-guide': typeof GuidesRooibosTeaGuideRoute
+  '/guides/south-africa-macadamia-export-map': typeof GuidesSouthAfricaMacadamiaExportMapRoute
+  '/guides/south-african-apple-season': typeof GuidesSouthAfricanAppleSeasonRoute
+  '/guides/south-african-wine-buyers-guide': typeof GuidesSouthAfricanWineBuyersGuideRoute
   '/products/dried-fruit': typeof ProductsDriedFruitRoute
   '/products/fresh-apples': typeof ProductsFreshApplesRoute
   '/products/nuts': typeof ProductsNutsRoute
@@ -273,6 +326,12 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/guides/dried-fruit-buyers-guide': typeof GuidesDriedFruitBuyersGuideRoute
+  '/guides/macadamia-grades-guide': typeof GuidesMacadamiaGradesGuideRoute
+  '/guides/rooibos-tea-guide': typeof GuidesRooibosTeaGuideRoute
+  '/guides/south-africa-macadamia-export-map': typeof GuidesSouthAfricaMacadamiaExportMapRoute
+  '/guides/south-african-apple-season': typeof GuidesSouthAfricanAppleSeasonRoute
+  '/guides/south-african-wine-buyers-guide': typeof GuidesSouthAfricanWineBuyersGuideRoute
   '/products/dried-fruit': typeof ProductsDriedFruitRoute
   '/products/fresh-apples': typeof ProductsFreshApplesRoute
   '/products/nuts': typeof ProductsNutsRoute
@@ -307,6 +366,12 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/sitemap.xml'
+    | '/guides/dried-fruit-buyers-guide'
+    | '/guides/macadamia-grades-guide'
+    | '/guides/rooibos-tea-guide'
+    | '/guides/south-africa-macadamia-export-map'
+    | '/guides/south-african-apple-season'
+    | '/guides/south-african-wine-buyers-guide'
     | '/products/dried-fruit'
     | '/products/fresh-apples'
     | '/products/nuts'
@@ -339,6 +404,12 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/sitemap.xml'
+    | '/guides/dried-fruit-buyers-guide'
+    | '/guides/macadamia-grades-guide'
+    | '/guides/rooibos-tea-guide'
+    | '/guides/south-africa-macadamia-export-map'
+    | '/guides/south-african-apple-season'
+    | '/guides/south-african-wine-buyers-guide'
     | '/products/dried-fruit'
     | '/products/fresh-apples'
     | '/products/nuts'
@@ -371,6 +442,12 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/sitemap.xml'
+    | '/guides/dried-fruit-buyers-guide'
+    | '/guides/macadamia-grades-guide'
+    | '/guides/rooibos-tea-guide'
+    | '/guides/south-africa-macadamia-export-map'
+    | '/guides/south-african-apple-season'
+    | '/guides/south-african-wine-buyers-guide'
     | '/products/dried-fruit'
     | '/products/fresh-apples'
     | '/products/nuts'
@@ -404,6 +481,12 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  GuidesDriedFruitBuyersGuideRoute: typeof GuidesDriedFruitBuyersGuideRoute
+  GuidesMacadamiaGradesGuideRoute: typeof GuidesMacadamiaGradesGuideRoute
+  GuidesRooibosTeaGuideRoute: typeof GuidesRooibosTeaGuideRoute
+  GuidesSouthAfricaMacadamiaExportMapRoute: typeof GuidesSouthAfricaMacadamiaExportMapRoute
+  GuidesSouthAfricanAppleSeasonRoute: typeof GuidesSouthAfricanAppleSeasonRoute
+  GuidesSouthAfricanWineBuyersGuideRoute: typeof GuidesSouthAfricanWineBuyersGuideRoute
   ProductsDriedFruitRoute: typeof ProductsDriedFruitRoute
   ProductsFreshApplesRoute: typeof ProductsFreshApplesRoute
   ProductsNutsRoute: typeof ProductsNutsRoute
@@ -454,6 +537,48 @@ declare module '@tanstack/react-router' {
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/guides/dried-fruit-buyers-guide': {
+      id: '/guides/dried-fruit-buyers-guide'
+      path: '/guides/dried-fruit-buyers-guide'
+      fullPath: '/guides/dried-fruit-buyers-guide'
+      preLoaderRoute: typeof GuidesDriedFruitBuyersGuideRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/guides/macadamia-grades-guide': {
+      id: '/guides/macadamia-grades-guide'
+      path: '/guides/macadamia-grades-guide'
+      fullPath: '/guides/macadamia-grades-guide'
+      preLoaderRoute: typeof GuidesMacadamiaGradesGuideRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/guides/rooibos-tea-guide': {
+      id: '/guides/rooibos-tea-guide'
+      path: '/guides/rooibos-tea-guide'
+      fullPath: '/guides/rooibos-tea-guide'
+      preLoaderRoute: typeof GuidesRooibosTeaGuideRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/guides/south-africa-macadamia-export-map': {
+      id: '/guides/south-africa-macadamia-export-map'
+      path: '/guides/south-africa-macadamia-export-map'
+      fullPath: '/guides/south-africa-macadamia-export-map'
+      preLoaderRoute: typeof GuidesSouthAfricaMacadamiaExportMapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/guides/south-african-apple-season': {
+      id: '/guides/south-african-apple-season'
+      path: '/guides/south-african-apple-season'
+      fullPath: '/guides/south-african-apple-season'
+      preLoaderRoute: typeof GuidesSouthAfricanAppleSeasonRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/guides/south-african-wine-buyers-guide': {
+      id: '/guides/south-african-wine-buyers-guide'
+      path: '/guides/south-african-wine-buyers-guide'
+      fullPath: '/guides/south-african-wine-buyers-guide'
+      preLoaderRoute: typeof GuidesSouthAfricanWineBuyersGuideRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/products/dried-fruit': {
@@ -652,6 +777,14 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  GuidesDriedFruitBuyersGuideRoute: GuidesDriedFruitBuyersGuideRoute,
+  GuidesMacadamiaGradesGuideRoute: GuidesMacadamiaGradesGuideRoute,
+  GuidesRooibosTeaGuideRoute: GuidesRooibosTeaGuideRoute,
+  GuidesSouthAfricaMacadamiaExportMapRoute:
+    GuidesSouthAfricaMacadamiaExportMapRoute,
+  GuidesSouthAfricanAppleSeasonRoute: GuidesSouthAfricanAppleSeasonRoute,
+  GuidesSouthAfricanWineBuyersGuideRoute:
+    GuidesSouthAfricanWineBuyersGuideRoute,
   ProductsDriedFruitRoute: ProductsDriedFruitRoute,
   ProductsFreshApplesRoute: ProductsFreshApplesRoute,
   ProductsNutsRoute: ProductsNutsRoute,

@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - main
+      # The connected Lovable workspace publishes changes from this branch.
+      # Deploy it as well so the Pages site does not remain on an older,
+      # potentially blank artifact while a pull request is awaiting merge.
+      - work
   workflow_dispatch:
 
 permissions:
@@ -29,10 +33,23 @@ jobs:
           cache: npm
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
+
+      # Configure the Pages deployment before creating the artifact. This keeps
+      # the GitHub Pages environment and deployment metadata in sync when the
+      # custom domain is proxied through Cloudflare.
+      - name: Configure GitHub Pages
+        id: pages
+        uses: actions/configure-pages@v5
 
       - name: Build Pages site
         run: npm run build:pages
+
+      - name: Verify Pages artifact
+        run: |
+          test -f dist/index.html
+          test -f dist/404.html
+          test "$(tr -d '\r\n' < dist/CNAME)" = "kaapstays.co.za"
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

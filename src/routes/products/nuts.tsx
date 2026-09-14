@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SeoContentPage } from "../../components/seo/content-page";
+import { CASE_STUDIES, TESTIMONIAL_SNIPPETS } from "../../components/seo/trust-proof";
 import { buildSeoHead } from "../../lib/seo";
 
 export const Route = createFileRoute("/products/nuts")({
@@ -36,6 +37,8 @@ export const Route = createFileRoute("/products/nuts")({
           ],
         },
       ]}
+      caseStudies={[CASE_STUDIES.germanOrganicMacadamia, CASE_STUDIES.uaeHalalMacadamia]}
+      testimonials={[TESTIMONIAL_SNIPPETS[0]]}
       links={[
         { href: "/sourcing/macadamia-nuts/germany", label: "Macadamia nuts for Germany" },
         { href: "/sourcing/macadamia-nuts/asia", label: "Macadamia nuts for Asia" },

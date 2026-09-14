@@ -1,5 +1,14 @@
 import type { ReactNode } from "react";
 import { CONTACT_EMAIL, CONTACT_PHONE } from "../../lib/site";
+import {
+  AuthorByline,
+  CaseStudiesSection,
+  type CaseStudy,
+  SourcesBlock,
+  TestimonialSection,
+  TrustBadgesBar,
+  TrustSignalHeader,
+} from "./trust-proof";
 
 interface ContentSection {
   heading: string;
@@ -24,6 +33,9 @@ export interface SeoContentPageProps {
   sections: ContentSection[];
   links: ContentLink[];
   faqs?: ContentFaq[];
+  caseStudies?: CaseStudy[];
+  testimonials?: string[];
+  sources?: string[];
 }
 
 export function SeoContentPage({
@@ -33,9 +45,13 @@ export function SeoContentPage({
   sections,
   links,
   faqs,
+  caseStudies = [],
+  testimonials = [],
+  sources = [],
 }: SeoContentPageProps) {
   return (
     <main className="min-h-screen bg-background text-foreground">
+      <TrustSignalHeader />
       <section className="border-b border-border/70">
         <div className="mx-auto max-w-5xl px-6 py-16 md:py-20">
           <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">{eyebrow}</p>
@@ -72,6 +88,8 @@ export function SeoContentPage({
         </div>
       </section>
 
+      <CaseStudiesSection studies={caseStudies} />
+
       {faqs?.length ? (
         <section className="border-t border-border/70 bg-secondary/40">
           <div className="mx-auto max-w-5xl px-6 py-14 md:py-16">
@@ -88,8 +106,12 @@ export function SeoContentPage({
         </section>
       ) : null}
 
+      <TestimonialSection snippets={testimonials} />
+      <SourcesBlock sources={sources} />
+
       <section id="brief" className="border-t border-border/70">
         <div className="mx-auto max-w-5xl px-6 py-14 md:py-16">
+          <AuthorByline />
           <h2 className="text-2xl md:text-3xl">Start your sourcing brief</h2>
           <p className="mt-4 max-w-3xl text-muted-foreground">
             Tell us the product, destination, volume and timing you have in mind. We will come back
@@ -102,10 +124,14 @@ export function SeoContentPage({
             >
               Email your brief
             </a>
-            <a href={`tel:${CONTACT_PHONE.replace(/\s+/g, "")}`} className="rounded-sm border border-border px-4 py-2">
+            <a
+              href={`tel:${CONTACT_PHONE.replace(/\s+/g, "")}`}
+              className="rounded-sm border border-border px-4 py-2"
+            >
               Call {CONTACT_PHONE}
             </a>
           </div>
+          <TrustBadgesBar />
           <RelatedLinks>
             {links.map((link) => (
               <a
