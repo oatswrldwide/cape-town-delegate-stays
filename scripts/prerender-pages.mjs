@@ -8,21 +8,9 @@ const rootDir = process.cwd();
 const distDir = path.join(rootDir, "dist");
 const routeTreePath = path.join(rootDir, "src", "routeTree.gen.ts");
 const indexHtmlPath = path.join(distDir, "index.html");
-const regionalContentPath = path.join(
-  rootDir,
-  "src",
-  "components",
-  "seo",
-  "regional-product-page.tsx",
-);
 
 const routeTreeSource = await readFile(routeTreePath, "utf8");
 const indexHtml = await readFile(indexHtmlPath, "utf8");
-const regionalContentSource = await readFile(regionalContentPath, "utf8");
-const expansionContentSource = await readFile(
-  path.join(rootDir, "src", "lib", "expansion-pages.ts"),
-  "utf8",
-);
 const viteServer = await createServer({
   root: rootDir,
   configFile: path.join(rootDir, "vite.pages.config.ts"),
@@ -34,6 +22,9 @@ const expansionModule = await viteServer.ssrLoadModule(
 );
 const contentPageModule = await viteServer.ssrLoadModule(
   path.join(rootDir, "src", "components", "seo", "content-page.tsx"),
+);
+const sourcingModule = await viteServer.ssrLoadModule(
+  path.join(rootDir, "src", "lib", "sourcing-pages.ts"),
 );
 
 const productNames = {
@@ -53,55 +44,11 @@ const regionNames = {
   "united-states": "the United States",
 };
 
-const expansionMarketNames = {
-  uk: "the United Kingdom",
-  netherlands: "the Netherlands",
-  france: "France",
-  switzerland: "Switzerland",
-  canada: "Canada",
-  japan: "Japan",
-  "south-korea": "South Korea",
-  singapore: "Singapore",
-  italy: "Italy",
-  spain: "Spain",
-  australia: "Australia",
-  "new-zealand": "New Zealand",
-  "saudi-arabia": "Saudi Arabia",
-  qatar: "Qatar",
-  india: "India",
-  malaysia: "Malaysia",
-  thailand: "Thailand",
-  "hong-kong": "Hong Kong",
-  poland: "Poland",
-  sweden: "Sweden",
-};
-
 const routesBlockMatch = routeTreeSource.match(/fullPaths:\s*([\s\S]*?)\n\s*fileRoutesByTo:/);
-
-if (!routesBlockMatch) {
-  throw new Error("Could not find route paths in src/routeTree.gen.ts");
-}
+if (!routesBlockMatch) throw new Error("Could not find route paths in src/routeTree.gen.ts");
 
 const routePaths = [...routesBlockMatch[1].matchAll(/'([^']+)'/g)].map((match) => match[1]);
-const expansionProductsBlock = expansionContentSource.match(
-  /const products:[\s\S]*?= \{([\s\S]*?)\n\};/,
-);
-const expansionProducts = expansionProductsBlock
-  ? [...expansionProductsBlock[1].matchAll(/^  (?:"([^"]+)"|([a-z-]+)): \{/gm)].map(
-      (match) => match[1] ?? match[2],
-    )
-  : [];
-const expansionMarketsBlock = expansionContentSource.match(
-  /const markets:[\s\S]*?= \{([\s\S]*?)\n\};/,
-);
-const expansionMarkets = expansionMarketsBlock
-  ? [...expansionMarketsBlock[1].matchAll(/^  (?:"([^"]+)"|([a-z-]+)): \{/gm)].map(
-      (match) => match[1] ?? match[2],
-    )
-  : [];
-const expansionPaths = expansionProducts.flatMap((product) =>
-  expansionMarkets.map((market) => `/sourcing/${product}/${market}`),
-);
+const expansionPaths = expansionModule.expansionPages.map((page) => page.path);
 const pagePaths = [...new Set([...routePaths, ...expansionPaths])].filter((routePath) => {
   if (routePath.includes(".")) return false;
   if (routePath.includes("$")) return false;
@@ -117,28 +64,6 @@ function escapeHtml(value) {
     .replaceAll("'", "&#39;");
 }
 
-function escapeRegex(value) {
-  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-}
-
-function getRegionalMetaDescription(productKey, regionKey) {
-  const productToken = productKey.includes("-") ? `"${productKey}"` : productKey;
-  const regionToken = regionKey.includes("-") ? `"${regionKey}"` : regionKey;
-  const pattern = new RegExp(
-    `${escapeRegex(productToken)}\\s*:\\s*\\{[\\s\\S]*?${escapeRegex(regionToken)}\\s*:\\s*\\{[\\s\\S]*?metaDescription:\\s*"([^"]+)"`,
-  );
-  return regionalContentSource.match(pattern)?.[1];
-}
-
-function getRegionalMetaTitle(productKey, regionKey) {
-  const productToken = productKey.includes("-") ? `"${productKey}"` : productKey;
-  const regionToken = regionKey.includes("-") ? `"${regionKey}"` : regionKey;
-  const pattern = new RegExp(
-    `${escapeRegex(productToken)}\\s*:\\s*\\{[\\s\\S]*?${escapeRegex(regionToken)}\\s*:\\s*\\{[\\s\\S]*?metaTitle:\\s*"([^"]+)"`,
-  );
-  return regionalContentSource.match(pattern)?.[1];
-}
-
 function resolveMetaTitle(routeSource) {
   const inlineTitle = routeSource.match(/title:\s*"([^"]+)"/)?.[1];
   if (inlineTitle) return inlineTitle;
@@ -149,7 +74,7 @@ function resolveMetaTitle(routeSource) {
   if (!regionalMatch) return null;
 
   const [, productKey, regionKey] = regionalMatch;
-  return getRegionalMetaTitle(productKey, regionKey) ?? null;
+  return sourcingModule.getSourcingPage(productKey, regionKey)?.title ?? null;
 }
 
 function resolveMetaDescription(routeSource) {
@@ -162,58 +87,16 @@ function resolveMetaDescription(routeSource) {
   if (!regionalMatch) return null;
 
   const [, productKey, regionKey] = regionalMatch;
-  return getRegionalMetaDescription(productKey, regionKey) ?? null;
+  return sourcingModule.getSourcingPage(productKey, regionKey)?.description ?? null;
 }
 
 function getPageH1(routePath) {
   if (routePath === "/") return "Good products. Right at the source.";
   if (routePath === "/about") return "A gateway to South Africa, built around good connections.";
-  if (routePath === "/guides/rooibos-tea-guide") {
-    return "Rooibos tea sourcing: a buyer's practical guide";
-  }
-  if (routePath === "/guides/rooibos-tea-price-wholesale") {
-    return "Rooibos tea price: what wholesale buyers need to compare";
-  }
-  if (routePath === "/guides/organic-rooibos-tea-sourcing") {
-    return "Organic rooibos tea sourcing: certification before the label";
-  }
-  if (routePath === "/guides/flavoured-rooibos-private-label") {
-    return "Flavoured rooibos tea and private label: a practical buying guide";
-  }
-  if (routePath === "/guides/south-african-apple-season") {
-    return "South African apple season: how buyers plan supply";
-  }
-  if (routePath === "/guides/dried-fruit-buyers-guide") {
-    return "Dried fruit sourcing: specifications before sampling";
-  }
-  if (routePath === "/guides/macadamia-grades-guide") {
-    return "Macadamia grades and formats: a wholesale buyer guide";
-  }
-  if (routePath === "/guides/south-african-wine-buyers-guide") {
-    return "South African wine sourcing: from brief to shipment";
-  }
-  if (routePath === "/services/supplier-sourcing") {
-    return "A clearer starting point for South African supply.";
-  }
-  if (routePath === "/services/export-coordination") {
-    return "Keep the route from origin to destination clear.";
-  }
 
   const parts = routePath.split("/").filter(Boolean);
-  if (parts[0] === "products") {
-    return `${productNames[parts[1]]} from South African origin.`;
-  }
-  if (parts[0] === "sourcing") {
-    if (
-      parts.length === 3 &&
-      expansionProducts.includes(parts[1]) &&
-      expansionMarkets.includes(parts[2])
-    ) {
-      return `${productNames[parts[1]]} for buyers in ${expansionMarketNames[parts[2]]}.`;
-    }
-    return `${productNames[parts[1]]} for buyers in ${regionNames[parts[2]]}.`;
-  }
-
+  if (parts[0] === "products") return `${productNames[parts[1]]} from South African origin.`;
+  if (parts[0] === "sourcing") return `${productNames[parts[1]]} for buyers in ${regionNames[parts[2]] ?? parts[2]}.`;
   return "South African product sourcing.";
 }
 
@@ -221,12 +104,8 @@ async function renderPageHtml(routePath) {
   if (expansionPaths.includes(routePath)) {
     const [, , productKey, marketKey] = routePath.split("/");
     const page = expansionModule.getExpansionPage(productKey, marketKey);
-    const productName = productNames[productKey];
-    const marketName = expansionMarketNames[marketKey];
-    const title = `${productName} from South Africa for ${marketName} | Kaapstays`;
-    const description = `Source ${productName.toLowerCase()} from South Africa for ${marketName}. Export-ready formats, documentation and practical buyer coordination.`;
-    const pageTitle = `<title>${escapeHtml(title)}</title>`;
-    const metaDescription = `<meta name="description" content="${escapeHtml(description)}" />`;
+    const pageTitle = `<title>${escapeHtml(page.title)}</title>`;
+    const metaDescription = `<meta name="description" content="${escapeHtml(page.description)}" />`;
     const renderedContent = renderToStaticMarkup(
       React.createElement(contentPageModule.SeoContentPage, page),
     );
@@ -247,9 +126,7 @@ async function renderPageHtml(routePath) {
   const title = resolveMetaTitle(routeSource);
   const description = resolveMetaDescription(routeSource);
 
-  if (!title || !description) {
-    throw new Error(`Could not find SEO metadata for ${routePath}`);
-  }
+  if (!title || !description) throw new Error(`Could not find SEO metadata for ${routePath}`);
 
   const pageTitle = `<title>${escapeHtml(title)}</title>`;
   const metaDescription = `<meta name="description" content="${escapeHtml(description)}" />`;
@@ -275,9 +152,7 @@ for (const routePath of pagePaths) {
   const targetDir = path.join(distDir, normalizedPath);
   await mkdir(targetDir, { recursive: true });
   await writeFile(path.join(targetDir, "index.html"), pageHtml);
-
-  const flatHtmlPath = path.join(distDir, `${normalizedPath}.html`);
-  await writeFile(flatHtmlPath, pageHtml);
+  await writeFile(path.join(distDir, `${normalizedPath}.html`), pageHtml);
 }
 
 console.log(`Prerendered ${pagePaths.length} static route pages with SEO metadata.`);

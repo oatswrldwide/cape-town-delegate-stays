@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
 import { SITE_URL } from "../lib/site";
-import { expansionPages } from "../lib/expansion-pages";
+import { sourcingPages } from "../lib/sourcing-pages";
 
 interface SitemapEntry {
   path: string;
@@ -10,87 +10,50 @@ interface SitemapEntry {
   priority?: string;
 }
 
+const CORE_ENTRIES: SitemapEntry[] = [
+  { path: "/", changefreq: "weekly", priority: "1.0" },
+  { path: "/products/rooibos-and-tea", changefreq: "weekly", priority: "0.9" },
+  { path: "/products/fresh-apples", changefreq: "weekly", priority: "0.9" },
+  { path: "/products/dried-fruit", changefreq: "weekly", priority: "0.9" },
+  { path: "/products/nuts", changefreq: "weekly", priority: "0.85" },
+  { path: "/products/wine", changefreq: "weekly", priority: "0.9" },
+  { path: "/services/supplier-sourcing", changefreq: "monthly", priority: "0.8" },
+  { path: "/services/export-coordination", changefreq: "monthly", priority: "0.8" },
+  { path: "/about", changefreq: "monthly", priority: "0.7" },
+  { path: "/guides/rooibos-tea-guide", changefreq: "monthly", priority: "0.8" },
+  { path: "/guides/rooibos-tea-price-wholesale", changefreq: "monthly", priority: "0.85" },
+  { path: "/guides/organic-rooibos-tea-sourcing", changefreq: "monthly", priority: "0.85" },
+  { path: "/guides/flavoured-rooibos-private-label", changefreq: "monthly", priority: "0.85" },
+  { path: "/guides/south-african-apple-season", changefreq: "monthly", priority: "0.8" },
+  { path: "/guides/dried-fruit-buyers-guide", changefreq: "monthly", priority: "0.8" },
+  { path: "/guides/macadamia-grades-guide", changefreq: "monthly", priority: "0.8" },
+  { path: "/guides/south-africa-macadamia-export-map", changefreq: "monthly", priority: "0.8" },
+  { path: "/guides/south-african-wine-buyers-guide", changefreq: "monthly", priority: "0.8" },
+];
+
 export const Route = createFileRoute("/sitemap.xml")({
   server: {
     handlers: {
       GET: async () => {
         const entries: SitemapEntry[] = [
-          { path: "/", changefreq: "weekly", priority: "1.0" },
-          { path: "/products/rooibos-and-tea", changefreq: "weekly", priority: "0.9" },
-          { path: "/products/fresh-apples", changefreq: "weekly", priority: "0.9" },
-          { path: "/products/dried-fruit", changefreq: "weekly", priority: "0.9" },
-          { path: "/products/nuts", changefreq: "weekly", priority: "0.85" },
-          { path: "/products/wine", changefreq: "weekly", priority: "0.9" },
-          { path: "/services/supplier-sourcing", changefreq: "monthly", priority: "0.8" },
-          { path: "/services/export-coordination", changefreq: "monthly", priority: "0.8" },
-          { path: "/about", changefreq: "monthly", priority: "0.7" },
-          { path: "/guides/rooibos-tea-guide", changefreq: "monthly", priority: "0.8" },
-          {
-            path: "/guides/rooibos-tea-price-wholesale",
-            changefreq: "monthly",
-            priority: "0.85",
-          },
-          {
-            path: "/guides/organic-rooibos-tea-sourcing",
-            changefreq: "monthly",
-            priority: "0.85",
-          },
-          {
-            path: "/guides/flavoured-rooibos-private-label",
-            changefreq: "monthly",
-            priority: "0.85",
-          },
-          { path: "/guides/south-african-apple-season", changefreq: "monthly", priority: "0.8" },
-          { path: "/guides/dried-fruit-buyers-guide", changefreq: "monthly", priority: "0.8" },
-          { path: "/guides/macadamia-grades-guide", changefreq: "monthly", priority: "0.8" },
-          {
-            path: "/guides/south-africa-macadamia-export-map",
-            changefreq: "monthly",
-            priority: "0.8",
-          },
-          {
-            path: "/guides/south-african-wine-buyers-guide",
-            changefreq: "monthly",
-            priority: "0.8",
-          },
-          { path: "/sourcing/macadamia-nuts/germany", changefreq: "monthly", priority: "0.8" },
-          {
-            path: "/sourcing/macadamia-nuts/united-states",
-            changefreq: "monthly",
-            priority: "0.8",
-          },
-          { path: "/sourcing/macadamia-nuts/asia", changefreq: "monthly", priority: "0.8" },
-          { path: "/sourcing/macadamia-nuts/uae", changefreq: "monthly", priority: "0.8" },
-          { path: "/sourcing/rooibos-tea/germany", changefreq: "monthly", priority: "0.8" },
-          { path: "/sourcing/rooibos-tea/united-states", changefreq: "monthly", priority: "0.8" },
-          { path: "/sourcing/rooibos-tea/asia", changefreq: "monthly", priority: "0.8" },
-          { path: "/sourcing/rooibos-tea/uae", changefreq: "monthly", priority: "0.8" },
-          { path: "/sourcing/wine/germany", changefreq: "monthly", priority: "0.8" },
-          { path: "/sourcing/wine/united-states", changefreq: "monthly", priority: "0.8" },
-          { path: "/sourcing/wine/asia", changefreq: "monthly", priority: "0.8" },
-          { path: "/sourcing/wine/uae", changefreq: "monthly", priority: "0.8" },
-          { path: "/sourcing/fresh-apples/germany", changefreq: "monthly", priority: "0.8" },
-          { path: "/sourcing/fresh-apples/united-states", changefreq: "monthly", priority: "0.8" },
-          { path: "/sourcing/fresh-apples/asia", changefreq: "monthly", priority: "0.8" },
-          { path: "/sourcing/fresh-apples/uae", changefreq: "monthly", priority: "0.8" },
-          { path: "/sourcing/dried-fruit/germany", changefreq: "monthly", priority: "0.8" },
-          { path: "/sourcing/dried-fruit/united-states", changefreq: "monthly", priority: "0.8" },
-          { path: "/sourcing/dried-fruit/asia", changefreq: "monthly", priority: "0.8" },
-          { path: "/sourcing/dried-fruit/uae", changefreq: "monthly", priority: "0.8" },
-          ...expansionPages.map(({ path }) => ({
-            path,
+          ...CORE_ENTRIES,
+          ...sourcingPages.map((page) => ({
+            path: page.path,
+            lastmod: page.lastmod,
             changefreq: "monthly" as const,
-            priority: "0.75",
+            priority: page.market === "asia" ? "0.7" : "0.75",
           })),
         ];
 
-        const urls = entries.map((e) =>
+        const uniqueEntries = Array.from(new Map(entries.map((entry) => [entry.path, entry])).values());
+
+        const urls = uniqueEntries.map((entry) =>
           [
             `  <url>`,
-            `    <loc>${SITE_URL}${e.path}</loc>`,
-            e.lastmod ? `    <lastmod>${e.lastmod}</lastmod>` : null,
-            e.changefreq ? `    <changefreq>${e.changefreq}</changefreq>` : null,
-            e.priority ? `    <priority>${e.priority}</priority>` : null,
+            `    <loc>${SITE_URL}${entry.path}</loc>`,
+            entry.lastmod ? `    <lastmod>${entry.lastmod}</lastmod>` : null,
+            entry.changefreq ? `    <changefreq>${entry.changefreq}</changefreq>` : null,
+            entry.priority ? `    <priority>${entry.priority}</priority>` : null,
             `  </url>`,
           ]
             .filter(Boolean)
