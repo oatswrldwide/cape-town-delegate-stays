@@ -9,7 +9,11 @@ export const Route = createFileRoute("/products/wine")({
       description:
         "Source South African wine for import, distribution, hospitality and private-label. Stellenbosch, Paarl and Western Cape producers. Bulk and bottled options.",
       path: "/products/wine",
-      keywords: ["south african wine sourcing", "western cape wine export", "bulk and bottled wine"],
+      keywords: [
+        "south african wine sourcing",
+        "western cape wine export",
+        "bulk and bottled wine",
+      ],
     }),
   component: () => (
     <SeoContentPage

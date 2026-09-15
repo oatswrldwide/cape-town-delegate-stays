@@ -1,6 +1,14 @@
 import type { ReactNode } from "react";
 import { CONTACT_EMAIL, CONTACT_PHONE } from "../../lib/site";
-import { buildFaqPageSchema } from "../../lib/structured-data";
+import { buildFaqPageSchema, buildServiceSchema } from "../../lib/structured-data";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "../ui/breadcrumb";
 import {
   AuthorByline,
   CaseStudiesSection,
@@ -27,6 +35,19 @@ interface ContentLink {
   label: string;
 }
 
+interface BreadcrumbLinkItem {
+  href: string;
+  label: string;
+}
+
+interface ServiceSchemaInput {
+  name: string;
+  description: string;
+  path: string;
+  areaServed?: string;
+  category?: string;
+}
+
 export interface SeoContentPageProps {
   eyebrow: string;
   title: string;
@@ -37,6 +58,8 @@ export interface SeoContentPageProps {
   caseStudies?: CaseStudy[];
   testimonials?: string[];
   sources?: string[];
+  breadcrumbs?: BreadcrumbLinkItem[];
+  serviceSchema?: ServiceSchemaInput;
 }
 
 export function SeoContentPage({
@@ -49,8 +72,11 @@ export function SeoContentPage({
   caseStudies = [],
   testimonials = [],
   sources = [],
+  breadcrumbs = [],
+  serviceSchema,
 }: SeoContentPageProps) {
   const faqSchema = faqs?.length ? buildFaqPageSchema(faqs) : null;
+  const jsonLdServiceSchema = serviceSchema ? buildServiceSchema(serviceSchema) : null;
 
   return (
     <main className="min-h-screen bg-background text-foreground">
@@ -60,9 +86,33 @@ export function SeoContentPage({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
         />
       ) : null}
+      {jsonLdServiceSchema ? (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdServiceSchema) }}
+        />
+      ) : null}
       <TrustSignalHeader />
       <section className="border-b border-border/70">
         <div className="mx-auto max-w-5xl px-6 py-16 md:py-20">
+          {breadcrumbs.length ? (
+            <Breadcrumb className="mb-6">
+              <BreadcrumbList>
+                {breadcrumbs.map((breadcrumb, index) => (
+                  <BreadcrumbItem key={breadcrumb.href}>
+                    {index === breadcrumbs.length - 1 ? (
+                      <BreadcrumbPage>{breadcrumb.label}</BreadcrumbPage>
+                    ) : (
+                      <>
+                        <BreadcrumbLink href={breadcrumb.href}>{breadcrumb.label}</BreadcrumbLink>
+                        <BreadcrumbSeparator />
+                      </>
+                    )}
+                  </BreadcrumbItem>
+                ))}
+              </BreadcrumbList>
+            </Breadcrumb>
+          ) : null}
           <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">{eyebrow}</p>
           <h1 className="mt-4 text-4xl leading-tight md:text-5xl">{title}</h1>
           <p className="mt-6 max-w-3xl text-base leading-relaxed text-muted-foreground md:text-lg">

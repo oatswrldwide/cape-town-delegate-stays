@@ -4,6 +4,8 @@ interface ServiceSchemaInput {
   name: string;
   description: string;
   path: string;
+  areaServed?: string;
+  category?: string;
 }
 
 interface FaqItem {
@@ -24,7 +26,13 @@ export function buildOrganizationSchema() {
   };
 }
 
-export function buildServiceSchema({ name, description, path }: ServiceSchemaInput) {
+export function buildServiceSchema({
+  name,
+  description,
+  path,
+  areaServed = "Worldwide",
+  category,
+}: ServiceSchemaInput) {
   return {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -35,7 +43,11 @@ export function buildServiceSchema({ name, description, path }: ServiceSchemaInp
     provider: {
       "@id": `${SITE_URL}#organization`,
     },
-    areaServed: "Worldwide",
+    areaServed: {
+      "@type": "Country",
+      name: areaServed,
+    },
+    ...(category ? { category } : {}),
     url: `${SITE_URL}${path}`,
   };
 }
