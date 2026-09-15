@@ -193,7 +193,11 @@ export function SeoContentPage({
           <TrustBadgesBar />
           <RelatedLinks>
             {links.map((link) => (
-              <a key={link.href} href={link.href} className="text-sm underline-offset-4 hover:underline">
+              <a
+                key={link.href}
+                href={link.href}
+                className="text-sm underline-offset-4 hover:underline"
+              >
                 {link.label}
               </a>
             ))}

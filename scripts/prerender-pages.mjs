@@ -96,7 +96,8 @@ function getPageH1(routePath) {
 
   const parts = routePath.split("/").filter(Boolean);
   if (parts[0] === "products") return `${productNames[parts[1]]} from South African origin.`;
-  if (parts[0] === "sourcing") return `${productNames[parts[1]]} for buyers in ${regionNames[parts[2]] ?? parts[2]}.`;
+  if (parts[0] === "sourcing")
+    return `${productNames[parts[1]]} for buyers in ${regionNames[parts[2]] ?? parts[2]}.`;
   return "South African product sourcing.";
 }
 

@@ -45,7 +45,9 @@ export const Route = createFileRoute("/sitemap.xml")({
           })),
         ];
 
-        const uniqueEntries = Array.from(new Map(entries.map((entry) => [entry.path, entry])).values());
+        const uniqueEntries = Array.from(
+          new Map(entries.map((entry) => [entry.path, entry])).values(),
+        );
 
         const urls = uniqueEntries.map((entry) =>
           [

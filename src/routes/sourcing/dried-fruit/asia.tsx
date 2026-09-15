@@ -1,5 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { RegionalProductPage, getRegionalPageMeta } from "../../../components/seo/regional-product-page";
+import {
+  RegionalProductPage,
+  getRegionalPageMeta,
+} from "../../../components/seo/regional-product-page";
 import { buildSeoHead } from "../../../lib/seo";
 
 const seo = getRegionalPageMeta("dried-fruit", "asia");

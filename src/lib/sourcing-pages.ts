@@ -1,11 +1,7 @@
 import type { SeoContentPageProps } from "../components/seo/content-page";
 
 export type SourcingProductKey =
-  | "macadamia-nuts"
-  | "rooibos-tea"
-  | "wine"
-  | "fresh-apples"
-  | "dried-fruit";
+  "macadamia-nuts" | "rooibos-tea" | "wine" | "fresh-apples" | "dried-fruit";
 
 export type SourcingMarketKey =
   | "germany"
@@ -93,7 +89,8 @@ const products: Record<SourcingProductKey, ProductProfile> = {
     label: "macadamia nuts",
     titleLabel: "Macadamia Nuts",
     category: "Macadamia nut export",
-    coreFormats: "Style 0/1 whole kernel, halves, pieces, meal, roasted and value-added snack packs",
+    coreFormats:
+      "Style 0/1 whole kernel, halves, pieces, meal, roasted and value-added snack packs",
     primaryBuyerFit: "importers, snack brands, ingredient buyers and private-label retailers",
     demandSignals: {
       europe:
@@ -121,8 +118,10 @@ const products: Record<SourcingProductKey, ProductProfile> = {
     label: "rooibos tea",
     titleLabel: "Rooibos Tea",
     category: "Rooibos and herbal tea export",
-    coreFormats: "bulk loose leaf, tea-bag cut, green rooibos, flavoured blends and finished retail packs",
-    primaryBuyerFit: "tea importers, wellness brands, private-label retailers and foodservice beverage teams",
+    coreFormats:
+      "bulk loose leaf, tea-bag cut, green rooibos, flavoured blends and finished retail packs",
+    primaryBuyerFit:
+      "tea importers, wellness brands, private-label retailers and foodservice beverage teams",
     demandSignals: {
       europe:
         "European demand remains strong in wellness-led retail, with organic and private-label programmes requiring traceable blend consistency and claim discipline.",
@@ -150,7 +149,8 @@ const products: Record<SourcingProductKey, ProductProfile> = {
     titleLabel: "South African Wine",
     category: "Wine export",
     coreFormats: "bottled still wines, private-label ranges and bulk wine for destination bottling",
-    primaryBuyerFit: "importers, licensed distributors, hospitality groups and private-label programmes",
+    primaryBuyerFit:
+      "importers, licensed distributors, hospitality groups and private-label programmes",
     demandSignals: {
       europe:
         "European demand rewards clear price architecture across entry, premium and specialist channels, supported by dependable label compliance.",
@@ -177,8 +177,10 @@ const products: Record<SourcingProductKey, ProductProfile> = {
     label: "fresh apples",
     titleLabel: "Fresh Apples",
     category: "Fresh fruit export",
-    coreFormats: "cartons, bags and retail-ready packs across Royal Gala, Granny Smith, Pink Lady and Golden Delicious",
-    primaryBuyerFit: "produce importers, retail programmes, wholesalers and foodservice distributors",
+    coreFormats:
+      "cartons, bags and retail-ready packs across Royal Gala, Granny Smith, Pink Lady and Golden Delicious",
+    primaryBuyerFit:
+      "produce importers, retail programmes, wholesalers and foodservice distributors",
     demandSignals: {
       europe:
         "European buyers use South African apples to bridge Northern Hemisphere off-season gaps while maintaining category continuity and quality grading discipline.",
@@ -205,8 +207,10 @@ const products: Record<SourcingProductKey, ProductProfile> = {
     label: "dried fruit",
     titleLabel: "Dried Fruit",
     category: "Dried fruit export",
-    coreFormats: "slices, rings, diced fruit, strips, ingredient blends and private-label snack packs",
-    primaryBuyerFit: "snack importers, ingredient manufacturers, foodservice buyers and private-label retailers",
+    coreFormats:
+      "slices, rings, diced fruit, strips, ingredient blends and private-label snack packs",
+    primaryBuyerFit:
+      "snack importers, ingredient manufacturers, foodservice buyers and private-label retailers",
     demandSignals: {
       europe:
         "European demand balances clean-label retail snacks with ingredient-grade contracts, where additive disclosure and moisture control are closely audited.",
@@ -250,11 +254,15 @@ const regions: RegionProfile[] = [
       "dried-fruit": "EU food labelling and additive disclosure framework",
     },
     regulatoryNotes: {
-      "macadamia-nuts": "Shipments requiring organic claims should carry valid COI records in TRACES NT before vessel departure.",
-      "rooibos-tea": "Organic and wellness claims should be reconciled with German-language consumer statements before print approval.",
+      "macadamia-nuts":
+        "Shipments requiring organic claims should carry valid COI records in TRACES NT before vessel departure.",
+      "rooibos-tea":
+        "Organic and wellness claims should be reconciled with German-language consumer statements before print approval.",
       wine: "Back-label text, allergen statements and fiscal document flow should be verified with importer compliance teams before bottling.",
-      "fresh-apples": "Phytosanitary documents and cold-chain records should match declared lot and packhouse details at clearance.",
-      "dried-fruit": "Additive, sugar and preservative declarations must align exactly with German-facing ingredient lists.",
+      "fresh-apples":
+        "Phytosanitary documents and cold-chain records should match declared lot and packhouse details at clearance.",
+      "dried-fruit":
+        "Additive, sugar and preservative declarations must align exactly with German-facing ingredient lists.",
     },
     ports: "Hamburg and Bremerhaven",
     seaTransit: "14-18 days",
@@ -262,8 +270,7 @@ const regions: RegionProfile[] = [
     containerPlan: "dry containers for stable goods, reefer for temperature-sensitive cargo",
     logisticsNote:
       "EORI-linked clearance and inland distribution booking should be fixed before cargo lands to avoid warehouse bottlenecks.",
-    seasonalWindow:
-      "Q4 planning for Q1 shelf resets and Christmas gifting allocations",
+    seasonalWindow: "Q4 planning for Q1 shelf resets and Christmas gifting allocations",
     culturalPeak: "Christmas and winter wellness season",
     sourceRefs: ["Destatis trade data", "German Federal Office for Consumer Protection"],
   },
@@ -285,11 +292,15 @@ const regions: RegionProfile[] = [
       "dried-fruit": "FDA labelling framework and state-level additive/claim checks",
     },
     regulatoryNotes: {
-      "macadamia-nuts": "Prior notice, allergen declaration and importer FSVP ownership should be locked before shipment release.",
-      "rooibos-tea": "Herbal and functional claims should be screened against federal and state-level marketing boundaries.",
+      "macadamia-nuts":
+        "Prior notice, allergen declaration and importer FSVP ownership should be locked before shipment release.",
+      "rooibos-tea":
+        "Herbal and functional claims should be screened against federal and state-level marketing boundaries.",
       wine: "Label approval sequence should precede production lock-in to avoid state registration delays.",
-      "fresh-apples": "Protocol scheduling must consider APHIS cold-treatment windows and destination port handling capacity.",
-      "dried-fruit": "Ingredient ordering and nutrition panel consistency should be checked for every private-label SKU.",
+      "fresh-apples":
+        "Protocol scheduling must consider APHIS cold-treatment windows and destination port handling capacity.",
+      "dried-fruit":
+        "Ingredient ordering and nutrition panel consistency should be checked for every private-label SKU.",
     },
     ports: "Los Angeles, Long Beach, New York and Savannah",
     seaTransit: "20-28 days",
@@ -316,14 +327,19 @@ const regions: RegionProfile[] = [
       "rooibos-tea": "JAS, destination food additive rules and import label authorities",
       wine: "Country-specific additive and alcohol import rules across North and Southeast Asia",
       "fresh-apples": "Destination phytosanitary protocols by country and treatment pathway",
-      "dried-fruit": "Country-level labelling and additive declarations with e-commerce compliance checks",
+      "dried-fruit":
+        "Country-level labelling and additive declarations with e-commerce compliance checks",
     },
     regulatoryNotes: {
-      "macadamia-nuts": "Do not treat Asia as one compliance regime; each shipment file should be country-specific before booking.",
-      "rooibos-tea": "Certificate formats and claim language should be localized for each destination and selling channel.",
+      "macadamia-nuts":
+        "Do not treat Asia as one compliance regime; each shipment file should be country-specific before booking.",
+      "rooibos-tea":
+        "Certificate formats and claim language should be localized for each destination and selling channel.",
       wine: "Importer route and back-label expectations differ materially across Japan, China and Korea and need separate validation.",
-      "fresh-apples": "Treatment, inspection and lot-trace requirements should be checked market by market, not at regional level.",
-      "dried-fruit": "E-commerce packs, gifting packs and bulk ingredient packs often trigger different local label expectations.",
+      "fresh-apples":
+        "Treatment, inspection and lot-trace requirements should be checked market by market, not at regional level.",
+      "dried-fruit":
+        "E-commerce packs, gifting packs and bulk ingredient packs often trigger different local label expectations.",
     },
     ports: "Yokohama, Shanghai, Busan and Singapore",
     seaTransit: "18-26 days",
@@ -347,18 +363,23 @@ const regions: RegionProfile[] = [
       "Winning programmes align retail, hospitality and GCC redistribution with Ramadan-timed inventory decisions.",
     retailers: ["Carrefour", "Lulu", "Waitrose", "Spinneys", "Choithrams", "Boots"],
     regulatoryBodies: {
-      "macadamia-nuts": "Halal frameworks (SANHA/MJC), ESMA-aligned labelling and importer approvals",
+      "macadamia-nuts":
+        "Halal frameworks (SANHA/MJC), ESMA-aligned labelling and importer approvals",
       "rooibos-tea": "Halal validation, ESMA labelling and Arabic-English packaging standards",
       wine: "Licensed alcohol importer/distributor controls and municipality trading rules",
       "fresh-apples": "ESMA food labelling and destination phytosanitary checks",
       "dried-fruit": "ESMA ingredient disclosure and Arabic-first pack requirements",
     },
     regulatoryNotes: {
-      "macadamia-nuts": "Halal status and bilingual packaging should be signed off before production to protect Ramadan channel deadlines.",
-      "rooibos-tea": "Arabic ingredient declarations and importer registration references should match final SKU artwork.",
+      "macadamia-nuts":
+        "Halal status and bilingual packaging should be signed off before production to protect Ramadan channel deadlines.",
+      "rooibos-tea":
+        "Arabic ingredient declarations and importer registration references should match final SKU artwork.",
       wine: "Only licensed importers can clear wine; distribution route and bonded handling must be confirmed in writing.",
-      "fresh-apples": "Temperature logs and Arabic labelling readiness should be included in pre-arrival documentation packs.",
-      "dried-fruit": "Shelf-life statements should be validated for high-heat retail environments before listing.",
+      "fresh-apples":
+        "Temperature logs and Arabic labelling readiness should be included in pre-arrival documentation packs.",
+      "dried-fruit":
+        "Shelf-life statements should be validated for high-heat retail environments before listing.",
     },
     ports: "Jebel Ali",
     seaTransit: "10-12 days",
@@ -388,17 +409,22 @@ const regions: RegionProfile[] = [
       "dried-fruit": "UK ingredient and claim labelling controls",
     },
     regulatoryNotes: {
-      "macadamia-nuts": "Buyer audits typically request full allergen and origin trace files at onboarding.",
-      "rooibos-tea": "Claim language should be checked against UK advertising and packaging guardrails.",
+      "macadamia-nuts":
+        "Buyer audits typically request full allergen and origin trace files at onboarding.",
+      "rooibos-tea":
+        "Claim language should be checked against UK advertising and packaging guardrails.",
       wine: "Duty and excise workflows should be mapped to avoid delay between customs release and distribution.",
-      "fresh-apples": "Retail pack labels and lot traceability should align to post-Brexit customs data fields.",
-      "dried-fruit": "Sugar-addition and preservative disclosures need precise line-item label consistency.",
+      "fresh-apples":
+        "Retail pack labels and lot traceability should align to post-Brexit customs data fields.",
+      "dried-fruit":
+        "Sugar-addition and preservative disclosures need precise line-item label consistency.",
     },
     ports: "Felixstowe and London Gateway",
     seaTransit: "16-21 days",
     airTransit: "11-13 hours",
     containerPlan: "dry and reefer with strict delivery slot booking into UK distribution centres",
-    logisticsNote: "Retail programmes often require precise booking windows and barcode standards before final dispatch.",
+    logisticsNote:
+      "Retail programmes often require precise booking windows and barcode standards before final dispatch.",
     seasonalWindow: "summer contracting for autumn/winter promotions",
     culturalPeak: "Christmas confectionery and wellness tea demand",
     sourceRefs: ["UK government import guidance", "Kantar retail trend references"],
@@ -421,17 +447,21 @@ const regions: RegionProfile[] = [
       "dried-fruit": "EU additive and labelling controls",
     },
     regulatoryNotes: {
-      "macadamia-nuts": "Rotterdam entry files should be prepared for possible re-distribution inspections inside the EU.",
+      "macadamia-nuts":
+        "Rotterdam entry files should be prepared for possible re-distribution inspections inside the EU.",
       "rooibos-tea": "Importer records should distinguish local Dutch sale from re-export lots.",
       wine: "Excise and warehouse processes should be mapped early for bottled and bulk lanes.",
-      "fresh-apples": "Reefer release and onward trucking plans should be reserved before vessel berthing.",
-      "dried-fruit": "Private-label ingredient declarations should anticipate multilingual EU re-export needs.",
+      "fresh-apples":
+        "Reefer release and onward trucking plans should be reserved before vessel berthing.",
+      "dried-fruit":
+        "Private-label ingredient declarations should anticipate multilingual EU re-export needs.",
     },
     ports: "Rotterdam",
     seaTransit: "15-19 days",
     airTransit: "11-13 hours",
     containerPlan: "dry and reefer with cross-dock planning for EU redistribution",
-    logisticsNote: "Hub-market economics improve when onward trucking and warehouse handling are pre-priced.",
+    logisticsNote:
+      "Hub-market economics improve when onward trucking and warehouse handling are pre-priced.",
     seasonalWindow: "Q1 and Q3 range reviews for major grocery chains",
     culturalPeak: "year-end gifting and spring wellness resets",
     sourceRefs: ["CBS Netherlands trade data", "Dutch customs guidance"],
@@ -454,17 +484,22 @@ const regions: RegionProfile[] = [
       "dried-fruit": "EU additive and French-language labelling rules",
     },
     regulatoryNotes: {
-      "macadamia-nuts": "Allergen and origin wording should be reviewed in French before final print sign-off.",
-      "rooibos-tea": "Wellness messaging should avoid unsupported claims in consumer-facing labels.",
+      "macadamia-nuts":
+        "Allergen and origin wording should be reviewed in French before final print sign-off.",
+      "rooibos-tea":
+        "Wellness messaging should avoid unsupported claims in consumer-facing labels.",
       wine: "Importer tax and duty routing should be synced to channel launch dates.",
-      "fresh-apples": "Fruit class and pack declarations should align with importer QA intake protocols.",
-      "dried-fruit": "Sweetener and additive call-outs should be synchronized across front and back label panels.",
+      "fresh-apples":
+        "Fruit class and pack declarations should align with importer QA intake protocols.",
+      "dried-fruit":
+        "Sweetener and additive call-outs should be synchronized across front and back label panels.",
     },
     ports: "Le Havre and Marseille",
     seaTransit: "16-20 days",
     airTransit: "11-14 hours",
     containerPlan: "dry and reefer with inland trucking planned around regional DC locations",
-    logisticsNote: "Regional distribution into north and south France should be priced as separate scenarios.",
+    logisticsNote:
+      "Regional distribution into north and south France should be priced as separate scenarios.",
     seasonalWindow: "autumn listings for winter promotions",
     culturalPeak: "holiday gifting and post-holiday wellness cycles",
     sourceRefs: ["French customs and DGCCRF references", "French retail channel data"],
@@ -487,17 +522,22 @@ const regions: RegionProfile[] = [
       "dried-fruit": "Swiss additive and language labelling requirements",
     },
     regulatoryNotes: {
-      "macadamia-nuts": "Premium channels often request additional quality evidence beyond baseline customs files.",
-      "rooibos-tea": "Organic and sustainability claims should be mapped to certifier scope before buyer onboarding.",
+      "macadamia-nuts":
+        "Premium channels often request additional quality evidence beyond baseline customs files.",
+      "rooibos-tea":
+        "Organic and sustainability claims should be mapped to certifier scope before buyer onboarding.",
       wine: "Label and importer file sequencing should account for cantonal distribution pathways.",
-      "fresh-apples": "Arrival-condition reporting should be prepared for higher QA scrutiny in premium retail channels.",
-      "dried-fruit": "Texture and shelf-life tolerance should be clearly defined before private-label production.",
+      "fresh-apples":
+        "Arrival-condition reporting should be prepared for higher QA scrutiny in premium retail channels.",
+      "dried-fruit":
+        "Texture and shelf-life tolerance should be clearly defined before private-label production.",
     },
     ports: "Basel-linked inland gateways via Rotterdam or Antwerp",
     seaTransit: "17-22 days including inland movement",
     airTransit: "11-13 hours",
     containerPlan: "dry and reefer with added inland handover documentation",
-    logisticsNote: "Inland customs and warehousing handoffs should be contractually clear before dispatch.",
+    logisticsNote:
+      "Inland customs and warehousing handoffs should be contractually clear before dispatch.",
     seasonalWindow: "Q3 planning for year-end premium retail events",
     culturalPeak: "year-end gifting and winter hospitality",
     sourceRefs: ["Swiss Federal Food Safety references", "Swiss customs guidelines"],
@@ -520,17 +560,21 @@ const regions: RegionProfile[] = [
       "dried-fruit": "CFIA additive and nutrition labelling controls",
     },
     regulatoryNotes: {
-      "macadamia-nuts": "French-English labelling readiness is often required before distributor acceptance.",
-      "rooibos-tea": "Natural-health style claims should be reviewed against category-specific compliance boundaries.",
+      "macadamia-nuts":
+        "French-English labelling readiness is often required before distributor acceptance.",
+      "rooibos-tea":
+        "Natural-health style claims should be reviewed against category-specific compliance boundaries.",
       wine: "Province-specific board approval cadence should guide launch timelines.",
       "fresh-apples": "Cold-chain and lot records should support cross-province redistribution.",
-      "dried-fruit": "Sugar content and portion-format claims should be validated against Canadian packaging norms.",
+      "dried-fruit":
+        "Sugar content and portion-format claims should be validated against Canadian packaging norms.",
     },
     ports: "Vancouver, Montreal and Halifax",
     seaTransit: "22-30 days",
     airTransit: "16-19 hours",
     containerPlan: "dry and reefer with province-specific onward freight planning",
-    logisticsNote: "Transit modelling should include inland rail or trucking where destination DCs are landlocked.",
+    logisticsNote:
+      "Transit modelling should include inland rail or trucking where destination DCs are landlocked.",
     seasonalWindow: "winter replenishment and spring range planning",
     culturalPeak: "winter wellness and holiday gifting",
     sourceRefs: ["Statistics Canada trade references", "CFIA importer guidance"],
@@ -546,24 +590,30 @@ const regions: RegionProfile[] = [
       "Routes fit best when premium department-store demand and manufacturing demand are managed as separate quality tiers.",
     retailers: ["Isetan", "Mitsukoshi", "Takashimaya", "Loft", "Tokyu Hands"],
     regulatoryBodies: {
-      "macadamia-nuts": "JAS organic framework, phytosanitary checks and importer quality protocols",
+      "macadamia-nuts":
+        "JAS organic framework, phytosanitary checks and importer quality protocols",
       "rooibos-tea": "JAS and Japanese food additive controls",
       wine: "Japanese alcohol import rules and additive compliance checks",
       "fresh-apples": "Japanese phytosanitary treatment and inspection protocols",
       "dried-fruit": "Food additive and label requirements under Japanese standards",
     },
     regulatoryNotes: {
-      "macadamia-nuts": "Style grading evidence and certificate validity should accompany each shipment file.",
-      "rooibos-tea": "Ingredient naming and additive status should be translated and validated before print.",
+      "macadamia-nuts":
+        "Style grading evidence and certificate validity should accompany each shipment file.",
+      "rooibos-tea":
+        "Ingredient naming and additive status should be translated and validated before print.",
       wine: "Back-label translation should be reviewed by importer compliance teams before bottling.",
-      "fresh-apples": "Treatment method and inspection documentation should be fully traceable to each lot.",
-      "dried-fruit": "Sweetener, preservative and allergen wording should be tested against local conventions.",
+      "fresh-apples":
+        "Treatment method and inspection documentation should be fully traceable to each lot.",
+      "dried-fruit":
+        "Sweetener, preservative and allergen wording should be tested against local conventions.",
     },
     ports: "Yokohama and Osaka",
     seaTransit: "18-25 days",
     airTransit: "14-16 hours",
     containerPlan: "reefer for sensitive cargo, dry for shelf-stable formats",
-    logisticsNote: "Arrival inspection booking and label-file readiness should be completed before vessel departure.",
+    logisticsNote:
+      "Arrival inspection booking and label-file readiness should be completed before vessel departure.",
     seasonalWindow: "orders placed 6-9 months before major gifting windows",
     culturalPeak: "O-chugen (July) and O-seibo (December)",
     sourceRefs: ["MAFF and Japanese customs references", "Japan retail channel observations"],
@@ -586,17 +636,21 @@ const regions: RegionProfile[] = [
       "dried-fruit": "Korean food additive and labelling rules",
     },
     regulatoryNotes: {
-      "macadamia-nuts": "Importer-led label compliance checks should happen before first production run.",
+      "macadamia-nuts":
+        "Importer-led label compliance checks should happen before first production run.",
       "rooibos-tea": "Functional wording should be screened against local claim restrictions.",
       wine: "Distributor registration and back-label compliance should be sequenced before shipment booking.",
-      "fresh-apples": "Cold-chain records should support rapid quality-release decisions on arrival.",
-      "dried-fruit": "Texture and sweetness descriptions should align with Korean retail expectations.",
+      "fresh-apples":
+        "Cold-chain records should support rapid quality-release decisions on arrival.",
+      "dried-fruit":
+        "Texture and sweetness descriptions should align with Korean retail expectations.",
     },
     ports: "Busan and Incheon",
     seaTransit: "19-24 days",
     airTransit: "13-15 hours",
     containerPlan: "dry and reefer with humidity protection for premium formats",
-    logisticsNote: "E-commerce-driven replenishment benefits from conservative safety stock plans for first orders.",
+    logisticsNote:
+      "E-commerce-driven replenishment benefits from conservative safety stock plans for first orders.",
     seasonalWindow: "Q2 planning for Chuseok and year-end promotions",
     culturalPeak: "Chuseok and Lunar New Year gifting",
     sourceRefs: ["Korean Customs Service references", "MFDS import guidance"],
@@ -619,17 +673,22 @@ const regions: RegionProfile[] = [
       "dried-fruit": "SFA additive and nutrition labelling controls",
     },
     regulatoryNotes: {
-      "macadamia-nuts": "Premium retail buyers often request moisture and shelf-life data as part of onboarding.",
-      "rooibos-tea": "Clean-label positioning should be backed by clear ingredient and claim evidence.",
+      "macadamia-nuts":
+        "Premium retail buyers often request moisture and shelf-life data as part of onboarding.",
+      "rooibos-tea":
+        "Clean-label positioning should be backed by clear ingredient and claim evidence.",
       wine: "Duty and excise handling should be aligned with bonded warehousing plans.",
-      "fresh-apples": "High turnover channels benefit from arrival-date certainty and rapid DC transfer planning.",
-      "dried-fruit": "Resealable convenience packs are common and should be scoped in the first quotation cycle.",
+      "fresh-apples":
+        "High turnover channels benefit from arrival-date certainty and rapid DC transfer planning.",
+      "dried-fruit":
+        "Resealable convenience packs are common and should be scoped in the first quotation cycle.",
     },
     ports: "Singapore Port",
     seaTransit: "13-17 days",
     airTransit: "10-12 hours",
     containerPlan: "dry and reefer with tropical-condition storage design",
-    logisticsNote: "Humidity management and shelf-ready packaging are central in this climate and channel mix.",
+    logisticsNote:
+      "Humidity management and shelf-ready packaging are central in this climate and channel mix.",
     seasonalWindow: "quarterly promotional calendar with festival spikes",
     culturalPeak: "Chinese New Year and Mid-Autumn demand bursts",
     sourceRefs: ["Singapore Food Agency guidance", "Singapore retail market reports"],
@@ -652,10 +711,13 @@ const regions: RegionProfile[] = [
       "dried-fruit": "EU additive and Italian ingredient-labelling framework",
     },
     regulatoryNotes: {
-      "macadamia-nuts": "Premium grocery buyers often ask for transparent origin and processing documentation.",
-      "rooibos-tea": "Tea category positioning should avoid unsupported wellness claims in consumer copy.",
+      "macadamia-nuts":
+        "Premium grocery buyers often ask for transparent origin and processing documentation.",
+      "rooibos-tea":
+        "Tea category positioning should avoid unsupported wellness claims in consumer copy.",
       wine: "Private-label timelines should include importer legal review before bottling start.",
-      "fresh-apples": "Variety and count accuracy are important for retail and wholesale wholesale planning.",
+      "fresh-apples":
+        "Variety and count accuracy are important for retail and wholesale wholesale planning.",
       "dried-fruit": "Label translations should reflect exact additive and sweetener composition.",
     },
     ports: "Genoa and Trieste",
@@ -685,11 +747,15 @@ const regions: RegionProfile[] = [
       "dried-fruit": "EU additive and nutrition disclosure rules",
     },
     regulatoryNotes: {
-      "macadamia-nuts": "Value-channel tenders often require tight spec and moisture tolerance documentation.",
-      "rooibos-tea": "Private-label packs should align to bilingual or Spanish-first channel expectations.",
+      "macadamia-nuts":
+        "Value-channel tenders often require tight spec and moisture tolerance documentation.",
+      "rooibos-tea":
+        "Private-label packs should align to bilingual or Spanish-first channel expectations.",
       wine: "On-trade and off-trade label variants should be planned to reduce rework.",
-      "fresh-apples": "Arrival scheduling should account for Mediterranean port congestion periods.",
-      "dried-fruit": "Ingredient transparency is central for modern health-conscious retail segments.",
+      "fresh-apples":
+        "Arrival scheduling should account for Mediterranean port congestion periods.",
+      "dried-fruit":
+        "Ingredient transparency is central for modern health-conscious retail segments.",
     },
     ports: "Valencia and Barcelona",
     seaTransit: "15-20 days",
@@ -718,17 +784,22 @@ const regions: RegionProfile[] = [
       "dried-fruit": "FSANZ additive and labelling framework",
     },
     regulatoryNotes: {
-      "macadamia-nuts": "Biosecurity file accuracy and pack integrity are key in importer onboarding.",
-      "rooibos-tea": "Functional claim wording should be reviewed for Australian advertising compliance.",
+      "macadamia-nuts":
+        "Biosecurity file accuracy and pack integrity are key in importer onboarding.",
+      "rooibos-tea":
+        "Functional claim wording should be reviewed for Australian advertising compliance.",
       wine: "Importer duty and channel restrictions should be mapped before SKU finalisation.",
-      "fresh-apples": "Destination protocol and cold-chain timing should be pre-cleared with import partners.",
-      "dried-fruit": "Added-sugar and preservative statements should match FSANZ expectations exactly.",
+      "fresh-apples":
+        "Destination protocol and cold-chain timing should be pre-cleared with import partners.",
+      "dried-fruit":
+        "Added-sugar and preservative statements should match FSANZ expectations exactly.",
     },
     ports: "Melbourne and Sydney",
     seaTransit: "14-19 days",
     airTransit: "11-13 hours",
     containerPlan: "dry and reefer with quarantine-prepared documentation",
-    logisticsNote: "Quarantine readiness should be tested with trial lots before larger commitments.",
+    logisticsNote:
+      "Quarantine readiness should be tested with trial lots before larger commitments.",
     seasonalWindow: "retail programme planning ahead of summer and school cycles",
     culturalPeak: "Christmas summer season and back-to-school",
     sourceRefs: ["Australian DAFF and FSANZ references", "Australian retail category reports"],
@@ -751,17 +822,22 @@ const regions: RegionProfile[] = [
       "dried-fruit": "FSANZ and MPI labelling/additive controls",
     },
     regulatoryNotes: {
-      "macadamia-nuts": "Small-volume premium programmes still require full batch and document traceability.",
-      "rooibos-tea": "Label and ingredient files should be reviewed for both domestic and online sales channels.",
+      "macadamia-nuts":
+        "Small-volume premium programmes still require full batch and document traceability.",
+      "rooibos-tea":
+        "Label and ingredient files should be reviewed for both domestic and online sales channels.",
       wine: "Portfolio planning should account for importer shelf-space discipline in smaller chains.",
-      "fresh-apples": "Arrival-condition consistency often matters more than large-volume discounting.",
-      "dried-fruit": "Shelf-life proofs should reflect New Zealand storage and distribution conditions.",
+      "fresh-apples":
+        "Arrival-condition consistency often matters more than large-volume discounting.",
+      "dried-fruit":
+        "Shelf-life proofs should reflect New Zealand storage and distribution conditions.",
     },
     ports: "Auckland and Tauranga",
     seaTransit: "15-21 days",
     airTransit: "11-13 hours",
     containerPlan: "dry and reefer with biosecurity-ready paperwork",
-    logisticsNote: "Smaller market replenishment cycles should be matched to conservative safety stock assumptions.",
+    logisticsNote:
+      "Smaller market replenishment cycles should be matched to conservative safety stock assumptions.",
     seasonalWindow: "Q1 and Q3 category refresh cycles",
     culturalPeak: "summer holiday and winter wellness periods",
     sourceRefs: ["MPI references", "New Zealand retail demand data"],
@@ -784,17 +860,20 @@ const regions: RegionProfile[] = [
       "dried-fruit": "SFDA additive, shelf-life and Arabic label requirements",
     },
     regulatoryNotes: {
-      "macadamia-nuts": "Halal and bilingual files should be complete before final production planning.",
+      "macadamia-nuts":
+        "Halal and bilingual files should be complete before final production planning.",
       "rooibos-tea": "Importer product registration timelines should be built into launch plans.",
       wine: "This route should be treated as non-viable for standard commercial wine import channels.",
       "fresh-apples": "High-heat logistics controls should be documented throughout the route.",
-      "dried-fruit": "Ingredient and preservative statements should match SFDA registration records.",
+      "dried-fruit":
+        "Ingredient and preservative statements should match SFDA registration records.",
     },
     ports: "Jeddah and Dammam",
     seaTransit: "12-16 days",
     airTransit: "9-11 hours",
     containerPlan: "dry and reefer with heat-protection and rapid clearance focus",
-    logisticsNote: "Summer temperature exposure requires robust pack barriers and tighter warehouse handover timing.",
+    logisticsNote:
+      "Summer temperature exposure requires robust pack barriers and tighter warehouse handover timing.",
     seasonalWindow: "pre-Ramadan and Hajj-related demand planning",
     culturalPeak: "Ramadan, Eid and Hajj hospitality",
     sourceRefs: ["SFDA and Saudi customs references", "KSA retail and horeca channel reports"],
@@ -810,24 +889,29 @@ const regions: RegionProfile[] = [
       "The route works best with importer partnerships that can serve both high-end retail and hotel demand.",
     retailers: ["Carrefour Qatar", "Lulu Qatar", "Monoprix Qatar", "Megamart", "Spar Qatar"],
     regulatoryBodies: {
-      "macadamia-nuts": "MOPH food controls, halal confidence and Arabic-English labelling standards",
+      "macadamia-nuts":
+        "MOPH food controls, halal confidence and Arabic-English labelling standards",
       "rooibos-tea": "Qatar import food standards and bilingual labelling",
       wine: "Licensed importer route required for alcohol channels",
       "fresh-apples": "Qatar phytosanitary and produce import controls",
       "dried-fruit": "Qatar additive and shelf-life labelling requirements",
     },
     regulatoryNotes: {
-      "macadamia-nuts": "Small but premium channel demand requires strict freshness and visual-consistency controls.",
-      "rooibos-tea": "Bilingual pack standards should be approved by importer before print production.",
+      "macadamia-nuts":
+        "Small but premium channel demand requires strict freshness and visual-consistency controls.",
+      "rooibos-tea":
+        "Bilingual pack standards should be approved by importer before print production.",
       wine: "Licensed channel selection and bonded handling should be clear before procurement starts.",
       "fresh-apples": "Arrivals should be timed to minimise warm-chain exposure at final handover.",
-      "dried-fruit": "Resealable and premium gift-ready formats tend to perform better in this market.",
+      "dried-fruit":
+        "Resealable and premium gift-ready formats tend to perform better in this market.",
     },
     ports: "Hamad Port",
     seaTransit: "12-15 days",
     airTransit: "9-10 hours",
     containerPlan: "dry and reefer with climate-protection controls",
-    logisticsNote: "Stock planning should align with hospitality event calendars and importer storage capacity.",
+    logisticsNote:
+      "Stock planning should align with hospitality event calendars and importer storage capacity.",
     seasonalWindow: "pre-Ramadan and major sporting/event cycles",
     culturalPeak: "Ramadan and Eid gifting",
     sourceRefs: ["Qatar customs and food authority guidance", "Qatar hospitality demand reports"],
@@ -850,17 +934,21 @@ const regions: RegionProfile[] = [
       "dried-fruit": "FSSAI additive and nutrition disclosure requirements",
     },
     regulatoryNotes: {
-      "macadamia-nuts": "Price architecture should include duties and local distribution markups before quoting.",
-      "rooibos-tea": "Blended or flavoured SKUs may require additional ingredient scrutiny at clearance.",
+      "macadamia-nuts":
+        "Price architecture should include duties and local distribution markups before quoting.",
+      "rooibos-tea":
+        "Blended or flavoured SKUs may require additional ingredient scrutiny at clearance.",
       wine: "State registration and distributor onboarding timelines should be modelled upfront.",
-      "fresh-apples": "Monsoon timing and inland transit should be considered in cold-chain planning.",
+      "fresh-apples":
+        "Monsoon timing and inland transit should be considered in cold-chain planning.",
       "dried-fruit": "Sweetness profile and pack-size affordability are major commercial drivers.",
     },
     ports: "Nhava Sheva and Chennai",
     seaTransit: "15-21 days",
     airTransit: "10-12 hours",
     containerPlan: "dry and reefer with monsoon-aware storage and inland movement controls",
-    logisticsNote: "Importer cash cycle and inland distribution should be factored into first-order sizing.",
+    logisticsNote:
+      "Importer cash cycle and inland distribution should be factored into first-order sizing.",
     seasonalWindow: "festival-led peaks with long procurement lead windows",
     culturalPeak: "Diwali and wedding season",
     sourceRefs: ["DGFT and FSSAI guidance", "Indian retail and import trend data"],
@@ -883,17 +971,22 @@ const regions: RegionProfile[] = [
       "dried-fruit": "Malaysian additive/labelling controls with halal-channel requirements",
     },
     regulatoryNotes: {
-      "macadamia-nuts": "Halal signal clarity can materially impact modern-trade listing confidence.",
-      "rooibos-tea": "Functional positioning should be matched to local category and claim controls.",
+      "macadamia-nuts":
+        "Halal signal clarity can materially impact modern-trade listing confidence.",
+      "rooibos-tea":
+        "Functional positioning should be matched to local category and claim controls.",
       wine: "Channel access is limited to licensed routes and should be validated before procurement.",
-      "fresh-apples": "Humidity and shelf-life protections are central in tropical retail conditions.",
-      "dried-fruit": "Pack barriers and resealable formats help reduce quality complaints post-arrival.",
+      "fresh-apples":
+        "Humidity and shelf-life protections are central in tropical retail conditions.",
+      "dried-fruit":
+        "Pack barriers and resealable formats help reduce quality complaints post-arrival.",
     },
     ports: "Port Klang",
     seaTransit: "13-18 days",
     airTransit: "10-12 hours",
     containerPlan: "dry and reefer with tropical humidity control",
-    logisticsNote: "Tropical storage and shelf-life checks should be tested with trial consignments.",
+    logisticsNote:
+      "Tropical storage and shelf-life checks should be tested with trial consignments.",
     seasonalWindow: "Ramadan-adjacent and year-end retail campaign cycles",
     culturalPeak: "Ramadan and Hari Raya",
     sourceRefs: ["Malaysia MOH and customs references", "JAKIM and channel reports"],
@@ -916,10 +1009,12 @@ const regions: RegionProfile[] = [
       "dried-fruit": "Thai FDA additive and nutrition-labelling requirements",
     },
     regulatoryNotes: {
-      "macadamia-nuts": "Tourism-driven demand can create short-notice replenishment pressure in peak seasons.",
+      "macadamia-nuts":
+        "Tourism-driven demand can create short-notice replenishment pressure in peak seasons.",
       "rooibos-tea": "Ready-to-drink or flavoured adaptations may need extra regulatory planning.",
       wine: "Importer licensing and tax setup should be confirmed before committing production volumes.",
-      "fresh-apples": "Distribution to Bangkok and resort zones should be split in logistics costing.",
+      "fresh-apples":
+        "Distribution to Bangkok and resort zones should be split in logistics costing.",
       "dried-fruit": "Heat and humidity resilience should be validated at final retail pack level.",
     },
     ports: "Laem Chabang",
@@ -949,11 +1044,14 @@ const regions: RegionProfile[] = [
       "dried-fruit": "Hong Kong additive and nutrition labelling requirements",
     },
     regulatoryNotes: {
-      "macadamia-nuts": "Premium gift channels require strong visual consistency and quick restock capability.",
-      "rooibos-tea": "Bilingual format and premium positioning copy should be tested with channel partners.",
+      "macadamia-nuts":
+        "Premium gift channels require strong visual consistency and quick restock capability.",
+      "rooibos-tea":
+        "Bilingual format and premium positioning copy should be tested with channel partners.",
       wine: "Fine-wine channels value provenance and packaging condition evidence at intake.",
       "fresh-apples": "Fast turnover channels require strict arrival-date and condition control.",
-      "dried-fruit": "Retailers often prefer elegant, resealable and gift-friendly pack structures.",
+      "dried-fruit":
+        "Retailers often prefer elegant, resealable and gift-friendly pack structures.",
     },
     ports: "Hong Kong Port",
     seaTransit: "17-22 days",
@@ -982,17 +1080,22 @@ const regions: RegionProfile[] = [
       "dried-fruit": "EU additive and ingredient-labelling rules",
     },
     regulatoryNotes: {
-      "macadamia-nuts": "Value retail programmes need strict cost control without relaxing moisture or defect tolerances.",
-      "rooibos-tea": "Consumer education copy may be needed for newer rooibos SKUs in mainstream chains.",
+      "macadamia-nuts":
+        "Value retail programmes need strict cost control without relaxing moisture or defect tolerances.",
+      "rooibos-tea":
+        "Consumer education copy may be needed for newer rooibos SKUs in mainstream chains.",
       wine: "Portfolio should align to value and mid-tier channels with clear importer economics.",
-      "fresh-apples": "Hub-entry and inland distribution costs can materially alter landed price competitiveness.",
-      "dried-fruit": "Private-label tender cycles reward stable specification and reliable lead-time performance.",
+      "fresh-apples":
+        "Hub-entry and inland distribution costs can materially alter landed price competitiveness.",
+      "dried-fruit":
+        "Private-label tender cycles reward stable specification and reliable lead-time performance.",
     },
     ports: "Gdańsk via North European gateways",
     seaTransit: "18-23 days",
     airTransit: "11-13 hours",
     containerPlan: "dry and reefer with cost-optimised inland routing",
-    logisticsNote: "Cost-sensitive channels require transparent landed-cost breakdowns before listing decisions.",
+    logisticsNote:
+      "Cost-sensitive channels require transparent landed-cost breakdowns before listing decisions.",
     seasonalWindow: "autumn contracting and winter demand peaks",
     culturalPeak: "Christmas confectionery and family retail demand",
     sourceRefs: ["Polish customs references", "Central European retail reports"],
@@ -1015,17 +1118,22 @@ const regions: RegionProfile[] = [
       "dried-fruit": "EU additive/nutrition rules with Swedish market label discipline",
     },
     regulatoryNotes: {
-      "macadamia-nuts": "Sustainability statements should be evidenced and not treated as generic marketing copy.",
-      "rooibos-tea": "Organic and ethical-sourcing claims are commercially important and should be document-backed.",
+      "macadamia-nuts":
+        "Sustainability statements should be evidenced and not treated as generic marketing copy.",
+      "rooibos-tea":
+        "Organic and ethical-sourcing claims are commercially important and should be document-backed.",
       wine: "Channel route and monopoly-system considerations should be validated with importer partners.",
-      "fresh-apples": "Winter handling and storage planning can influence quality outcomes materially.",
-      "dried-fruit": "Packaging recyclability and ingredient transparency often influence buyer scoring.",
+      "fresh-apples":
+        "Winter handling and storage planning can influence quality outcomes materially.",
+      "dried-fruit":
+        "Packaging recyclability and ingredient transparency often influence buyer scoring.",
     },
     ports: "Gothenburg",
     seaTransit: "18-23 days",
     airTransit: "11-13 hours",
     containerPlan: "dry and reefer with winter-condition handling plans",
-    logisticsNote: "Cold-season warehouse and inland delivery timing should be included in first-route simulations.",
+    logisticsNote:
+      "Cold-season warehouse and inland delivery timing should be included in first-route simulations.",
     seasonalWindow: "Q3 planning for winter retail demand",
     culturalPeak: "Christmas and winter wellness",
     sourceRefs: ["Swedish customs and food authority references", "Nordic grocery trend reports"],
@@ -1072,6 +1180,14 @@ function buildPage(productKey: SourcingProductKey, marketKey: SourcingMarketKey)
     product.demandSignals[region.group],
     `Primary channel signal in ${region.name}: ${region.routeFit.toLowerCase()}`,
     `Named buyer channels include ${region.retailers.slice(0, 4).join(", ")}, with sourcing calendars concentrated around ${region.culturalPeak.toLowerCase()}.`,
+  ];
+  const dataPointBullets = [
+    `Market pulse: ${region.marketPulse}`,
+    `Demand context: ${product.demandSignals[region.group]}`,
+    `Named channels to validate: ${region.retailers.join(", ")}.`,
+    `Regulatory checkpoint: ${region.regulatoryBodies[productKey]}.`,
+    `Seasonal timing anchor: ${region.seasonalWindow}.`,
+    `Cultural demand peak: ${region.culturalPeak}.`,
   ];
 
   const intro = `${sentenceVariant(indexSeed, [
@@ -1129,20 +1245,43 @@ function buildPage(productKey: SourcingProductKey, marketKey: SourcingMarketKey)
     intro,
     sections: [
       {
+        heading: `Market-specific data points for ${region.name}`,
+        body: `Every sourcing decision for ${product.label} into ${region.name} should be anchored in explicit market data, channel naming and timing evidence. The points below create a minimum information set that procurement teams can test with importers, retailers and logistics partners before confirming annual volume assumptions. This prevents generic copy-paste market planning and ensures that supplier conversations are tied to measurable market reality.`,
+        bullets: dataPointBullets,
+      },
+      {
         heading: `Why this route fits ${region.name}`,
         body: routeFitBody,
       },
       {
         heading: `Regulatory landscape in ${region.name}`,
         body: regulatoryBody,
+        bullets: [
+          `Authority or framework: ${region.regulatoryBodies[productKey]}.`,
+          `Local note: ${region.regulatoryNotes[productKey]}`,
+          "Confirm document validity, certificate scope and legal-entity naming before booking.",
+          "Require destination-ready label proofs linked to the exact shipment lot.",
+        ],
       },
       {
         heading: `Product-specific guidance for ${region.name}`,
         body: productGuidance,
+        bullets: [
+          `Core formats to compare: ${product.coreFormats}.`,
+          `Primary buyer fit: ${product.primaryBuyerFit}.`,
+          `Preferred planning window: ${region.seasonalWindow}.`,
+          `Pricing and promotion should reference ${region.culturalPeak.toLowerCase()} demand behaviour.`,
+        ],
       },
       {
         heading: `Logistics to ${region.name}`,
         body: logisticsBody,
+        bullets: [
+          `Preferred destination gateways: ${region.ports}.`,
+          `Sea transit baseline: ${region.seaTransit}.`,
+          `Air transit baseline: ${region.airTransit}.`,
+          `Container strategy: ${region.containerPlan}.`,
+        ],
       },
       {
         heading: `Design the route to ${region.name}`,
@@ -1156,10 +1295,31 @@ function buildPage(productKey: SourcingProductKey, marketKey: SourcingMarketKey)
       {
         heading: `Market data checkpoints for ${region.name}`,
         body: `Before scaling volume, validate three market checkpoints: (1) channel sell-through assumptions, (2) destination landed-cost sensitivity, and (3) compliance workload for each SKU. In ${region.name}, these checkpoints should reference named channels such as ${region.retailers.slice(0, 3).join(", ")} and timing signals around ${region.culturalPeak.toLowerCase()}. This keeps sourcing decisions linked to commercial reality instead of static annual assumptions.`,
+        bullets: [
+          `Channel relevance: confirm buyer fit with ${region.retailers.slice(0, 4).join(", ")} account structures.`,
+          `Compliance workload: map required records for ${region.regulatoryBodies[productKey]}.`,
+          `Route pressure points: pre-test contingency around ${region.ports} transit and clearance.`,
+          `Timing discipline: reverse-plan from ${region.culturalPeak.toLowerCase()} to production lock dates.`,
+        ],
       },
       {
         heading: `Season timing and inventory discipline`,
         body: `${region.seasonalWindow.charAt(0).toUpperCase()}${region.seasonalWindow.slice(1)} should be mapped backward into origin production dates, container booking windows and importer clearance capacity. Buyers should avoid over-ordering before first-cycle evidence is collected; a phased inventory plan usually performs better than a single oversized arrival. For ${product.label}, this is especially important when channel pricing, promotional timing and shelf-life exposure change between standard retail periods and cultural-peak periods in ${region.name}.`,
+        bullets: [
+          "Separate trial inventory from repeat inventory in the first two cycles.",
+          "Build a post-arrival quality and sell-through review before approving scale-up.",
+          `Confirm warehousing assumptions for ${region.name} under both base and peak demand conditions.`,
+        ],
+      },
+      {
+        heading: `Commercial risk controls for ${region.name}`,
+        body: `Risk control in ${region.name} should focus on specification drift, document mismatch, transit quality loss and launch-timing slippage. For ${product.label}, a resilient plan defines owner-level accountability at each handover: supplier, freight, broker, importer and receiving warehouse. This also requires pre-agreed actions if a document query, quality deviation or vessel delay appears after dispatch. A professional procurement route is judged by its exception handling discipline as much as by its nominal timeline.`,
+        bullets: [
+          "Assign escalation contacts and decision rights before shipment departure.",
+          "Pre-approve corrective action options for relabelling, rework or hold-and-test events.",
+          "Use first-shipment variance reports to update the repeat-order SOP.",
+          `Benchmark supplier reliability against ${region.seasonalWindow.toLowerCase()} deadlines.`,
+        ],
       },
       {
         heading: `How Kaapstays supports this buying route`,
@@ -1172,6 +1332,20 @@ function buildPage(productKey: SourcingProductKey, marketKey: SourcingMarketKey)
     ],
     links: buildRelatedLinks(productKey, marketKey),
     sources,
+    faqs: [
+      {
+        question: `How should buyers structure a ${product.label} brief for ${region.name}?`,
+        answer: `Start with channel objective, product format, quality threshold, delivery point and timing window. Then attach the compliance references for ${region.regulatoryBodies[productKey]} and include operational assumptions for ${region.ports} routing. This creates a brief suppliers can quote consistently and lets buyers compare offers on delivered suitability, not on headline price alone.`,
+      },
+      {
+        question: `What usually causes delays for ${product.label} shipments into ${region.name}?`,
+        answer: `The most common delays are incomplete document packs, late artwork approvals, unclear handover ownership and route assumptions that ignore ${region.seasonalWindow.toLowerCase()}. Buyers reduce delay risk by freezing specification early, validating importer-facing labels before production, and assigning named owners for customs, freight and destination intake.`,
+      },
+      {
+        question: `How can buyers improve repeat-order performance after the first shipment?`,
+        answer: `Use a formal first-shipment review covering quality variance, transit handling, clearance friction and channel sell-through. Convert those findings into updated specification tolerances, revised timing buffers and supplier scorecards. In ${region.name}, this step is the fastest way to move from one-off execution to a repeatable sourcing route with controlled risk.`,
+      },
+    ],
     breadcrumbs,
     serviceSchema: {
       name: `${product.titleLabel} for ${region.name}`,
