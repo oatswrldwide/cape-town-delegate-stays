@@ -1,5 +1,7 @@
 import type { ReactNode } from "react";
-import { CONTACT_EMAIL, CONTACT_PHONE } from "../../lib/site";
+import { CONTACT_EMAIL } from "../../lib/site";
+
+const MEETING_URL = "https://calendar.app.google/6Jk4HBCx46S32vx68";
 import { buildFaqPageSchema, buildServiceSchema } from "../../lib/structured-data";
 import {
   Breadcrumb,
@@ -119,9 +121,7 @@ export function SeoContentPage({
             {intro}
           </p>
           <div className="mt-8 flex flex-wrap gap-3 text-sm">
-            <a href="#brief" className="rounded-sm bg-primary px-4 py-2 text-primary-foreground">
-              Request a sourcing brief
-            </a>
+            <a href={MEETING_URL} target="_blank" rel="noopener noreferrer" className="rounded-sm bg-primary px-4 py-2 text-primary-foreground">Book an Export Meeting</a>
             <a href="/" className="rounded-sm border border-border px-4 py-2 hover:border-accent">
               Back to Kaapstays
             </a>
@@ -171,25 +171,12 @@ export function SeoContentPage({
       <section id="brief" className="border-t border-border/70">
         <div className="mx-auto max-w-5xl px-6 py-14 md:py-16">
           <AuthorByline />
-          <h2 className="text-2xl md:text-3xl">Start your sourcing brief</h2>
-          <p className="mt-4 max-w-3xl text-muted-foreground">
-            Tell us the product, destination, volume and timing you have in mind. We will come back
-            with practical questions and possible supply paths.
-          </p>
-          <div className="mt-8 flex flex-wrap gap-3 text-sm">
-            <a
-              href={`mailto:${CONTACT_EMAIL}?subject=South%20African%20sourcing%20brief`}
-              className="rounded-sm bg-primary px-4 py-2 text-primary-foreground"
-            >
-              Email your brief
-            </a>
-            <a
-              href={`tel:${CONTACT_PHONE.replace(/\s+/g, "")}`}
-              className="rounded-sm border border-border px-4 py-2"
-            >
-              Call {CONTACT_PHONE}
-            </a>
+          <h2 className="text-2xl md:text-3xl">Discuss your sourcing requirements</h2>
+          <p className="mt-4 max-w-3xl text-muted-foreground">Book a meeting to discuss products, destination markets, volumes, timing and export requirements.</p>
+          <div className="mt-8">
+            <a href={MEETING_URL} target="_blank" rel="noopener noreferrer" className="inline-block rounded-sm bg-primary px-4 py-3 text-sm text-primary-foreground">Book an Export Meeting</a>
           </div>
+          <p className="mt-4 text-sm text-muted-foreground">Prefer email? <a className="underline underline-offset-4" href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a></p>
           <TrustBadgesBar />
           <RelatedLinks>
             {links.map((link) => (
