@@ -176,7 +176,7 @@ export function SeoContentPage({
           <div className="mt-8">
             <a href={MEETING_URL} target="_blank" rel="noopener noreferrer" className="inline-block rounded-sm bg-primary px-4 py-3 text-sm text-primary-foreground">Book an Export Meeting</a>
           </div>
-          <p className="mt-4 text-sm text-muted-foreground">Prefer email? <a className="underline underline-offset-4" href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a></p>
+          <p className="mt-4 text-sm text-muted-foreground">Direct email: {CONTACT_EMAIL}</p>
           <TrustBadgesBar />
           <RelatedLinks>
             {links.map((link) => (
