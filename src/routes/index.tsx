@@ -313,15 +313,12 @@ export function GatewayPage() {
             back with the right questions, possible supply paths and a clear next step.
           </p>
           <div className="mt-10 space-y-3 text-sm">
-            <a
-              href="https://calendar.app.google/6Jk4HBCx46S32vx68" target="_blank" rel="noopener noreferrer"
-              className="flex items-center gap-3 hover:text-accent"
-            >
+            <div className="flex items-center gap-3">
               <Mail className="h-4 w-4" /> <span>ongezile.mqokeli@gmail.com</span>
-            </a>
-            <a href="tel:+27680187300" className="flex items-center gap-3 hover:text-accent">
-              <Phone className="h-4 w-4" /> 068 018 7300
-            </a>
+            </div>
+            <div className="flex items-center gap-3">
+              <Phone className="h-4 w-4" /> <span>068 018 7300</span>
+            </div>
             <div className="flex items-center gap-3 text-muted-foreground">
               <MapPin className="h-4 w-4" /> South Africa
             </div>
