@@ -1,7 +1,6 @@
 import type { ReactNode } from "react";
-import { CONTACT_EMAIL } from "../../lib/site";
+import { CONTACT_EMAIL, MEETING_URL } from "../../lib/site";
 
-const MEETING_URL = "https://calendar.app.google/6Jk4HBCx46S32vx68";
 import { buildFaqPageSchema, buildServiceSchema } from "../../lib/structured-data";
 import {
   Breadcrumb,
