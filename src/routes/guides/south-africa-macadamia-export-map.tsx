@@ -271,7 +271,7 @@ function MacadamiaExportMap() {
             can access premium kernel at the source, not commodity in-shell through a middleman.
           </p>
           <AuthorByline compact />
-          <a href="https://calendar.app.google/6Jk4HBCx46S32vx68" target="_blank" rel="noopener noreferrer" className="mt-8 inline-block rounded-sm bg-primary px-5 py-3 text-sm text-primary-foreground">Book an Export Meeting</a><p className="mt-4 text-sm text-muted-foreground">Prefer email? <a className="underline underline-offset-4" href="mailto:ongezile.mqokeli@gmail.com">ongezile.mqokeli@gmail.com</a></p>
+          <a href="https://calendar.app.google/6Jk4HBCx46S32vx68" target="_blank" rel="noopener noreferrer" className="mt-8 inline-block rounded-sm bg-primary px-5 py-3 text-sm text-primary-foreground">Book an Export Meeting</a><p className="mt-4 text-sm text-muted-foreground">Direct email: ongezile.mqokeli@gmail.com</p>
           <TrustBadgesBar />
         </div>
       </section>
