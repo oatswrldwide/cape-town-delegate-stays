@@ -14,6 +14,9 @@ export const Route = createFileRoute("/products/rooibos-and-tea")({
         "rooibos tea supplier",
         "rooibos tea price",
         "rooibos tea wholesale price",
+        "bulk rooibos tea supplier",
+        "rooibos tea bulk price",
+        "rooibos private label supplier",
         "where to buy rooibos tea",
         "organic rooibos tea",
         "flavoured rooibos tea",
@@ -58,6 +61,17 @@ export const Route = createFileRoute("/products/rooibos-and-tea")({
           ],
         },
         {
+          heading: "Prepare a rooibos sourcing brief",
+          body: "For a useful supplier comparison, buyers should share the key details they already know. You can begin with an indicative brief and confirm technical requirements during supplier discussions.",
+          bullets: [
+            "Destination country and intended sales channel",
+            "Trial order quantity and expected repeat or annual volume",
+            "Red or green rooibos, organic or conventional, and required grade or cut",
+            "Loose leaf, tea-bag cut, foodservice or finished private-label packaging",
+            "Target delivery date, documentation needs and preferred shipping terms",
+          ],
+        },
+        {
           heading: "Organic, flavoured and branded rooibos tea",
           body: "Buyers can source plain red or green rooibos, organic lines, and flavoured blends through South African producers and packers. Flavour development, label ownership and minimum order quantities should be agreed before selecting a rooibos tea brand or private-label route.",
           bullets: [
@@ -73,6 +87,11 @@ export const Route = createFileRoute("/products/rooibos-and-tea")({
           question: "Where can you buy rooibos tea?",
           answer:
             "Importers, retailers and tea brands can request a rooibos sourcing brief through Kaapstays to explore potential South African suppliers. We compare bulk loose-leaf, tea-bag cut, organic, flavoured and private-label options against destination, volume and timing; availability is confirmed during supplier checks.",
+        },
+        {
+          question: "How can I get a wholesale rooibos tea quote?",
+          answer:
+            "Share your destination market, product format, indicative quantity, grade or organic requirements, packaging and timing. Kaapstays can use the brief to explore potential South African suppliers and compare available quotations. Final prices, minimum orders, lead times and certification must be confirmed with the relevant supplier.",
         },
         {
           question: "How much does rooibos tea cost?",
