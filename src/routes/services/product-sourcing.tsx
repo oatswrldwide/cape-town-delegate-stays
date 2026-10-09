@@ -5,9 +5,9 @@ import { buildSeoHead } from "../../lib/seo";
 export const Route = createFileRoute("/services/product-sourcing")({
   head: () =>
     buildSeoHead({
-      title: "Product Sourcing in South Africa | Kaapstays",
+      title: "Product Sourcing in South Africa for Importers | Kaapstays",
       description:
-        "Looking to source products from South Africa? Kaapstays helps international buyers clarify requirements, research suppliers, compare options and coordinate next steps.",
+        "Find and assess South African product suppliers with a clearer brief. Kaapstays supports international buyers with supplier research, quote comparisons and export coordination.",
       path: "/services/product-sourcing",
       keywords: [
         "product sourcing south africa",
@@ -15,50 +15,77 @@ export const Route = createFileRoute("/services/product-sourcing")({
         "sourcing agent south africa",
         "find suppliers in south africa",
         "south african product suppliers",
+        "supplier sourcing for importers",
       ],
     }),
   component: () => (
     <SeoContentPage
-      eyebrow="Product sourcing"
-      title="Source products from South Africa with a clearer process."
-      intro="Kaapstays works with international buyers who need help finding suitable South African supply. Start with a specific product, a category, or a brief that still needs refining. We assess the request and map out practical next steps before you commit to a supplier."
+      eyebrow="Product sourcing for international buyers"
+      title="Find South African suppliers with a clearer sourcing process."
+      intro="Kaapstays helps importers, retailers, distributors and product brands turn a buying requirement into a practical supplier brief. We research potential South African supply options, clarify specifications and commercial details, and help you identify the questions that need answers before you commit. Supplier availability, certifications, capacity and export requirements are checked for the specific brief rather than assumed."
       sections={[
         {
-          heading: "What can you source?",
-          body: "Our existing category pages cover rooibos and tea, fresh apples, dried fruit, nuts and wine. If you need a different product, you can still bring us the brief. Feasibility depends on supplier availability, specifications, order size, destination rules and timing; we will clarify those constraints rather than promise a match before checking.",
+          heading: "What products can you source from South Africa?",
+          body: "Our current product categories include rooibos and tea, fresh apples, dried fruit, nuts and wine. If you need another South African product, share the details and we can assess whether a useful sourcing route is feasible. The right supplier depends on the product, order size, destination market, quality requirements and delivery timeline.",
           bullets: [
-            "Food products and ingredients",
-            "Wholesale, retail and private-label product requirements",
-            "Other South African-made or South African-supplied goods, subject to a feasibility check",
+            "Rooibos and tea for bulk, foodservice, retail and private-label programmes",
+            "Fresh apples and dried fruit for wholesale and distribution",
+            "Nuts and other selected agricultural products, subject to specification and availability",
+            "Wine and other South African-supplied goods, subject to market and trade requirements",
           ],
         },
         {
-          heading: "How the sourcing process works",
-          body: "We start by understanding what you need and what a viable supplier must be able to deliver. We then research potential sources, request or organise relevant commercial details where possible, and help you compare the options against your requirements.",
+          heading: "How our product sourcing process works",
+          body: "Good sourcing starts with a clear specification, not a long list of unqualified supplier names. We establish what you need, research possible sources, compare the information available and identify gaps that must be verified before a commercial decision.",
           bullets: [
-            "Clarify product specifications, quantity, packaging and target market",
-            "Research potential suppliers and assess fit against the brief",
-            "Compare available information such as minimum order quantities, lead times and documentation",
-            "Coordinate introductions and discuss the next steps towards samples, negotiation or export planning",
+            "Define the product, grade, format, intended use and destination",
+            "Identify potential suppliers whose stated capabilities fit the brief",
+            "Request or compare available information on price basis, minimum order, lead time and packaging",
+            "Flag documentation, quality, certification or capacity questions that still need confirmation",
+            "Coordinate the next step, such as a supplier introduction, sample request or export-planning discussion",
           ],
         },
         {
-          heading: "What to prepare before a meeting",
-          body: "You do not need a perfect brief to start. Bring whatever you know about the product and we can identify the missing information together.",
+          heading: "What to include in a supplier sourcing brief",
+          body: "You do not need every detail to begin, but more specific information makes the first review more useful. If you are still exploring the market, tell us what is known and which decisions remain open.",
           bullets: [
-            "Product name, specification or reference example",
-            "Destination country and intended use",
-            "Estimated order volume and repeat-order expectations",
-            "Packaging, quality, certification or compliance requirements",
-            "Target timing and any indicative budget or target price",
+            "Product name, technical specification, grade or reference sample",
+            "Destination country and how the product will be used or sold",
+            "Trial order quantity and expected repeat or annual volume",
+            "Packaging format, labelling, certification and quality requirements",
+            "Target delivery date, preferred shipping terms and indicative target price",
+          ],
+        },
+        {
+          heading: "Compare the full commercial offer, not only the unit price",
+          body: "Supplier quotations are only comparable when they use the same product specification and delivery assumptions. Packaging, minimum order quantities, sample costs, payment terms, freight, insurance, duties and destination requirements can change the total economics. Ask suppliers to state what is included and which details remain provisional.",
+          bullets: [
+            "Confirm currency, quote validity, quantity breaks and minimum order",
+            "Compare packaging, palletisation and shipment assumptions",
+            "Clarify lead time, sample approval and repeat-order capacity",
+            "Check current certificates and product documents directly with the relevant supplier",
+          ],
+        },
+        {
+          heading: "Export documentation and compliance depend on the product and market",
+          body: "There is no single document list that applies to every South African export. Customs declarations, permits, certificates of origin, phytosanitary documents, food-safety records and destination-market requirements may apply depending on the goods and route. We help identify the questions to raise early, while product-specific legal or regulatory requirements should be confirmed with the relevant authorities, customs broker and qualified service providers.",
+          bullets: [
+            "Confirm whether the product is restricted or requires an export permit",
+            "Identify origin, traceability, inspection or phytosanitary requirements where relevant",
+            "Review destination-market labelling and product compliance before production",
+            "Agree who is responsible for each document and shipment milestone",
           ],
         },
         {
           heading: "A practical, transparent starting point",
-          body: "Kaapstays is a sourcing and coordination partner, not a guarantee that every requested item will be available. We will discuss scope, research needs, deliverables and commercial terms before work proceeds, and distinguish confirmed supplier information from details that still need verification.",
+          body: "Kaapstays is a sourcing and coordination partner, not a guarantee that every requested product will be available or that every supplier will meet your requirements. Before work proceeds, we clarify the scope, deliverables, commercial terms and what can realistically be verified. Confirmed facts are separated from details that still require supplier or authority confirmation.",
         },
       ]}
       links={[
+        { href: "/products/rooibos-and-tea", label: "Rooibos and tea sourcing" },
+        { href: "/products/fresh-apples", label: "South African fresh apples" },
+        { href: "/products/dried-fruit", label: "Dried fruit sourcing" },
+        { href: "/products/nuts", label: "Nuts and macadamia sourcing" },
         { href: "/services/supplier-sourcing", label: "Supplier sourcing support" },
         { href: "/services/export-coordination", label: "Export coordination" },
         { href: "/about", label: "About Kaapstays" },
