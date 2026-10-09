@@ -134,14 +134,14 @@ export function GatewayPage() {
               About us
             </a>
             <a
-              href=MEETING_URL target="_blank" rel="noopener noreferrer"
+              href={MEETING_URL} target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center gap-2 border border-primary px-4 py-2.5 text-xs font-semibold uppercase tracking-[0.08em] transition-colors hover:bg-primary hover:text-primary-foreground"
             >
               Book an Export Meeting <ArrowRight className="h-3.5 w-3.5" />
             </a>
           </nav>
           <a
-            href=MEETING_URL target="_blank" rel="noopener noreferrer"
+            href={MEETING_URL} target="_blank" rel="noopener noreferrer"
             className="border border-primary px-3 py-2 text-[11px] font-semibold uppercase tracking-wide lg:hidden"
           >
             Enquire
@@ -165,7 +165,7 @@ export function GatewayPage() {
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
               <a
-                href=MEETING_URL target="_blank" rel="noopener noreferrer"
+                href={MEETING_URL} target="_blank" rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-primary px-5 py-3.5 text-xs font-semibold uppercase tracking-[0.08em] text-primary-foreground hover:bg-accent"
               >
                 Book an Export Meeting <ArrowRight className="h-4 w-4" />
@@ -331,7 +331,7 @@ export function GatewayPage() {
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">Book a conversation</p>
           <h3 className="mt-4 font-display text-3xl md:text-4xl">Let&apos;s discuss your sourcing requirements.</h3>
           <p className="mt-4 leading-relaxed text-muted-foreground">Choose a meeting time to discuss product specifications, destination markets, order volumes and export coordination.</p>
-          <a href=MEETING_URL target="_blank" rel="noopener noreferrer" className="mt-8 inline-flex w-fit items-center gap-2 bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground hover:bg-accent">Book an Export Meeting <ArrowUpRight className="h-4 w-4" /></a>
+          <a href={MEETING_URL} target="_blank" rel="noopener noreferrer" className="mt-8 inline-flex w-fit items-center gap-2 bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground hover:bg-accent">Book an Export Meeting <ArrowUpRight className="h-4 w-4" /></a>
           <p className="mt-5 text-sm text-muted-foreground">Direct email: ongezile.mqokeli@gmail.com</p>
         </div>
       </section>
