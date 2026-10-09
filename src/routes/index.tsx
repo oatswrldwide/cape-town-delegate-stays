@@ -334,7 +334,7 @@ export function GatewayPage() {
           <h3 className="mt-4 font-display text-3xl md:text-4xl">Let&apos;s discuss your sourcing requirements.</h3>
           <p className="mt-4 leading-relaxed text-muted-foreground">Choose a meeting time to discuss product specifications, destination markets, order volumes and export coordination.</p>
           <a href="https://calendar.app.google/6Jk4HBCx46S32vx68" target="_blank" rel="noopener noreferrer" className="mt-8 inline-flex w-fit items-center gap-2 bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground hover:bg-accent">Book an Export Meeting <ArrowUpRight className="h-4 w-4" /></a>
-          <p className="mt-5 text-sm text-muted-foreground">Prefer email? <a className="underline underline-offset-4 hover:text-accent" href="mailto:ongezile.mqokeli@gmail.com">ongezile.mqokeli@gmail.com</a></p>
+          <p className="mt-5 text-sm text-muted-foreground">Direct email: ongezile.mqokeli@gmail.com</p>
         </div>
       </section>
 
