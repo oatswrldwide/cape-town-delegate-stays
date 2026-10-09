@@ -6,13 +6,14 @@ import { buildSeoHead } from "../../lib/seo";
 export const Route = createFileRoute("/products/rooibos-and-tea")({
   head: () =>
     buildSeoHead({
-      title: "Rooibos Tea Supplier South Africa | Organic & Bulk | Kaapstays",
+      title: "Rooibos Tea Supplier & Wholesale Prices | Kaapstays",
       description:
-        "Buy rooibos tea from verified South African suppliers. Organic, flavoured, red and green rooibos in bulk, retail and private-label formats.",
+        "Compare South African rooibos tea supply options for wholesale, organic, flavoured and private-label programmes. Pricing depends on grade, volume, packaging and destination.",
       path: "/products/rooibos-and-tea",
       keywords: [
         "rooibos tea supplier",
         "rooibos tea price",
+        "rooibos tea wholesale price",
         "where to buy rooibos tea",
         "organic rooibos tea",
         "flavoured rooibos tea",
@@ -23,8 +24,8 @@ export const Route = createFileRoute("/products/rooibos-and-tea")({
   component: () => (
     <SeoContentPage
       eyebrow="Product sourcing"
-      title="Rooibos and tea, from South African origin."
-      intro="Rooibos grows exclusively in South Africa's Cederberg region. For buyers, that means true origin distinction with strong relevance in wellness, specialty and premium tea programmes."
+      title="Source rooibos tea from South African suppliers."
+      intro="Kaapstays helps international buyers explore rooibos supply from South Africa for wholesale, retail, foodservice and private-label programmes. We clarify the specification and compare potential supplier options against volume, quality, packaging and destination requirements."
       sections={[
         {
           heading: "What we can source",
@@ -71,7 +72,7 @@ export const Route = createFileRoute("/products/rooibos-and-tea")({
         {
           question: "Where can you buy rooibos tea?",
           answer:
-            "International buyers can request a rooibos sourcing brief through Kaapstays for introductions to verified South African suppliers. We compare bulk loose-leaf, tea-bag cut, organic, flavoured and private-label options against destination, volume and timing.",
+            "Importers, retailers and tea brands can request a rooibos sourcing brief through Kaapstays to explore potential South African suppliers. We compare bulk loose-leaf, tea-bag cut, organic, flavoured and private-label options against destination, volume and timing; availability is confirmed during supplier checks.",
         },
         {
           question: "How much does rooibos tea cost?",
