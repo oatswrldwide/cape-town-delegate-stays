@@ -104,9 +104,7 @@ export function GatewayPage() {
           <span className="hidden text-primary-foreground/75 sm:block">
             Supplier sourcing &amp; export coordination
           </span>
-          <a href="mailto:ongezile.mqokeli@gmail.com" className="hover:text-accent">
-            ongezile.mqokeli@gmail.com
-          </a>
+          <span className="text-primary-foreground/90">ongezile.mqokeli@gmail.com</span>
         </div>
       </div>
       <header className="border-b border-border bg-background">
@@ -316,10 +314,10 @@ export function GatewayPage() {
           </p>
           <div className="mt-10 space-y-3 text-sm">
             <a
-              href="mailto:ongezile.mqokeli@gmail.com"
+              href="https://calendar.app.google/6Jk4HBCx46S32vx68" target="_blank" rel="noopener noreferrer"
               className="flex items-center gap-3 hover:text-accent"
             >
-              <Mail className="h-4 w-4" /> ongezile.mqokeli@gmail.com
+              <Mail className="h-4 w-4" /> <span>ongezile.mqokeli@gmail.com</span>
             </a>
             <a href="tel:+27680187300" className="flex items-center gap-3 hover:text-accent">
               <Phone className="h-4 w-4" /> 068 018 7300
