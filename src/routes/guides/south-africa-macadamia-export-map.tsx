@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { buildSeoHead } from "../../lib/seo";
+import { MEETING_URL } from "../../lib/site";
 import {
   AuthorByline,
   SourcesBlock,
@@ -72,7 +73,7 @@ function MacadamiaExportMap() {
             value-add and premium-market access.
           </p>
           <div className="mt-9 flex flex-wrap gap-3 text-sm">
-            <a href="https://calendar.app.google/6Jk4HBCx46S32vx68" target="_blank" rel="noopener noreferrer" className="rounded-sm bg-primary px-4 py-2 text-primary-foreground">Book an Export Meeting</a>
+            <a href={MEETING_URL} target="_blank" rel="noopener noreferrer" className="rounded-sm bg-primary px-4 py-2 text-primary-foreground">Book an Export Meeting</a>
             <a
               href="#export-data"
               className="rounded-sm border border-border px-4 py-2 hover:border-accent"
@@ -271,7 +272,7 @@ function MacadamiaExportMap() {
             can access premium kernel at the source, not commodity in-shell through a middleman.
           </p>
           <AuthorByline compact />
-          <a href="https://calendar.app.google/6Jk4HBCx46S32vx68" target="_blank" rel="noopener noreferrer" className="mt-8 inline-block rounded-sm bg-primary px-5 py-3 text-sm text-primary-foreground">Book an Export Meeting</a><p className="mt-4 text-sm text-muted-foreground">Direct email: ongezile.mqokeli@gmail.com</p>
+          <a href={MEETING_URL} target="_blank" rel="noopener noreferrer" className="mt-8 inline-block rounded-sm bg-primary px-5 py-3 text-sm text-primary-foreground">Book an Export Meeting</a><p className="mt-4 text-sm text-muted-foreground">Direct email: ongezile.mqokeli@gmail.com</p>
           <TrustBadgesBar />
         </div>
       </section>
