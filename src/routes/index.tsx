@@ -214,6 +214,14 @@ export function GatewayPage() {
               >
                 View product categories
               </a>
+              <a
+                href="https://calendar.app.google/6Jk4HBCx46S32vx68"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 border border-accent px-5 py-3.5 text-xs font-semibold uppercase tracking-[0.08em] text-accent hover:bg-accent hover:text-accent-foreground"
+              >
+                Book an Export Meeting <ArrowUpRight className="h-4 w-4" />
+              </a>
             </div>
           </div>
           <aside className="border-t border-border bg-primary px-5 py-12 text-primary-foreground sm:px-8 lg:border-l lg:border-t-0 lg:py-28">
