@@ -289,6 +289,12 @@ export function GatewayPage() {
               </article>
             ))}
           </div>
+          <a
+            href="/services/product-sourcing"
+            className="mt-10 inline-flex items-center gap-2 border border-primary-foreground/40 px-4 py-3 text-sm font-medium hover:bg-primary-foreground/10"
+          >
+            Explore our product sourcing service <ArrowUpRight className="h-4 w-4" />
+          </a>
         </div>
       </section>
 
