@@ -24,9 +24,12 @@ export const Route = createFileRoute("/")({
     buildSeoHead({
       title: "South African Product Sourcing | Kaapstays",
       description:
-        "Kaapstays connects international buyers with verified South African producers of rooibos, apples, dried fruit, nuts and wine. Structured sourcing, clear export coordination.",
+        "Kaapstays helps international buyers source products from South Africa, from food and ingredients to other product categories subject to supplier availability. Supplier research, comparisons and export coordination.",
       path: "/",
       keywords: [
+        "product sourcing south africa",
+        "south african sourcing company",
+        "supplier sourcing south africa",
         "south african product sourcing",
         "rooibos export south africa",
         "fresh apples export south africa",
@@ -160,8 +163,7 @@ export function GatewayPage() {
               Sourcing South African goods, <span className="italic">without the guesswork.</span>
             </h1>
             <p className="mt-7 max-w-2xl text-base leading-7 text-muted-foreground md:text-lg">
-              A focused sourcing partner for importers, retailers and food businesses looking for
-              capable producers, clear commercial information and an orderly path to export.
+              A sourcing partner for international buyers looking for products made or supplied in South Africa. We clarify your brief, research potential suppliers, compare options and help coordinate the next steps towards export.
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
               <a
@@ -218,7 +220,7 @@ export function GatewayPage() {
       <section className="border-b border-border bg-background">
         <div className="mx-auto grid max-w-7xl divide-y divide-border px-5 sm:px-8 md:grid-cols-3 md:divide-x md:divide-y-0">
           {[
-            "Rooibos, fresh fruit, dried fruit, nuts & wine",
+            "Food, ingredients and other product categories",
             "Built for wholesale, retail & private label",
             "Based in Cape Town, working across South Africa",
           ].map((item, index) => (
@@ -239,7 +241,7 @@ export function GatewayPage() {
               Product categories
             </p>
             <h2 className="mt-4 font-display text-4xl leading-tight md:text-5xl">
-              Categories we know from source to shipment.
+              Start with familiar categories—or bring us a different product brief.
             </h2>
           </div>
           <div className="grid gap-px border border-border bg-border sm:grid-cols-2">
@@ -287,6 +289,12 @@ export function GatewayPage() {
               </article>
             ))}
           </div>
+          <a
+            href="/services/product-sourcing"
+            className="mt-10 inline-flex items-center gap-2 border border-primary-foreground/40 px-4 py-3 text-sm font-medium hover:bg-primary-foreground/10"
+          >
+            Explore our product sourcing service <ArrowUpRight className="h-4 w-4" />
+          </a>
         </div>
       </section>
 
@@ -307,11 +315,10 @@ export function GatewayPage() {
             Start a Conversation
           </p>
           <h2 className="mt-4 font-display text-4xl leading-tight md:text-5xl">
-            Tell us what you need to bring to market.
+            Tell us what you want to source from South Africa.
           </h2>
           <p className="mt-6 leading-relaxed text-muted-foreground">
-            Share your product, destination, volume, timing and packaging requirements. We will come
-            back with the right questions, possible supply paths and a clear next step.
+            Share the product, destination market, volume, specifications and timeline you have in mind. We will assess the brief, identify practical next steps and clarify whether suitable supplier options can be found.
           </p>
           <div className="mt-10 space-y-3 text-sm">
             <div className="flex items-center gap-3">
@@ -330,7 +337,7 @@ export function GatewayPage() {
         <div className="flex flex-col justify-center border border-border bg-card/60 p-8 md:p-12">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">Book a conversation</p>
           <h3 className="mt-4 font-display text-3xl md:text-4xl">Let&apos;s discuss your sourcing requirements.</h3>
-          <p className="mt-4 leading-relaxed text-muted-foreground">Choose a meeting time to discuss product specifications, destination markets, order volumes and export coordination.</p>
+          <p className="mt-4 leading-relaxed text-muted-foreground">Choose a meeting time to discuss your product brief, supplier requirements, destination market, order volumes and possible sourcing approach.</p>
           <a href={MEETING_URL} target="_blank" rel="noopener noreferrer" className="mt-8 inline-flex w-fit items-center gap-2 bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground hover:bg-accent">Book an Export Meeting <ArrowUpRight className="h-4 w-4" /></a>
           <p className="mt-5 text-sm text-muted-foreground">Direct email: ongezile.mqokeli@gmail.com</p>
         </div>

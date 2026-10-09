@@ -17,6 +17,7 @@ const CORE_ENTRIES: SitemapEntry[] = [
   { path: "/products/dried-fruit", changefreq: "weekly", priority: "0.9" },
   { path: "/products/nuts", changefreq: "weekly", priority: "0.85" },
   { path: "/products/wine", changefreq: "weekly", priority: "0.9" },
+  { path: "/services/product-sourcing", changefreq: "monthly", priority: "0.9" },
   { path: "/services/supplier-sourcing", changefreq: "monthly", priority: "0.8" },
   { path: "/services/export-coordination", changefreq: "monthly", priority: "0.8" },
   { path: "/about", changefreq: "monthly", priority: "0.7" },
