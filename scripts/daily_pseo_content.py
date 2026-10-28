@@ -16,6 +16,8 @@ TODAY = dt.datetime.now(dt.timezone.utc).date()
 CATEGORIES = [
     ("manganese", "South African manganese sourcing"),
     ("chrome", "South African chrome sourcing"),
+    ("manganese", "South African manganese sourcing"),
+    ("chrome", "South African chrome sourcing"),
     ("fruit", "South African fruit exports"),
 ]
 category, pillar = CATEGORIES[(TODAY.toordinal() - 1) % len(CATEGORIES)]
