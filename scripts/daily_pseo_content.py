@@ -139,7 +139,7 @@ def main():
     msg = EmailMessage()
     msg["Subject"] = "Kaapstays SEO draft: " + category.title() + " — " + article["title"]
     msg["From"] = os.environ["SMTP_USERNAME"]
-    msg["To"] = os.getenv("EMAIL_TO", "ongezile.mqokeli@gmail.com")
+    msg["To"] = (os.getenv("EMAIL_TO") or "ongezile.mqokeli@gmail.com")
     msg.set_content(
         "Your daily Kaapstays SEO draft is ready for review.\n\n"
         "Pillar: " + pillar + "\nTarget keyword: " + article["target_keyword"] +
@@ -148,7 +148,7 @@ def main():
         "\n\nThis is a saved draft, not a live page. Review claims, differentiation, "
         "internal links and search intent before publishing.\n\nMeeting CTA: " + MEETING_URL
     )
-    with smtplib.SMTP(os.environ["SMTP_HOST"], int(os.getenv("SMTP_PORT", "587")), timeout=30) as server:
+    with smtplib.SMTP(os.environ["SMTP_HOST"], int((os.getenv("SMTP_PORT") or "587")), timeout=30) as server:
         server.starttls()
         server.login(os.environ["SMTP_USERNAME"], os.environ["SMTP_PASSWORD"])
         server.send_message(msg)
