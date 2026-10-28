@@ -1,0 +1,41 @@
+name: Daily Kaapstays pSEO Draft
+
+on:
+  schedule:
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-kaapstays-pseo
+  cancel-in-progress: false
+
+jobs:
+  generate-and-email:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Generate, commit and email today's draft
+        env:
+          OPENAI_API_KEY: \${{ secrets.OPENAI_API_KEY }}
+          OPENAI_MODEL: gpt-4.1-mini
+          SMTP_HOST: \${{ secrets.SMTP_HOST }}
+          SMTP_PORT: \${{ secrets.SMTP_PORT }}
+          SMTP_USERNAME: \${{ secrets.SMTP_USERNAME }}
+          SMTP_PASSWORD: \${{ secrets.SMTP_PASSWORD }}
+          EMAIL_TO: \${{ secrets.EMAIL_TO }}
+          GITHUB_REPOSITORY: \${{ github.repository }}
+          GITHUB_SHA: \${{ github.sha }}
+        run: python scripts/daily_pseo_content.py
