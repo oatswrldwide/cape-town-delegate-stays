@@ -5,6 +5,7 @@ import json
 import os
 import re
 import smtplib
+import subprocess
 import urllib.request
 from email.message import EmailMessage
 from pathlib import Path
@@ -127,12 +128,18 @@ def main():
         "- [ ] Publish only after human approval.", "",
     ]
     out_path.write_text("\n".join(lines), encoding="utf-8")
+    # Commit and push before emailing so the GitHub link is live when received.
+    subprocess.run(["git", "config", "user.name", "github-actions[bot]"], check=True)
+    subprocess.run(["git", "config", "user.email", "41898282+github-actions[bot]@users.noreply.github.com"], check=True)
+    subprocess.run(["git", "add", str(out_path)], check=True)
+    subprocess.run(["git", "commit", "-m", "Add daily SEO draft: " + TODAY.isoformat()], check=True)
+    subprocess.run(["git", "push"], check=True)
     repo = os.getenv("GITHUB_REPOSITORY", "oatswrldwide/cape-town-delegate-stays")
     file_url = "https://github.com/" + repo + "/blob/main/" + out_path.as_posix()
     msg = EmailMessage()
     msg["Subject"] = "Kaapstays SEO draft: " + category.title() + " — " + article["title"]
     msg["From"] = os.environ["SMTP_USERNAME"]
-    msg["To"] = os.environ["EMAIL_TO"]
+    msg["To"] = os.getenv("EMAIL_TO", "ongezile.mqokeli@gmail.com")
     msg.set_content(
         "Your daily Kaapstays SEO draft is ready for review.\n\n"
         "Pillar: " + pillar + "\nTarget keyword: " + article["target_keyword"] +
@@ -145,7 +152,7 @@ def main():
         server.starttls()
         server.login(os.environ["SMTP_USERNAME"], os.environ["SMTP_PASSWORD"])
         server.send_message(msg)
-    print("Generated " + str(out_path) + " and emailed " + os.environ["EMAIL_TO"])
+    print("Generated " + str(out_path) + " and emailed " + msg["To"])
 
 if __name__ == "__main__":
     main()
