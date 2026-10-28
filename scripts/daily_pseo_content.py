@@ -183,7 +183,7 @@ Primary CTA: Book an Export Meeting — {MEETING_URL}
 def main():
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     # Select a rotating window of five topics, with the starting point changing daily.
-    start = (TODAY.toordinal() * 5) % len(TOPICS)
+    start = TODAY.toordinal() % len(TOPICS)
     selected = [TOPICS[(start + i) % len(TOPICS)] for i in range(5)]
     created = [make_article(item, i + 1) for i, item in enumerate(selected)]
 
@@ -201,9 +201,9 @@ def main():
         "These are template-generated drafts, not AI-written or independently researched articles. Please review and add original, verified value before publishing. They are not live website URLs.",
         "",
     ]
-    for path, title, keyword, category in created:
+    for number, (path, title, keyword, category) in enumerate(created, start=1):
         url = f"https://github.com/{repo}/blob/main/{path.as_posix()}"
-        lines.append(f"{len(lines)}. [{category.upper()}] {title}")
+        lines.append(f"{number}. [{category.upper()}] {title}")
         lines.append(f"   Target keyword: {keyword}")
         lines.append(f"   Draft: {url}")
         lines.append("")
