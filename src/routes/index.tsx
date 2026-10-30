@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { buildSeoHead } from "../lib/seo";
 import { MEETING_URL } from "../lib/site";
+import articles from "../lib/generated-articles.json";
 import {
   AuthorByline,
   TESTIMONIAL_SNIPPETS,
@@ -135,6 +136,9 @@ export function GatewayPage() {
             </a>
             <a href="/about" className="hover:text-accent transition-colors">
               About us
+            </a>
+            <a href="/insights" className="hover:text-accent transition-colors">
+              Insights
             </a>
             <a
               href={MEETING_URL} target="_blank" rel="noopener noreferrer"
@@ -261,6 +265,30 @@ export function GatewayPage() {
                 >
                   {product.cta} <ArrowUpRight className="h-4 w-4" />
                 </a>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+
+      <section id="latest-insights" className="border-y border-border bg-secondary/25">
+        <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8 md:py-20">
+          <div className="flex flex-wrap items-end justify-between gap-5">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">Latest insights</p>
+              <h2 className="mt-3 font-display text-4xl leading-tight md:text-5xl">New from our sourcing desk.</h2>
+              <p className="mt-3 max-w-xl text-sm leading-6 text-muted-foreground">Practical guides and updates for buyers sourcing products from South Africa.</p>
+            </div>
+            <a href="/insights" className="inline-flex items-center gap-2 border border-primary px-4 py-3 text-sm font-semibold hover:bg-primary hover:text-primary-foreground">View all articles <ArrowUpRight className="h-4 w-4" /></a>
+          </div>
+          <div className="mt-9 grid gap-4 md:grid-cols-2">
+            {(articles as {slug:string;title:string;description:string;path:string;date?:string}[]).slice().sort((a,b)=>(b.date||"").localeCompare(a.date||"")).slice(0,2).map((article) => (
+              <article key={article.slug} className="border border-border bg-background p-6">
+                <p className="text-xs font-medium uppercase tracking-[0.12em] text-muted-foreground">{article.date ? new Date(article.date + "T12:00:00").toLocaleDateString("en-ZA",{day:"numeric",month:"long",year:"numeric"}) : "Kaapstays insight"}</p>
+                <h3 className="mt-3 font-display text-2xl leading-snug">{article.title}</h3>
+                <p className="mt-3 text-sm leading-6 text-muted-foreground">{article.description}</p>
+                <a href={article.path} className="mt-5 inline-flex items-center gap-2 text-sm font-semibold hover:text-accent">Read article <ArrowUpRight className="h-4 w-4" /></a>
               </article>
             ))}
           </div>
