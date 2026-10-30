@@ -1,1 +1,122 @@
-[]
+[
+  {
+    "slug": "south-african-fruit-export-requirements-buyer-checklist",
+    "title": "South African Fruit Export Requirements: Buyer Checklist",
+    "description": "A practical guide to South African fruit exports: verify suppliers, destination-market rules, inspections, phytosanitary documents and customs before shipment.",
+    "path": "/insights/south-african-fruit-export-requirements-buyer-checklist",
+    "keyword": "South African fruit export requirements",
+    "eyebrow": "International buyer guide",
+    "intro": "South Africa is an established source of fresh fruit, but a successful purchase involves more than agreeing a variety, grade and price. Import rules depend on the product and destination market, while export certification, quality inspection and customs clearance involve different processes. Buyers should confirm the exact market access conditions for the fruit they want, check that the orchard, packhouse and exporter can meet those conditions, and agree the documents and shipment controls before paying a deposit. This guide explains the checks to make with your supplier and the relevant South African authorities. It is general sourcing guidance, not a substitute for destination-country import advice or a consignment-specific compliance assessment.",
+    "sections": [
+      {
+        "heading": "1. Start with the destination market, not just the product",
+        "body": "The first question is whether the specific fruit, origin and production programme can be exported to your destination market under the conditions currently in force. Requirements can differ by country, fruit type, variety, production region and season. South Africa’s Department of Agriculture publishes export procedures and special export protocols or programmes agreed with importing-country authorities. These can include market-specific conditions for products such as citrus, stone fruit, avocados, pears and table grapes. Do not assume that approval for one fruit or destination automatically covers another. Ask the supplier to identify the applicable protocol and provide the current official reference. Your own importing-country authority or customs broker should independently confirm the import permit, plant-health conditions, treatment requirements and any additional declarations needed for the shipment.",
+        "bullets": [
+          "Identify the destination country, exact fruit and intended use (fresh, processed or otherwise).",
+          "Ask which current bilateral protocol or market-access programme applies, if any.",
+          "Confirm requirements with the destination country’s competent plant-health authority before contracting."
+        ]
+      },
+      {
+        "heading": "2. Verify the exporter, orchard and packhouse",
+        "body": "A supplier’s trading name or website is not proof that a particular consignment is eligible for export. Ask for the legal entity name, South African business details, the role it plays in the transaction and whether it is the grower, packhouse, exporter or a sourcing intermediary. For markets with phytosanitary registration conditions, ask which orchard and packhouse will supply the fruit and how their registration or inspection status can be verified. The Department of Agriculture’s fresh-produce export manual describes orchard and packhouse inspections for relevant programmes and notes that requirements are tied to the importing country. Make sure the commercial contract identifies the actual supplying parties and facilities, rather than relying on a generic statement that the supplier is an exporter.",
+        "bullets": [
+          "Request the supplier’s registered legal name and physical business address.",
+          "Ask for the orchard and packhouse identities where market rules require them.",
+          "Request evidence of relevant registration or programme participation, then verify it with the responsible authority."
+        ]
+      },
+      {
+        "heading": "3. Understand phytosanitary certification and quality inspection",
+        "body": "Phytosanitary controls and commercial quality checks serve different purposes. A phytosanitary inspection is concerned with plant pests and diseases and whether the consignment meets the importing country’s plant-health requirements. A quality inspection assesses the product against applicable quality and export standards. South Africa’s government describes an online eCertification process for phytosanitary certification: applications are processed, an inspector reviews them, and the applicant receives an approval or rejection notification. The Department of Agriculture also publishes export certification procedures and certificate templates. Ask which certificates and declarations are required for your destination and product, who applies for them, and when the final documents will be available. Do not treat a quality certificate as a substitute for a phytosanitary certificate, or assume that a certificate can be issued before the consignment meets the applicable conditions.",
+        "bullets": [
+          "Confirm whether a phytosanitary certificate and additional declarations are required.",
+          "Clarify who arranges inspections and submits certification applications.",
+          "Agree how document copies will be checked before shipment and originals handled for clearance."
+        ]
+      },
+      {
+        "heading": "4. Check PPECB inspection and cold-chain arrangements",
+        "body": "For South African fresh-produce exports, the Department of Agriculture’s step-by-step exporter manual describes PPECB inspection and export certification processes, including consignment inspection and checks associated with loading and transportation. It also describes the TITAN platform for inspection applications and export documentation. Buyers should therefore ask the exporter to explain the inspection plan for the actual shipment, not merely provide a general assurance that the company works with an inspection body. For temperature-sensitive fruit, agree the product specification, pre-cooling approach, target carrying temperature, packaging, pallet configuration, container settings, monitoring responsibilities and process for reporting temperature deviations. The correct operating conditions depend on the commodity and logistics route; obtain them from the exporter and relevant technical specialists rather than applying one temperature to all fruit.",
+        "bullets": [
+          "Ask for the applicable PPECB inspection and certification evidence for the consignment.",
+          "Agree product-specific handling, pre-cooling and temperature requirements in writing.",
+          "Clarify who monitors the container and what happens if quality or temperature limits are breached."
+        ]
+      },
+      {
+        "heading": "5. Confirm customs registration, declarations and permits",
+        "body": "Plant-health certification does not complete the customs process. SARS explains that exporters must comply with customs export procedures and that export declarations and supporting transport documents may be required. SARS also states that people or entities wishing to export goods from South Africa must register as exporters; foreign entities must nominate a registered agent located in South Africa. Some goods are restricted or require special permits or certificates, and SARS points to ITAC for permits relating to restricted goods. Ask who will act as exporter of record, who will lodge the goods declaration, which customs agent is involved and which supporting documents are expected. The answer may differ depending on the product, transaction structure and shipping method. Have the customs broker confirm the tariff classification, declaration data and any permit requirements before cargo is dispatched.",
+        "bullets": [
+          "Confirm the exporter of record and its SARS registration position.",
+          "Identify the customs clearing agent and responsibility for lodging the goods declaration.",
+          "Check whether the product is restricted or needs an ITAC permit or another authority’s approval."
+        ]
+      },
+      {
+        "heading": "6. Put specifications, payment and shipment controls into the contract",
+        "body": "A sound sourcing agreement should translate the buyer’s expectations into checks that can be measured before dispatch and addressed if the goods do not conform. Define the fruit type and variety, class or grade where applicable, size or count range, maturity or ripeness criteria, tolerances, packaging, labelling, net weight, palletisation and permitted defects. State the inspection method, sampling approach, evidence required, shipment window, Incoterms rule and named place, insurance responsibility, document deadlines and process for handling rejected or delayed cargo. Link deposits and balance payments to clearly defined milestones and independently verifiable documents. Avoid paying an unfamiliar intermediary solely on the strength of photographs or a pro forma invoice. Where the order is material, consider an independent pre-shipment inspection and have a qualified trade professional review the contract and payment terms.",
+        "bullets": [
+          "Attach a written product specification and approved packaging details to the purchase order.",
+          "Set out inspection, rejection, claims and dispute-resolution procedures.",
+          "Use traceable business payments and verify bank-account changes independently."
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Does every South African fruit export need a phytosanitary certificate?",
+        "answer": "Requirements depend on the fruit and destination market. Many plant products are subject to importing-country plant-health conditions and may require phytosanitary certification, inspection or additional declarations. Confirm the exact requirements with the destination authority and South Africa’s Department of Agriculture before shipment."
+      },
+      {
+        "question": "Is PPECB inspection the same as phytosanitary inspection?",
+        "answer": "No. They address different matters. Quality inspection and export certification are distinct from plant-health checks for pests and diseases. Ask which inspections and certificates apply to your particular fruit and destination."
+      },
+      {
+        "question": "Can a foreign buyer register as the South African exporter?",
+        "answer": "SARS states that a foreign person or entity wishing to export goods from South Africa must register as an exporter and nominate a registered agent located in South Africa. The nominated agent assumes liability for the foreign principal’s customs-related business activity. Confirm the arrangement with SARS or a qualified customs agent."
+      },
+      {
+        "question": "What should I request before paying a supplier deposit?",
+        "answer": "At minimum, verify the supplier’s legal identity and role, the actual orchard or packhouse where relevant, product specification, destination-market eligibility, proposed inspection and certification process, exporter-of-record arrangement, shipment plan and written payment terms. For a significant order, obtain independent checks."
+      }
+    ],
+    "sources": [
+      {
+        "name": "Department of Agriculture — Step-by-step manual for SA exporters of fresh produce",
+        "url": "https://www.nda.gov.za/images/Branches/Economica%20Development%20Trade%20and%20Marketing/international-trade-and-promotions/trade-facilitation/export-publications/export-manual-for-south-african-industry_.pdf"
+      },
+      {
+        "name": "South African Government — eCertification",
+        "url": "https://www.gov.za/xh/services/services-organisations/export-permits/ecertification-ecert"
+      },
+      {
+        "name": "SARS — Exports",
+        "url": "https://www.sars.gov.za/customs-and-excise/import-export-and-transit/exports/"
+      },
+      {
+        "name": "SARS — Exporter registration",
+        "url": "https://www.sars.gov.za/customs-and-excise/registration-licensing-and-accreditation/exporters/"
+      },
+      {
+        "name": "Department of Agriculture — Exporting from SA",
+        "url": "https://nda.gov.za/index.php/publication/321-exporting-from-sa"
+      }
+    ],
+    "links": [
+      {
+        "href": "/services/product-sourcing",
+        "label": "South African product sourcing"
+      },
+      {
+        "href": "/services/supplier-sourcing",
+        "label": "Supplier sourcing support"
+      },
+      {
+        "href": "/products/fresh-apples",
+        "label": "South African products"
+      }
+    ],
+    "date": "2026-10-30"
+  }
+]
