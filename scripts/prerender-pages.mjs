@@ -162,10 +162,10 @@ async function renderPageHtml(routePath) {
       .replace('<div id="root"></div>', `<div id="root">${renderedContent}</div>`);
   }
 
-  const routeFilePath =
-    routePath === "/"
-      ? path.join(rootDir, "src", "routes", "index.tsx")
-      : path.join(rootDir, "src", "routes", `${routePath.slice(1)}.tsx`);
+  const normalizedRoutePath = routePath.replace(/^\\/+|\\/+$/g, "");
+  const routeFilePath = normalizedRoutePath
+    ? path.join(rootDir, "src", "routes", `${normalizedRoutePath}.tsx`)
+    : path.join(rootDir, "src", "routes", "index.tsx");
   const routeSource = await readFile(routeFilePath, "utf8");
   const title = resolveMetaTitle(routeSource);
   const description = resolveMetaDescription(routeSource);
