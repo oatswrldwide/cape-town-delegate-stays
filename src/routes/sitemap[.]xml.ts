@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
 import { SITE_URL } from "../lib/site";
 import { sourcingPages } from "../lib/sourcing-pages";
+import articles from "../lib/generated-articles.json";
 
 interface SitemapEntry {
   path: string;
@@ -43,6 +44,12 @@ export const Route = createFileRoute("/sitemap.xml")({
             lastmod: page.lastmod,
             changefreq: "monthly" as const,
             priority: page.market === "asia" ? "0.7" : "0.75",
+          })),
+          ...articles.map((article) => ({
+            path: article.path,
+            lastmod: article.date,
+            changefreq: "weekly" as const,
+            priority: "0.8",
           })),
         ];
 

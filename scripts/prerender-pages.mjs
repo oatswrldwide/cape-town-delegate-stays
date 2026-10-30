@@ -11,6 +11,7 @@ const indexHtmlPath = path.join(distDir, "index.html");
 
 const routeTreeSource = await readFile(routeTreePath, "utf8");
 const indexHtml = await readFile(indexHtmlPath, "utf8");
+const generatedArticles = JSON.parse(await readFile(path.join(rootDir, "src", "lib", "generated-articles.json"), "utf8"));
 const viteServer = await createServer({
   root: rootDir,
   configFile: path.join(rootDir, "vite.pages.config.ts"),
@@ -49,7 +50,8 @@ if (!routesBlockMatch) throw new Error("Could not find route paths in src/routeT
 
 const routePaths = [...routesBlockMatch[1].matchAll(/'([^']+)'/g)].map((match) => match[1]);
 const expansionPaths = expansionModule.expansionPages.map((page) => page.path);
-const pagePaths = [...new Set([...routePaths, ...expansionPaths])].filter((routePath) => {
+const articlePaths = generatedArticles.map((article) => article.path);
+const pagePaths = [...new Set([...routePaths, ...expansionPaths, ...articlePaths])].filter((routePath) => {
   if (routePath.includes(".")) return false;
   if (routePath.includes("$")) return false;
   return true;
@@ -102,6 +104,28 @@ function getPageH1(routePath) {
 }
 
 async function renderPageHtml(routePath) {
+  const generatedArticle = generatedArticles.find((article) => article.path === routePath);
+  if (generatedArticle) {
+    const pageTitle = `<title>${escapeHtml(generatedArticle.title)}</title>`;
+    const metaDescription = `<meta name="description" content="${escapeHtml(generatedArticle.description)}" />`;
+    const renderedContent = renderToStaticMarkup(React.createElement(contentPageModule.SeoContentPage, {
+      eyebrow: generatedArticle.eyebrow,
+      title: generatedArticle.title,
+      intro: generatedArticle.intro,
+      sections: generatedArticle.sections,
+      faqs: generatedArticle.faqs,
+      sources: generatedArticle.sources.map((source) => source.name + ": " + source.url),
+      links: generatedArticle.links,
+      breadcrumbs: [{ href: "/", label: "Home" }, { href: generatedArticle.path, label: generatedArticle.title }],
+    }));
+    return indexHtml
+      .replace(/<title>[\\s\\S]*?<\\/title>/, pageTitle)
+      .replace(
+        '    <meta name="viewport" content="width=device-width, initial-scale=1.0" />',
+        (match) => `${match}\\n    ${metaDescription}`,
+      )
+      .replace('<div id="root"></div>', `<div id="root">${renderedContent}</div>`);
+  }
   if (expansionPaths.includes(routePath)) {
     const [, , productKey, marketKey] = routePath.split("/");
     const page = expansionModule.getExpansionPage(productKey, marketKey);
