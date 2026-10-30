@@ -55,6 +55,8 @@ jobs:
         run: |
           test -f dist/index.html
           test -f dist/404.html
+          test -f dist/insights/index.html
+          test -f dist/insights/south-african-fruit-export-requirements-buyer-checklist/index.html
           test "$(tr -d '\r\n' < dist/CNAME)" = "kaapstays.co.za"
 
       - name: Upload Pages artifact
