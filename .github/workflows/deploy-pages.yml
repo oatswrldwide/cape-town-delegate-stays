@@ -82,8 +82,6 @@ jobs:
       - name: Email the newly published article
         if: github.event_name == 'workflow_run' || github.event_name == 'workflow_dispatch'
         env:
-          SMTP_HOST: ${{ secrets.SMTP_HOST }}
-          SMTP_PORT: ${{ secrets.SMTP_PORT }}
           SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
           SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
           ARTICLE_RECIPIENT: ongezile.mqokeli@gmail.com
@@ -97,18 +95,15 @@ jobs:
           if not articles:
               raise SystemExit("No published article found; email not sent.")
 
-          required = ("SMTP_HOST", "SMTP_PORT", "SMTP_USERNAME", "SMTP_PASSWORD")
-          missing = [name for name in required if not os.environ.get(name)]
-          if missing:
-              raise SystemExit("Missing SMTP repository secrets: " + ", ".join(missing))
+          username = os.environ.get("SMTP_USERNAME", "").strip()
+          password = os.environ.get("SMTP_PASSWORD", "").replace(" ", "")
+          if not username or not password:
+              raise SystemExit("Missing SMTP_USERNAME or SMTP_PASSWORD repository secret.")
+          if "@" not in username:
+              raise SystemExit("SMTP_USERNAME must be the complete Gmail email address.")
 
           article = articles[-1]
-          host = os.environ["SMTP_HOST"]
-          port = int(os.environ["SMTP_PORT"])
-          username = os.environ["SMTP_USERNAME"]
-          password = os.environ["SMTP_PASSWORD"]
           url = "https://kaapstays.co.za" + article["path"]
-
           msg = EmailMessage()
           msg["Subject"] = "New Kaapstays article: " + article["title"]
           msg["From"] = username
@@ -120,18 +115,27 @@ jobs:
               + "Open the article to read the full buyer guide."
           )
 
+          # Gmail SMTP submission: smtp.gmail.com:587 with STARTTLS.
+          # This is fixed deliberately so an incorrect SMTP_HOST/SMTP_PORT
+          # secret cannot send the workflow to the wrong endpoint.
           context = ssl.create_default_context()
-          if port == 465:
-              smtp = smtplib.SMTP_SSL(host, port, timeout=30, context=context)
-          else:
-              smtp = smtplib.SMTP(host, port, timeout=30)
-          with smtp:
-              smtp.ehlo()
-              if port != 465:
+          try:
+              with smtplib.SMTP("smtp.gmail.com", 587, timeout=30) as smtp:
+                  smtp.ehlo()
                   smtp.starttls(context=context)
                   smtp.ehlo()
-              smtp.login(username, password)
-              smtp.send_message(msg)
+                  smtp.login(username, password)
+                  smtp.send_message(msg)
+          except smtplib.SMTPAuthenticationError as exc:
+              raise SystemExit(
+                  "Gmail rejected SMTP authentication. Confirm SMTP_USERNAME is the full Gmail address "
+                  "and SMTP_PASSWORD is a current Google App Password (not the normal account password). "
+                  f"SMTP response code: {exc.smtp_code}"
+              )
+          except (smtplib.SMTPException, OSError) as exc:
+              raise SystemExit(
+                  f"Gmail SMTP connection/send failed: {type(exc).__name__}: {exc}"
+              )
 
           print("Article email sent to " + os.environ["ARTICLE_RECIPIENT"] + ": " + url)
           PY
