@@ -72,3 +72,39 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Email the newly published article
+        if: github.event_name == 'workflow_run'
+        env:
+          GMAIL_ADDRESS: ${{ secrets.GMAIL_ADDRESS }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          ARTICLE_RECIPIENT: ongezile.mqokeli@gmail.com
+        run: |
+          python - <<'PY'
+          import json, os, smtplib
+          from email.message import EmailMessage
+          from pathlib import Path
+
+          articles = json.loads(Path("src/lib/generated-articles.json").read_text(encoding="utf-8"))
+          if not articles:
+              raise SystemExit("No published article found; email not sent.")
+          article = articles[-1]
+          if not os.environ.get("GMAIL_ADDRESS") or not os.environ.get("GMAIL_APP_PASSWORD"):
+              raise SystemExit("Missing GMAIL_ADDRESS or GMAIL_APP_PASSWORD repository secret.")
+
+          url = "https://kaapstays.co.za" + article["path"]
+          msg = EmailMessage()
+          msg["Subject"] = "New Kaapstays article: " + article["title"]
+          msg["From"] = os.environ["GMAIL_ADDRESS"]
+          msg["To"] = os.environ["ARTICLE_RECIPIENT"]
+          msg.set_content(
+              "Your new Kaapstays article has been published.\\n\\n"
+              + article["title"] + "\\n" + url + "\\n\\n"
+              + article.get("description", "") + "\\n\\n"
+              + "Open the article to read the full buyer guide."
+          )
+          with smtplib.SMTP_SSL("smtp.gmail.com", 465, timeout=30) as smtp:
+              smtp.login(os.environ["GMAIL_ADDRESS"], os.environ["GMAIL_APP_PASSWORD"])
+              smtp.send_message(msg)
+          print("Article email sent to " + os.environ["ARTICLE_RECIPIENT"] + ": " + url)
+          PY
