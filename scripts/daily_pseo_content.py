@@ -1,229 +1,100 @@
 #!/usr/bin/env python3
-"""Generate five template-based Kaapstays SEO drafts daily and email their GitHub links.
-
-No AI/content-generation API is used. Articles are structured editorial drafts and must
-be fact-checked and improved before publication. SMTP is used only for email delivery.
-"""
-import datetime as dt
-import os
-import re
-import smtplib
-import subprocess
-from email.message import EmailMessage
+"""Fetch official South African trade sources, generate one sourced guide with OpenRouter,
+and add it to the static article registry. Fail closed: no article is committed on QA failure."""
+import json, os, re, sys, time
+from datetime import datetime, timezone
 from pathlib import Path
+from urllib.request import Request, urlopen
+from html.parser import HTMLParser
 
-SITE = "https://kaapstays.co.za"
-MEETING_URL = "https://calendar.app.google/6Jk4HBCx46S32vx68"
-RECIPIENT = os.getenv("EMAIL_TO") or "ongezile.mqokeli@gmail.com"
-TODAY = dt.datetime.now(dt.timezone.utc).date()
-OUT_DIR = Path("content/drafts")
+SITE="https://kaapstays.co.za"
+TOPICS=[
+("South African fruit export requirements: what international buyers should verify","South African fruit export requirements"),
+("How to verify a South African agricultural exporter before placing an order","verify South African exporter"),
+("South African dried fruit sourcing: specifications, packaging and buyer checks","South African dried fruit sourcing"),
+("Rooibos tea sourcing from South Africa: a practical importer checklist","rooibos tea sourcing South Africa"),
+("South African macadamia nuts: grades, documentation and sourcing questions","South African macadamia nuts"),
+("Chrome ore sourcing in South Africa: due diligence for international buyers","chrome ore sourcing South Africa"),
+("Manganese ore procurement from South Africa: questions buyers should ask","manganese ore South Africa")]
+SOURCES=[
+("South African Department of Agriculture","https://www.nda.gov.za/"),
+("Perishable Products Export Control Board","https://www.ppecb.com/"),
+("South African Revenue Service","https://www.sars.gov.za/customs-and-excise/"),
+("International Trade Administration Commission of South Africa","https://www.itac.org.za/"),
+("Department of Trade, Industry and Competition","https://www.thedtic.gov.za/"),
+("South African Table Grape Industry","https://www.satgi.co.za/"),
+("South African Macadamia Growers' Association","https://samac.org.za/")]
+OUT=Path("src/lib/generated-articles.json")
 
-# Five distinct buyer-intent topics per day. The index advances daily to avoid
-# regenerating the same five titles on consecutive days.
-TOPICS = [
-    {"category": "manganese", "title": "How to Evaluate a South African Manganese Supplier", "keyword": "South African manganese suppliers", "angle": "supplier due diligence"},
-    {"category": "manganese", "title": "Manganese Ore Sourcing Checklist for International Buyers", "keyword": "manganese ore sourcing", "angle": "procurement preparation"},
-    {"category": "chrome", "title": "A Practical Guide to Chrome Ore Sourcing in South Africa", "keyword": "chrome ore sourcing South Africa", "angle": "sourcing process"},
-    {"category": "chrome", "title": "Questions to Ask Before Requesting a Chrome Ore Quote", "keyword": "chrome ore quotation", "angle": "quotation readiness"},
-    {"category": "fruit", "title": "How Importers Can Prepare to Source South African Fruit", "keyword": "South African fruit exporters", "angle": "fruit sourcing preparation"},
-    {"category": "manganese", "title": "Manganese Procurement: Specifications Buyers Should Clarify", "keyword": "manganese procurement", "angle": "specification clarity"},
-    {"category": "chrome", "title": "Chrome Ore Buyer Due Diligence: A Pre-Order Checklist", "keyword": "chrome ore supplier due diligence", "angle": "counterparty checks"},
-    {"category": "fruit", "title": "A Buyer’s Checklist for Sourcing South African Apples", "keyword": "South African apple suppliers", "angle": "fresh apple procurement"},
-    {"category": "manganese", "title": "Preparing a Clear Manganese Sourcing Brief", "keyword": "manganese sourcing request", "angle": "buyer brief"},
-    {"category": "chrome", "title": "What to Include in a South African Chrome Sourcing Enquiry", "keyword": "South African chrome sourcing enquiry", "angle": "enquiry preparation"},
-    {"category": "fruit", "title": "Fresh Fruit Export Enquiries: Details Buyers Should Prepare", "keyword": "fresh fruit exports South Africa", "angle": "export enquiry"},
-    {"category": "manganese", "title": "Comparing Manganese Offers: Questions Beyond the Price", "keyword": "compare manganese ore offers", "angle": "offer comparison"},
-    {"category": "chrome", "title": "Comparing Chrome Ore Offers: A Buyer’s Framework", "keyword": "compare chrome ore offers", "angle": "offer comparison"},
-    {"category": "fruit", "title": "How to Prepare a South African Dried-Fruit Sourcing Brief", "keyword": "South African dried fruit suppliers", "angle": "dried fruit sourcing"},
-    {"category": "manganese", "title": "From First Contact to Due Diligence: Manganese Sourcing Steps", "keyword": "manganese sourcing process", "angle": "process planning"},
-    {"category": "chrome", "title": "Planning a Chrome Ore Purchase: Documents and Checks to Discuss", "keyword": "chrome ore purchase checklist", "angle": "document readiness"},
-    {"category": "fruit", "title": "Questions to Ask When Sourcing South African Fruit for Import", "keyword": "import South African fruit", "angle": "importer questions"},
-    {"category": "manganese", "title": "Manganese Sourcing Risks Buyers Should Check Before Committing", "keyword": "manganese sourcing risks", "angle": "risk review"},
-    {"category": "chrome", "title": "Chrome Sourcing Risks and Counterparty Checks for Buyers", "keyword": "chrome sourcing risks", "angle": "risk review"},
-    {"category": "fruit", "title": "Fresh Fruit Sourcing: Quality, Packaging and Cold-Chain Questions", "keyword": "fresh fruit sourcing South Africa", "angle": "quality and logistics"},
-]
+class Extract(HTMLParser):
+ def __init__(self): super().__init__(); self.parts=[]; self.skip=0
+ def handle_starttag(self,t,a):
+  if t in ("script","style","nav","footer"): self.skip+=1
+ def handle_endtag(self,t):
+  if t in ("script","style","nav","footer") and self.skip: self.skip-=1
+ def handle_data(self,d):
+  if not self.skip and d.strip(): self.parts.append(d.strip())
 
-DETAILS = {
-    "manganese": {
-        "product": "manganese ore",
-        "checks": [
-            "the exact product description and specification required by the buyer",
-            "whether an assay or independent laboratory report is available and how it will be verified",
-            "declared origin, available quantity and whether the seller is authorised to offer it",
-            "sampling, inspection, rejection and dispute procedures agreed by both parties",
-            "the proposed Incoterm, delivery point, shipment window and allocation of costs",
-        ],
-        "documents": "Ask counterparties to identify the documents they can actually provide, and have your trade, legal and logistics advisers confirm what is required for the transaction and destination.",
-        "risk": "Do not treat an indicative specification, sample, seller presentation or draft offer as proof that a shipment exists or meets contract requirements.",
-    },
-    "chrome": {
-        "product": "chrome ore",
-        "checks": [
-            "the grade and specification required by the intended end use",
-            "whether assay data and sampling methodology can be independently checked",
-            "the stated origin, quantity, availability and seller's authority to offer the material",
-            "inspection, acceptance, rejection and dispute-resolution terms",
-            "the proposed Incoterm, delivery point, shipment window and cost responsibilities",
-        ],
-        "documents": "Ask counterparties to list the documents they can supply, then independently confirm destination-market, transport, customs and contractual requirements with qualified advisers.",
-        "risk": "A quotation or certificate shared by a counterparty is not, by itself, independent proof of stock, origin, quality or authority to sell.",
-    },
-    "fruit": {
-        "product": "South African fruit",
-        "checks": [
-            "fruit type, variety, grade, size range and intended market",
-            "seasonal availability and confirmation of the actual packing window",
-            "pack format, labelling, shelf-life expectations and quality tolerances",
-            "cold-chain arrangements, transit time assumptions and temperature monitoring",
-            "destination-country phytosanitary, import, residue and labelling requirements",
-        ],
-        "documents": "Confirm current import and phytosanitary requirements with the destination country's competent authority and the relevant exporter or packhouse before making commitments.",
-        "risk": "Fruit availability, quality, seasonality and import eligibility vary. Do not promise a variety, volume, certification or shipping date until the responsible supplier confirms it.",
-    },
-}
+def fetch(name,url):
+ try:
+  req=Request(url,headers={"User-Agent":"KaapstaysEditorialResearch/1.0","Accept":"text/html"})
+  with urlopen(req,timeout=20) as r:
+   if r.status!=200:return None
+   raw=r.read(1200000).decode("utf-8","replace")
+  p=Extract();p.feed(raw); body=re.sub(r"\s+"," "," ".join(p.parts))
+  return {"name":name,"url":url,"extract":body[:7000]} if len(body)>400 else None
+ except Exception as e:
+  print(f"Skipping unavailable source {url}: {e}",file=sys.stderr);return None
 
-def make_article(item, index):
-    category = item["category"]
-    detail = DETAILS[category]
-    product = detail["product"]
-    date_label = TODAY.isoformat()
-    slug = re.sub(r"[^a-z0-9]+", "-", item["title"].lower()).strip("-")
-    path = OUT_DIR / f"{date_label}-{index:02d}-{slug}.md"
-    checks = "\n".join(f"- {x.capitalize()}." for x in detail["checks"])
-    title = item["title"]
-    keyword = item["keyword"]
-    paragraphs = f"""# {title}
-
-International buyers looking at {product} from South Africa need a clear brief, credible counterparties and a verification process before they discuss a transaction. This guide focuses on {item["angle"]} and provides a practical starting point for importers, procurement teams and trading businesses. It is general guidance, not confirmation of current stock, pricing or a specific supplier.
-
-## Start with a defined buying requirement
-
-Before approaching potential suppliers, write down what you need and why. A useful sourcing brief identifies the intended application or market, the required product specification, target quantity, delivery destination, preferred timing and the commercial terms you want to discuss. Separate essential requirements from preferences so that counterparties can respond clearly.
-
-For {product}, avoid vague descriptions. State the specifications that matter to your business and ask each counterparty to confirm which requirements it can meet. If a specification, test method or quality tolerance is critical, agree how it will be evidenced and who will verify it before you commit.
-
-## Due-diligence checklist
-
-Use the following points to organise an initial conversation:
-
-{checks}
-
-These are questions to verify, not claims that a supplier has already passed the checks. Record who supplied each answer, when it was received and what independent evidence supports it. Where the transaction is material, obtain appropriate legal, trade, inspection and logistics advice before paying deposits or signing a contract.
-
-## Compare offers on more than headline price
-
-An offer is only comparable when the underlying assumptions are clear. Check whether each proposal refers to the same product specification, quantity, delivery point, currency, Incoterm, shipment period, inspection process and payment milestones. Ask counterparties to itemise exclusions and explain any conditions that could change the final delivered cost.
-
-For commodity transactions, a low headline price is not enough to establish that an offer is workable. Verify the identity and authority of the seller, the evidence supporting product claims, the agreed inspection process and the contractual remedy if the product or delivery differs from the agreement. Do not rely solely on screenshots, forwarded documents or unverified introductions.
-
-## Documents and requirements to confirm
-
-{detail["documents"]} Requirements depend on the commodity, route, contract and destination. Do not assume a generic checklist is complete for your particular transaction.
-
-{detail["risk"]} Keep a written record of open questions and do not present unverified information to your own customers as confirmed.
-
-## A practical first-contact workflow
-
-1. Prepare a concise buyer brief with product, specification, quantity, destination and timing.
-2. Ask the prospective counterparty to confirm which requirements it can meet and what evidence it can provide.
-3. Verify the counterparty independently using appropriate company, trade and professional checks.
-4. Agree the inspection, document, delivery, payment and dispute processes in writing before commitment.
-5. Re-check time-sensitive information immediately before signing or arranging payment.
-
-For fruit buyers, include variety, grade, packaging, packing window, cold-chain expectations and destination-market requirements. For manganese and chrome buyers, focus on agreed specifications, assay verification, origin, quantity, inspection and delivery terms. In every case, confirm the details with the responsible counterparties.
-
-## Frequently asked questions
-
-### Can Kaapstays guarantee supply or product availability?
-No. This draft does not represent confirmed inventory, a verified offer or a guarantee of a transaction. Any specific availability, specification, price or timeline must be confirmed by the relevant counterparty.
-
-### What should I send in an initial sourcing enquiry?
-Share the product you need, required specification, quantity range, destination, timing and any essential commercial or documentation requirements. Say which details are flexible and which are mandatory.
-
-### Should I pay before completing due diligence?
-Do not rely on an introduction or an unverified document as sufficient evidence. Use appropriate independent checks and obtain qualified advice on the proposed contract and payment arrangements before committing funds.
-
-## Prepare your sourcing brief
-
-Kaapstays is a South African sourcing gateway for international buyers. If you would like to discuss a sourcing requirement, prepare your product details and book an export meeting using the shared link below. A meeting is an opportunity to discuss the request; it is not a guarantee of supply.
-
-[Book an Export Meeting]({MEETING_URL})
-
----
-
-## Editorial and SEO review notes
-
-- Target keyword: **{keyword}**
-- Category: **{category}**
-- Draft date: {date_label}
-- Draft method: template-generated without an AI or content-generation API.
-- Before publication: add verified, original expertise; check all current trade and destination-market requirements; confirm the page is meaningfully distinct from existing content; add relevant internal links; check canonical URL and metadata.
-- Do not add invented supplier names, stock, grades, assays, certificates, prices, volumes, shipping dates or legal claims.
-"""
-    meta = f"Practical {category} sourcing guidance for international buyers: prepare a brief, verify counterparties and clarify specifications, documents and delivery terms."
-    frontmatter = f'''---
-title: "{title}"
-date: "{date_label}"
-category: "{category}"
-target_keyword: "{keyword}"
-meta_description: "{meta}"
-status: "draft"
-draft_method: "template"
----
-
-> Editorial status: DRAFT — template-generated, not independently researched, fact-checked or ready for automatic publication.
-
-Suggested URL slug: /{slug}/
-Primary CTA: Book an Export Meeting — {MEETING_URL}
-
-'''
-    path.write_text(frontmatter + paragraphs, encoding="utf-8")
-    return path, title, keyword, category
+def generate(topic,keyword,research):
+ prompt=f"""Create a genuinely useful, original Kaapstays buyer guide for international buyers sourcing from South Africa.
+Topic: {topic}. Primary keyword: {keyword}.
+Use ONLY supported facts from extracts. Do not invent suppliers, prices, stock, export volumes, certificates,
+grades, legal requirements or current availability. Clearly distinguish practical advice from verified facts.
+Where public sources are insufficient, tell buyers exactly what to verify with the competent authority.
+No keyword stuffing or filler. Do not claim Kaapstays guarantees supply.
+Return ONLY JSON:
+{{"slug":"lowercase-hyphen-slug","title":"under 65 characters","description":"120 to 170 characters",
+"eyebrow":"Buyer guide","intro":"90-130 words","sections":[{{"heading":"...","body":"at least 90 words","bullets":["..."]}}],
+"faqs":[{{"question":"...","answer":"..."}],"sources":[{{"name":"exact supplied source name","url":"exact supplied URL"}}]}}
+Need 5-7 sections, 3+ FAQs, and cite at least 3 URLs from extracts. Avoid claims not grounded in the source material.
+Sources/extracts: {json.dumps(research,ensure_ascii=False)}"""
+ payload={"model":os.getenv("OPENROUTER_MODEL","openrouter/free"),"temperature":0.3,"max_tokens":6500,
+ "messages":[{"role":"user","content":prompt}]}
+ req=Request("https://openrouter.ai/api/v1/chat/completions",data=json.dumps(payload).encode(),
+ headers={"Authorization":"Bearer "+os.environ["OPENROUTER_API_KEY"],"Content-Type":"application/json",
+ "HTTP-Referer":SITE,"X-Title":"Kaapstays Editorial Publisher"})
+ for n in range(3):
+  try:
+   with urlopen(req,timeout=120) as r: result=json.loads(r.read())
+   text=result["choices"][0]["message"]["content"].strip()
+   text=re.sub(r"^\`\`\`(?:json)?\s*|\s*\`\`\`$","",text)
+   return json.loads(text)
+  except Exception:
+   if n==2: raise
+   time.sleep(3*(n+1))
 
 def main():
-    OUT_DIR.mkdir(parents=True, exist_ok=True)
-    # Select a rotating window of five topics, with the starting point changing daily.
-    start = TODAY.toordinal() % len(TOPICS)
-    selected = [TOPICS[(start + i) % len(TOPICS)] for i in range(5)]
-    created = [make_article(item, i + 1) for i, item in enumerate(selected)]
+ if not os.getenv("OPENROUTER_API_KEY"): raise RuntimeError("Missing OPENROUTER_API_KEY secret")
+ articles=json.loads(OUT.read_text()) if OUT.exists() else []
+ topic,keyword=TOPICS[len(articles)%len(TOPICS)]
+ research=[v for name,url in SOURCES if (v:=fetch(name,url))]
+ if len(research)<3: raise RuntimeError(f"Only {len(research)} trusted sources fetched; aborting")
+ a=generate(topic,keyword,research)
+ for field in ("slug","title","description","intro","sections","faqs","sources"):
+  if not a.get(field): raise ValueError("Missing article field: "+field)
+ if not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*",a["slug"]): raise ValueError("Bad slug")
+ if len(a["title"])>65 or not 120<=len(a["description"])<=170: raise ValueError("SEO metadata length check failed")
+ if len(a["sections"])<5 or len(a["faqs"])<3: raise ValueError("Insufficient article depth")
+ if any(len(s.get("body",""))<450 for s in a["sections"]): raise ValueError("A section is too short")
+ fetched={s["url"] for s in research}
+ if len(a["sources"])<3 or any(s.get("url") not in fetched for s in a["sources"]): raise ValueError("Sources must be fetched allow-listed URLs")
+ if keyword.lower() not in (a["title"]+" "+a["intro"]).lower(): raise ValueError("Target keyword missing from title/intro")
+ if any(x["slug"]==a["slug"] for x in articles): raise ValueError("Duplicate slug")
+ a.update({"path":"/insights/"+a["slug"],"date":datetime.now(timezone.utc).date().isoformat(),"keyword":keyword})
+ a["links"]=[{"href":"/services/product-sourcing","label":"South African product sourcing"},{"href":"/services/supplier-sourcing","label":"Supplier sourcing support"},{"href":"/products/fresh-apples","label":"South African products"}]
+ articles.append(a);OUT.parent.mkdir(parents=True,exist_ok=True)
+ OUT.write_text(json.dumps(articles,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+ print("Article added to static site registry:",a["path"])
 
-    subprocess.run(["git", "config", "user.name", "github-actions[bot]"], check=True)
-    subprocess.run(["git", "config", "user.email", "41898282+github-actions[bot]@users.noreply.github.com"], check=True)
-    for path, _, _, _ in created:
-        subprocess.run(["git", "add", str(path)], check=True)
-    # Skip an empty commit when the same day's workflow is rerun.
-    staged_changes = subprocess.run(["git", "diff", "--cached", "--quiet"]).returncode != 0
-    if staged_changes:
-        subprocess.run(["git", "commit", "-m", f"Add five Kaapstays SEO drafts: {TODAY.isoformat()}"], check=True)
-        # Rebase the generated commit onto the latest remote main before pushing.
-        subprocess.run(["git", "pull", "--rebase", "origin", "main"], check=True)
-        subprocess.run(["git", "push", "origin", "HEAD:main"], check=True)
-
-    repo = os.getenv("GITHUB_REPOSITORY", "oatswrldwide/cape-town-delegate-stays")
-    lines = [
-        f"Your five Kaapstays content drafts for {TODAY.isoformat()} are saved in GitHub.",
-        "",
-        "These are template-generated drafts, not AI-written or independently researched articles. Please review and add original, verified value before publishing. They are not live website URLs.",
-        "",
-    ]
-    for number, (path, title, keyword, category) in enumerate(created, start=1):
-        url = f"https://github.com/{repo}/blob/main/{path.as_posix()}"
-        lines.append(f"{number}. [{category.upper()}] {title}")
-        lines.append(f"   Target keyword: {keyword}")
-        lines.append(f"   Draft: {url}")
-        lines.append("")
-    lines.extend(["Book an export meeting: " + MEETING_URL, ""])
-    message = EmailMessage()
-    message["Subject"] = f"Kaapstays: 5 daily SEO drafts — {TODAY.isoformat()}"
-    message["From"] = os.environ["SMTP_USERNAME"]
-    message["To"] = RECIPIENT
-    message.set_content("\n".join(lines))
-
-    with smtplib.SMTP(os.environ["SMTP_HOST"], int(os.getenv("SMTP_PORT") or "587"), timeout=30) as server:
-        server.starttls()
-        server.login(os.environ["SMTP_USERNAME"], os.environ["SMTP_PASSWORD"])
-        server.send_message(message)
-    print(f"Created {len(created)} drafts and emailed links to {RECIPIENT}")
-
-if __name__ == "__main__":
-    main()
+if __name__=="__main__": main()
