@@ -120,7 +120,7 @@ async function renderPageHtml(routePath) {
       "<p>Buyer checklists, export guidance and practical information to help you evaluate suppliers and plan your next order.</p></header>" +
       "<section>" + (cards || "<p>New articles will appear here when published.</p>") + "</section></main>";
     return indexHtml
-      .replace(/<title>[\\s\\S]*?<\\/title>/, "<title>Insights &amp; Buyer Guides | Kaapstays</title>")
+      .replace(/<title>.*?<\/title>/s, "<title>Insights &amp; Buyer Guides | Kaapstays</title>")
       .replace('<div id="root"></div>', '<div id="root">' + listing + "</div>");
   }
   const generatedArticle = generatedArticles.find((article) => article.path === routePath);
