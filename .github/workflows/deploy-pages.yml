@@ -74,7 +74,7 @@ jobs:
         uses: actions/deploy-pages@v4
 
       - name: Email the newly published article
-        if: github.event_name == 'workflow_run'
+        if: github.event_name == 'workflow_run' || github.event_name == 'workflow_dispatch'
         env:
           GMAIL_ADDRESS: ${{ secrets.GMAIL_ADDRESS }}
           GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
