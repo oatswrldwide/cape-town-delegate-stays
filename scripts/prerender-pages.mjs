@@ -119,7 +119,7 @@ async function renderPageHtml(routePath) {
       breadcrumbs: [{ href: "/", label: "Home" }, { href: generatedArticle.path, label: generatedArticle.title }],
     }));
     return indexHtml
-      .replace(/<title>[\\s\\S]*?<\\/title>/, pageTitle)
+      .replace(/<title>[\s\S]*?<\/title>/, pageTitle)
       .replace(
         '    <meta name="viewport" content="width=device-width, initial-scale=1.0" />',
         (match) => `${match}\\n    ${metaDescription}`,
