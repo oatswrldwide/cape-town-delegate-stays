@@ -4,7 +4,19 @@ import { SeoContentPage } from "../../components/seo/content-page";
 import { buildSeoHead } from "../../lib/seo";
 import articles from "../../lib/generated-articles.json";
 
-type Article = (typeof articles)[number];
+interface Article {
+  slug: string;
+  title: string;
+  description: string;
+  path: string;
+  keyword: string;
+  eyebrow: string;
+  intro: string;
+  sections: { heading: string; body: string; bullets?: string[] }[];
+  faqs: { question: string; answer: string }[];
+  sources: { name: string; url: string }[];
+  links: { href: string; label: string }[];
+}
 
 export const Route = createFileRoute("/insights/$slug")({
   head: ({ params }) => {
