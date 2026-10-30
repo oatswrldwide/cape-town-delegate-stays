@@ -51,7 +51,7 @@ if (!routesBlockMatch) throw new Error("Could not find route paths in src/routeT
 const routePaths = [...routesBlockMatch[1].matchAll(/'([^']+)'/g)].map((match) => match[1]);
 const expansionPaths = expansionModule.expansionPages.map((page) => page.path);
 const articlePaths = generatedArticles.map((article) => article.path);
-const pagePaths = [...new Set([...routePaths, ...expansionPaths, ...articlePaths])].filter((routePath) => {
+const pagePaths = [...new Set([...routePaths, "/insights", ...expansionPaths, ...articlePaths])].filter((routePath) => {
   if (routePath.includes(".")) return false;
   if (routePath.includes("$")) return false;
   return true;
@@ -104,6 +104,25 @@ function getPageH1(routePath) {
 }
 
 async function renderPageHtml(routePath) {
+  if (routePath === "/insights") {
+    const cards = generatedArticles
+      .slice()
+      .sort((a, b) => (b.date || "").localeCompare(a.date || ""))
+      .map((article) =>
+        "<article><p>" + escapeHtml(article.date || "Kaapstays insight") + "</p>" +
+        "<h2><a href=\"" + escapeHtml(article.path) + "\">" + escapeHtml(article.title) + "</a></h2>" +
+        "<p>" + escapeHtml(article.description) + "</p>" +
+        "<a href=\"" + escapeHtml(article.path) + "\">Read article</a></article>",
+      )
+      .join("\n");
+    const listing = "<main><header><a href=\"/\">Kaapstays</a>" +
+      "<h1>Insights for sourcing from South Africa.</h1>" +
+      "<p>Buyer checklists, export guidance and practical information to help you evaluate suppliers and plan your next order.</p></header>" +
+      "<section>" + (cards || "<p>New articles will appear here when published.</p>") + "</section></main>";
+    return indexHtml
+      .replace(/<title>[\\s\\S]*?<\\/title>/, "<title>Insights &amp; Buyer Guides | Kaapstays</title>")
+      .replace('<div id="root"></div>', '<div id="root">' + listing + "</div>");
+  }
   const generatedArticle = generatedArticles.find((article) => article.path === routePath);
   if (generatedArticle) {
     const pageTitle = `<title>${escapeHtml(generatedArticle.title)}</title>`;
