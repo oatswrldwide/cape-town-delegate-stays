@@ -192,7 +192,10 @@ def main():
     for path, _, _, _ in created:
         subprocess.run(["git", "add", str(path)], check=True)
     subprocess.run(["git", "commit", "-m", f"Add five Kaapstays SEO drafts: {TODAY.isoformat()}"], check=True)
-    subprocess.run(["git", "push"], check=True)
+    # The branch may receive edits after checkout; rebase this generated commit
+    # onto the latest remote main before pushing to avoid non-fast-forward errors.
+    subprocess.run(["git", "pull", "--rebase", "origin", "main"], check=True)
+    subprocess.run(["git", "push", "origin", "HEAD:main"], check=True)
 
     repo = os.getenv("GITHUB_REPOSITORY", "oatswrldwide/cape-town-delegate-stays")
     lines = [
